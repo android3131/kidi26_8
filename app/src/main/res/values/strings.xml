@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">kidi2</string>
+    <string name="toast_message">hello world</string>
+    <string name="a_desc">hello world</string>
+</resources>

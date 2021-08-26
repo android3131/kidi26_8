@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="home"
+        android:id="@+id/bottomNavigationHomeMenuId"
+        android:icon="@drawable/home"/>
+    <item android:title="user"
+        android:id="@+id/bottomNavigationUserMenuId"
+        android:icon="@drawable/user"/>
+    <item android:title="activity"
+        android:id="@+id/bottomNavigationActivityMenuId"
+        android:icon="@drawable/activity"/>
+    <item android:title="notifications"
+        android:id="@+id/bottomNavigationNotificatonsMenuId"
+        android:icon="@drawable/notifications"/>
+    <item android:title="more"
+        android:id="@+id/bottomNavigationMoreMenuId"
+        android:icon="@drawable/more_hor"/>
+</menu>

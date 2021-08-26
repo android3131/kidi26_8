@@ -1,0 +1,2 @@
+rootProject.name = "kidi2"
+include ':app'
