@@ -50,7 +50,7 @@ public class KidName extends AppCompatActivity {
                         startActivity(new Intent(KidName.this, Activity.class));
                         return true;
                     case R.id.bottomNavigationActivityMenuId:
-                        startActivity(new Intent(KidName.this, AdminMain.class));
+                        startActivity(new Intent(KidName.this, HomeLogin.class));
                         return true;
                     case R.id.bottomNavigationNotificatonsMenuId:
                         startActivity(new Intent(KidName.this, KidName.class));

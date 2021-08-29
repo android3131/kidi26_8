@@ -66,7 +66,7 @@ public class HomeLogin extends AppCompatActivity {
                         startActivity(new Intent(HomeLogin.this,Activity.class));
                         return true;
                     case R.id.bottomNavigationActivityMenuId:
-                        startActivity(new Intent(HomeLogin.this,AdminMain.class));
+                        startActivity(new Intent(HomeLogin.this,HomeLogin.class));
                         return true;
                     case R.id.bottomNavigationNotificatonsMenuId:
                         startActivity(new Intent(HomeLogin.this,KidName.class));

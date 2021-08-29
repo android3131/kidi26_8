@@ -53,7 +53,7 @@ SliderTransformer(View page,float position){
             scaleX=scaleFactor;
 
             scaleY=scaleFactor;
-            translationX=-(page.getWidth()/DEFAULT_TRANSLATION_FACTOR)*position*(1.15f);
+            translationX=-(page.getWidth()/DEFAULT_TRANSLATION_FACTOR)*position*(1.175f);
               alpha=alphaFactor ;
         }
 

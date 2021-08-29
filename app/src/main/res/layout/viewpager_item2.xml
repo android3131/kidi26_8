@@ -11,6 +11,7 @@
         android:id="@+id/viewPagerID2"
         android:layout_width="325dp"
         android:layout_height="176dp"
+        android:layout_marginRight="50dp"
         android:foregroundGravity="top"
         android:gravity="top"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,6 +43,7 @@
                         android:id="@+id/kidImage2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
                         android:layout_weight="1"
                         app:srcCompat="@drawable/girl" />
 

@@ -12,17 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Kidi2"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AdminMain">
+
+        <!-- ACTIVITIES -->
+        <!-- FIRST SCREEN -->
+        <activity android:name=".FirstScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!-- ACTIVITIES -->
-        <!-- FIRST SCREEN -->
-        <activity android:name=".FirstScreen">
-
         </activity> <!-- HOME LOGIN -->
         <activity android:name=".HomeLogin"></activity> <!-- KID NAME -->
         <activity android:name=".KidName"></activity> <!-- ACTIVITY -->

@@ -46,7 +46,7 @@ public class Activity extends AppCompatActivity {
                         startActivity(new Intent(Activity.this, Activity.class));
                         return true;
                     case R.id.bottomNavigationActivityMenuId:
-                        startActivity(new Intent(Activity.this, AdminMain.class));
+                        startActivity(new Intent(Activity.this, HomeLogin.class));
                         return true;
                     case R.id.bottomNavigationNotificatonsMenuId:
                         startActivity(new Intent(Activity.this, KidName.class));

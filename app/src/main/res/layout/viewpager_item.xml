@@ -11,6 +11,7 @@
         android:id="@+id/viewPagerID"
         android:layout_width="325dp"
         android:layout_height="176dp"
+        android:layout_marginRight="50dp"
         android:foregroundGravity="top"
         android:gravity="top"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,6 +43,7 @@
                         android:id="@+id/kidImage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
                         android:layout_weight="1"
                         app:srcCompat="@drawable/girl" />
 
@@ -106,11 +108,29 @@
                         app:srcCompat="@drawable/gamepad_variant" />
 
                     <ImageButton
+                        android:id="@+id/trashB"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="110dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#edc655"
+                        app:srcCompat="@drawable/pencil" />
+
+                    <ImageButton
+                        android:id="@+id/pencilB"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#edc655"
+                        app:srcCompat="@drawable/shape" />
+
+                    <ImageButton
                         android:id="@+id/messageB"
-                        android:layout_width="49dp"
-                        android:layout_height="44dp"
-                        android:layout_marginLeft="170dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
                         android:background="#edc655"
                         android:foregroundGravity="right"
                         app:srcCompat="@drawable/chat_bubbles" />
