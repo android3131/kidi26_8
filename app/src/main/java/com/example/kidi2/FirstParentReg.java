@@ -67,7 +67,7 @@ public class FirstParentReg extends AppCompatActivity  {
         nextB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(FirstParentReg.this, HomeLogin.class));
+                startActivity(new Intent(FirstParentReg.this, FirstParentRegReal.class));
 
             }
         });
