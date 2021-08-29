@@ -15,7 +15,7 @@
 11-->C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:5:22-64
 12
 13    <application
-13-->C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:7:5-28:19
+13-->C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:7:5-49:19
 14        android:allowBackup="true"
 14-->C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:8:9-35
 15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -60,6 +60,29 @@
 36        <activity android:name="com.example.kidi2.Activity" />
 36-->C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:27:9-55
 36-->C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:27:19-43
-37    </application>
-38
-39</manifest>
+37
+38        <!-- feisal and yael activities -->
+39
+40        <activity
+40-->C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:34:9-40:20
+41            android:name="com.example.kidi2.AdminSetCourse"
+41-->C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:35:13-43
+42            android:exported="true" >
+42-->C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:36:13-36
+43        </activity>
+44        <activity
+44-->C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:42:9-44:39
+45            android:name="com.example.kidi2.AdminAddCourse"
+45-->C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:43:13-43
+46            android:exported="true" />
+46-->C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:44:13-36
+47        <activity
+47-->C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:45:9-48:20
+48            android:name="com.example.kidi2.FirstParentReg"
+48-->C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:45:19-49
+49            android:exported="true" >
+49-->C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:46:13-36
+50        </activity>
+51    </application>
+52
+53</manifest>

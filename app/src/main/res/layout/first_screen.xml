@@ -51,7 +51,7 @@
                 android:layout_marginTop="50dp"
                 android:layout_marginRight="30dp"
                 android:layout_weight="1"
-                android:background="@drawable/myrect"
+                android:background="@drawable/myrect9"
                 android:text="First visit"
                 app:backgroundTint="#4e7fe7" />
 
@@ -63,7 +63,7 @@
                 android:layout_marginTop="50dp"
                 android:layout_marginRight="30dp"
                 android:layout_weight="1"
-                android:background="@drawable/myrect"
+                android:background="@drawable/myrect9"
                 android:text="Login"
                 app:backgroundTint="#4e7fe7" />
         </LinearLayout>

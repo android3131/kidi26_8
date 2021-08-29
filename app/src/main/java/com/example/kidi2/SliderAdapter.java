@@ -1,5 +1,4 @@
-package com.example.myapplication11;
-
+package com.example.kidi2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

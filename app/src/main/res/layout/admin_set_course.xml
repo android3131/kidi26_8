@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#4E7FE7"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".AdminSetCourse">
 
     <TextView
         android:id="@+id/headLine"

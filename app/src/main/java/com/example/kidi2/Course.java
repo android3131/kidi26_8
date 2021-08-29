@@ -1,5 +1,4 @@
-package com.example.myapplication19;
-
+package com.example.kidi2;
 import java.util.ArrayList;
 
 import retrofit2.http.Field;

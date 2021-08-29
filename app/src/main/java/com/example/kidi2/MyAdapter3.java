@@ -1,5 +1,4 @@
-package com.example.myapplication3;
-
+package com.example.kidi2;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

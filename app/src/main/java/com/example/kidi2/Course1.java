@@ -1,4 +1,4 @@
-package com.example.myapplication19;
+package com.example.kidi2;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,6 +39,21 @@ public class Course1 {
         this.clr=clr;
     }
 
+    public Course1(String toString, int i, String selectedDatesTxt, String s, String defaultDay, String itemName, String itemName1, int i1, Category bbb) {
+        this.ID = ID;
+        this.name = name;
+        this.price = price;
+        this.startDateTime = startDateTime;
+        this.finishDateTime = finishDateTime;
+        this.category = category;
+        this.leadersIDs = leadersIDs;
+        this.zoomMeetingLink = zoomMeetingLink;
+        this.kidsIDs = kidsIDs;
+        this.day = day;
+        this.startOclock = startOclock;
+        this.endOclock = endOclock;
+        this.clr=clr;
+    }
 
 
     public int getClr() {

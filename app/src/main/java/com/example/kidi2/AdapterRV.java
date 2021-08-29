@@ -1,4 +1,4 @@
-package com.example.myapplication19;
+package com.example.kidi2;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.myapplication19.R;
+import com.example.kidi2.R;
 
 import java.util.ArrayList;
 

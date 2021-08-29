@@ -1,5 +1,4 @@
-package com.example.myapplication11;
-
+package com.example.kidi2;
 public class AlgorithmItem   {
     private String courseName;
     private String else_information;

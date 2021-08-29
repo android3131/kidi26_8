@@ -1,4 +1,4 @@
-package com.example.myapplication19;
+package com.example.kidi2;
 
 import android.content.Context;
 import android.content.Intent;

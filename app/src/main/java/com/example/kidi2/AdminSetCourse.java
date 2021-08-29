@@ -1,4 +1,4 @@
-package com.example.myapplication19;
+package com.example.kidi2;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -36,7 +36,7 @@ public class AdminSetCourse extends AppCompatActivity {
             .build();
     // create an instance for our retrofit api class.
     Button bt_delete,bt_update,bt_add;
-    RetroFitAPI2 retrofitAPI2 = retrofit.create(RetroFitAPI2.class);
+    RetrofitAPI4 retrofitAPI2 = retrofit.create(RetrofitAPI4.class);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +90,7 @@ public class AdminSetCourse extends AppCompatActivity {
         bt_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(AdminSetCourse.this,thirdScreen.class);
+                Intent intent=new Intent(AdminSetCourse.this,AdminAddCourse.class);
                 startActivity(intent);
 
             }

@@ -1,4 +1,4 @@
-package com.example.myapplication3;
+package com.example.kidi2;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.util.Pair;
@@ -161,7 +161,9 @@ public class AdminAddCourse extends AppCompatActivity {
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Course1 course1 = new Course1(courseName.getText().toString(), 0, selectedDatesTxt ,"30/02/11", "defaultDay", selectedHourStart.getItemName() , selectedHourEnd.getItemName(), 0, new Category(categorySelection.toString(), "BBB"));
+                Course1 course1 = new Course1(courseName.getText().toString(), 0, selectedDatesTxt
+                        ,"30/02/11", "defaultDay", selectedHourStart.getItemName()
+                        , selectedHourEnd.getItemName(), 0, new Category(categorySelection.toString(), "BBB"));
 
                 // calling a method to create a post and passing our model class.
                 Call<Course1> call = retrofitAPI3.postNewCourse(course1);

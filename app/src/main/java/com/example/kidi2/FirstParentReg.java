@@ -1,4 +1,4 @@
-package com.example.myapplication11;
+package com.example.kidi2;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -52,7 +52,7 @@ public class FirstParentReg extends AppCompatActivity  {
             // and build our retrofit builder.
             .build();
     // create an instance for our retrofit api class.
-    RetroFitAPI retrofitAPI = retrofit.create(RetroFitAPI.class);
+    RetroFitAPI2 retrofitAPI = retrofit.create(RetroFitAPI2.class);
     Spinner spinner;
 
 
@@ -299,7 +299,8 @@ public class FirstParentReg extends AppCompatActivity  {
                 if (i == position) {
                     dots[i].setTextColor(list[position]);
                 } else {
-                    dots[i].setTextColor(getResources().getColor(R.color.grey));
+                    dots[i].setTextColor(getResources().getColor(R.color.black));
+                    //changed from gray
                 }
             }
         }
