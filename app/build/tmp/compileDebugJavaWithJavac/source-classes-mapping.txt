@@ -58,24 +58,15 @@ com/example/kidi2/VPAdapter.java
  com.example.kidi2.VPAdapter$ViewHolder
 com/example/kidi2/DataModelParent.java
  com.example.kidi2.DataModelParent
-com/example/kidi2/FirstScreen.java
- com.example.kidi2.FirstScreen
- com.example.kidi2.FirstScreen$1
- com.example.kidi2.FirstScreen$2
- com.example.kidi2.FirstScreen$3
- com.example.kidi2.FirstScreen$4
- com.example.kidi2.FirstScreen$5
+com/example/kidi2/MyAdapter1.java
+ com.example.kidi2.MyAdapter1
+ com.example.kidi2.MyAdapter1$MyViewHolder
 com/example/kidi2/Course.java
  com.example.kidi2.Course
 com/example/kidi2/DataModel.java
  com.example.kidi2.DataModel
-com/example/kidi2/FirstParentReg.java
- com.example.kidi2.FirstParentReg
- com.example.kidi2.FirstParentReg$1
- com.example.kidi2.FirstParentReg$2
- com.example.kidi2.FirstParentReg$3
- com.example.kidi2.FirstParentReg$4
- com.example.kidi2.FirstParentReg$5
+com/example/kidi2/Day.java
+ com.example.kidi2.Day
 com/example/kidi2/Course1.java
  com.example.kidi2.Course1
 com/example/kidi2/algorithm_spinner.java
@@ -123,9 +114,9 @@ com/example/kidi2/AlgorithmItem.java
  com.example.kidi2.AlgorithmItem
 com/example/kidi2/Status.java
  com.example.kidi2.Status
-com/example/kidi2/MainActivity.java
- com.example.kidi2.MainActivity
- com.example.kidi2.MainActivity$1
+com/example/kidi2/MainActivityGrp2.java
+ com.example.kidi2.MainActivityGrp2
+ com.example.kidi2.MainActivityGrp2$1
 com/example/kidi2/RetrofitAPI4.java
  com.example.kidi2.RetrofitAPI4
 com/example/kidi2/VPAdapter2.java
@@ -152,11 +143,22 @@ com/example/kidi2/RVitem.java
  com.example.kidi2.RVitem
 com/example/kidi2/RetroFitAPI3.java
  com.example.kidi2.RetroFitAPI3
-com/example/kidi2/Day.java
- com.example.kidi2.Day
-com/example/kidi2/MyAdapter1.java
- com.example.kidi2.MyAdapter1
- com.example.kidi2.MyAdapter1$MyViewHolder
-com/example/kidi2/MainActivityGrp2.java
- com.example.kidi2.MainActivityGrp2
- com.example.kidi2.MainActivityGrp2$1
+com/example/kidi2/MainActivity.java
+ com.example.kidi2.MainActivity
+ com.example.kidi2.MainActivity$1
+com/example/kidi2/FirstScreen.java
+ com.example.kidi2.FirstScreen
+ com.example.kidi2.FirstScreen$1
+ com.example.kidi2.FirstScreen$2
+ com.example.kidi2.FirstScreen$3
+ com.example.kidi2.FirstScreen$4
+ com.example.kidi2.FirstScreen$5
+com/example/kidi2/FirstParentReg.java
+ com.example.kidi2.FirstParentReg
+ com.example.kidi2.FirstParentReg$1
+ com.example.kidi2.FirstParentReg$2
+ com.example.kidi2.FirstParentReg$3
+ com.example.kidi2.FirstParentReg$4
+ com.example.kidi2.FirstParentReg$5
+ com.example.kidi2.FirstParentReg$6
+ com.example.kidi2.FirstParentReg$7

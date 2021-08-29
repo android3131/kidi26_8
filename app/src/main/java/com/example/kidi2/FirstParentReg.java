@@ -1,6 +1,7 @@
 package com.example.kidi2;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -28,7 +29,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FirstParentReg extends AppCompatActivity  {
-    private Button bt1;
+    private Button bt1,nextB,backB;
     public ArrayList<AlgorithmItem> algorithmItems;
     private AlgorithmAdapter adapter;
     boolean first_one=true;
@@ -62,7 +63,22 @@ public class FirstParentReg extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_parent_reg);
+        nextB = findViewById(R.id.nextButton);
+        nextB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FirstParentReg.this, HomeLogin.class));
 
+            }
+        });
+        backB = findViewById(R.id.backButtonReg);
+        backB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FirstParentReg.this, FirstScreen.class));
+
+            }
+        });
         //ViewPager v = findViewById(R.id.vie);
         //v.setAdapter(new CustomPagerAdapter(this));//,algorithmItems));
 

@@ -1,4 +1,4 @@
-#Sun Aug 29 12:23:02 IDT 2021
-base.0=C\:\\Users\\lover\\AndroidStudioProjects\\new_git\\kidi26_8\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Sun Aug 29 13:54:01 IDT 2021
+base.0=C\:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

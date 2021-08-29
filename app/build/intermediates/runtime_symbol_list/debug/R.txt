@@ -1898,6 +1898,7 @@ int id autoComplete 0x7f090056
 int id autoCompleteToEnd 0x7f090057
 int id autoCompleteToStart 0x7f090058
 int id back 0x7f090059
+int id backButtonReg 0x7f09022b
 int id backTo2 0x7f09005a
 int id barrier 0x7f09005b
 int id baseline 0x7f09005c
@@ -1914,8 +1915,6 @@ int id bottomNavigationUserMenuId 0x7f090066
 int id bounce 0x7f090067
 int id button 0x7f090068
 int id button2 0x7f090069
-int id button6 0x7f09006a
-int id button7 0x7f09006b
 int id buttonPanel 0x7f09006c
 int id buttons 0x7f09006d
 int id cache_measures 0x7f09006e
@@ -2152,6 +2151,7 @@ int id navigation_bar_item_small_label_view 0x7f090154
 int id navigation_header_container 0x7f090155
 int id never 0x7f090156
 int id next 0x7f090157
+int id nextButton 0x7f09022c
 int id noScroll 0x7f090158
 int id none 0x7f090159
 int id normal 0x7f09015a

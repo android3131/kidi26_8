@@ -42,10 +42,16 @@
         <activity
             android:name=".AdminAddCourse"
             android:exported="true" />
+
         <activity android:name=".FirstParentReg"
             android:exported="true">
-
         </activity>
+<!-- muhanad activities-->
+
+        <activity android:name=".FirstParentRegReal"
+            android:exported="true"></activity>
+
+
     </application>
 
 </manifest>

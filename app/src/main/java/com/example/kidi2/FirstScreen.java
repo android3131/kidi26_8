@@ -42,7 +42,7 @@ public class FirstScreen extends AppCompatActivity {
         firstB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(FirstScreen.this, KidName.class));
+                startActivity(new Intent(FirstScreen.this, FirstParentReg.class));
             }
         });
         forgotB = findViewById(R.id.forgotButton);

@@ -48,6 +48,11 @@
             android:name="com.example.kidi2.FirstParentReg"
             android:exported="true" >
         </activity>
+        <!-- muhanad activities -->
+
+        <activity
+            android:name="com.example.kidi2.FirstParentRegReal"
+            android:exported="true" />
     </application>
 
 </manifest>

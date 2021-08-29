@@ -1899,6 +1899,7 @@ id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
 id back
+id backButtonReg
 id backTo2
 id barrier
 id baseline
@@ -1915,8 +1916,6 @@ id bottomNavigationUserMenuId
 id bounce
 id button
 id button2
-id button6
-id button7
 id buttonPanel
 id buttons
 id cache_measures
@@ -2153,6 +2152,7 @@ id navigation_bar_item_small_label_view
 id navigation_header_container
 id never
 id next
+id nextButton
 id noScroll
 id none
 id normal

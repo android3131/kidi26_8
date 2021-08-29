@@ -105,7 +105,7 @@
 
 
             <Button
-                android:id="@+id/button7"
+                android:id="@+id/backButtonReg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -127,7 +127,7 @@
                 app:cornerRadius="15dp" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/nextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
