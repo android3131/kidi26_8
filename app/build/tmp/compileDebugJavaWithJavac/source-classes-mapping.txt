@@ -1,0 +1,59 @@
+com/example/kidi2/SliderTransformer.java
+ com.example.kidi2.SliderTransformer
+com/example/kidi2/DataModelCourse.java
+ com.example.kidi2.DataModelCourse
+com/example/kidi2/DataModelParent.java
+ com.example.kidi2.DataModelParent
+com/example/kidi2/ViewPagerItem.java
+ com.example.kidi2.ViewPagerItem
+com/example/kidi2/Day.java
+ com.example.kidi2.Day
+com/example/kidi2/Gender.java
+ com.example.kidi2.Gender
+com/example/kidi2/DataModelKid.java
+ com.example.kidi2.DataModelKid
+com/example/kidi2/RetrofitAPI.java
+ com.example.kidi2.RetrofitAPI
+com/example/kidi2/BuildConfig.java
+ com.example.kidi2.BuildConfig
+com/example/kidi2/DialogAdapter.java
+ com.example.kidi2.DialogAdapter
+ com.example.kidi2.DialogAdapter$1
+ com.example.kidi2.DialogAdapter$2
+ com.example.kidi2.DialogAdapter$3
+com/example/kidi2/Activity.java
+ com.example.kidi2.Activity
+ com.example.kidi2.Activity$1
+ com.example.kidi2.Activity$2
+ com.example.kidi2.Activity$3
+ com.example.kidi2.Activity$4
+com/example/kidi2/TermsOfService.java
+ com.example.kidi2.TermsOfService
+ com.example.kidi2.TermsOfService$1
+com/example/kidi2/PrivacyPolicy.java
+ com.example.kidi2.PrivacyPolicy
+ com.example.kidi2.PrivacyPolicy$1
+com/example/kidi2/HomeLogin.java
+ com.example.kidi2.HomeLogin
+ com.example.kidi2.HomeLogin$1
+ com.example.kidi2.HomeLogin$2
+com/example/kidi2/VPAdapter.java
+ com.example.kidi2.VPAdapter
+ com.example.kidi2.VPAdapter$ViewHolder
+com/example/kidi2/FirstScreen.java
+ com.example.kidi2.FirstScreen
+ com.example.kidi2.FirstScreen$1
+ com.example.kidi2.FirstScreen$2
+ com.example.kidi2.FirstScreen$3
+ com.example.kidi2.FirstScreen$4
+ com.example.kidi2.FirstScreen$5
+com/example/kidi2/KidName.java
+ com.example.kidi2.KidName
+ com.example.kidi2.KidName$1
+ com.example.kidi2.KidName$2
+ com.example.kidi2.KidName$3
+ com.example.kidi2.KidName$4
+ com.example.kidi2.KidName$5
+com/example/kidi2/VPAdapter2.java
+ com.example.kidi2.VPAdapter2
+ com.example.kidi2.VPAdapter2$ViewHolder
