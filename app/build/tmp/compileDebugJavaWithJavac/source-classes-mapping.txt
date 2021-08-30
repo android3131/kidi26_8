@@ -56,6 +56,10 @@ com/example/kidi2/RetrofitClientGrp2.java
  com.example.kidi2.RetrofitClientGrp2
 com/example/kidi2/RVitem.java
  com.example.kidi2.RVitem
+com/example/kidi2/RetrofitAPILoginScreen.java
+ com.example.kidi2.RetrofitAPILoginScreen
+com/example/kidi2/RetrofitAPIThirdParentReg.java
+ com.example.kidi2.RetrofitAPIThirdParentReg
 com/example/kidi2/algorithm_spinner.java
  com.example.kidi2.algorithm_spinner
 com/example/kidi2/SliderAdapter.java
@@ -137,6 +141,14 @@ com/example/kidi2/AdminAddCourse.java
  com.example.kidi2.AdminAddCourse$5
  com.example.kidi2.AdminAddCourse$5$1
  com.example.kidi2.AdminAddCourse$6
+com/example/kidi2/ThirdParentRegActivity.java
+ com.example.kidi2.ThirdParentRegActivity
+ com.example.kidi2.ThirdParentRegActivity$1
+ com.example.kidi2.ThirdParentRegActivity$2
+ com.example.kidi2.ThirdParentRegActivity$3
+ com.example.kidi2.ThirdParentRegActivity$4
+ com.example.kidi2.ThirdParentRegActivity$5
+ com.example.kidi2.ThirdParentRegActivity$6
 com/example/kidi2/VPAdapter.java
  com.example.kidi2.VPAdapter
  com.example.kidi2.VPAdapter$ViewHolder
@@ -146,15 +158,8 @@ com/example/kidi2/MyAdapter1.java
 com/example/kidi2/MainActivityGrp2.java
  com.example.kidi2.MainActivityGrp2
  com.example.kidi2.MainActivityGrp2$1
-com/example/kidi2/FirstParentReg.java
- com.example.kidi2.FirstParentReg
- com.example.kidi2.FirstParentReg$1
- com.example.kidi2.FirstParentReg$2
- com.example.kidi2.FirstParentReg$3
- com.example.kidi2.FirstParentReg$4
- com.example.kidi2.FirstParentReg$5
- com.example.kidi2.FirstParentReg$6
- com.example.kidi2.FirstParentReg$7
+com/example/kidi2/DataKid.java
+ com.example.kidi2.DataKid
 com/example/kidi2/LogInScreenActivity.java
  com.example.kidi2.LogInScreenActivity
  com.example.kidi2.LogInScreenActivity$1
@@ -165,5 +170,12 @@ com/example/kidi2/FirstScreen.java
  com.example.kidi2.FirstScreen$3
  com.example.kidi2.FirstScreen$4
  com.example.kidi2.FirstScreen$5
-com/example/kidi2/RetrofitAPILoginScreen.java
- com.example.kidi2.RetrofitAPILoginScreen
+com/example/kidi2/FirstParentReg.java
+ com.example.kidi2.FirstParentReg
+ com.example.kidi2.FirstParentReg$1
+ com.example.kidi2.FirstParentReg$2
+ com.example.kidi2.FirstParentReg$3
+ com.example.kidi2.FirstParentReg$4
+ com.example.kidi2.FirstParentReg$5
+ com.example.kidi2.FirstParentReg$6
+ com.example.kidi2.FirstParentReg$7

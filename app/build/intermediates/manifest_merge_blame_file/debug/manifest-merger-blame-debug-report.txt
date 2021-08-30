@@ -15,7 +15,7 @@
 11-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:5:22-64
 12
 13    <application
-13-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:7:5-56:19
+13-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:7:5-58:19
 14        android:allowBackup="true"
 14-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:8:9-35
 15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -63,37 +63,40 @@
 37        <activity android:name="com.example.kidi2.LogInScreenActivity" />
 37-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:28:9-66
 37-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:28:19-54
-38
-39        <!-- feisal and yael activities -->
-40
-41        <activity
-41-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:35:9-41:20
-42            android:name="com.example.kidi2.AdminSetCourse"
-42-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:36:13-43
-43            android:exported="true" >
-43-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:37:13-36
-44        </activity>
-45        <activity
-45-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:43:9-45:39
-46            android:name="com.example.kidi2.AdminAddCourse"
-46-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:44:13-43
-47            android:exported="true" />
-47-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:45:13-36
-48        <activity
-48-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:47:9-49:20
-49            android:name="com.example.kidi2.FirstParentReg"
-49-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:47:19-49
-50            android:exported="true" >
-50-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:48:13-36
-51        </activity>
-52        <!-- muhanad activities -->
-53
-54        <activity
-54-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:52:9-53:48
-55            android:name="com.example.kidi2.FirstParentRegReal"
-55-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:52:19-53
-56            android:exported="true" />
-56-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:53:13-36
-57    </application>
-58
-59</manifest>
+38        <activity android:name="com.example.kidi2.ThirdParentRegActivity" />
+38-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:29:9-69
+38-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:29:19-57
+39
+40        <!-- feisal and yael activities -->
+41
+42        <activity
+42-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:37:9-43:20
+43            android:name="com.example.kidi2.AdminSetCourse"
+43-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:38:13-43
+44            android:exported="true" >
+44-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:39:13-36
+45        </activity>
+46        <activity
+46-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:45:9-47:39
+47            android:name="com.example.kidi2.AdminAddCourse"
+47-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:46:13-43
+48            android:exported="true" />
+48-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:47:13-36
+49        <activity
+49-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:49:9-51:20
+50            android:name="com.example.kidi2.FirstParentReg"
+50-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:49:19-49
+51            android:exported="true" >
+51-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:50:13-36
+52        </activity>
+53        <!-- muhanad activities -->
+54
+55        <activity
+55-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:54:9-55:48
+56            android:name="com.example.kidi2.FirstParentRegReal"
+56-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:54:19-53
+57            android:exported="true" />
+57-->C:\Users\moham\Desktop\Screens\kidi26_8\app\src\main\AndroidManifest.xml:55:13-36
+58    </application>
+59
+60</manifest>

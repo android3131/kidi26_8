@@ -26,6 +26,8 @@
         <activity android:name=".KidName"></activity> <!-- ACTIVITY -->
         <activity android:name=".Activity"></activity>
         <activity android:name=".LogInScreenActivity"></activity>
+        <activity android:name=".ThirdParentRegActivity"></activity>
+
 
 
 

@@ -81,4 +81,14 @@
     <string name="password">Password</string>
     <string name="retype_password">Retype Password</string>
     <string name="back_to_2">back to 2</string>
+
+    <string name="date_time">select date and time</string>
+    <string name="back_label">Back</string>
+    <string name="choose_day">Day</string>
+    <string name="choose_month">Month</string>
+    <string name="choose_year">Year</string>
+    <string name="upload" ><font >Add kids Picture
+        &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+        </font>
+        <u><font >Upload image</font></u>&#160;</string>
 </resources>
