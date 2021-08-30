@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-#Mon Aug 30 14:40:57 IDT 2021
-=======
-#Mon Aug 30 13:23:43 IDT 2021
->>>>>>> Stashed changes
-base.0=C\:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Mon Aug 30 16:30:51 IDT 2021
+base.0=C\:\\Users\\97254\\AndroidStudioProjects\\kidi26_8\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

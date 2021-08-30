@@ -7,27 +7,11 @@
         <deviceKey>
           <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            <value value="C:\Users\moham\.android\avd\Pixel_4_XL_API_22_1.avd" />
-=======
-            <value value="C:\Users\win10\.android\avd\Pixel_4a_API_30.avd" />
->>>>>>> Stashed changes
-=======
-            <value value="C:\Users\win10\.android\avd\Pixel_4a_API_30.avd" />
->>>>>>> Stashed changes
+            <value value="C:\Users\97254\.android\avd\Pixel_3a_API_25_1.avd" />
           </Key>
         </deviceKey>
       </Target>
     </targetSelectedWithDropDown>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    <timeTargetWasSelectedWithDropDown value="2021-08-30T07:18:02.621894100Z" />
-=======
-    <timeTargetWasSelectedWithDropDown value="2021-08-29T18:31:33.634538400Z" />
->>>>>>> Stashed changes
-=======
-    <timeTargetWasSelectedWithDropDown value="2021-08-29T18:31:33.634538400Z" />
->>>>>>> Stashed changes
+    <timeTargetWasSelectedWithDropDown value="2021-08-30T13:30:09.456706Z" />
   </component>
 </project>

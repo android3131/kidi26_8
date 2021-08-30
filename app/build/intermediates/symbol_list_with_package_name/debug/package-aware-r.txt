@@ -1708,6 +1708,7 @@ drawable avd_hide_password
 drawable avd_show_password
 drawable background_grp2
 drawable bitmap
+drawable boyavatargrp6
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -1718,13 +1719,17 @@ drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
 drawable chat_bubbles
 drawable chat_bubbles_copy
+drawable checkboxgrp6
 drawable checked_box
+drawable checkedgrp6
 drawable checkmark
+drawable checkmarkgrp6
 drawable circ
 drawable circlightblue
 drawable circular_bordershape
 drawable circyellow
 drawable corner
+drawable costom_checkboxgrp6
 drawable default_dot
 drawable design_fab_background
 drawable design_ic_visibility
@@ -1735,6 +1740,7 @@ drawable drftspace
 drawable ellipse_187
 drawable gamepad_variant
 drawable girl
+drawable girlavatargrp6
 drawable grad
 drawable gradgrey
 drawable gradient
@@ -1747,12 +1753,14 @@ drawable ic_baseline_edit_24
 drawable ic_calender
 drawable ic_camera
 drawable ic_check
+drawable ic_checkgrp6
 drawable ic_clock_black_24dp
 drawable ic_courses
 drawable ic_drop
 drawable ic_home
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
+drawable ic_launcher_backgroundgrp6
 drawable ic_launcher_foreground
 drawable ic_leaders
 drawable ic_more
@@ -1794,6 +1802,7 @@ drawable myrect6
 drawable myrect7
 drawable myrect8
 drawable myrect9
+drawable myrectgrp6
 drawable navigation_empty_icon
 drawable notification_action_background
 drawable notification_bg
@@ -1819,10 +1828,12 @@ drawable prgrsdrft
 drawable progress_bar2
 drawable selected_dot
 drawable selected_dot_completed
+drawable selectorgrp6
 drawable shape
 drawable shape_sign_in_button
 drawable shape_user
 drawable space_education
+drawable space_educationgrp6
 drawable style_spinner1
 drawable tab_selector
 drawable tab_selector_completed
@@ -1831,6 +1842,7 @@ drawable text_background_grp2
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable unchecked
+drawable uncheckedgrp6
 drawable user
 id ALT
 id BOTTOM_END
@@ -1906,6 +1918,7 @@ id activityTextID
 id activityTextKidID
 id activity_chooser_view_content
 id add
+id addBtn
 id addButtonHomeID
 id add_button
 id alertTitle
@@ -1950,6 +1963,8 @@ id center_horizontal
 id center_vertical
 id chain
 id chains
+id checkBox
+id checkBox3
 id checkbox
 id checked
 id chip
@@ -2082,6 +2097,7 @@ id imageButton6
 id imageButton7
 id imageView
 id imageView2
+id imageView3
 id image_container
 id image_view
 id img
@@ -2473,6 +2489,7 @@ layout abc_tooltip
 layout activity
 layout activity_login_screen
 layout activity_main
+layout activity_maingroup6
 layout activity_third_parent_reg
 layout activity_third_screen
 layout admin_add_course
@@ -2558,6 +2575,7 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout slider_item
+layout spinner_item
 layout style_spinner
 layout support_simple_spinner_dropdown_item
 layout terms_service
