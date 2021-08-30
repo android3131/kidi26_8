@@ -1751,6 +1751,7 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_person
+drawable ic_user
 drawable material_cursor_drawable
 drawable material_ic_calendar_black_24dp
 drawable material_ic_clear_black_24dp
@@ -1773,6 +1774,7 @@ drawable mtrl_popupmenu_background
 drawable mtrl_popupmenu_background_dark
 drawable mtrl_tabs_default_indicator
 drawable myrect
+drawable myrect10
 drawable myrect2
 drawable myrect3
 drawable myrect4
@@ -1801,6 +1803,8 @@ drawable progress_bar2
 drawable selected_dot
 drawable selected_dot_completed
 drawable shape
+drawable shape_sign_in_button
+drawable shape_user
 drawable space_education
 drawable tab_selector
 drawable tab_selector_completed
@@ -2023,6 +2027,7 @@ id flip
 id floating
 id forever
 id forgotButton
+id forgot_password
 id fourth_col
 id fragment_container_view_tag
 id funT
@@ -2170,6 +2175,7 @@ id parentImageID
 id parentPanel
 id parentRelative
 id parent_matrix
+id password_field
 id password_toggle
 id path
 id pathRelative
@@ -2238,6 +2244,7 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id signin_button
 id sin
 id sixth_col
 id skipCollapsed
@@ -2344,6 +2351,7 @@ id up
 id update_button
 id useLogo
 id userImage
+id username_field
 id view
 id viewPagerID
 id viewPagerID2
@@ -2359,6 +2367,7 @@ id viewpagerKid1
 id viewpagerKid2
 id visible
 id visible_removing_fragment_view_tag
+id vlayout
 id withText
 id withinBounds
 id wrap
@@ -2432,6 +2441,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity
+layout activity_login_screen
 layout activity_main
 layout activity_third_screen
 layout admin_add_course

@@ -25,6 +25,7 @@
         <activity android:name=".HomeLogin"></activity> <!-- KID NAME -->
         <activity android:name=".KidName"></activity> <!-- ACTIVITY -->
         <activity android:name=".Activity"></activity>
+        <activity android:name=".LogInScreenActivity"></activity>
 
 
 

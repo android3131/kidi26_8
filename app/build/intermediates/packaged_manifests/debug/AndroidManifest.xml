@@ -34,6 +34,7 @@
         <activity android:name="com.example.kidi2.HomeLogin" /> <!-- KID NAME -->
         <activity android:name="com.example.kidi2.KidName" /> <!-- ACTIVITY -->
         <activity android:name="com.example.kidi2.Activity" />
+        <activity android:name="com.example.kidi2.LogInScreenActivity" />
 
         <!-- feisal and yael activities -->
 

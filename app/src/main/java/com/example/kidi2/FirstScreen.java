@@ -35,7 +35,7 @@ public class FirstScreen extends AppCompatActivity {
         loginB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(FirstScreen.this, HomeLogin.class));
+                startActivity(new Intent(FirstScreen.this, LogInScreenActivity.class));
             }
         });
         firstB = findViewById(R.id.VisitButton);
