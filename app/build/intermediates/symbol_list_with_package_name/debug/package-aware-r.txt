@@ -1901,12 +1901,12 @@ id action_mode_bar_stub
 id action_mode_close_button
 id action_text
 id actions
+id activityButtonHomeID
 id activityTextID
 id activityTextKidID
 id activity_chooser_view_content
 id add
-id addImageID
-id addPictureTextID
+id addButtonHomeID
 id add_button
 id alertTitle
 id aligned
@@ -1928,7 +1928,6 @@ id barrier
 id baseline
 id beginOnFirstDraw
 id beginning
-id birthdayTextID
 id blocking
 id bottom
 id bottomNavigationActivityMenuId
@@ -1943,7 +1942,6 @@ id button2
 id buttonPanel
 id buttons
 id cache_measures
-id calenderImageBID
 id cancel_button
 id category
 id categorySpinner
@@ -1983,7 +1981,6 @@ id dataCourse
 id dateActivityTextID
 id dateText
 id dateText2
-id dateTextID
 id date_picker_actions
 id date_picker_btn
 id day_spinner
@@ -2080,8 +2077,6 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
-id imageButton
-id imageButton2
 id imageButton4
 id imageButton6
 id imageButton7
@@ -2384,14 +2379,16 @@ id useLogo
 id userImage
 id username_field
 id view
+id viewAllActiveHomeID
+id viewAllActiveKidID
+id viewAllCompletedHomeID
+id viewAllCompletedKidID
 id viewPagerID
 id viewPagerID2
 id view_offset_helper
 id view_tree_lifecycle_owner
 id view_tree_saved_state_registry_owner
 id view_tree_view_model_store_owner
-id viewallText
-id viewallText2
 id viewpager
 id viewpager2
 id viewpagerKid1

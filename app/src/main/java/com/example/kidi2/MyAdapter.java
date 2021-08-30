@@ -1,7 +1,6 @@
 package com.example.kidi2;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.kidi2.R;
-
 import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
@@ -20,12 +17,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     //String data1[], data2[], data3[],data4[],data5[],data6[],data7[];
     Context context;
     private int selectedPosition = -1;
-    private ArrayList<Course> lis;
+    private ArrayList<Course2> lis;
 
 
 
     public MyAdapter(Context ct,/* String s1[], String s2[], String s3[],
-                     String s4[],String s5[],String s6[],String s7[],*/ArrayList<Course> lis){
+                     String s4[],String s5[],String s6[],String s7[],*/ArrayList<Course2> lis){
         context = ct;
         /*data1 = s1;
         data2 = s2;

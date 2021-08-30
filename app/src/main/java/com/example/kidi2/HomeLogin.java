@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -39,7 +40,8 @@ public class HomeLogin extends AppCompatActivity {
     ViewPager2 viewPager, viewPager2;
     private static final int limit_of_activities = 5;
     private BottomNavigationView navigationView;
-
+    ImageButton activityBtn, addBtn;
+    TextView viewActive, viewCompleted;
     ArrayList<ViewPagerItem> viewPagerItemArrayList;
 
     @Override
@@ -53,26 +55,58 @@ public class HomeLogin extends AppCompatActivity {
         parentId = pref.getString("ParentID", null); // getting Integer
 
         navigationView = findViewById(R.id.navibarhomelogin);
+        activityBtn = findViewById(R.id.activityButtonHomeID);
+        addBtn=findViewById(R.id.addButtonHomeID);
+        viewActive=findViewById(R.id.viewAllActiveHomeID);
+        viewCompleted=findViewById(R.id.viewAllCompletedHomeID);
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+        activityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+
+        viewActive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeLogin.this, Activity.class));
+            }
+        });
+        viewCompleted.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeLogin.this, Activity.class));
+            }
+        });
+
 
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
 
-            public boolean onNavigationItemSelected(@NonNull  MenuItem item) {
-                switch (item.getItemId()){
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
                     case R.id.bottomNavigationHomeMenuId:
-                        startActivity(new Intent(HomeLogin.this,FirstScreen.class));
+                        startActivity(new Intent(HomeLogin.this, FirstScreen.class));
                         return true;
                     case R.id.bottomNavigationUserMenuId:
-                        startActivity(new Intent(HomeLogin.this,Activity.class));
+                        startActivity(new Intent(HomeLogin.this, Activity.class));
                         return true;
                     case R.id.bottomNavigationActivityMenuId:
-                        startActivity(new Intent(HomeLogin.this,HomeLogin.class));
+                        startActivity(new Intent(HomeLogin.this, HomeLogin.class));
                         return true;
                     case R.id.bottomNavigationNotificatonsMenuId:
-                        startActivity(new Intent(HomeLogin.this,KidName.class));
+                        startActivity(new Intent(HomeLogin.this, KidName.class));
                         return true;
                     case R.id.bottomNavigationMoreMenuId:
-                        startActivity(new Intent(HomeLogin.this,HomeLogin.class));
+                        startActivity(new Intent(HomeLogin.this, HomeLogin.class));
                         return true;
                 }
                 return false;
@@ -93,6 +127,7 @@ public class HomeLogin extends AppCompatActivity {
 
         String[] describtion = {"math", "art", "sport", "space", "physics"};
         //call backend
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://10.0.2.2:9010/")
                 // when sending data in json format we have to add Gson converter factory
@@ -104,55 +139,7 @@ public class HomeLogin extends AppCompatActivity {
         RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
         //DataModel user = new DataModel();
 
-        Call<List<DataModelKid>> call = retrofitAPI.GetAllKidsOfParent(parentId);
 
-        call.enqueue(new Callback<List<DataModelKid>>() {
-
-
-            @Override
-
-            public void onResponse(Call<List<DataModelKid>> call, Response<List<DataModelKid>> response) {
-                // this method is called when we get response from our api.
-                List<DataModelKid> kidLst = response.body();
-                for (int i = 0; i < limit_of_activities; i++) {
-                    if (kidLst.get(i) == null)
-                        break;
-                    names[i] = kidLst.get(i).getFullName();
-                    Resources r = getResources();
-                    int drawableId = r.getIdentifier(kidLst.get(i).getImage(), "drawable", "com.mypackage.myapp");
-
-                    try {
-                        Class res = R.drawable.class;
-                        Field field = res.getField("drawableName");
-                        drawableId = field.getInt(null);
-                    } catch (Exception e) {
-                        Log.e("MyTag", "Failure to get drawable id.", e);
-                    }
-                    images[i] = drawableId;
-                }
-
-
-                //Call<DataModelParent> call2 = retrofitAPI.sendMailToUser(email);
-
-
-                // getting response from our body
-                // and passing it to our model class.
-                List<DataModelKid> responseFromAPI = response.body();
-
-                // getting our data from model class and adding it to our string.
-                //String responseString = "Response Code : " + response.code() +
-                //     "\nManufacturer : " + responseFromAPI.getEmail();
-
-                System.out.println("error onfailure");
-
-
-            }
-
-            @Override
-            public void onFailure(Call<List<DataModelKid>> call, Throwable t) {
-
-            }
-        });
         //end call
 
 

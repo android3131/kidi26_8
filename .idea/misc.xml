@@ -7,6 +7,8 @@
         <entry key="..\:/Users/lover/AndroidStudioProjects/new_git/kidi26_8/app/src/main/res/drawable/text_backgroundGrp2.xml" value="0.1125" />
         <entry key="..\:/Users/lover/AndroidStudioProjects/new_git/kidi26_8/app/src/main/res/layout/activity_third_screen.xml" value="0.5475728155339806" />
         <entry key="..\:/Users/lover/AndroidStudioProjects/new_git/kidi26_8/app/src/main/res/layout/reg_first_parent.xml" value="0.1" />
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <entry key="..\:/Users/moham/Desktop/Screens/kidi26_8/app/src/main/res/drawable-v21/shape_sign_in_button.xml" value="0.2518518518518518" />
         <entry key="..\:/Users/moham/Desktop/Screens/kidi26_8/app/src/main/res/drawable/checkmark.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/moham/Desktop/Screens/kidi26_8/app/src/main/res/drawable/shape_sign_in_button.xml" value="0.2518518518518518" />
@@ -14,7 +16,17 @@
         <entry key="..\:/Users/moham/Desktop/Screens/kidi26_8/app/src/main/res/layout/activity_login_screen.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/moham/Desktop/Screens/kidi26_8/app/src/main/res/layout/activity_third_parent_reg.xml" value="0.264" />
         <entry key="..\:/Users/moham/Desktop/Screens/kidi26_8/app/src/main/res/layout/home_login.xml" value="0.25416666666666665" />
+=======
+        <entry key="..\:/Users/win10/AndroidStudioProjects/KIDI/app/src/main/res/drawable/myrect4.xml" value="0.11018518518518519" />
+        <entry key="..\:/Users/win10/AndroidStudioProjects/KIDI/app/src/main/res/drawable/myrect5.xml" value="0.11018518518518519" />
+>>>>>>> Stashed changes
+=======
+        <entry key="..\:/Users/win10/AndroidStudioProjects/KIDI/app/src/main/res/drawable/myrect4.xml" value="0.11018518518518519" />
+        <entry key="..\:/Users/win10/AndroidStudioProjects/KIDI/app/src/main/res/drawable/myrect5.xml" value="0.11018518518518519" />
+>>>>>>> Stashed changes
         <entry key="..\:/Users/win10/AndroidStudioProjects/KIDI/app/src/main/res/layout/first_parent_reg.xml" value="0.182518115942029" />
+        <entry key="..\:/Users/win10/AndroidStudioProjects/KIDI/app/src/main/res/layout/home_login.xml" value="0.22592592592592592" />
+        <entry key="..\:/Users/win10/AndroidStudioProjects/KIDI/app/src/main/res/layout/kid_name.xml" value="0.22592592592592592" />
         <entry key="..\:/Users/win10/AndroidStudioProjects/KIDI/app/src/main/res/layout/reg_first_parent.xml" value="0.22592592592592592" />
       </map>
     </option>

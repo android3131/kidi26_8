@@ -26,7 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class AdminSetCourse extends AppCompatActivity {
     RecyclerView recyclerView;
     Context context;
-    public ArrayList<Course> lis;
+    public ArrayList<Course2> lis;
     MyAdapter myAdapter;
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("http://10.0.2.2:8099/")
@@ -42,7 +42,7 @@ public class AdminSetCourse extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_set_course);
         addSpinner();
-        lis=new ArrayList<Course>();
+        lis=new ArrayList<Course2>();
         bt_delete=findViewById(R.id.delete_button);
         bt_update=findViewById(R.id.update_button);
         bt_add=findViewById(R.id.add_button);
@@ -61,17 +61,17 @@ public class AdminSetCourse extends AppCompatActivity {
                             bt_delete.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    Call<List<Course>> call= retrofitAPI2.deleteCourse(lis.get(position).getName());
+                                    Call<List<Course2>> call= retrofitAPI2.deleteCourse(lis.get(position).getName());
 
-                                    call.enqueue(new Callback<List<Course>>() {
+                                    call.enqueue(new Callback<List<Course2>>() {
                                         @Override
-                                        public void onResponse(Call<List<Course>> call, Response<List<Course>> response) {
+                                        public void onResponse(Call<List<Course2>> call, Response<List<Course2>> response) {
                                             Toast.makeText(AdminSetCourse.this,"deleted  "+position,Toast.LENGTH_SHORT).show();
                                             lis.remove(position);
                                             myAdapter.notifyDataSetChanged();
                                         }
                                         @Override
-                                        public void onFailure(Call<List<Course>> call, Throwable t) {
+                                        public void onFailure(Call<List<Course2>> call, Throwable t) {
                                         }
                                     });
                                 }
@@ -122,11 +122,11 @@ public class AdminSetCourse extends AppCompatActivity {
     public  void  init(String catg)
     {
         lis.clear();
-        lis.add(new Course("Course",50,"Start","End",
+        lis.add(new Course2("Course",50,"Start","End",
                 new Category("Category","img"),
                 "zoom.com"
                 ,"Day","From","To",0));
-        Call<List<Course>> call;
+        Call<List<Course2>> call;
         if(catg=="space")
              call = retrofitAPI2.getSpacesCourses();
         else if(catg=="animals")
@@ -135,20 +135,20 @@ public class AdminSetCourse extends AppCompatActivity {
                  call = retrofitAPI2.getArtsCourses();
                     else
                         call = retrofitAPI2.getAllCourses();
-        call.enqueue(new Callback<List<Course>>() {
+        call.enqueue(new Callback<List<Course2>>() {
             @Override
-            public void onResponse(Call<List<Course>> call, Response<List<Course>> response) {
+            public void onResponse(Call<List<Course2>> call, Response<List<Course2>> response) {
 
-                List<Course> responseFromAPI = response.body();
+                List<Course2> responseFromAPI = response.body();
                 int len=responseFromAPI.size();
                 for (int i=0;i<len;i++)
-                    lis.add(new Course(responseFromAPI.get(i).getName(),responseFromAPI.get(i).getPrice(),responseFromAPI.get(i).getStartDateTime(),responseFromAPI.get(i).getFinishDateTime()
+                    lis.add(new Course2(responseFromAPI.get(i).getName(),responseFromAPI.get(i).getPrice(),responseFromAPI.get(i).getStartDateTime(),responseFromAPI.get(i).getFinishDateTime()
                             ,new Category(responseFromAPI.get(i).getCategory().getName(),responseFromAPI.get(i).getCategory().getImage()),responseFromAPI.get(i).getZoomMeetingLink(),
                             responseFromAPI.get(i).getDay(),responseFromAPI.get(i).getStartOclock(),responseFromAPI.get(i).getEndOclock(),responseFromAPI.get(i).getClr()));
                 myAdapter.notifyDataSetChanged();
             }
             @Override
-            public void onFailure(Call<List<Course>> call, Throwable t) {
+            public void onFailure(Call<List<Course2>> call, Throwable t) {
             }
         });
     }

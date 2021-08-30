@@ -25,7 +25,7 @@ import java.util.Calendar;
 
 public class KidName extends AppCompatActivity {
     private ViewPager2 viewPager, viewPager2;
-    private ImageButton returnB, calenderImage;
+    private ImageButton returnB;
     private ArrayList<ViewPagerItem> viewPagerItemArrayList;
     private BottomNavigationView navigationView;
 
@@ -126,35 +126,9 @@ public class KidName extends AppCompatActivity {
         viewPager2.setPageTransformer(sliderTransformer2);
 
 /////////////////////////////////////////
-        EditText calenderText = findViewById(R.id.dateTextID);
-        calenderImage = findViewById(R.id.calenderImageBID);
-        MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker();
-        builder.setTitleText("select text");
-        final MaterialDatePicker materialDatePicker = builder.build();
-
-        calenderImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                materialDatePicker.show(getSupportFragmentManager(), "date_picker");
-            }
-        });
-        materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
-            @Override
-            public void onPositiveButtonClick(Object selection) {
-                calenderText.setText(materialDatePicker.getHeaderText());
-            }
-        });
-        calenderText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                materialDatePicker.show(getSupportFragmentManager(), "date_picker");
-            }
-        });
 
 
-        // MaterialDatePicker.Builder builder=MaterialDatePicker.Builder.datePicker();
-        //  builder.setTitleText("select date");
-        // MaterialDatePicker materialDatePicker=builder.build();
+
 
         TabLayout tabLayout = findViewById(R.id.tab_layoutKid1);
         new TabLayoutMediator(tabLayout, viewPager,

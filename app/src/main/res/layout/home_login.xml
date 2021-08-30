@@ -41,7 +41,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/myrect2"
         android:orientation="vertical"
@@ -76,25 +76,27 @@
             </LinearLayout>
 
             <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="wrap_content"
+                android:id="@+id/activityButtonHomeID"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="100dp"
+                android:layout_marginLeft="80dp"
                 android:layout_marginBottom="20dp"
-                android:layout_weight="1"
+                android:layout_weight="1.5"
                 android:background="@drawable/myrect4"
-                app:srcCompat="@drawable/activity" />
+                app:srcCompat="@drawable/activity"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="wrap_content"
+                android:id="@+id/addButtonHomeID"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
-                android:layout_weight="1"
+                android:layout_weight="1.5"
                 android:background="@drawable/myrect5"
-                app:srcCompat="@android:drawable/ic_input_add" />
+                app:srcCompat="@android:drawable/ic_input_add"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         </LinearLayout>
 
@@ -123,15 +125,18 @@
                 android:layout_gravity="bottom|center"
                 app:tabBackground="@drawable/tab_selector"
                 app:tabGravity="center"
-                app:tabIndicatorHeight="0dp" />
+                app:tabIndicatorHeight="0dp"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
         </LinearLayout>
 
         <TextView
-            android:id="@+id/viewallText"
-            android:layout_width="match_parent"
+            android:id="@+id/viewAllActiveHomeID"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
+            android:clickable="true"
             android:foregroundGravity="right"
             android:gravity="right"
             android:text="view all" />
@@ -157,7 +162,7 @@
                 android:layout_height="179dp"
 
                 android:clipChildren="false"
-                android:clipToPadding="false"/>
+                android:clipToPadding="false" />
 
 
             <com.google.android.material.tabs.TabLayout
@@ -167,24 +172,26 @@
                 android:layout_gravity="bottom|center"
                 app:tabBackground="@drawable/tab_selector_completed"
                 app:tabGravity="center"
-                app:tabIndicatorHeight="0dp" />
+                app:tabIndicatorHeight="0dp"
+                tools:ignore="SpeakableTextPresentCheck" />
 
         </LinearLayout>
 
         <TextView
-            android:id="@+id/viewallText2"
-            android:layout_width="match_parent"
+            android:id="@+id/viewAllCompletedHomeID"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
             android:layout_marginRight="20dp"
+            android:clickable="true"
             android:gravity="right"
             android:text="view all" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/navibarhomelogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:menu="@menu/navimenu" />
-
     </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navibarhomelogin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:menu="@menu/navimenu" />
 </LinearLayout>

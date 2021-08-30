@@ -9,18 +9,18 @@ import retrofit2.http.Path;
 
 public interface RetrofitAPI4 {
     @GET("getallCourses")
-    Call<List<Course>> getAllCourses();
+    Call<List<Course2>> getAllCourses();
 
 
     @GET("getSpacesCourses")
-    Call<List<Course>> getSpacesCourses();
+    Call<List<Course2>> getSpacesCourses();
 
     @GET("getAnimalsCourses")
-    Call <List<Course>> getAnimalsCourses();
+    Call <List<Course2>> getAnimalsCourses();
     @GET("getArtsCourses")
-    Call <List<Course>> getArtsCourses();
+    Call <List<Course2>> getArtsCourses();
     @DELETE("deleteCourse/{name}")
-    Call <List<Course>> deleteCourse(@Path("name") String name);
+    Call <List<Course2>> deleteCourse(@Path("name") String name);
 
 
 
