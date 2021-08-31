@@ -25,13 +25,13 @@
         <!-- ACTIVITIES -->
         <!-- FIRST SCREEN -->
         <activity android:name="com.example.kidi2.FirstScreen" >
-        </activity> <!-- HOME LOGIN -->
-        <activity android:name="com.example.kidi2.HomeLogin" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity> <!-- HOME LOGIN -->
+        <activity android:name="com.example.kidi2.HomeLogin" >
         </activity> <!-- KID NAME -->
         <activity android:name="com.example.kidi2.KidName" /> <!-- ACTIVITY -->
         <activity android:name="com.example.kidi2.Activity" >

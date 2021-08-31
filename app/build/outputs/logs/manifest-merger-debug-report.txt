@@ -88,23 +88,23 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\wi
 	android:usesCleartextTraffic
 		ADDED from C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:14:9-44
 activity#com.example.kidi2.FirstScreen
-ADDED from C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:18:9-20:20
+ADDED from C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:18:9-24:20
 	android:name
 		ADDED from C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:18:19-46
-activity#com.example.kidi2.HomeLogin
-ADDED from C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:21:9-27:20
-	android:name
-		ADDED from C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:21:19-44
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:22:13-26:29
+ADDED from C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:19:13-23:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:23:17-69
+ADDED from C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:20:17-69
 	android:name
-		ADDED from C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:23:25-66
+		ADDED from C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:20:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:25:17-77
+ADDED from C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:22:17-77
 	android:name
-		ADDED from C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:25:27-74
+		ADDED from C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:22:27-74
+activity#com.example.kidi2.HomeLogin
+ADDED from C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:25:9-27:20
+	android:name
+		ADDED from C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:25:19-44
 activity#com.example.kidi2.KidName
 ADDED from C:\Users\win10\AndroidStudioProjects\KIDI\app\src\main\AndroidManifest.xml:28:9-54
 	android:name
