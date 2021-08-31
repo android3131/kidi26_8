@@ -1803,6 +1803,7 @@ drawable myrect7
 drawable myrect8
 drawable myrect9
 drawable myrectgrp6
+drawable navibarselected
 drawable navigation_empty_icon
 drawable notification_action_background
 drawable notification_bg
@@ -1913,6 +1914,7 @@ id action_mode_bar_stub
 id action_mode_close_button
 id action_text
 id actions
+id activeText
 id activityButtonHomeID
 id activityTextID
 id activityTextKidID
@@ -1956,6 +1958,7 @@ id buttonPanel
 id buttons
 id cache_measures
 id cancel_button
+id categoriesmenu
 id category
 id categorySpinner
 id center
@@ -1972,6 +1975,9 @@ id chip1
 id chip2
 id chip3
 id chip_group
+id chooseCategory
+id chooseKid
+id chooseState
 id chronometer
 id circle_center
 id clear_text
@@ -1979,6 +1985,7 @@ id clip_horizontal
 id clip_vertical
 id clockwise
 id collapseActionView
+id completedText
 id confirm_button
 id container
 id content
@@ -2092,7 +2099,6 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
-id imageButton4
 id imageButton6
 id imageButton7
 id imageView
@@ -2124,9 +2130,12 @@ id line1
 id line3
 id linear
 id linear1
+id linearLayout
+id linearLayout2
 id listMode
 id list_item
 id llsubhead
+id locationmenu
 id mainLayout
 id masked
 id material_clock_display
@@ -2203,7 +2212,10 @@ id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id notificationsmenu
 id notrelevant_box
+id numberofactive
+id numberofcompleted
 id off
 id on
 id outline
@@ -2233,6 +2245,7 @@ id privacyText
 id privacyText2
 id profileText
 id profileText2
+id profilemenu
 id progress
 id progress_circular
 id progress_horizontal
@@ -2261,9 +2274,9 @@ id scroll
 id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
+id scrollView3
 id scrollViewID
 id scrollViewLayoutID
-id scrollViewLayoutID2
 id scrollable
 id search_badge
 id search_bar
@@ -2599,6 +2612,7 @@ layout view_green
 layout view_red
 layout viewpager_item
 layout viewpager_item2
+menu mymenu
 menu navimenu
 mipmap ic_launcher
 mipmap ic_launcher_round

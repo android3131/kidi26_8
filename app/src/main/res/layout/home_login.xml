@@ -191,7 +191,14 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navibarhomelogin"
+        app:itemIconTint="@drawable/navibarselected"
+        app:itemTextColor="@drawable/navibarselected"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:menu="@menu/navimenu" />
+        app:menu="@menu/navimenu"
+        app:labelVisibilityMode="labeled"
+
+
+        />
 </LinearLayout>

@@ -16,18 +16,25 @@
         <!-- ACTIVITIES -->
         <!-- FIRST SCREEN -->
         <activity android:name=".FirstScreen">
+
+        </activity> <!-- HOME LOGIN -->
+        <activity android:name=".HomeLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- HOME LOGIN -->
-        <activity android:name=".HomeLogin"></activity> <!-- KID NAME -->
+        </activity> <!-- KID NAME -->
         <activity android:name=".KidName"></activity> <!-- ACTIVITY -->
-        <activity android:name=".Activity"></activity>
+        <activity android:name=".Activity">
+
+
+        </activity>
         <activity android:name=".LogInScreenActivity"></activity>
         <activity android:name=".ThirdParentRegActivity"></activity>
-        <activity android:name=".Addactivity"></activity>
+        <activity android:name=".Addactivity">
+
+        </activity>
 
 
 
