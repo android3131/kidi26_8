@@ -1730,12 +1730,14 @@ drawable circular_bordershape
 drawable circyellow
 drawable corner
 drawable costom_checkboxgrp6
+drawable date
 drawable default_dot
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable down_chevron
 drawable drftspace
 drawable ellipse_187
 drawable gamepad_variant
@@ -1771,6 +1773,8 @@ drawable ic_mtrl_chip_close_circle
 drawable ic_person
 drawable ic_user
 drawable image_custome
+drawable mask_group
+drawable mask_group_1
 drawable material_cursor_drawable
 drawable material_ic_calendar_black_24dp
 drawable material_ic_clear_black_24dp
@@ -1827,6 +1831,7 @@ drawable path_67
 drawable pencil
 drawable prgrsdrft
 drawable progress_bar2
+drawable right_arrow
 drawable selected_dot
 drawable selected_dot_completed
 drawable selectorgrp6
@@ -1920,6 +1925,7 @@ id activityTextID
 id activityTextKidID
 id activity_chooser_view_content
 id add
+id addActivityBtn
 id addBtn
 id addButtonHomeID
 id add_button
@@ -1952,7 +1958,6 @@ id bottomNavigationNotificatonsMenuId
 id bottomNavigationUserMenuId
 id bounce
 id boy_box
-id button
 id button2
 id buttonPanel
 id buttons
@@ -2104,6 +2109,7 @@ id imageButton7
 id imageView
 id imageView2
 id imageView3
+id imageView4
 id image_container
 id image_view
 id img

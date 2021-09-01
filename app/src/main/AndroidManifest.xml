@@ -32,7 +32,9 @@
         </activity>
         <activity android:name=".LogInScreenActivity"></activity>
         <activity android:name=".ThirdParentRegActivity"></activity>
-        <activity android:name=".Addactivity">
+        <activity android:name=".Addactivity"
+            android:exported="true"
+            >
 
         </activity>
 

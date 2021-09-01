@@ -38,7 +38,9 @@
         </activity>
         <activity android:name="com.example.kidi2.LogInScreenActivity" />
         <activity android:name="com.example.kidi2.ThirdParentRegActivity" />
-        <activity android:name="com.example.kidi2.Addactivity" >
+        <activity
+            android:name="com.example.kidi2.Addactivity"
+            android:exported="true" >
         </activity>
 
         <!-- feisal and yael activities -->

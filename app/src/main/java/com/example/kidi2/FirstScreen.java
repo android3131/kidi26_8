@@ -55,15 +55,12 @@ public class FirstScreen extends AppCompatActivity {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyKIDIPref", 0); // 0 - for private mode
         SharedPreferences.Editor editor = pref.edit();
         editor.putString("ParentID", "207931536"); // Storing integer
-        editor.commit();
+        editor.commit();//this should be in the log in screen
 
 
     }
 
-  //  public void forgetclick(View view) {
-    //    openDialog();
 
-    //}
     public void openDialog(){
         DialogAdapter dialog=new DialogAdapter(FirstScreen.this);
         dialog.show(getSupportFragmentManager(), "dialog");

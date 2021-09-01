@@ -35,7 +35,7 @@ public class Addactivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_maingroup6);
 
         //spinner = (Spinner) findViewById(R.id.spinner);
         addActivityBtn = findViewById(R.id.addBtn);

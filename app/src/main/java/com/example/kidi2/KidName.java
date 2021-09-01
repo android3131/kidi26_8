@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -30,6 +31,7 @@ import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,12 +42,13 @@ import retrofit2.http.Path;
 
 public class KidName extends AppCompatActivity {
     private ViewPager2 viewPager, viewPager2;
-    private ImageButton returnB;
+    private ImageButton returnB,kidProfilePic;
     private ArrayList<ViewPagerItem> viewPagerItemArrayList;
     private BottomNavigationView navigationView;
     private TextView viewActive, viewCompleted,numberofactive,numberofcompleted;
     private String kidid;
-    private ImageButton kidProfilePic;
+    private Button addActivityBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +92,13 @@ public class KidName extends AppCompatActivity {
         kidProfilePic = findViewById(R.id.kidImageID);
         viewActive = findViewById(R.id.viewAllActiveKidID);
         viewCompleted = findViewById(R.id.viewAllCompletedKidID);
+        addActivityBtn=findViewById(R.id.addActivityBtn);
+        addActivityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(KidName.this,Addactivity.class));
+            }
+        });
         kidid = "kidid";
         viewActive.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,12 +156,9 @@ public class KidName extends AppCompatActivity {
             }
         });
         Call<Integer> callnumberofactive = retrofitAPI.getNumberActiveCourses(kidid);
-        callnumberofactive.enqueue(new Callback<Integer>() {
 
-
-            @Override
-
-            public void onResponse(Call<Integer> call, Response<Integer> response) {
+        try {
+            Response<Integer> response = callnumberofactive.execute();
               int numofactive=response.body();
 
                 numberofactive.setText(String.valueOf(numofactive));
@@ -159,32 +166,26 @@ public class KidName extends AppCompatActivity {
 
             }
 
-            @Override
-            public void onFailure(Call<Integer> call, Throwable t) {
+  catch(Exception e){
                 int numofactive=5;
                 numberofactive.setText(String.valueOf(numofactive));
             }
-        });
-        Call<Integer> callnumberofcompleted = retrofitAPI.getNumberCompletedCourses(kidid);
-        callnumberofcompleted.enqueue(new Callback<Integer>() {
+
+    Call<Integer> callnumberofcompleted = retrofitAPI.getNumberCompletedCourses(kidid);
+        try {
+        Response<Integer> response = callnumberofcompleted.execute();
+        int numofcompleted=response.body();
+
+        numberofactive.setText(String.valueOf(numofcompleted));
 
 
-            @Override
+    }
 
-            public void onResponse(Call<Integer> call, Response<Integer> response) {
-                int numofcompleted=response.body();
-                numberofcompleted.setText(String.valueOf(numofcompleted));
+  catch(Exception e){
+        int numofcompleted=3;
+        numberofcompleted.setText(String.valueOf(numofcompleted));
+    }
 
-
-
-            }
-
-            @Override
-            public void onFailure(Call<Integer> call, Throwable t) {
-                int numofcompleted=3;
-                numberofcompleted.setText(String.valueOf(numofcompleted));
-            }
-        });
 
         //////////////////////////
         viewPager = findViewById(R.id.viewpagerKid1);
@@ -193,7 +194,7 @@ public class KidName extends AppCompatActivity {
         returnB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(KidName.this, FirstScreen.class));
+                startActivity(new Intent(KidName.this, HomeLogin.class));
             }
         });
         int[] images = {R.drawable.girl, R.drawable.girl, R.drawable.girl, R.drawable.girl, R.drawable.girl};

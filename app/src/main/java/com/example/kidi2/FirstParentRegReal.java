@@ -129,7 +129,7 @@ public class FirstParentRegReal extends AppCompatActivity {
 //                password1.setText("");
 //                editor.clear();
 //                editor.commit();
-                Intent intent = new Intent(FirstParentRegReal.this, com.example.kidi2.MainActivityGrp2.class);
+                Intent intent = new Intent(FirstParentRegReal.this, FirstParentReg.class);//elie changed this
                 startActivity(intent);
             }
         });

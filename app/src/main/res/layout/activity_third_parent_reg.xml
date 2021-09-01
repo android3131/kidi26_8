@@ -33,8 +33,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+<ImageView
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:src="@drawable/progress_bar_3"
+    app:layout_constraintBottom_toTopOf="@id/v_layout"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    >
 
+</ImageView>
     <LinearLayout
+        android:id="@+id/v_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="80dp"

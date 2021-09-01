@@ -1729,12 +1729,14 @@ int drawable circular_bordershape 0x7f080070
 int drawable circyellow 0x7f080071
 int drawable corner 0x7f080072
 int drawable costom_checkboxgrp6 0x7f080073
+int drawable date 0x7f0800e7
 int drawable default_dot 0x7f080074
 int drawable design_fab_background 0x7f080075
 int drawable design_ic_visibility 0x7f080076
 int drawable design_ic_visibility_off 0x7f080077
 int drawable design_password_eye 0x7f080078
 int drawable design_snackbar_background 0x7f080079
+int drawable down_chevron 0x7f0800e8
 int drawable drftspace 0x7f08007a
 int drawable ellipse_187 0x7f08007b
 int drawable gamepad_variant 0x7f08007c
@@ -1770,6 +1772,8 @@ int drawable ic_mtrl_chip_close_circle 0x7f080099
 int drawable ic_person 0x7f08009a
 int drawable ic_user 0x7f08009b
 int drawable image_custome 0x7f08009c
+int drawable mask_group 0x7f0800e9
+int drawable mask_group_1 0x7f0800ea
 int drawable material_cursor_drawable 0x7f08009d
 int drawable material_ic_calendar_black_24dp 0x7f08009e
 int drawable material_ic_clear_black_24dp 0x7f08009f
@@ -1826,6 +1830,7 @@ int drawable path_67 0x7f0800d1
 int drawable pencil 0x7f0800d2
 int drawable prgrsdrft 0x7f0800d3
 int drawable progress_bar2 0x7f0800d4
+int drawable right_arrow 0x7f0800eb
 int drawable selected_dot 0x7f0800d5
 int drawable selected_dot_completed 0x7f0800d6
 int drawable selectorgrp6 0x7f0800d7
@@ -1919,6 +1924,7 @@ int id activityTextID 0x7f090047
 int id activityTextKidID 0x7f090048
 int id activity_chooser_view_content 0x7f090049
 int id add 0x7f09004a
+int id addActivityBtn 0x7f09024b
 int id addBtn 0x7f09004b
 int id addButtonHomeID 0x7f09004c
 int id add_button 0x7f09004d
@@ -1951,7 +1957,6 @@ int id bottomNavigationNotificatonsMenuId 0x7f090067
 int id bottomNavigationUserMenuId 0x7f090068
 int id bounce 0x7f090069
 int id boy_box 0x7f09006a
-int id button 0x7f09006b
 int id button2 0x7f09006c
 int id buttonPanel 0x7f09006d
 int id buttons 0x7f09006e
@@ -2103,6 +2108,7 @@ int id imageButton7 0x7f0900ff
 int id imageView 0x7f090100
 int id imageView2 0x7f090101
 int id imageView3 0x7f090102
+int id imageView4 0x7f09024c
 int id image_container 0x7f090103
 int id image_view 0x7f090104
 int id img 0x7f090105

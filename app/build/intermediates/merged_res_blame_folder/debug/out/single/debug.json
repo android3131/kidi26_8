@@ -216,6 +216,10 @@
         "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\src\\main\\res\\drawable\\girl.png"
     },
     {
+        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\build\\intermediates\\merged_res\\debug\\drawable_date.png.flat",
+        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\src\\main\\res\\drawable\\date.png"
+    },
+    {
         "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi-v24_ic_leaders.xml.flat",
         "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_leaders.xml"
     },
@@ -330,6 +334,10 @@
     {
         "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_ic_user.png.flat",
         "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\src\\main\\res\\drawable-xxhdpi\\ic_user.png"
+    },
+    {
+        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\build\\intermediates\\merged_res\\debug\\drawable_mask_group.png.flat",
+        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\src\\main\\res\\drawable\\mask_group.png"
     },
     {
         "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\build\\intermediates\\merged_res\\debug\\drawable-mdpi_ic_calender.png.flat",
@@ -536,6 +544,10 @@
         "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_more.png"
     },
     {
+        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\build\\intermediates\\merged_res\\debug\\drawable_down_chevron.png.flat",
+        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\src\\main\\res\\drawable\\down_chevron.png"
+    },
+    {
         "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi-v21_ic_calender.xml.flat",
         "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_calender.xml"
     },
@@ -636,6 +648,10 @@
         "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\src\\main\\res\\drawable\\space_education.png"
     },
     {
+        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\build\\intermediates\\merged_res\\debug\\drawable_mask_group_1.png.flat",
+        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\src\\main\\res\\drawable\\mask_group_1.png"
+    },
+    {
         "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\build\\intermediates\\merged_res\\debug\\drawable_myrect6.xml.flat",
         "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\src\\main\\res\\drawable\\myrect6.xml"
     },
@@ -674,6 +690,10 @@
     {
         "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\build\\intermediates\\merged_res\\debug\\drawable_drftspace.png.flat",
         "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\src\\main\\res\\drawable\\drftspace.png"
+    },
+    {
+        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\build\\intermediates\\merged_res\\debug\\drawable_right_arrow.png.flat",
+        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\src\\main\\res\\drawable\\right_arrow.png"
     },
     {
         "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI\\app\\build\\intermediates\\merged_res\\debug\\drawable_checked_box.xml.flat",
