@@ -1747,6 +1747,9 @@ drawable grad
 drawable gradgrey
 drawable gradient
 drawable group_4
+drawable group_67
+drawable group_68
+drawable group_69
 drawable group_75
 drawable home
 drawable ic_action_name
@@ -1773,6 +1776,7 @@ drawable ic_mtrl_chip_close_circle
 drawable ic_person
 drawable ic_user
 drawable image_custome
+drawable img
 drawable mask_group
 drawable mask_group_1
 drawable material_cursor_drawable
@@ -1831,7 +1835,10 @@ drawable path_67
 drawable pencil
 drawable prgrsdrft
 drawable progress_bar2
+drawable progress_bar_3
+drawable progressbar_4
 drawable right_arrow
+drawable rounded_corner
 drawable selected_dot
 drawable selected_dot_completed
 drawable selectorgrp6
@@ -1928,7 +1935,10 @@ id add
 id addActivityBtn
 id addBtn
 id addButtonHomeID
+id addToCalendar
+id addToCalendarCard
 id add_button
+id add_to_my_calendar
 id alertTitle
 id aligned
 id all
@@ -1950,6 +1960,7 @@ id baseline
 id beginOnFirstDraw
 id beginning
 id blocking
+id bold
 id bottom
 id bottomNavigationActivityMenuId
 id bottomNavigationHomeMenuId
@@ -2083,6 +2094,7 @@ id funwehadText
 id ghost_view
 id ghost_view_holder
 id girl_box
+id go_to_home_page
 id gone
 id graph
 id graph_wrap
@@ -2095,6 +2107,7 @@ id header_title
 id hideable
 id home
 id homeAsUp
+id homeCard
 id honorRequest
 id hour_end
 id hour_start
@@ -2413,6 +2426,7 @@ id update_button
 id useLogo
 id userImage
 id username_field
+id v_layout
 id view
 id viewAllActiveHomeID
 id viewAllActiveKidID
@@ -2438,6 +2452,8 @@ id wrap
 id wrap_content
 id year_spinner
 id zero_corner_chip
+id zoomLinkCard
+id zoom_link
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
 integer app_bar_elevation_anim_duration
@@ -2506,6 +2522,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity
+layout activity_forth_parent_reg2
 layout activity_login_screen
 layout activity_main
 layout activity_maingroup6

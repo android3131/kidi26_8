@@ -12,59 +12,41 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Kidi2"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ForthParentReg"
+            android:exported="true">
+        </activity>
+
 
         <!-- ACTIVITIES -->
         <!-- FIRST SCREEN -->
         <activity android:name=".FirstScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+
+
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity> <!-- HOME LOGIN -->
-        <activity android:name=".HomeLogin">
-
-        </activity> <!-- KID NAME -->
+        <activity android:name=".HomeLogin" /> <!-- KID NAME -->
         <activity android:name=".KidName"></activity> <!-- ACTIVITY -->
-        <activity android:name=".Activity">
-
-
-        </activity>
-        <activity android:name=".LogInScreenActivity"></activity>
-        <activity android:name=".ThirdParentRegActivity"></activity>
-        <activity android:name=".Addactivity"
-            android:exported="true"
-            >
-
-        </activity>
-
-
-
-
-        <!-- feisal and yael activities -->
-
-
+        <activity android:name=".Activity" />
+        <activity android:name=".LogInScreenActivity" />
+        <activity android:name=".ThirdParentRegActivity" />
+        <activity android:name=".Addactivity" /> <!-- feisal and yael activities -->
         <activity
             android:name=".AdminSetCourse"
-            android:exported="true"
-            >
-
-
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".AdminAddCourse"
             android:exported="true" />
-
-        <activity android:name=".FirstParentReg"
-            android:exported="true">
-        </activity>
-<!-- muhanad activities-->
-
-        <activity android:name=".FirstParentRegReal"
-            android:exported="true"></activity>
-
-
+        <activity
+            android:name=".FirstParentReg"
+            android:exported="true" /> <!-- muhanad activities -->
+        <activity
+            android:name=".FirstParentRegReal"
+            android:exported="true" />
     </application>
 
 </manifest>
