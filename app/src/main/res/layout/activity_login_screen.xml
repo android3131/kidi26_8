@@ -57,6 +57,7 @@
                 android:id="@+id/username_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType = "text"
                 android:hint="Enter Username"
                 android:backgroundTint="#4E7FE7"/>
 
@@ -98,6 +99,7 @@
             android:textColor="@android:color/white"
             android:layout_margin="20dp"
             android:backgroundTintMode="@null"
+            android:onClick="SendData"
             android:background="@drawable/shape_sign_in_button"
             android:textSize="20sp"/>
 

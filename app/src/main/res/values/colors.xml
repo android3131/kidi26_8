@@ -14,6 +14,11 @@
     <color name="color_one">#fb7268</color>
     <color name="color_white">#ededf2</color>
     <color name="color_two">#E3E0E0</color>
+    <color name="activities_colour">#5377EE</color>
+    <color name="parents_colour">#EDC655</color>
+    <color name="children_colour">#0091FF</color>
+    <color name="defaultChart_colour">#D0DBFF</color>
+    <color name="someColor">#9C27B0</color>
 //yael and feisal colors
 
 

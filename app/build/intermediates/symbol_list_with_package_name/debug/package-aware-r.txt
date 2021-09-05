@@ -1001,6 +1001,7 @@ color abc_tint_spinner
 color abc_tint_switch_track
 color accent_material_dark
 color accent_material_light
+color activities_colour
 color androidx_core_ripple_material_light
 color androidx_core_secondary_text_default_material_light
 color background_floating_material_dark
@@ -1021,12 +1022,14 @@ color cardview_light_background
 color cardview_shadow_end_color
 color cardview_shadow_start_color
 color checkbox_themeable_attribute_color
+color children_colour
 color colorAccent
 color colorPrimary
 color colorPrimaryDark
 color color_one
 color color_two
 color color_white
+color defaultChart_colour
 color design_bottom_navigation_shadow_color
 color design_box_stroke_color
 color design_dark_default_color_background
@@ -1166,6 +1169,7 @@ color mtrl_textinput_hovered_box_stroke_color
 color notification_action_color_filter
 color notification_icon_bg_color
 color orange
+color parents_colour
 color primary_dark_material_dark
 color primary_dark_material_light
 color primary_material_dark
@@ -1185,12 +1189,14 @@ color secondary_text_default_material_dark
 color secondary_text_default_material_light
 color secondary_text_disabled_material_dark
 color secondary_text_disabled_material_light
+color someColor
 color switch_thumb_disabled_material_dark
 color switch_thumb_disabled_material_light
 color switch_thumb_material_dark
 color switch_thumb_material_light
 color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
+color tab_item
 color teal_200
 color teal_700
 color test_mtrl_calendar_day
@@ -1701,6 +1707,7 @@ drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable activity
+drawable add_kid_background
 drawable anml1
 drawable arrow_grp2
 drawable art
@@ -1730,6 +1737,7 @@ drawable circular_bordershape
 drawable circyellow
 drawable corner
 drawable costom_checkboxgrp6
+drawable courses
 drawable date
 drawable default_dot
 drawable design_fab_background
@@ -1753,6 +1761,7 @@ drawable group_69
 drawable group_75
 drawable home
 drawable ic_action_name
+drawable ic_add
 drawable ic_baseline_delete_outline_24
 drawable ic_baseline_edit_24
 drawable ic_calender
@@ -1774,9 +1783,11 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_person
+drawable ic_prev_arrow
 drawable ic_user
 drawable image_custome
 drawable img
+drawable leaders
 drawable mask_group
 drawable mask_group_1
 drawable material_cursor_drawable
@@ -1789,6 +1800,7 @@ drawable material_ic_keyboard_arrow_previous_black_24dp
 drawable material_ic_keyboard_arrow_right_black_24dp
 drawable material_ic_menu_arrow_down_black_24dp
 drawable material_ic_menu_arrow_up_black_24dp
+drawable month_background
 drawable more_hor
 drawable mtrl_dialog_background
 drawable mtrl_dropdown_arrow
@@ -1848,15 +1860,19 @@ drawable shape_user
 drawable space_education
 drawable space_educationgrp6
 drawable style_spinner1
+drawable tab_corners
 drawable tab_selector
 drawable tab_selector_completed
 drawable test_custom_background
+drawable text_background
 drawable text_background_grp2
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable unchecked
 drawable uncheckedgrp6
 drawable user
+drawable week_background
+drawable year_background
 id ALT
 id BOTTOM_END
 id BOTTOM_START
@@ -1927,6 +1943,8 @@ id action_mode_close_button
 id action_text
 id actions
 id activeText
+id activities_chart
+id activities_perc
 id activityButtonHomeID
 id activityTextID
 id activityTextKidID
@@ -1939,6 +1957,8 @@ id addToCalendar
 id addToCalendarCard
 id add_button
 id add_to_my_calendar
+id address_text
+id admin_main_fragments
 id alertTitle
 id aligned
 id all
@@ -1955,6 +1975,8 @@ id autoCompleteToStart
 id back
 id backButtonReg
 id backTo2
+id back_arrow_parent
+id bar_chart
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -1986,6 +2008,8 @@ id checkBox
 id checkBox3
 id checkbox
 id checked
+id children_chart
+id children_perc
 id chip
 id chip1
 id chip2
@@ -1996,6 +2020,7 @@ id chooseKid
 id chooseState
 id chronometer
 id circle_center
+id city_text
 id clear_text
 id clip_horizontal
 id clip_vertical
@@ -2010,8 +2035,10 @@ id contiguous
 id coordinator
 id cos
 id counterclockwise
+id country_text
 id courseName
 id course_name
+id course_page
 id custom
 id customPanel
 id cut
@@ -2061,8 +2088,10 @@ id editTextTextEmailAddress
 id editTextTextPassword
 id editTextTextPassword2
 id editTextTextPersonName
+id edit_info_button
 id edit_query
 id elastic
+id email_text
 id end
 id endToStart
 id enterAlways
@@ -2077,6 +2106,9 @@ id fill
 id fill_horizontal
 id fill_vertical
 id filled
+id first_card_view
+id first_image
+id first_shape_layout
 id fisrt_col
 id fitToContents
 id fixed
@@ -2108,6 +2140,7 @@ id hideable
 id home
 id homeAsUp
 id homeCard
+id home_page
 id honorRequest
 id hour_end
 id hour_start
@@ -2127,6 +2160,7 @@ id image_container
 id image_view
 id img
 id info
+id info_text
 id invisible
 id inward
 id italic
@@ -2143,6 +2177,7 @@ id kidiT
 id kidnameIDText
 id labeled
 id layout
+id leaders_page
 id left
 id leftToRight
 id line1
@@ -2181,6 +2216,7 @@ id messageB
 id messageB2
 id middle
 id mini
+id month_button
 id month_grid
 id month_navigation_bar
 id month_navigation_fragment_toggle
@@ -2188,6 +2224,7 @@ id month_navigation_next
 id month_navigation_previous
 id month_spinner
 id month_title
+id more_page
 id motion_base
 id mtrl_anchor_parent
 id mtrl_calendar_day_selector_frame
@@ -2214,6 +2251,12 @@ id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
 id myCardView
+id my_bills_button
+id my_bills_text
+id my_details_text
+id my_kids_text
+id name_text
+id nav_view
 id navibarActivity
 id navibarKidName
 id navibarhomelogin
@@ -2246,6 +2289,9 @@ id parentImageID
 id parentPanel
 id parentRelative
 id parent_matrix
+id parent_profile_text
+id parents_chart
+id parents_perc
 id password_field
 id password_toggle
 id path
@@ -2253,6 +2299,7 @@ id pathRelative
 id peekHeight
 id pencilB
 id percent
+id phone_text
 id photoField
 id pin
 id playImage
@@ -2308,6 +2355,9 @@ id search_plate
 id search_src_text
 id search_voice_btn
 id secend_col
+id second_card
+id second_image
+id second_shape_layout
 id select_dialog_listview
 id selected
 id selected_date
@@ -2327,6 +2377,7 @@ id snackbar_action
 id snackbar_text
 id snap
 id snapMargins
+id some_text
 id spacer
 id special_effects_controller_view_tag
 id spinner
@@ -2397,7 +2448,10 @@ id textinput_helper_text
 id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
+id third_card
 id third_col
+id third_image
+id third_shape_layout
 id time
 id title
 id titleDividerNoCustom
@@ -2406,6 +2460,7 @@ id toggle
 id top
 id topPanel
 id totalActivitiesTextID
+id totelPerCat_chart
 id touch_outside
 id transitionToEnd
 id transitionToStart
@@ -2426,6 +2481,7 @@ id update_button
 id useLogo
 id userImage
 id username_field
+id users_page
 id v_layout
 id view
 id viewAllActiveHomeID
@@ -2445,11 +2501,13 @@ id viewpagerKid2
 id visible
 id visible_removing_fragment_view_tag
 id vlayout
+id week_button
 id welcome_text
 id withText
 id withinBounds
 id wrap
 id wrap_content
+id year_button
 id year_spinner
 id zero_corner_chip
 id zoomLinkCard
@@ -2522,10 +2580,13 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity
+layout activity_admin_main
 layout activity_forth_parent_reg2
+layout activity_leader_first_login
 layout activity_login_screen
 layout activity_main
 layout activity_maingroup6
+layout activity_parent_profile
 layout activity_third_parent_reg
 layout activity_third_screen
 layout admin_add_course
@@ -2549,6 +2610,11 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout first_parent_reg
 layout first_screen
+layout fragment_courses
+layout fragment_home
+layout fragment_leaders
+layout fragment_more
+layout fragment_user
 layout home_login
 layout kid_name
 layout layout_dialog
@@ -2635,6 +2701,7 @@ layout view_green
 layout view_red
 layout viewpager_item
 layout viewpager_item2
+menu bottom_navigation_menu
 menu mymenu
 menu navimenu
 mipmap ic_launcher

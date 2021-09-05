@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -105,16 +106,15 @@ public class HomeLogin extends AppCompatActivity {
         });
 
 
-        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-
+        navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.bottomNavigationHomeMenuId:
 
                         return true;
                     case R.id.bottomNavigationUserMenuId:
-                        startActivity(new Intent(HomeLogin.this, FirstScreen.class));
+                        startActivity(new Intent(HomeLogin.this, ParentProfileActivity.class));
                         return true;
                     case R.id.bottomNavigationActivityMenuId:
                         startActivity(new Intent(HomeLogin.this, Activity.class));

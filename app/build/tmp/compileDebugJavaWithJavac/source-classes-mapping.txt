@@ -19,6 +19,26 @@ com/example/kidi2/DataModelKid.java
  com.example.kidi2.DataModelKid
 com/example/kidi2/RVitem3.java
  com.example.kidi2.RVitem3
+com/example/kidi2/AdminMainActivity.java
+ com.example.kidi2.AdminMainActivity
+ com.example.kidi2.AdminMainActivity$1
+ com.example.kidi2.AdminMainActivity$10
+ com.example.kidi2.AdminMainActivity$11
+ com.example.kidi2.AdminMainActivity$12
+ com.example.kidi2.AdminMainActivity$13
+ com.example.kidi2.AdminMainActivity$14
+ com.example.kidi2.AdminMainActivity$15
+ com.example.kidi2.AdminMainActivity$16
+ com.example.kidi2.AdminMainActivity$17
+ com.example.kidi2.AdminMainActivity$18
+ com.example.kidi2.AdminMainActivity$2
+ com.example.kidi2.AdminMainActivity$3
+ com.example.kidi2.AdminMainActivity$4
+ com.example.kidi2.AdminMainActivity$5
+ com.example.kidi2.AdminMainActivity$6
+ com.example.kidi2.AdminMainActivity$7
+ com.example.kidi2.AdminMainActivity$8
+ com.example.kidi2.AdminMainActivity$9
 com/example/kidi2/RecyclerItemClickListener.java
  com.example.kidi2.RecyclerItemClickListener
  com.example.kidi2.RecyclerItemClickListener$1
@@ -36,6 +56,8 @@ com/example/kidi2/Course_Addactivity.java
  com.example.kidi2.Course_Addactivity
 com/example/kidi2/RetrofitAPILoginScreen.java
  com.example.kidi2.RetrofitAPILoginScreen
+com/example/kidi2/MoreFragment.java
+ com.example.kidi2.MoreFragment
 com/example/kidi2/AdminSetCourse.java
  com.example.kidi2.AdminSetCourse
  com.example.kidi2.AdminSetCourse$1
@@ -74,6 +96,9 @@ com/example/kidi2/ThirdParentRegActivity.java
  com.example.kidi2.ThirdParentRegActivity$4
  com.example.kidi2.ThirdParentRegActivity$5
  com.example.kidi2.ThirdParentRegActivity$6
+com/example/kidi2/LeaderFirstLoginActivity.java
+ com.example.kidi2.LeaderFirstLoginActivity
+ com.example.kidi2.LeaderFirstLoginActivity$1
 com/example/kidi2/VPAdapter.java
  com.example.kidi2.VPAdapter
  com.example.kidi2.VPAdapter$1
@@ -114,6 +139,8 @@ com/example/kidi2/SliderAdapter.java
 com/example/kidi2/ThirdScreen.java
  com.example.kidi2.ThirdScreen
  com.example.kidi2.ThirdScreen$1
+com/example/kidi2/LeadersFragment.java
+ com.example.kidi2.LeadersFragment
 com/example/kidi2/RetrofitClientGrp2.java
  com.example.kidi2.RetrofitClientGrp2
 com/example/kidi2/ModelObject.java
@@ -135,6 +162,8 @@ com/example/kidi2/SliderTransformer.java
  com.example.kidi2.SliderTransformer
 com/example/kidi2/RetrofitAPIGrp2.java
  com.example.kidi2.RetrofitAPIGrp2
+com/example/kidi2/RetrofitAPIAdminMain.java
+ com.example.kidi2.RetrofitAPIAdminMain
 com/example/kidi2/BuildConfig.java
  com.example.kidi2.BuildConfig
 com/example/kidi2/Activity.java
@@ -159,11 +188,16 @@ com/example/kidi2/Addactivity.java
  com.example.kidi2.Addactivity$1
  com.example.kidi2.Addactivity$2
  com.example.kidi2.Addactivity$3
+com/example/kidi2/ParentProfileActivity.java
+ com.example.kidi2.ParentProfileActivity
+ com.example.kidi2.ParentProfileActivity$1
 com/example/kidi2/Status.java
  com.example.kidi2.Status
 com/example/kidi2/MainActivity.java
  com.example.kidi2.MainActivity
  com.example.kidi2.MainActivity$1
+com/example/kidi2/UserFragment.java
+ com.example.kidi2.UserFragment
 com/example/kidi2/RetrofitAPI4.java
  com.example.kidi2.RetrofitAPI4
 com/example/kidi2/VPAdapter2.java
@@ -180,6 +214,10 @@ com/example/kidi2/DataModelCourse.java
 com/example/kidi2/PrivacyPolicy.java
  com.example.kidi2.PrivacyPolicy
  com.example.kidi2.PrivacyPolicy$1
+com/example/kidi2/CoursesFragment.java
+ com.example.kidi2.CoursesFragment
+com/example/kidi2/HomeFragment.java
+ com.example.kidi2.HomeFragment
 com/example/kidi2/Parent.java
  com.example.kidi2.Parent
 com/example/kidi2/AlgorithmAdapter.java
@@ -198,6 +236,8 @@ com/example/kidi2/MySingletone.java
  com.example.kidi2.MySingletone
 com/example/kidi2/RetroFitAPI3.java
  com.example.kidi2.RetroFitAPI3
+com/example/kidi2/User.java
+ com.example.kidi2.User
 com/example/kidi2/Day.java
  com.example.kidi2.Day
 com/example/kidi2/MyAdapter1.java
@@ -215,6 +255,7 @@ com/example/kidi2/MyAdapter4.java
 com/example/kidi2/LogInScreenActivity.java
  com.example.kidi2.LogInScreenActivity
  com.example.kidi2.LogInScreenActivity$1
+ com.example.kidi2.LogInScreenActivity$2
 com/example/kidi2/KidiOnItemSelectedListener.java
  com.example.kidi2.KidiOnItemSelectedListener
 com/example/kidi2/RetrofitAPI6.java

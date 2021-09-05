@@ -22,11 +22,11 @@
         android:theme="@style/Theme.Kidi2"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name="com.example.kidi2.LeaderFirstLoginActivity"
+            android:exported="true" />
+        <activity
             android:name="com.example.kidi2.ForthParentReg"
-            android:exported="true" >
-        </activity>
-
-        <!-- ACTIVITIES -->
+            android:exported="true" /> <!-- ACTIVITIES -->
         <!-- FIRST SCREEN -->
         <activity android:name="com.example.kidi2.FirstScreen" >
             <intent-filter>
@@ -52,6 +52,12 @@
             android:exported="true" /> <!-- muhanad activities -->
         <activity
             android:name="com.example.kidi2.FirstParentRegReal"
+            android:exported="true" />
+        <activity
+            android:name="com.example.kidi2.AdminMainActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.example.kidi2.ParentProfileActivity"
             android:exported="true" />
     </application>
 

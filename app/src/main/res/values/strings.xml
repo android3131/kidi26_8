@@ -87,8 +87,8 @@
     <string name="choose_day">Day</string>
     <string name="choose_month">Month</string>
     <string name="choose_year">Year</string>
-    <string name="upload" ><font >Add kids Picture
+    <string name="upload"><font>Add kids Picture
         &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
         </font>
-        <u><font >Upload image</font></u>&#160;</string>
+        <u><font>Upload image</font></u>&#160;</string>
 </resources>

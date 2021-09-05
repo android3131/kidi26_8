@@ -13,24 +13,21 @@
         android:theme="@style/Theme.Kidi2"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".LeaderFirstLoginActivity"
+            android:exported="true" />
+        <activity
             android:name=".ForthParentReg"
-            android:exported="true">
-        </activity>
-
-
-        <!-- ACTIVITIES -->
+            android:exported="true"></activity> <!-- ACTIVITIES -->
         <!-- FIRST SCREEN -->
         <activity android:name=".FirstScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-
-
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity> <!-- HOME LOGIN -->
         <activity android:name=".HomeLogin" /> <!-- KID NAME -->
-        <activity android:name=".KidName"></activity> <!-- ACTIVITY -->
+        <activity android:name=".KidName" /> <!-- ACTIVITY -->
         <activity android:name=".Activity" />
         <activity android:name=".LogInScreenActivity" />
         <activity android:name=".ThirdParentRegActivity" />
@@ -46,6 +43,13 @@
             android:exported="true" /> <!-- muhanad activities -->
         <activity
             android:name=".FirstParentRegReal"
+            android:exported="true" />
+
+        <activity
+            android:name=".AdminMainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ParentProfileActivity"
             android:exported="true" />
     </application>
 
