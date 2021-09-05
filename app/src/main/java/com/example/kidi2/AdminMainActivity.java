@@ -82,7 +82,8 @@ public class AdminMainActivity extends AppCompatActivity {
 
 
     Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8090/")
+            .baseUrl(String.valueOf(R.string.BASE_URL)
+            )
             // when sending data in json format we have to add Gson converter factory
             .addConverterFactory(GsonConverterFactory.create())
             // and build our retrofit builder.

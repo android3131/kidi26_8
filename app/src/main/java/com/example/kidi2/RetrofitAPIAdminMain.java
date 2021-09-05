@@ -11,76 +11,76 @@ import retrofit2.http.Path;
 public interface RetrofitAPIAdminMain {
 
 
-    @GET("http://10.0.2.2:8090/getactivitiesperweek")
+    @GET("/getactivitiesperweek")
     Call <HashMap<String, Integer>> createGetActivityPerWeek();
 
-    @GET("http://10.0.2.2:8090/getactivitiespermonth")
+    @GET("/getactivitiespermonth")
     Call <HashMap<String, Integer>>createGetActivityPerMonth();
 
-    @GET("http://10.0.2.2:8090/getactivitiesperyear")
+    @GET("/getactivitiesperyear")
     Call <HashMap<String, Integer>>createGetActivityPerYear();
 
-    @GET("http://10.0.2.2:8090/getpercentactivitiesperweek")
+    @GET("/getpercentactivitiesperweek")
     Call <Double> createGetPercentActivitiesPerWeek();
 
-    @GET("http://10.0.2.2:8090/getpercentactivitiespermonth")
+    @GET("/getpercentactivitiespermonth")
     Call <Double> createGetPercentActivitiesPerMonth();
 
-    @GET("http://10.0.2.2:8090/getpercentactivitiesperyear")
+    @GET("/getpercentactivitiesperyear")
     Call <Double> createGetPercentActivitiesPerYear();
 
 
     //=============bottom left pie=========
-    @GET("http://10.0.2.2:8090/getlistofactivekidsperweek")
+    @GET("/getlistofactivekidsperweek")
     Call <HashMap<String, Integer>>createGetActiveKidsPerWeek();
 
-    @GET("http://10.0.2.2:8090/getlistofactivekidspermonth")
+    @GET("/getlistofactivekidspermonth")
     Call <HashMap<String, Integer>>createGetActiveKidsPerMonth();
 
-    @GET("http://10.0.2.2:8090/getlistofactivekidsperyear")
+    @GET("/getlistofactivekidsperyear")
     Call <HashMap<String, Integer>>createGetActiveKidsPerYear();
 
 
-    @GET("http://10.0.2.2:8090/getpercentactivekidsbyweek")
+    @GET("/getpercentactivekidsbyweek")
     Call <Double> createGetPercentActiveKidsPerWeek();
 
     @GET("/getpercentactivekidsbymonth")
     Call <Double> createGetPercentActiveKidsPerMonth();
 
-    @GET("http://10.0.2.2:8090/getpercentactivekidsbyyear")
+    @GET("/getpercentactivekidsbyyear")
     Call <Double> createGetPercentActiveKidsPerYear();
 
     //============= top right pie ==========
 
-    @GET("http://10.0.2.2:8090/getallactiveparentsbyweek")
+    @GET("/getallactiveparentsbyweek")
     Call <HashMap<String, Integer>>createGetActiveParentsPerWeek();
 
-    @GET("http://10.0.2.2:8090/getallactiveparentsbymonth")
+    @GET("/getallactiveparentsbymonth")
     Call <HashMap<String, Integer>>createGetActiveParentsPerMonth();
 
-    @GET("http://10.0.2.2:8090/getallactiveparentsbyyear")
+    @GET("/getallactiveparentsbyyear")
     Call <HashMap<String, Integer>>createGetActiveParentsPerYear();
 
 
-    @GET("http://10.0.2.2:8090/getpercentactiveparentsbyweek")
+    @GET("/getpercentactiveparentsbyweek")
     Call <Double> createGetPercentActiveParentsByWeek();
 
-    @GET("http://10.0.2.2:8090/getpercentactiveparentsbymonth")
+    @GET("/getpercentactiveparentsbymonth")
     Call <Double> createGetPercentActiveParentsByMonth();
 
-    @GET("http://10.0.2.2:8090/getpercentactiveparentsbyyear")
+    @GET("/getpercentactiveparentsbyyear")
     Call <Double> createGetPercentActiveParentsByYear();
 
 
     //======== bottom right pie ========
 
-    @GET("http://10.0.2.2:8090/getlistofactivekidspercategoryperweek")
+    @GET("/getlistofactivekidspercategoryperweek")
     Call <HashMap<String, Integer>>createGetActiveKidsPerCategoryPerWeek();
 
-    @GET("http://10.0.2.2:8090/getlistofactivekidspercategorypermonth")
+    @GET("/getlistofactivekidspercategorypermonth")
     Call <HashMap<String, Integer>>createGetActiveKidsPerCategoryPerMonth();
 
-    @GET("http://10.0.2.2:8090/getlistofactivekidspercategoryperyear")
+    @GET("/getlistofactivekidspercategoryperyear")
     Call <HashMap<String, Integer>>createGetActiveKidsPerCategoryPerYear();
 
     //======== bar graph ========

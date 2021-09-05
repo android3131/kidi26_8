@@ -29,7 +29,8 @@ public class AdminSetCourse extends AppCompatActivity {
     public ArrayList<Course2> lis;
     MyAdapter myAdapter;
     Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8099/")
+            .baseUrl(String.valueOf(R.string.BASE_URL)
+            )
             // when sending data in json format we have to add Gson converter factory
             .addConverterFactory(GsonConverterFactory.create())
             // and build our retrofit builder.

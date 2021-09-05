@@ -66,7 +66,8 @@ public class ThirdParentRegActivity extends AppCompatActivity implements Adapter
     boolean flag=false;
 
     Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8091/")
+            .baseUrl(String.valueOf(R.string.BASE_URL)
+            )
             // when sending data in json format we have to add Gson converter factory
             .addConverterFactory(GsonConverterFactory.create())
             // and build our retrofit builder.
@@ -475,7 +476,8 @@ public class ThirdParentRegActivity extends AppCompatActivity implements Adapter
                 //  .baseUrl("https://examples-and-exercises.herokuapp.com/android/profile/")
                 // ///http://localhost:8082/spring-rest/fileserver/singlefileupload/
                 // .baseUrl("http://10.0.2.2:2255/")
-                .baseUrl("http://10.0.2.2:8095/")
+                .baseUrl(String.valueOf(R.string.BASE_URL)
+                )
 
                 // when sending data in json format we have to add Gson converter factory
                 .addConverterFactory(GsonConverterFactory.create())

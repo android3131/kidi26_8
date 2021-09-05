@@ -91,4 +91,6 @@
         &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
         </font>
         <u><font>Upload image</font></u>&#160;</string>
+    <string name="BASE_URL">http://kidiback.herokuapp.com/</string>
+
 </resources>
