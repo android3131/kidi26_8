@@ -1,7 +1,6 @@
 package com.example.kidi2;
-import java.util.ArrayList;
 
-import retrofit2.http.Field;
+import java.util.ArrayList;
 
 public class Course2 {
 
@@ -9,7 +8,7 @@ public class Course2 {
     //private String ID;
 
     private String name;
-    private int price;
+    private double price;
     private String startDateTime;
     private String finishDateTime;
     private Category category;
@@ -20,10 +19,18 @@ public class Course2 {
     private  String startOclock;
     private  String endOclock;
     private  int clr;
+    private String urlLink;
 
+    public String getUrlLink() {
+        return urlLink;
+    }
 
-    public Course2(String name, int price, String startDateTime, String finishDateTime, Category category, String zoomMeetingLink,
-                   String day, String startOclock, String endOclock, int clr)
+    public void setUrlLink(String urlLink) {
+        this.urlLink = urlLink;
+    }
+
+    public Course2(String name, double price, String startDateTime, String finishDateTime, Category category, String zoomMeetingLink,
+                   String day, String startOclock, String endOclock, int clr, String urlLink)
     {
         this.name = name;
         this.price = price;
@@ -37,22 +44,25 @@ public class Course2 {
         this.startOclock = startOclock;
         this.endOclock = endOclock;
         this.clr=clr;
+        this.urlLink = urlLink;
     }
 
-    public int getPrice() {
-        return price;
-    }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
+    public Course2(Course2 c)
+    {
 
-    public String getZoomMeetingLink() {
-        return zoomMeetingLink;
-    }
-
-    public void setZoomMeetingLink(String zoomMeetingLink) {
-        this.zoomMeetingLink = zoomMeetingLink;
+        this.name = c.getName();
+        this.price = c.getPrice();
+        this.startDateTime = c.getStartDateTime();
+        this.finishDateTime = c.getFinishDateTime();
+        this.category = c.getCategory();
+        this.leadersIDs = c.getLeadersIDs();
+        this.zoomMeetingLink = c.getZoomMeetingLink();
+        this.kidsIDs = c.getKidsIDs();
+        this.day = c.getDay();
+        this.startOclock = c.getStartOclock();
+        this.endOclock = c.getEndOclock();
+        this.clr=c.getClr();
     }
 
     public int getClr() {
@@ -76,6 +86,7 @@ public class Course2 {
     }
 
     public void setStartOclock(String startOclock) {
+
         this.startOclock = startOclock;
     }
 
@@ -84,7 +95,8 @@ public class Course2 {
     }
 
     public void setEndOclock(String endOclock) {
-        this.endOclock = endOclock;
+        if(Integer.parseInt(endOclock) > Integer.parseInt(startOclock))
+            this.endOclock = endOclock;
     }
 
     public void setDay(String day) {
@@ -92,7 +104,8 @@ public class Course2 {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if(name.matches("(?=^.{2,40}$)^[a-zA-Z]"))
+            this.name=name;
     }
 
     public String getStartDateTime() {
@@ -119,5 +132,35 @@ public class Course2 {
         this.category = category;
     }
 
+    public double getPrice() {
+        return price;
+    }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public ArrayList<String> getLeadersIDs() {
+        return leadersIDs;
+    }
+
+    public void setLeadersIDs(ArrayList<String> leadersIDs) {
+        this.leadersIDs = leadersIDs;
+    }
+
+    public String getZoomMeetingLink() {
+        return zoomMeetingLink;
+    }
+
+    public void setZoomMeetingLink(String zoomMeetingLink) {
+        this.zoomMeetingLink = zoomMeetingLink;
+    }
+
+    public ArrayList<String> getKidsIDs() {
+        return kidsIDs;
+    }
+
+    public void setKidsIDs(ArrayList<String> kidsIDs) {
+        this.kidsIDs = kidsIDs;
+    }
 }

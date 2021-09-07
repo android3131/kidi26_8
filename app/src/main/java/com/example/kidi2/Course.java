@@ -1,66 +1,112 @@
 package com.example.kidi2;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
 
+
+
 public class Course {
 
 
-    private String ID;
-
+    private String id;
 
     private String name;
 
 
     private String description;
-    private int price;
+
+
+    private double price;
 
 
     private Date startDateTime;
 
-
     private Date finishDateTime;
+
 
     private String categoryId;
 
 
+    private String categoryName;
+
+
     private Status status;
 
-    private ArrayList<String> leadersIDs= new ArrayList<String>();;
 
+    private ArrayList<String> leadersIDs;
 
     private String zoomMeetingLink;
 
 
-    private ArrayList<String> kidsIDs= new ArrayList<String>();;
+    private String urlLink;
 
-    private Day day;
+    private ArrayList<String> kidsIDs;
+
+
+    private String day;
+
 
     private double meetingDuration;
 
+
+    private String startHour;
+
+    private String endHour;
+
+
+
+    private ArrayList<String> meetings;
     public Course() {
         super();
+        this.leadersIDs= new ArrayList<String>();
+        kidsIDs= new ArrayList<String>();
+        meetings= new ArrayList<String>();
     }
 
-    public Course(String name, Date startDateTime,Date finishDateTime, Day day, String categoryId) {
+
+
+    public Course(String name, Date startDateTime, Date finishDateTime, String categoryId, String zoomMeetingLink,
+                  String day, String startHour,String urlLink, String endHour) {
         super();
-        this.categoryId = categoryId;
         this.name = name;
+
+        this.urlLink = urlLink;
         this.startDateTime = startDateTime;
         this.finishDateTime = finishDateTime;
+        this.categoryId = categoryId;
+        this.zoomMeetingLink = zoomMeetingLink;
         this.day = day;
+        this.leadersIDs= new ArrayList<String>();
+        kidsIDs= new ArrayList<String>();
+        meetings= new ArrayList<String>();
+        this.startHour = startHour;;
+        this.status = Status.Active;
+        //this.meetingDuration calculate the duration of the meeting
+        this.endHour = endHour;
     }
 
-    public Course( String name, Date startDateTime, String categoryId,
-                   ArrayList<String> kidsIDs) {
-        super();
+
+    public Course(String name, Date startDate, Date finishDate, String day, String categoryId) {
         this.name = name;
-        this.startDateTime = startDateTime;
+        this.startDateTime = startDate;
+        this.finishDateTime = finishDate;
         this.categoryId = categoryId;
+        this.day = day;
+        this.leadersIDs= new ArrayList<String>();
+        this.kidsIDs= new ArrayList<String>();
+        this.meetings= new ArrayList<String>();
         this.status = Status.Active;
-        this.kidsIDs = kidsIDs;
+    }
+
+
+
+    public ArrayList<String> getMeetings() {
+        return meetings;
+    }
+
+    public void setMeetings(ArrayList<String> meetings) {
+        this.meetings = meetings;
     }
 
     public String getName() {
@@ -71,13 +117,30 @@ public class Course {
         this.name = name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
+
+    public String getStartHour() {
+        return startHour;
+    }
+
+    public void setStartHour(String startHour) {
+        this.startHour = startHour;
+    }
+
+    public String getEndHour() {
+        return endHour;
+    }
+
+    public void setEndHour(String endHour) {
+        this.endHour = endHour;
+    }
+
 
     public Date getStartDateTime() {
         return startDateTime;
@@ -119,6 +182,19 @@ public class Course {
         this.leadersIDs = leadersIDs;
     }
 
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+
+
     public String getZoomMeetingLink() {
         return zoomMeetingLink;
     }
@@ -136,22 +212,34 @@ public class Course {
     }
 
     public String getID() {
-        return ID;
+        return id;
     }
 
     public void setID(String iD) {
-        this.ID = iD;
+        this.id = iD;
     }
 
     public void setStatus(Status status) {
         this.status = status;
     }
 
-    public Day getDay() {
+    public String getUrlLink() {
+        return urlLink;
+    }
+
+
+
+    public void setUrlLink(String urlLink) {
+        this.urlLink = urlLink;
+    }
+
+
+    public String getDay() {
         return day;
     }
 
-    public void setDay(Day day) {
+    public void setDay(String
+                               day) {
         this.day = day;
     }
     public String getDescription() {
@@ -168,7 +256,7 @@ public class Course {
 
     @Override
     public int hashCode() {
-        return Objects.hash(ID, categoryId, name);
+        return Objects.hash(id, categoryId, name);
     }
 
     @Override
@@ -180,7 +268,7 @@ public class Course {
         if (getClass() != obj.getClass())
             return false;
         Course other = (Course) obj;
-        return Objects.equals(ID, other.ID) && Objects.equals(categoryId, other.categoryId)
+        return Objects.equals(id, other.id) && Objects.equals(categoryId, other.categoryId)
                 && Objects.equals(name, other.name);
     }
 

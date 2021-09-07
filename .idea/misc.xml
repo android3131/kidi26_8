@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/win10/AndroidStudioProjects/KIDI3/kidi26_8/app/src/main/res/layout/activity_admin_update_course.xml" value="0.15625" />
+        <entry key="..\:/Users/win10/AndroidStudioProjects/KIDI3/kidi26_8/app/src/main/res/layout/admin_set_course.xml" value="0.15625" />
+        <entry key="..\:/Users/win10/AndroidStudioProjects/KIDI3/kidi26_8/app/src/main/res/layout/my_row3.xml" value="0.15625" />
+        <entry key="..\:/Users/win10/AndroidStudioProjects/KIDI3/kidi26_8/app/src/main/res/layout/rv_row.xml" value="0.264" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+</project>

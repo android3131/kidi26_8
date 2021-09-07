@@ -21,8 +21,11 @@ import com.google.android.material.datepicker.DateValidatorPointForward;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -32,6 +35,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+
+//change from Course1 to Course
 public class AdminAddCourse extends AppCompatActivity {
     private Button mDatePickerBtn;
     private TextView mSelectedDateText;
@@ -45,19 +50,15 @@ public class AdminAddCourse extends AppCompatActivity {
     RVitem3 selectedHourStart;
     RVitem3 selectedHourEnd;
     Object categorySelection;
+    Object daySelection;
     String selectedDatesTxt;
-    String startDateExtracted;
-    String endDateExtracted;
-
-    Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl(getString(R.string.BASE_URL)
-            )
-            // when sending data in json format we have to add Gson converter factory
-            .addConverterFactory(GsonConverterFactory.create())
-            // and build our retrofit builder.
-            .build();
-
-    RetroFitAPI3 retrofitAPI3 = retrofit.create(RetroFitAPI3.class);
+    EditText ZoomLink;
+    EditText urlLink;
+    List<String> categoryIds;
+    List<String> categoryList;
+    Spinner categorySpinner;
+    Retrofit retrofit;
+    RetroFitAPI3 retrofitAPI3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +68,14 @@ public class AdminAddCourse extends AppCompatActivity {
         //select range of dates for the course
         mSelectedDateText = findViewById(R.id.selected_date);
         mDatePickerBtn = findViewById(R.id.date_picker_btn);
+         retrofit = new Retrofit.Builder()
+                .baseUrl(getString(R.string.BASE_URL))
+                // when sending data in json format we have to add Gson converter factory
+                .addConverterFactory(GsonConverterFactory.create())
+                // and build our retrofit builder.
+                .build();
 
+         retrofitAPI3 = retrofit.create(RetroFitAPI3.class);
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
         calendar.clear();
         long today = MaterialDatePicker.todayInUtcMilliseconds();
@@ -92,11 +100,13 @@ public class AdminAddCourse extends AppCompatActivity {
             @Override
             public void onPositiveButtonClick(Object selection) {
                 mSelectedDateText.setText("Selected Date :" + materialDatePicker.getHeaderText());
-                selectedDatesTxt = materialDatePicker.getHeaderText().toString();
+                selectedDatesTxt = materialDatePicker.getHeaderText();
+
             }
         });
 
         addSpinner(); //function that fill the categories in the spinner
+        addDaySpinner();
         addItemToRVHourStart();//function that fill the start hour in the RV
         addItemToRVHourEnd(); //function that fill the end hour in the RV
 
@@ -107,9 +117,9 @@ public class AdminAddCourse extends AppCompatActivity {
                     @Override
                     public void onItemClick(View view, int position) {
 
-                            for (int i = 0; i < lis1.size(); i++) {
-                                if (i != position)
-                                    lis1.get(i).setColor(0);
+                        for (int i = 0; i < lis1.size(); i++) {
+                            if (i != position)
+                                lis1.get(i).setColor(0);
                             lis1.get(position).setColor(R.color.black);
                             selectedHourStart = lis1.get(position);
                             myAdapter31.notifyDataSetChanged();
@@ -127,21 +137,21 @@ public class AdminAddCourse extends AppCompatActivity {
         recyclerView1.setLayoutManager(new LinearLayoutManager(this));
 
 
-        //recyclerView for the end hour
         recyclerView2 = findViewById(R.id.recycler_view2);
         recyclerView2.addOnItemTouchListener(
                 new RecyclerItemClickListener(this, recyclerView2, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
 
-                            for (int i = 0; i < lis2.size(); i++) {
-                                if (i != position)
-                                    lis2.get(i).setColor(0);
+                        for (int i = 0; i < lis2.size(); i++) {
+                            if (i != position)
+                                lis2.get(i).setColor(0);
                             lis2.get(position).setColor(R.color.black);
                             selectedHourEnd = lis2.get(position);
                             myAdapter32.notifyDataSetChanged();
                         }
                     }
+
 
                     @Override
                     public void onLongItemClick(View view, int position) {
@@ -156,31 +166,77 @@ public class AdminAddCourse extends AppCompatActivity {
         //all the elements we need to post new course:
         bt1 = findViewById(R.id.update_button);
         courseName = findViewById(R.id.editTextTextPersonName);
-
+        ZoomLink = findViewById(R.id.zoomLinkEditText);
+        urlLink = findViewById(R.id.urlEditText);
         //post new course
-
+        // extractSelectedDates();
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Course1 course1 = new Course1(courseName.getText().toString(), 0, selectedDatesTxt
-                        ,"30/02/11", "defaultDay", selectedHourStart.getItemName()
-                        , selectedHourEnd.getItemName(), 0, new Category(categorySelection.toString(), "BBB"));
+                SimpleDateFormat sdf = new SimpleDateFormat("MMM,dd,yyyy hh:mm:ss");
+                String []j=selectedDatesTxt.split(" ");
+                String left="";
+                String right="";
+                if(  j.length ==  5) {
+                    int year = Calendar.getInstance().get(Calendar.YEAR);
+                    if(j[1].length()==1)
+                        j[1]="0"+j[1];
+                    left = j[0] +","+ j[1]+","+year;
+                    if(j[4].length()==1)
+                        j[4]="0"+j[4];
+                    right = j[3] +","+ j[4]+","+year;
+                }
+                else if(j.length==7)
+                {
+                    if(j[1].length()==2)
+                        j[1]="0"+j[1];
+                    left = j[0]+"," + j[1]+j[2];
+                    if(j[5].length()==2)
+                        j[5]="0"+j[5];
+                    right = j[4]+"," + j[5]+j[6];
+                }
+                else // at another year
+                {
+                    if(j[1].length()==1)
+                        j[1]="0"+j[1];
+                    left = j[0]+"," + j[1]+","+j[5];
+                    if(j[4].length()==2)
+                        j[4]="0"+j[4];
+                    right= j[3]+","+j[4]+j[5];
+                }
+                Date strtdate=new Date();
+                try {
+                    strtdate=sdf.parse(left+" 00:00:00");
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                Date endDt=new Date();
+                try {
+                    endDt=sdf.parse(right+" 00:00:00");
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+
+                Course course1 = new Course(courseName.getText().toString(), strtdate, endDt, "String categoryId", ZoomLink.getText().toString(),
+                        daySelection.toString(), selectedHourStart.getItemName(), selectedHourEnd.getItemName(), urlLink.getText().toString());
 
                 // calling a method to create a post and passing our model class.
-                Call<Course1> call = retrofitAPI3.postNewCourse(course1);
+                Call<Course> call = retrofitAPI3.postNewCourse(course1);
                 // add the http request to queue
-                call.enqueue(new Callback<Course1>() {
+                call.enqueue(new Callback<Course>() {
                     @Override
-                    public void onResponse(Call<Course1> call, Response<Course1> response) {
+                    public void onResponse(Call<Course> call, Response<Course> response) {
                         // this method is called when we get response from our api.
                         //Toast.makeText(MainActivity.this, "Data added to API", Toast.LENGTH_SHORT).show();
-                        Course1 responseFromAPI = response.body();
+                        Course responseFromAPI = response.body();
                         Toast.makeText(AdminAddCourse.this, "Course added", Toast.LENGTH_SHORT).show();
 
                     }
 
                     @Override
-                    public void onFailure(Call<Course1> call, Throwable t) {
+                    public void onFailure(Call<Course> call, Throwable t) {
                     }
                 });
             }
@@ -188,12 +244,34 @@ public class AdminAddCourse extends AppCompatActivity {
 
     }
 
-    private void extractSelectedDates() {
-        String[] arrOfStr = selectedDatesTxt.split("-", 8);
-       for (String a : arrOfStr)
-            //System.out.println(a);
-           startDateExtracted = a ;
+    private void addDaySpinner() {
+        List<String> dayList = new ArrayList<>();
+        Spinner daySpinner = findViewById(R.id.day_spinner);
+        dayList.add("Choose Day");
+        dayList.add("Sunday");
+        dayList.add("Monday");
+        dayList.add("Tuesday");
+        dayList.add("Wednesday");
+        dayList.add("Thursday");
+        dayList.add("Friday");
+        dayList.add("Saturday");
+        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, dayList);
+        daySpinner.setAdapter(categoryAdapter);
 
+        daySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.d("ofra", "on Button click: " + daySpinner.getSelectedItem());
+                pos=i;
+                daySelection = daySpinner.getSelectedItem();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+
+        });
     }
 
 
@@ -256,35 +334,79 @@ public class AdminAddCourse extends AppCompatActivity {
         lis2.add(new RVitem3("24:00", 0));
     }
 
-        //implementation of the function that add the categories to the spinner
+    //implementation of the function that add the categories to the spinner
     private void addSpinner() {
-        List<String> categoryList = new ArrayList<>();
-        Spinner categorySpinner = findViewById(R.id.spinner_category);
+//        List<String> categoryList = new ArrayList<>();
+//        Spinner categorySpinner = findViewById(R.id.spinner_category);
+//        categoryList.add("Choose Category");
+//        categoryList.add("Animal");
+//        categoryList.add("Arts");
+//        categoryList.add("Space");
+//        categoryList.add("Science");
+//
+//
+//
+//        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categoryList);
+//        categorySpinner.setAdapter(categoryAdapter);
+//
+//        categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                Log.d("ofra", "on Button click: " + categorySpinner.getSelectedItem());
+//                pos=i;
+//                categorySelection = categorySpinner.getSelectedItem();
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//
+//        });
+        categorySpinner = findViewById(R.id.categorySpinner);
+        categoryList = new ArrayList<>();
+        categoryIds = new ArrayList<>();
         categoryList.add("Choose Category");
-        categoryList.add("Animal");
-        categoryList.add("Arts");
-        categoryList.add("Space");
-        categoryList.add("Science");
-
-
-
-        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categoryList);
-        categorySpinner.setAdapter(categoryAdapter);
-
-        categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        Call<List<Category>> call;
+        call=retrofitAPI3.getallCat1();
+        call.enqueue(new Callback<List<Category>>() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("ofra", "on Button click: " + categorySpinner.getSelectedItem());
-                pos=i;
-                categorySelection = categorySpinner.getSelectedItem();
-            }
+            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
 
+                int len=0;
+                List<Category> responseFromAPI = response.body();
+                if(responseFromAPI!=null)
+                    len=responseFromAPI.size();
+                for (int i=0;i<len;i++) {
+                    categoryList.add(responseFromAPI.get(i).getName());
+                    categoryIds.add(responseFromAPI.get(i).getId());
+                }
+
+                ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(AdminAddCourse.this, android.R.layout.simple_spinner_item, categoryList);
+                categorySpinner.setAdapter(categoryAdapter);
+                categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        //Log.d("ofra", "on Button click: " + categorySpinner.getSelectedItem());
+                        pos=i;
+                        categorySelection = categorySpinner.getSelectedItem();
+
+                    }
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+                    }
+                });
+            }
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
+            public void onFailure(Call<List<Category>> call, Throwable t) {
             }
-
         });
+
+
+
+
+
+
     }
 
 }

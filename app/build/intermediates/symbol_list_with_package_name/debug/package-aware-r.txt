@@ -1775,6 +1775,7 @@ drawable ic_courses
 drawable ic_delete
 drawable ic_down_arrow
 drawable ic_drop
+drawable ic_edit
 drawable ic_home
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
@@ -1818,6 +1819,7 @@ drawable mtrl_navigation_bar_item_background
 drawable mtrl_popupmenu_background
 drawable mtrl_popupmenu_background_dark
 drawable mtrl_tabs_default_indicator
+drawable musics
 drawable myrect
 drawable myrect10
 drawable myrect2
@@ -1858,6 +1860,7 @@ drawable progressbar_4
 drawable recycler_view_divider
 drawable right_arrow
 drawable rounded_corner
+drawable scs
 drawable selected_dot
 drawable selected_dot_completed
 drawable selectorgrp6
@@ -1968,6 +1971,7 @@ id addToCalendar
 id addToCalendarCard
 id add_button
 id add_column
+id add_leader_button
 id add_to_my_calendar
 id address_text
 id admin_main_fragments
@@ -2065,6 +2069,7 @@ id dateText2
 id date_picker_actions
 id date_picker_btn
 id day_spinner
+id day_spinner1
 id decelerate
 id decelerateAndComplete
 id decor_content_parent
@@ -2105,6 +2110,7 @@ id editTextTextEmailAddress
 id editTextTextPassword
 id editTextTextPassword2
 id editTextTextPersonName
+id editTextTextPersonName1
 id edit_info_button
 id edit_query
 id elastic
@@ -2163,6 +2169,7 @@ id honorRequest
 id horizontalScrollView
 id hour_end
 id hour_start
+id hours
 id icon
 id icon_group
 id ifRoom
@@ -2402,6 +2409,7 @@ id spacer
 id special_effects_controller_view_tag
 id spinner
 id spinner_category
+id spinner_category1
 id spline
 id split_action_bar
 id spread
@@ -2457,7 +2465,6 @@ id textView
 id textView2
 id textView3
 id textView4
-id textView6
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -2501,6 +2508,9 @@ id unlabeled
 id up
 id up_arrow
 id update_button
+id update_button1
+id urlEditText
+id urlLinkEditText1
 id useLogo
 id userImage
 id username
@@ -2539,6 +2549,7 @@ id year_button
 id year_spinner
 id zero_corner_chip
 id zoomLinkCard
+id zoomLinkEditText
 id zoom_link
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
@@ -2621,6 +2632,7 @@ layout activity_third_screen
 layout activity_web_view_browser
 layout admin_add_course
 layout admin_set_course
+layout admin_update_course
 layout algorithm_spinner
 layout custom_dialog
 layout design_bottom_navigation_item

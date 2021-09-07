@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -57,7 +58,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:backgroundTint="#4E7FE7"
-                android:text="@string/add_course"
+                android:text="Add Course"
                 app:cornerRadius="20dp" />
         </LinearLayout>
 
@@ -74,7 +75,7 @@
                 android:orientation="vertical">
 
 
-            <androidx.recyclerview.widget.RecyclerView
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="200dp">
@@ -85,7 +86,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Button
@@ -97,9 +98,9 @@
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:backgroundTint="#4E7FE7"
-                android:text="@string/update"
+                android:text="update"
                 app:cornerRadius="20dp"
-                app:icon="@drawable/ic_baseline_edit_24"/>
+                app:icon="@drawable/ic_edit" />
 
             <Button
                 android:id="@+id/delete_button"
@@ -110,9 +111,39 @@
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:backgroundTint="#4E7FE7"
-                android:text="@string/delete"
+                android:text="delete"
                 app:cornerRadius="20dp"
-                app:icon="@drawable/ic_baseline_delete_outline_24"/>
+                app:icon="@drawable/ic_delete" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/add_leader_button"
+                android:layout_width="472dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:backgroundTint="#4E7FE7"
+                android:text="@string/add_leader"
+                app:cornerRadius="20dp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

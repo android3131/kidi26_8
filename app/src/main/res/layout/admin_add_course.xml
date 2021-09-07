@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        android:text="new_course_info"
+        android:text="new course info"
         android:textColor="#F4F4F4"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -37,7 +37,7 @@
 
         <EditText
             android:id="@+id/editTextTextPersonName"
-            android:layout_width="162dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
@@ -61,19 +61,33 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp" />
 
-        <Button
-            android:id="@+id/date_picker_btn"
-            android:layout_width="206dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="0"
-            android:backgroundTint="#4E7FE7"
-            android:gravity="center"
-            android:text="Choose Course Dates"
-            app:cornerRadius="20dp"
-            app:icon="@drawable/ic_calender" />
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/date_picker_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="#4E7FE7"
+                android:gravity="center|top"
+                android:text="Choose Course Dates"
+                android:textSize="12sp"
+                app:cornerRadius="20dp"
+                app:icon="@drawable/ic_calender" />
+
+            <Spinner
+                android:id="@+id/day_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="5dp" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/selected_date"
@@ -89,9 +103,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="138dp"
-            android:orientation="vertical"
-            android:layout_marginTop="15dp">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -103,7 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:text="From Hour :"
                     android:textSize="16sp"
@@ -113,7 +128,7 @@
                     android:id="@+id/hour_end"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:text="To Hour :"
@@ -123,48 +138,66 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="170dp"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_view1"
-                    android:layout_width="205dp"
-                    android:layout_height="176dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_weight="1">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_view2"
-                    android:layout_width="205dp"
-                    android:layout_height="176dp" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_weight="1" />
 
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/update_button"
+            <EditText
+                android:id="@+id/zoomLinkEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
+                android:ems="10"
+                android:hint="Add Zoom Link" />
+
+            <EditText
+                android:id="@+id/urlEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:hint="Add URL Link" />
+
+            <Button
+                android:id="@+id/update_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
                 android:layout_weight="1"
                 android:backgroundTint="#4E7FE7"
                 android:gravity="center"
                 android:text="Add Course"
                 app:cornerRadius="20dp" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="match_parent"
-                android:layout_height="59dp"
-                android:layout_weight="1" />
         </LinearLayout>
 
     </LinearLayout>

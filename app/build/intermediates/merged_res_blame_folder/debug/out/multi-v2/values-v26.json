@@ -1,17 +1,10 @@
 {
     "logs": [
         {
-<<<<<<< HEAD
-            "outputFile": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI2\\kidi26_8\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v26\\values-v26.xml",
+            "outputFile": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v26\\values-v26.xml",
             "map": [
                 {
                     "source": "C:\\Users\\win10\\.gradle\\caches\\transforms-3\\c18f85807e14bcd01bb8e8f6d29c1fc3\\transformed\\appcompat-1.3.1\\res\\values-v26\\values-v26.xml",
-=======
-            "outputFile": "C:\\Users\\ahmed\\Desktop\\kidi26_8\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v26\\values-v26.xml",
-            "map": [
-                {
-                    "source": "C:\\Users\\ahmed\\.gradle\\caches\\transforms-3\\c18f85807e14bcd01bb8e8f6d29c1fc3\\transformed\\appcompat-1.3.1\\res\\values-v26\\values-v26.xml",
->>>>>>> 014fb5cc0bc4913b0d301db614300777b1a42c71
                     "from": {
                         "startLines": "2,3,4,8,12,16",
                         "startColumns": "4,4,4,4,4,4",
