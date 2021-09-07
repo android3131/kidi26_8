@@ -1793,6 +1793,7 @@ drawable ic_user
 drawable image_custome
 drawable img
 drawable leaders
+drawable link
 drawable mask_group
 drawable mask_group_1
 drawable material_cursor_drawable
@@ -2527,6 +2528,9 @@ id viewpagerKid2
 id visible
 id visible_removing_fragment_view_tag
 id vlayout
+id webView
+id webViewCard
+id webViewImage
 id week_button
 id welcome_text
 id withText
@@ -2609,12 +2613,14 @@ layout activity
 layout activity_admin_main
 layout activity_forth_parent_reg2
 layout activity_leader_first_login
+layout activity_links
 layout activity_login_screen
 layout activity_main
 layout activity_maingroup6
 layout activity_parent_profile
 layout activity_third_parent_reg
 layout activity_third_screen
+layout activity_web_view_browser
 layout admin_add_course
 layout admin_set_course
 layout algorithm_spinner

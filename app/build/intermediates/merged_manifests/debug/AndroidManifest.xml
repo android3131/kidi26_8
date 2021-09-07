@@ -74,6 +74,12 @@
             android:name="com.example.kidi2.AdminMainActivity"
             android:exported="true" />
         <activity
+            android:name="com.example.kidi2.LinksActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.example.kidi2.webViewBrowser"
+            android:exported="true" />
+        <activity
             android:name="com.example.kidi2.ParentProfileActivity"
             android:exported="true" />
     </application>

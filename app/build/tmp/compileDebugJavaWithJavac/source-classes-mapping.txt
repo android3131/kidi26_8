@@ -149,6 +149,8 @@ com/example/kidi2/SliderAdapter.java
 com/example/kidi2/ThirdScreen.java
  com.example.kidi2.ThirdScreen
  com.example.kidi2.ThirdScreen$1
+com/example/kidi2/webViewBrowser.java
+ com.example.kidi2.webViewBrowser
 com/example/kidi2/LeadersFragment.java
  com.example.kidi2.LeadersFragment
 com/example/kidi2/RetrofitClientGrp2.java
@@ -174,6 +176,10 @@ com/example/kidi2/KidName.java
  com.example.kidi2.KidName$6
 com/example/kidi2/SliderTransformer.java
  com.example.kidi2.SliderTransformer
+com/example/kidi2/LinksActivity.java
+ com.example.kidi2.LinksActivity
+ com.example.kidi2.LinksActivity$1
+ com.example.kidi2.LinksActivity$2
 com/example/kidi2/RetrofitAPIGrp2.java
  com.example.kidi2.RetrofitAPIGrp2
 com/example/kidi2/RetrofitAPIAdminMain.java
