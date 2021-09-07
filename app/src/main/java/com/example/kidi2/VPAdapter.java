@@ -1,17 +1,26 @@
 package com.example.kidi2;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.util.Pair;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
+
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 
 import org.w3c.dom.Text;
 
@@ -20,10 +29,12 @@ import java.util.ArrayList;
 public class VPAdapter extends RecyclerView.Adapter<VPAdapter.ViewHolder> {
 
     ArrayList<ViewPagerItem> viewPagerItemArrayList;
-Context ctx;
-String[] kidsID;
-int positontemp;
-Boolean sharedp=false;//add shared prefrence or not
+    Context     ctxA;
+    String[] kidsID;
+    int positiontemp;
+    FragmentManager fm;
+
+    Boolean sharedp=false;//add shared prefrence or not
 
     public Boolean getSharedp() {
         return sharedp;
@@ -37,13 +48,21 @@ Boolean sharedp=false;//add shared prefrence or not
         return kidsID;
     }
 
-    public void setKidsID(String[] kidsID,int position) {
+    public FragmentManager getFm() {
+        return fm;
+    }
+
+    public void setFm(FragmentManager fm) {
+        this.fm = fm;
+    }
+
+    public void setKidsID(String[] kidsID, int position) {
         this.kidsID = kidsID;
-        this.positontemp=position;
+        this.positiontemp=position;
     }
 
     public void setCtx(Context ctx) {
-        this.ctx = ctx;
+        this.ctxA = ctx;
     }
 
     public VPAdapter(ArrayList<ViewPagerItem> viewPagerItemArrayList) {
@@ -52,8 +71,8 @@ Boolean sharedp=false;//add shared prefrence or not
     }
 
 
-    public Context getCtx() {
-        return this.ctx;
+    public Context getCtxA() {
+        return this.ctxA;
     }
 
     @NonNull
@@ -65,16 +84,63 @@ Boolean sharedp=false;//add shared prefrence or not
         tvprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(getSharedp()==false) {
-                    SharedPreferences pref = getCtx().getSharedPreferences("MyKIDIPref", 0); // 0 - for private mode
+                if(getSharedp()==false) {//when going to kid's profile
+                    SharedPreferences pref = getCtxA().getSharedPreferences("MyKIDIPref", 0); // 0 - for private mode
                     SharedPreferences.Editor editor = pref.edit();
-                    editor.putString("kidSeeProfile", kidsID[positontemp]);
+                    editor.putString("kidSeeProfile", kidsID[positiontemp]);
                     editor.commit();
                 }
                 setSharedp(false);
-                Intent openThree = new Intent(getCtx(),KidName.class);
-                getCtx().startActivity(openThree);
+                Intent openThree = new Intent(getCtxA(),KidName.class);
+                getCtxA().startActivity(openThree);
             }});
+        //////////////////////////////////////////////////////////delete activity
+        ImageButton trashBtn =(ImageButton) view.findViewById(R.id.trashB);
+        MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker();
+        final MaterialDatePicker materialDatePicker = builder.build();
+        builder.setTitleText("choose the date of your last meeting");
+        builder.setTheme(R.style.AlertDialog_AppCompat_Light);
+        trashBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                materialDatePicker.show(getFm(), "quit_course");
+            }
+        });
+
+        materialDatePicker.addOnPositiveButtonClickListener
+                (new MaterialPickerOnPositiveButtonClickListener() {
+                    @Override
+                    public void onPositiveButtonClick(Object selection) {
+                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                switch (which){
+                                    case DialogInterface.BUTTON_POSITIVE:
+                                        //Yes button clicked
+                                        break;
+
+                                    case DialogInterface.BUTTON_NEGATIVE:
+                                        //No button clicked
+                                        break;
+                                }
+                            }
+                        };
+
+                        AlertDialog.Builder builder2 = new AlertDialog.Builder(getCtxA());
+
+                        builder2.setMessage("Are you sure you want to quit the course?").
+                                setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                    }
+                                })
+                                .setNegativeButton("No", dialogClickListener).show();
+                    }
+                });
+
         return new ViewHolder(view);
     }
 

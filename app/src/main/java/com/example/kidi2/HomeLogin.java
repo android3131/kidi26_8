@@ -35,6 +35,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
@@ -117,7 +118,7 @@ public class HomeLogin extends AppCompatActivity {
                         startActivity(new Intent(HomeLogin.this, ParentProfileActivity.class));
                         return true;
                     case R.id.bottomNavigationActivityMenuId:
-                        startActivity(new Intent(HomeLogin.this, Activity.class));
+                        startActivity(new Intent(HomeLogin.this, ForthParentReg.class));
                         return true;
                     case R.id.bottomNavigationNotificatonsMenuId:
                         startActivity(new Intent(HomeLogin.this, KidName.class));
@@ -180,6 +181,7 @@ public class HomeLogin extends AppCompatActivity {
         VPAdapter2 vpAdapter2 = new VPAdapter2(viewPagerItemArrayListCompleted);
         vpAdapter.setCtx(this);
         vpAdapter2.setCtx(this);
+        vpAdapter.setFm(getSupportFragmentManager());
         viewPager.setAdapter(vpAdapter);
         viewPager2.setAdapter(vpAdapter2);
 
@@ -238,22 +240,30 @@ public class HomeLogin extends AppCompatActivity {
         RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
         //DataModel user = new DataModel();
 
-        Call<List<MeetingParticipant>> call = retrofitAPI.getAllKidsActiveCoursesSorted(parentId);
+        Call<HashMap<List<Kid>,List<Meeting>>> call = retrofitAPI.getAllKidsNextCoursesSorted(parentId);
 
         try {
-            Response<List<MeetingParticipant>> response = call.execute();
-            List<MeetingParticipant> meetingp = response.body();
+            Response<HashMap<List<Kid>,List<Meeting>>> response = call.execute();
+            HashMap<List<Kid>,List<Meeting>> meetingsHashMap = response.body();
 
+            List<Kid> kid=new ArrayList<Kid>();
+            List<Meeting> meeting=new ArrayList<Meeting>();
+            for (List<Kid> i : meetingsHashMap.keySet()) {
+                kid.addAll(i);
+            }
+            for (List<Meeting> j : meetingsHashMap.values()) {
+                meeting.addAll(j);
+            }
 
             for (int i = 0; i < images.length; i++) {
-                kidsID[i]=meetingp.get(i).kid.getId();
+                kidsID[i]=kid.get(i).getId();
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-                dates[i] = meetingp.get(i).meeting.getMeetingDateTime();
+                dates[i] = meeting.get(i).getMeetingDateTime();
                 String strDate = dateFormat.format(dates[i]);
-                describtion[i] = meetingp.get(i).meeting.getId();
-                names[i] = meetingp.get(i).kid.getFullName();
+                describtion[i] = meeting.get(i).getId();
+                names[i] = kid.get(i).getFullName();
                 Resources r = getResources();
-                int drawableId = r.getIdentifier(meetingp.get(i).kid.getImage(), "drawable",
+                int drawableId = r.getIdentifier(kid.get(i).getImage(), "drawable",
                         "com.mypackage.myapp");
 
                 try {
@@ -281,23 +291,32 @@ public class HomeLogin extends AppCompatActivity {
 
         //end call
 
-        Call<List<MeetingParticipant>> callCompleted = retrofitAPI.getkidsfinishedcoursessortedlist(parentId);
+        Call<HashMap<List<Kid>,List<Meeting>>> callCompleted = retrofitAPI.getAllKidsFinishedCoursesSorted(parentId);
 
         try {
-            Response<List<MeetingParticipant>> response = callCompleted.execute();
-            List<MeetingParticipant> meetingp = response.body();
+            Response<HashMap<List<Kid>,List<Meeting>>> response = callCompleted.execute();
+            HashMap<List<Kid>,List<Meeting>> meetingsHashMap = response.body();
+
+            List<Kid> kid=new ArrayList<Kid>();
+            List<Meeting> meeting=new ArrayList<Meeting>();
+            for (List<Kid> i : meetingsHashMap.keySet()) {
+                kid.addAll(i);
+            }
+            for (List<Meeting> j : meetingsHashMap.values()) {
+                meeting.addAll(j);
+            }
 
 
             for (int i = 0; i < imagesCompleted.length; i++) {
-                kidsIDCompleted[i]=meetingp.get(i).kid.getId();
+                kidsIDCompleted[i]=kid.get(i).getId();
 
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-                datesCompleted[i] = meetingp.get(i).meeting.getMeetingDateTime();
+                datesCompleted[i] = meeting.get(i).getMeetingDateTime();
                 String strDate = dateFormat.format(datesCompleted[i]);
-                describtionCompleted[i] = meetingp.get(i).meeting.getId();
-                namesCompleted[i] = meetingp.get(i).kid.getFullName();
+                describtionCompleted[i] = meeting.get(i).getId();
+                namesCompleted[i] = kid.get(i).getFullName();
                 Resources r = getResources();
-                int drawableId = r.getIdentifier(meetingp.get(i).kid.getImage(), "drawable",
+                int drawableId = r.getIdentifier(kid.get(i).getImage(), "drawable",
                         "com.mypackage.myapp");
 
                 try {
@@ -321,8 +340,8 @@ public class HomeLogin extends AppCompatActivity {
 
         }
 
+
         vpAdapter2.setKidsID(kidsID,viewPager2.getCurrentItem());
-    }
 
 
-}
+    }}

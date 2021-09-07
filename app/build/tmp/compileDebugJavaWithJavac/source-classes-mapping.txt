@@ -110,6 +110,10 @@ com/example/kidi2/LeaderFirstLoginActivity.java
 com/example/kidi2/VPAdapter.java
  com.example.kidi2.VPAdapter
  com.example.kidi2.VPAdapter$1
+ com.example.kidi2.VPAdapter$2
+ com.example.kidi2.VPAdapter$3
+ com.example.kidi2.VPAdapter$3$1
+ com.example.kidi2.VPAdapter$3$2
  com.example.kidi2.VPAdapter$ViewHolder
 com/example/kidi2/DataModelParent.java
  com.example.kidi2.DataModelParent
@@ -171,7 +175,6 @@ com/example/kidi2/KidName.java
  com.example.kidi2.KidName$3
  com.example.kidi2.KidName$4
  com.example.kidi2.KidName$5
- com.example.kidi2.KidName$6
 com/example/kidi2/SliderTransformer.java
  com.example.kidi2.SliderTransformer
 com/example/kidi2/RetrofitAPIGrp2.java

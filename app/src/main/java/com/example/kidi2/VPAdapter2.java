@@ -19,9 +19,9 @@ import java.util.ArrayList;
 public class VPAdapter2 extends RecyclerView.Adapter<VPAdapter2.ViewHolder> {
 
     ArrayList<ViewPagerItem> viewPagerItemArrayList;
-Context ctx;
-String[] kidsID;
-int positiontemp;
+    Context ctx;
+    String[] kidsID;
+    int positiontemp;
 
     public Boolean getSharedp() {
         return sharedp;

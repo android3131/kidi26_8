@@ -36,13 +36,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Activity extends AppCompatActivity {
     private EditText fromDateText;
     private BottomNavigationView navigationView;
+    private int statefilter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity);
 /////////////////////////////////////////
-
+        reloadavtivities();
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyKIDIPref", 0); // 0 - for private mode
         SharedPreferences.Editor editor = pref.edit();        navigationView = findViewById(R.id.navibarActivity);
 
@@ -103,27 +104,30 @@ public class Activity extends AppCompatActivity {
         ArrayAdapter<String> adpCategory = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arrayListCategory);
         spinnerCategory.setAdapter(adpCategory);
 
-            String state=pref.getString("meetingState",null);
+        String state=pref.getString("meetingState",null);
 
-            editor.commit();
-            switch(state){
-                case "all":
-                    spinnerState.setSelection(0);
-                    break;
-                case "active":
-                    spinnerState.setSelection(1);
-                    break;
-                case "completed":
-                    spinnerState.setSelection(2);
-                    break;
-            }
+        editor.commit();
+        switch(state){
+            case "all":
+
+                spinnerState.setSelection(0);
+                break;
+            case "active":
+
+                spinnerState.setSelection(1);
+                break;
+            case "completed":
+
+                spinnerState.setSelection(2);
+                break;
+        }
 
         spinnerKid.setVisibility(View.VISIBLE);
         //Set listener Called when the item is selected in spinner
         spinnerKid.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long arg3) {
-
+                reloadavtivities();
 
             }
 
@@ -138,7 +142,8 @@ public class Activity extends AppCompatActivity {
         spinnerState.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long arg3) {
-
+                statefilter=spinnerState.getSelectedItemPosition();
+                reloadavtivities();
 
             }
 
@@ -153,7 +158,7 @@ public class Activity extends AppCompatActivity {
         spinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long arg3) {
-
+                reloadavtivities();
 
             }
 
@@ -165,7 +170,7 @@ public class Activity extends AppCompatActivity {
 
         ////////////////////////
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(String.valueOf(R.string.BASE_URL))
+                .baseUrl(getString(R.string.BASE_URL))
                 // when sending data in json format we have to add Gson converter factory
                 .addConverterFactory(GsonConverterFactory.create())
                 // and build our retrofit builder.
@@ -173,22 +178,6 @@ public class Activity extends AppCompatActivity {
 
         // create an instance for our retrofit api class.
         RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
-
-
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService
-                (this.LAYOUT_INFLATER_SERVICE);
-        LinearLayout scrollViewLinearlayout = (LinearLayout) findViewById(R.id.scrollViewLayoutID);
-        // The layout inside scroll view
-        for (int i = 0; i < 5; i++) {
-            LinearLayout layout2 = new LinearLayout(this);
-            layout2.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT));
-            View item = inflater.inflate(R.layout.viewpager_item, null, false);
-            layout2.setId(i);
-            layout2.addView(item);
-            scrollViewLinearlayout.addView(layout2);
-        }
-
 
 ///////////////////////////////
         MaterialDatePicker.Builder<Pair<Long, Long>> builder = MaterialDatePicker.Builder.dateRangePicker();
@@ -218,5 +207,33 @@ public class Activity extends AppCompatActivity {
 
         //////////////////////////
     }
-
+    public void reloadavtivities() {
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService
+                (this.LAYOUT_INFLATER_SERVICE);
+        LinearLayout scrollViewLinearlayout = (LinearLayout) findViewById(R.id.scrollViewLayoutID);
+        scrollViewLinearlayout.removeAllViews();
+        if(statefilter!=2) {
+            // The layout inside scroll view
+            for (int i = 0; i < 5; i++) {
+                LinearLayout layout2 = new LinearLayout(this);
+                layout2.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
+                View item = inflater.inflate(R.layout.viewpager_item, null, false);
+                layout2.setId(i);
+                layout2.addView(item);
+                scrollViewLinearlayout.addView(layout2);
+            }
+        }
+        if(statefilter!=1) {
+            for (int i = 5; i < 10; i++) {
+                LinearLayout layout2 = new LinearLayout(this);
+                layout2.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
+                View item = inflater.inflate(R.layout.viewpager_item2, null, false);
+                layout2.setId(i);
+                layout2.addView(item);
+                scrollViewLinearlayout.addView(layout2);
+            }
+        }
+    }
 }

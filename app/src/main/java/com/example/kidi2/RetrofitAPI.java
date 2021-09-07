@@ -1,5 +1,6 @@
 package com.example.kidi2;
 
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
@@ -15,15 +16,11 @@ public interface RetrofitAPI {
     Call<DataModelParent> sendMailToUser(@Path("name") String name);
 
     //HomeLogin
-    @GET("getkidslistbyparent/{id}")
-    Call<List<Kid>> getAllKidsOfParent(@Path("id") String id);
 
-    @GET("getkidsfinishedcoursessortedlist/{id}")
-    Call<List<MeetingParticipant>> getkidsfinishedcoursessortedlist(@Path("id") String id);
-
-    @GET("getkidsactivecoursessortedlist/{id}")
-    Call<List<MeetingParticipant>> getAllKidsActiveCoursesSorted(@Path("id") String id);
-
+    @GET("funweplangetkidscoursessorted/{id}")
+    Call<HashMap<List<Kid>,List<Meeting>>> getAllKidsNextCoursesSorted(@Path("id") String id);
+    @GET("funwehadgetfinishedkidscoursessorted/{id}")
+    Call<HashMap<List<Kid>,List<Meeting>>> getAllKidsFinishedCoursesSorted(@Path("id") String id);
     //KidName
     @GET("getkidbyid/{kidid}")
     Call<Kid> getKid(@Path("kidid") String kidid);
@@ -33,6 +30,10 @@ public interface RetrofitAPI {
 
     @GET("getnumbercompletedcourses/{kidid}")
     Call<Integer> getNumberCompletedCourses(@Path("kidid") String kidid);
+    @GET("getlistofkidsactivecoursessorted/{id}")
+    Call<List<Meeting>> getAllKidsActiveCoursesSortedKidProfile(@Path("id") String id);
+    @GET("getlistofkidscompletedcoursessortedkid/{id}")
+    Call<List<Meeting>> getAllKidsCompletedCoursesSortedKidProfile(@Path("id") String id);
 
 
 }

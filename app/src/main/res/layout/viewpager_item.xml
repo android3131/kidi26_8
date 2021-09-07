@@ -30,7 +30,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#edc655"
+                android:background="#edc967"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -111,18 +111,9 @@
                         android:id="@+id/trashB"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="110dp"
+                        android:layout_marginLeft="150dp"
                         android:layout_marginTop="10dp"
-                        android:background="#edc655"
-                        app:srcCompat="@drawable/pencil" />
-
-                    <ImageButton
-                        android:id="@+id/pencilB"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="10dp"
-                        android:background="#edc655"
+                        android:background="#edc967"
                         app:srcCompat="@drawable/shape" />
 
                     <ImageButton
@@ -131,7 +122,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="10dp"
-                        android:background="#edc655"
+                        android:background="#edc967"
                         android:foregroundGravity="right"
                         app:srcCompat="@drawable/chat_bubbles" />
                 </LinearLayout>

@@ -2316,7 +2316,6 @@ id password_toggle
 id path
 id pathRelative
 id peekHeight
-id pencilB
 id percent
 id phone_text
 id photoField
@@ -2458,7 +2457,6 @@ id textView2
 id textView3
 id textView4
 id textView6
-id textView8
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon

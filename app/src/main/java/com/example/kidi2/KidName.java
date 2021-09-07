@@ -28,9 +28,11 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.lang.reflect.Field;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -42,10 +44,10 @@ import retrofit2.http.Path;
 
 public class KidName extends AppCompatActivity {
     private ViewPager2 viewPager, viewPager2;
-    private ImageButton returnB,kidProfilePic;
-    private ArrayList<ViewPagerItem> viewPagerItemArrayList;
+    private ImageButton returnB, kidProfilePic;
+    private ArrayList<ViewPagerItem> viewPagerItemArrayList,viewPagerItemArrayListCompleted;
     private BottomNavigationView navigationView;
-    private TextView viewActive, viewCompleted,numberofactive,numberofcompleted;
+    private TextView viewActive, viewCompleted, numberofactive, numberofcompleted, kidName, kidName2;
     private String kidid;
     private Button addActivityBtn;
 
@@ -87,16 +89,18 @@ public class KidName extends AppCompatActivity {
                 return false;
             }
         });
-        numberofactive=findViewById(R.id.numberofactive);
-        numberofcompleted=findViewById(R.id.numberofcompleted);
+        numberofactive = findViewById(R.id.numberofactive);
+        numberofcompleted = findViewById(R.id.numberofcompleted);
         kidProfilePic = findViewById(R.id.kidImageID);
         viewActive = findViewById(R.id.viewAllActiveKidID);
         viewCompleted = findViewById(R.id.viewAllCompletedKidID);
-        addActivityBtn=findViewById(R.id.addActivityBtn);
+        addActivityBtn = findViewById(R.id.addActivityBtn);
+        kidName = findViewById(R.id.kidNameID);
+        kidName2 = findViewById(R.id.kidnameIDText);
         addActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(KidName.this,Addactivity.class));
+                startActivity(new Intent(KidName.this, Addactivity.class));
             }
         });
         kidid = "kidid";
@@ -116,79 +120,9 @@ public class KidName extends AppCompatActivity {
                 startActivity(new Intent(KidName.this, Activity.class));
             }
         });
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(getString(R.string.BASE_URL)
-                )
-                // when sending data in json format we have to add Gson converter factory
-                .addConverterFactory(GsonConverterFactory.create())
-                // and build our retrofit builder.
-                .build();
-
-        // create an instance for our retrofit api class.
-        RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
-        Call<Kid> call = retrofitAPI.getKid(kidid);
-        call.enqueue(new Callback<Kid>() {
 
 
-            @Override
-
-            public void onResponse(Call<Kid> call, Response<Kid> response) {
-                // this method is called when we get response from our api.
-                Kid kid = response.body();
-                Resources r = getResources();
-                int drawableId = r.getIdentifier(kid.getImage(), "drawable",
-                        "com.mypackage.myapp");
-
-                try {
-                    Class res = R.drawable.class;
-                    Field field = res.getField("drawableName");
-                    drawableId = field.getInt(null);
-                } catch (Exception e) {
-                    Log.e("MyTag", "Failure to get drawable id.", e);
-                }
-                kidProfilePic.setImageResource(drawableId);
-
-
-            }
-
-            @Override
-            public void onFailure(Call<Kid> call, Throwable t) {
-
-            }
-        });
-        Call<Integer> callnumberofactive = retrofitAPI.getNumberActiveCourses(kidid);
-
-        try {
-            Response<Integer> response = callnumberofactive.execute();
-              int numofactive=response.body();
-
-                numberofactive.setText(String.valueOf(numofactive));
-
-
-            }
-
-  catch(Exception e){
-                int numofactive=5;
-                numberofactive.setText(String.valueOf(numofactive));
-            }
-
-    Call<Integer> callnumberofcompleted = retrofitAPI.getNumberCompletedCourses(kidid);
-        try {
-        Response<Integer> response = callnumberofcompleted.execute();
-        int numofcompleted=response.body();
-
-        numberofactive.setText(String.valueOf(numofcompleted));
-
-
-    }
-
-  catch(Exception e){
-        int numofcompleted=3;
-        numberofcompleted.setText(String.valueOf(numofcompleted));
-    }
-
-
-        //////////////////////////
+        /////////////////////////////
         viewPager = findViewById(R.id.viewpagerKid1);
         viewPager2 = findViewById(R.id.viewpagerKid2);
         returnB = findViewById(R.id.returnBID);
@@ -200,23 +134,45 @@ public class KidName extends AppCompatActivity {
         });
         int[] images = {R.drawable.girl, R.drawable.girl, R.drawable.girl, R.drawable.girl, R.drawable.girl};
         String[] names = {"elie", "wafik", "jana", "fofo", "ahmed"};
-        String[] dates = {"21 jul", "31 aug", "16 dec", "21 jan", "23 aug"};
-        final Calendar myCalendar = Calendar.getInstance();
+        Date[] dates = {
+                new Date(), new Date(), new Date(), new Date(), new Date()
+
+        };
+
 
         String[] describtion = {"math", "art", "sport", "space", "physics"};
 
+        int[] imagesCompleted = {R.drawable.girl, R.drawable.girl, R.drawable.girl, R.drawable.girl, R.drawable.girl};
+        String[] namesCompleted = {"elie", "wafik", "jana", "fofo", "ahmed"};
+        Date[] datesCompleted = {
+                new Date(), new Date(), new Date(), new Date(), new Date()
+
+        };
+
+
+        String[] describtionCompleted = {"math", "art", "sport", "space", "physics"};
+
         viewPagerItemArrayList = new ArrayList<>();
+        viewPagerItemArrayListCompleted = new ArrayList<>();
+
+
+
+
+        //////////////////////////
+
 
         for (int i = 0; i < images.length; i++) {
 
-            ViewPagerItem viewPagerItem = new ViewPagerItem(images[i], dates[i], names[i], "see profile", describtion[i]);
+            ViewPagerItem viewPagerItem = new ViewPagerItem(images[i], "dates", names[i], "see profile", describtion[i]);
             viewPagerItemArrayList.add(viewPagerItem);
+            ViewPagerItem viewPagerItemCompleted = new ViewPagerItem(images[i], "dates", names[i], "see profile", describtion[i]);
+            viewPagerItemArrayListCompleted.add(viewPagerItemCompleted);
 
 
         }
 
         VPAdapter vpAdapter = new VPAdapter(viewPagerItemArrayList);
-        VPAdapter2 vpAdapter2 = new VPAdapter2(viewPagerItemArrayList);
+        VPAdapter2 vpAdapter2 = new VPAdapter2(viewPagerItemArrayListCompleted);
         vpAdapter.setSharedp(true);
         vpAdapter.setCtx(this);
         vpAdapter2.setSharedp(true);
@@ -264,6 +220,163 @@ public class KidName extends AppCompatActivity {
         new TabLayoutMediator(tabLayout2, viewPager2,
                 (tab, position) -> tab.setText("" + (position + 1))
         ).attach();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(getString(R.string.BASE_URL))
+                // when sending data in json format we have to add Gson converter factory
+                .addConverterFactory(GsonConverterFactory.create())
+                // and build our retrofit builder.
+                .build();
+
+        // create an instance for our retrofit api class.
+        RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
+
+////////////////////////////////////////////////////////////////////getkid
+        Call<Kid> call = retrofitAPI.getKid(kidid);
+
+        try{
+            Response<Kid> response=call.execute();
+            Kid kid=response.body();
+            Resources r = getResources();
+            int drawableId = r.getIdentifier(kid.getImage(), "drawable",
+                    "com.mypackage.myapp");
+
+            try {
+                Class res = R.drawable.class;
+                Field field = res.getField("drawableName");
+                drawableId = field.getInt(null);
+            } catch (Exception e) {
+                Log.e("MyTag", "Failure to get drawable id.", e);
+            }
+            kidProfilePic.setImageResource(drawableId);
+            kidName.setText(kid.getFullName());
+            kidName2.setText(kid.getFullName());
+            for (int i = 0; i < images.length; i++) {
+
+                viewPagerItemArrayList.get(i).setName(kid.getFullName());
+
+                viewPagerItemArrayList.get(i).setImageID(drawableId);
+                viewPagerItemArrayListCompleted.get(i).setName(kid.getFullName());
+
+                viewPagerItemArrayListCompleted.get(i).setImageID(drawableId);
+            }
+            viewPager.getAdapter().notifyDataSetChanged();
+            viewPager2.getAdapter().notifyDataSetChanged();
+        }
+        catch(Exception e){
+            kidName.setText("name");
+            kidName2.setText("name");
+            for (int i = 0; i < images.length; i++) {
+
+                viewPagerItemArrayList.get(i).setName("name test");
+                viewPagerItemArrayListCompleted.get(i).setName("name test2");
+
+
+
+            }
+            viewPager.getAdapter().notifyDataSetChanged();
+            viewPager2.getAdapter().notifyDataSetChanged();
+        }
+
+        //get number of active courses
+        Call<Integer> callnumberofactive = retrofitAPI.getNumberActiveCourses(kidid);
+
+        try {
+            Response<Integer> response = callnumberofactive.execute();
+            int numofactive = response.body();
+
+            numberofactive.setText(String.valueOf(numofactive));
+
+
+        } catch (Exception e) {
+            int numofactive = 5;
+            numberofactive.setText(String.valueOf(numofactive));
+        }
+
+
+        /////get number of completed courses
+        Call<Integer> callnumberofcompleted = retrofitAPI.getNumberCompletedCourses(kidid);
+        try {
+            Response<Integer> response = callnumberofcompleted.execute();
+            int numofcompleted = response.body();
+
+            numberofactive.setText(String.valueOf(numofcompleted));
+
+
+        } catch (Exception e) {
+            int numofcompleted = 3;
+            numberofcompleted.setText(String.valueOf(numofcompleted));
+        }
+
+////////////////get list of active courses
+        Call<List<Meeting>> callActiveCourses = retrofitAPI.getAllKidsActiveCoursesSortedKidProfile(kidid);
+
+        try {
+            Response<List<Meeting>> response= callActiveCourses.execute();
+            List<Meeting> meetings=response.body();
+            for (int i = 0; i < images.length; i++) {
+
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+                dates[i] = meetings.get(i).getMeetingDateTime();
+                String strDate = dateFormat.format(dates[i]);
+                describtion[i] = meetings.get(i).getId();
+
+                Resources r = getResources();
+
+                viewPagerItemArrayList.get(i).setDescription(describtion[i]);
+
+                viewPagerItemArrayList.get(i).setDate(strDate);
+
+
+            }
+            viewPager.getAdapter().notifyDataSetChanged();
+
+        } catch (Exception e) {
+            for (int i = 0; i < images.length; i++) {
+
+                viewPagerItemArrayList.get(i).setDescription("describtion test");
+
+                viewPagerItemArrayList.get(i).setDate("date test");
+            }
+            viewPager.getAdapter().notifyDataSetChanged();
+
+
+        }
+
+        ///////////////////////////////////////////
+        Call<List<Meeting>> callCompletedCourses = retrofitAPI.getAllKidsCompletedCoursesSortedKidProfile(kidid);
+
+        try {
+            Response<List<Meeting>> response= callActiveCourses.execute();
+            List<Meeting> meetings=response.body();
+            for (int i = 0; i < images.length; i++) {
+
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+                datesCompleted[i] = meetings.get(i).getMeetingDateTime();
+                String strDate = dateFormat.format(dates[i]);
+                describtionCompleted[i] = meetings.get(i).getId();
+
+                Resources r = getResources();
+
+                viewPagerItemArrayListCompleted.get(i).setDescription(describtionCompleted[i]);
+
+                viewPagerItemArrayListCompleted.get(i).setDate(strDate);
+
+
+            }
+            viewPager2.getAdapter().notifyDataSetChanged();
+
+        } catch (Exception e) {
+            for (int i = 0; i < images.length; i++) {
+
+                viewPagerItemArrayListCompleted.get(i).setDescription("describtion test2");
+
+                viewPagerItemArrayListCompleted.get(i).setDate("date test2");
+            }
+            viewPager2.getAdapter().notifyDataSetChanged();
+
+
+        }
+
     }
 
 }

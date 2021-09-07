@@ -160,32 +160,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight="0"
-                        android:text="Activity Name"
-                        android:textColor="@color/black" />
-
-                    <Button
-                        android:id="@+id/button2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="130dp"
-                        android:layout_weight="0"
-                        android:background="@drawable/myrect7"
-                        android:text="Quit Activity"
-                        app:backgroundTint="#4e7fe7" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:orientation="vertical">
                     androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/viewpager"
@@ -268,6 +242,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
+                android:background="@color/white"
                 android:orientation="vertical"></LinearLayout>
 
 
