@@ -88,7 +88,7 @@ public class Addactivity extends AppCompatActivity {
     private void getData(int categoryId, int childId) {
         // create retrofit builder and pass our base url
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(String.valueOf(R.string.BASE_URL))
+                .baseUrl(getString(R.string.BASE_URL))
                 // when sending data in json format we have to add Gson converter factory
                 .addConverterFactory(GsonConverterFactory.create())
                 // and build our retrofit builder.

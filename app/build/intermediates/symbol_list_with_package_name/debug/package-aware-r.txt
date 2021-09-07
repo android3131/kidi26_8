@@ -1724,6 +1724,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable button_background
 drawable chat_bubbles
 drawable chat_bubbles_copy
 drawable checkboxgrp6
@@ -1762,6 +1763,7 @@ drawable group_75
 drawable home
 drawable ic_action_name
 drawable ic_add
+drawable ic_add_arrow
 drawable ic_baseline_delete_outline_24
 drawable ic_baseline_edit_24
 drawable ic_calender
@@ -1770,6 +1772,8 @@ drawable ic_check
 drawable ic_checkgrp6
 drawable ic_clock_black_24dp
 drawable ic_courses
+drawable ic_delete
+drawable ic_down_arrow
 drawable ic_drop
 drawable ic_home
 drawable ic_keyboard_black_24dp
@@ -1784,6 +1788,7 @@ drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_person
 drawable ic_prev_arrow
+drawable ic_up_arrow
 drawable ic_user
 drawable image_custome
 drawable img
@@ -1849,6 +1854,7 @@ drawable prgrsdrft
 drawable progress_bar2
 drawable progress_bar_3
 drawable progressbar_4
+drawable recycler_view_divider
 drawable right_arrow
 drawable rounded_corner
 drawable selected_dot
@@ -1870,6 +1876,7 @@ drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable unchecked
 drawable uncheckedgrp6
+drawable update_button
 drawable user
 drawable week_background
 drawable year_background
@@ -1942,7 +1949,10 @@ id action_mode_bar_stub
 id action_mode_close_button
 id action_text
 id actions
+id active
 id activeText
+id active_date_tv
+id active_tv
 id activities_chart
 id activities_perc
 id activityButtonHomeID
@@ -1956,9 +1966,12 @@ id addButtonHomeID
 id addToCalendar
 id addToCalendarCard
 id add_button
+id add_column
 id add_to_my_calendar
 id address_text
 id admin_main_fragments
+id age
+id age_tv
 id alertTitle
 id aligned
 id all
@@ -1991,6 +2004,7 @@ id bottomNavigationNotificatonsMenuId
 id bottomNavigationUserMenuId
 id bounce
 id boy_box
+id btnAdd
 id button2
 id buttonPanel
 id buttons
@@ -2006,6 +2020,7 @@ id chain
 id chains
 id checkBox
 id checkBox3
+id check_box
 id checkbox
 id checked
 id children_chart
@@ -2071,6 +2086,7 @@ id disablePostScroll
 id disableScroll
 id disjoint
 id dots_container
+id down_arrow
 id dragDown
 id dragEnd
 id dragLeft
@@ -2094,6 +2110,7 @@ id elastic
 id email_text
 id end
 id endToStart
+id enter
 id enterAlways
 id enterAlwaysCollapsed
 id exemptionSubHeading4
@@ -2142,6 +2159,7 @@ id homeAsUp
 id homeCard
 id home_page
 id honorRequest
+id horizontalScrollView
 id hour_end
 id hour_start
 id icon
@@ -2186,6 +2204,7 @@ id linear
 id linear1
 id linearLayout
 id linearLayout2
+id linearLayout3
 id listMode
 id list_item
 id llsubhead
@@ -2322,6 +2341,7 @@ id recycler
 id recyclerView
 id recycler_view1
 id recycler_view2
+id recyclerview
 id returnBID
 id reverseSawtooth
 id right
@@ -2401,6 +2421,7 @@ id stop
 id stretch
 id submenuarrow
 id submit_area
+id sv
 id tabMode
 id tab_layout
 id tab_layout2
@@ -2473,14 +2494,19 @@ id trashB
 id triangle
 id txt1
 id txt2
+id type
+id type_tv
 id unchecked
 id uniform
 id unlabeled
 id up
+id up_arrow
 id update_button
 id useLogo
 id userImage
+id username
 id username_field
+id username_tv
 id users_page
 id v_layout
 id view
@@ -2616,6 +2642,7 @@ layout fragment_leaders
 layout fragment_more
 layout fragment_user
 layout home_login
+layout item_layout
 layout kid_name
 layout layout_dialog
 layout material_chip_input_combo
@@ -2671,11 +2698,13 @@ layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
 layout privacy_policy
+layout recycler_layout
 layout reg_first_parent
 layout rv_row
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout set_leader_admin
 layout slider_item
 layout spinner_item
 layout style_spinner
@@ -2707,6 +2736,7 @@ menu navimenu
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
+string BASE_URL
 string a_desc
 string abc_action_bar_home_description
 string abc_action_bar_up_description
@@ -2736,6 +2766,7 @@ string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string add_course
+string add_leader
 string admin_set_courses
 string app_name
 string appbar_scrolling_view_behavior
@@ -2771,6 +2802,7 @@ string hello_second_fragment
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string item_view_role_description
+string leader_management
 string lorem_ipsom_dollar_sit_map
 string material_clock_display_divider
 string material_clock_toggle_content_description
@@ -2838,6 +2870,7 @@ string phone
 string previous
 string red
 string retype_password
+string search_by_username
 string search_menu_title
 string second_fragment_label
 string select_date
@@ -2856,6 +2889,8 @@ style Animation_AppCompat_DropDownUp
 style Animation_AppCompat_Tooltip
 style Animation_Design_BottomSheetDialog
 style Animation_MaterialComponents_BottomSheetDialog
+style AppTheme
+style AppTheme_NoActionBar
 style Base_AlertDialog_AppCompat
 style Base_AlertDialog_AppCompat_Light
 style Base_Animation_AppCompat_Dialog
@@ -3265,7 +3300,6 @@ style Theme_Design_Light
 style Theme_Design_Light_BottomSheetDialog
 style Theme_Design_Light_NoActionBar
 style Theme_Design_NoActionBar
-style Theme_Kidi2
 style Theme_MaterialComponents
 style Theme_MaterialComponents_BottomSheetDialog
 style Theme_MaterialComponents_Bridge

@@ -24,20 +24,22 @@ public class LeaderFirstLoginActivity extends AppCompatActivity {
     EditText usernameText;
     EditText passwordText;
     //Retrofit calls
-    Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl(String.valueOf(R.string.BASE_URL)
-            )
-            // when sending data in json format we have to add Gson converter factory
-            .addConverterFactory(GsonConverterFactory.create())
-            // and build our retrofit builder.
-            .build();
+    Retrofit retrofit ;
 
-    RetrofitAPILoginScreen retrofitAPI = retrofit.create(RetrofitAPILoginScreen.class);
+    RetrofitAPILoginScreen retrofitAPI ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leader_first_login);
+         retrofit = new Retrofit.Builder()
+                .baseUrl(getString(R.string.BASE_URL)
+                )
+                // when sending data in json format we have to add Gson converter factory
+                .addConverterFactory(GsonConverterFactory.create())
+                // and build our retrofit builder.
+                .build();
+         retrofitAPI = retrofit.create(RetrofitAPILoginScreen.class);
         pref = getSharedPreferences("MyKIDIPref", MODE_PRIVATE); // 0 - for private mode
         editor = pref.edit();
         usernameText = (EditText) findViewById(R.id.username_field);

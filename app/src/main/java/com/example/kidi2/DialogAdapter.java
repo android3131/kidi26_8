@@ -76,7 +76,7 @@ private Context ctx;
        }
         else {
            Retrofit retrofit = new Retrofit.Builder()
-                   .baseUrl(String.valueOf(R.string.BASE_URL)
+                   .baseUrl(getString(R.string.BASE_URL)
                    )
                    // when sending data in json format we have to add Gson converter factory
                    .addConverterFactory(GsonConverterFactory.create())

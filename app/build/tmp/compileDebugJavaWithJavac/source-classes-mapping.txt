@@ -6,6 +6,8 @@ com/example/kidi2/ViewPagerItem.java
  com.example.kidi2.ViewPagerItem
 com/example/kidi2/Gender.java
  com.example.kidi2.Gender
+com/example/kidi2/RetrofitAPIAdminSetLeader.java
+ com.example.kidi2.RetrofitAPIAdminSetLeader
 com/example/kidi2/CustomCheckbox.java
  com.example.kidi2.CustomCheckbox
 com/example/kidi2/MyAdapter.java
@@ -15,6 +17,8 @@ com/example/kidi2/Course2.java
  com.example.kidi2.Course2
 com/example/kidi2/RetrofitAPI.java
  com.example.kidi2.RetrofitAPI
+com/example/kidi2/QuantityListener.java
+ com.example.kidi2.QuantityListener
 com/example/kidi2/DataModelKid.java
  com.example.kidi2.DataModelKid
 com/example/kidi2/RVitem3.java
@@ -68,6 +72,10 @@ com/example/kidi2/AdminSetCourse.java
  com.example.kidi2.AdminSetCourse$4
 com/example/kidi2/ParentGrp2.java
  com.example.kidi2.ParentGrp2
+com/example/kidi2/LeaderAdapter.java
+ com.example.kidi2.LeaderAdapter
+ com.example.kidi2.LeaderAdapter$1
+ com.example.kidi2.LeaderAdapter$ViewHolder
 com/example/kidi2/DialogAdapter.java
  com.example.kidi2.DialogAdapter
  com.example.kidi2.DialogAdapter$1
@@ -127,6 +135,8 @@ com/example/kidi2/FirstParentReg.java
  com.example.kidi2.FirstParentReg$5
  com.example.kidi2.FirstParentReg$6
  com.example.kidi2.FirstParentReg$7
+com/example/kidi2/SimpleDividerItemDecoration.java
+ com.example.kidi2.SimpleDividerItemDecoration
 com/example/kidi2/Course1.java
  com.example.kidi2.Course1
 com/example/kidi2/RetrofitAPIThirdParentReg.java
@@ -150,6 +160,10 @@ com/example/kidi2/StateVO.java
 com/example/kidi2/RvAdapter.java
  com.example.kidi2.RvAdapter
  com.example.kidi2.RvAdapter$MyViewHolder
+com/example/kidi2/AdminSetLeader.java
+ com.example.kidi2.AdminSetLeader
+ com.example.kidi2.AdminSetLeader$1
+ com.example.kidi2.AdminSetLeader$2
 com/example/kidi2/KidName.java
  com.example.kidi2.KidName
  com.example.kidi2.KidName$1
@@ -232,6 +246,8 @@ com/example/kidi2/Category.java
  com.example.kidi2.Category
 com/example/kidi2/RVitem.java
  com.example.kidi2.RVitem
+com/example/kidi2/Leaders.java
+ com.example.kidi2.Leaders
 com/example/kidi2/MySingletone.java
  com.example.kidi2.MySingletone
 com/example/kidi2/RetroFitAPI3.java
@@ -260,3 +276,7 @@ com/example/kidi2/KidiOnItemSelectedListener.java
  com.example.kidi2.KidiOnItemSelectedListener
 com/example/kidi2/RetrofitAPI6.java
  com.example.kidi2.RetrofitAPI6
+com/example/kidi2/QuantityAapter.java
+ com.example.kidi2.QuantityAapter
+ com.example.kidi2.QuantityAapter$1
+ com.example.kidi2.QuantityAapter$viewHolder

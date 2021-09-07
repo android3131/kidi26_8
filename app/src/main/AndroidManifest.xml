@@ -10,28 +10,38 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Kidi2"
+        android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
             android:name=".LeaderFirstLoginActivity"
             android:exported="true" />
         <activity
+            android:name=".AdminSetLeader"
+            android:exported="true"></activity> <!-- ACTIVITIES -->
+        <activity
             android:name=".ForthParentReg"
             android:exported="true"></activity> <!-- ACTIVITIES -->
         <!-- FIRST SCREEN -->
-        <activity android:name=".FirstScreen">
+        <activity android:name=".FirstScreen"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- HOME LOGIN -->
-        <activity android:name=".HomeLogin" /> <!-- KID NAME -->
-        <activity android:name=".KidName" /> <!-- ACTIVITY -->
-        <activity android:name=".Activity" />
-        <activity android:name=".LogInScreenActivity" />
-        <activity android:name=".ThirdParentRegActivity" />
-        <activity android:name=".Addactivity" /> <!-- feisal and yael activities -->
+        <activity android:name=".HomeLogin"
+            android:exported="true"/> <!-- KID NAME -->
+        <activity android:name=".KidName"
+            android:exported="true"/> <!-- ACTIVITY -->
+        <activity android:name=".Activity"
+            android:exported="true"/>
+        <activity android:name=".LogInScreenActivity"
+            android:exported="true"/>
+        <activity android:name=".ThirdParentRegActivity"
+            android:exported="true" />
+        <activity android:name=".Addactivity"
+            android:exported="true"/> <!-- feisal and yael activities -->
         <activity
             android:name=".AdminSetCourse"
             android:exported="true" />

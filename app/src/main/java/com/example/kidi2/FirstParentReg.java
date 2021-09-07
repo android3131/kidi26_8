@@ -46,16 +46,9 @@ public class FirstParentReg extends AppCompatActivity  {
     LinearLayout layout;
     RecyclerView rv;
 
-    Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl(String.valueOf(R.string.BASE_URL)
-
-            )
-            // when sending data in json format we have to add Gson converter factory
-            .addConverterFactory(GsonConverterFactory.create())
-            // and build our retrofit builder.
-            .build();
+    Retrofit retrofit ;
     // create an instance for our retrofit api class.
-    RetroFitAPI2 retrofitAPI = retrofit.create(RetroFitAPI2.class);
+    RetroFitAPI2 retrofitAPI ;
     Spinner spinner;
 
 
@@ -65,6 +58,16 @@ public class FirstParentReg extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_parent_reg);
+         retrofit = new Retrofit.Builder()
+                .baseUrl(getString(R.string.BASE_URL)
+
+                )
+                // when sending data in json format we have to add Gson converter factory
+                .addConverterFactory(GsonConverterFactory.create())
+                // and build our retrofit builder.
+                .build();
+        // create an instance for our retrofit api class.
+         retrofitAPI = retrofit.create(RetroFitAPI2.class);
         nextB = findViewById(R.id.nextButton);
         nextB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -198,6 +201,8 @@ public class FirstParentReg extends AppCompatActivity  {
 
             @Override
             public void onFailure(Call<List<DataModel>> call, Throwable t) {
+                Toast.makeText(FirstParentReg.this, "Failure", Toast.LENGTH_SHORT).show();
+
 
             }
         });

@@ -65,20 +65,23 @@ public class ThirdParentRegActivity extends AppCompatActivity implements Adapter
 
     boolean flag=false;
 
-    Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl(String.valueOf(R.string.BASE_URL)
-            )
-            // when sending data in json format we have to add Gson converter factory
-            .addConverterFactory(GsonConverterFactory.create())
-            // and build our retrofit builder.
-            .build();
+    Retrofit retrofit ;
 
-    RetrofitAPIThirdParentReg retrofitAPI = retrofit.create(RetrofitAPIThirdParentReg.class);
+    RetrofitAPIThirdParentReg retrofitAPI ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third_parent_reg);
+         retrofit = new Retrofit.Builder()
+                .baseUrl(getString(R.string.BASE_URL)
+                )
+                // when sending data in json format we have to add Gson converter factory
+                .addConverterFactory(GsonConverterFactory.create())
+                // and build our retrofit builder.
+                .build();
+
+         retrofitAPI = retrofit.create(RetrofitAPIThirdParentReg.class);
         switchToThirdActivity = findViewById(R.id.fourth_next_button);
         backButton = findViewById(R.id.fourth_back_button);
         backButton.setOnClickListener(view -> finish());
@@ -476,7 +479,7 @@ public class ThirdParentRegActivity extends AppCompatActivity implements Adapter
                 //  .baseUrl("https://examples-and-exercises.herokuapp.com/android/profile/")
                 // ///http://localhost:8082/spring-rest/fileserver/singlefileupload/
                 // .baseUrl("http://10.0.2.2:2255/")
-                .baseUrl(String.valueOf(R.string.BASE_URL)
+                .baseUrl(getString(R.string.BASE_URL)
                 )
 
                 // when sending data in json format we have to add Gson converter factory

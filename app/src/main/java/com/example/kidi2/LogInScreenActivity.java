@@ -18,6 +18,7 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import okhttp3.HttpUrl;
 import okhttp3.RequestBody;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,20 +36,21 @@ public class LogInScreenActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
 
     //Retrofit calls
-    Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl(String.valueOf(R.string.BASE_URL)
-            )
-            // when sending data in json format we have to add Gson converter factory
-            .addConverterFactory(GsonConverterFactory.create())
-            // and build our retrofit builder.
-            .build();
+    Retrofit retrofit;
 
-    RetrofitAPILoginScreen retrofitAPI = retrofit.create(RetrofitAPILoginScreen.class);
+    RetrofitAPILoginScreen retrofitAPI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
+        retrofit = new Retrofit.Builder()
+                .baseUrl(getString(R.string.BASE_URL))
+                // when sending data in json format we have to add Gson converter factory
+                .addConverterFactory(GsonConverterFactory.create())
+                // and build our retrofit builder.
+                .build();
+        retrofitAPI = retrofit.create(RetrofitAPILoginScreen.class);
         usernameText = (EditText) findViewById(R.id.username_field);
         passwordText = (EditText) findViewById(R.id.password_field);
         Login = findViewById(R.id.signin_button);
@@ -69,6 +71,22 @@ public class LogInScreenActivity extends AppCompatActivity {
     }
 
     private void checkData(String username, String password) {
+        ////////////////////// delete after test ///////////////
+        if(username.equals("Parent")){
+            startActivity(new Intent(LogInScreenActivity.this, HomeLogin.class));
+            return;
+        }
+        else if(username.equals("Admin")){
+            startActivity(new Intent(LogInScreenActivity.this, AdminMainActivity.class));
+            return;
+        }
+
+
+
+
+
+
+        ////////////////////////////////////////
         Log.d("Mohammad", "success" + username + " " + password);
         User user = new User(username, password);
         Call<HashMap<String,String>> call = retrofitAPI.createCheckUserPass(user);
