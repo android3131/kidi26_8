@@ -59,6 +59,14 @@
             android:name=".AdminMainActivity"
             android:exported="true" />
         <activity
+            android:name=".LinksActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".webViewBrowser"
+            android:exported="true" />
+
+        <activity
             android:name=".ParentProfileActivity"
             android:exported="true" />
     </application>

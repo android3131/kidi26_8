@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\win10\AndroidStudioProjects\KIDI2\kidi26_8\app\src\main\assets"/><source path="C:\Users\win10\AndroidStudioProjects\KIDI2\kidi26_8\app\build\intermediates\shader_assets\debug\out"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\win10\AndroidStudioProjects\KIDI2\kidi26_8\app\src\debug\assets"/></dataSet></merger>
+=======
+<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\ahmed\Desktop\kidi26_8\app\src\main\assets"/><source path="C:\Users\ahmed\Desktop\kidi26_8\app\build\intermediates\shader_assets\debug\out"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\ahmed\Desktop\kidi26_8\app\src\debug\assets"/></dataSet></merger>
+>>>>>>> 014fb5cc0bc4913b0d301db614300777b1a42c71
