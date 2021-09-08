@@ -29,6 +29,8 @@ public class ForthParentReg extends AppCompatActivity {
     Course course;
     RetroFitAPIForthParent retrofitAPI;
     Date date;
+    String ids = "111";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +49,7 @@ public class ForthParentReg extends AppCompatActivity {
         SharedPreferences.Editor myEdit = sharedPreferences.edit();
 
         // Get the courseID
-        myEdit.putString("courseID","zoomLinkTestCheck");
+        myEdit.putString("courseID", "zoomLinkTestCheck");
 //        myEdit.commit();
 //        zoomLinkString = sharedPreferences.getString("testZoomLink","");
         // Get the course ID.
@@ -58,37 +60,36 @@ public class ForthParentReg extends AppCompatActivity {
         zoomLink = findViewById(R.id.zoomLinkCard);
         System.out.println("Entered here");
     }
-    String ids = "111";
 
-    public void addZoomLink(){
+    public void addZoomLink() {
         // Get the link from shared preferences.
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText("text",zoomLinkString);
+        ClipData clip = ClipData.newPlainText("text", zoomLinkString);
         // Copy to clipboard.
         clipboard.setPrimaryClip(clip);
     }
 
-    public void ZoomClick(View v){
+    public void ZoomClick(View v) {
 
         addZoomLink();
         // Make a Toast to notify the user that the link was copied.
-        Toast.makeText(getApplicationContext(),"Zoom link was copied to clipboard",Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Zoom link was copied to clipboard", Toast.LENGTH_LONG).show();
     }
 
-    public void goToHomeScreen(View v){
+    public void goToHomeScreen(View v) {
         startActivity(new Intent(ForthParentReg.this, LogInScreenActivity.class));
     }
 
-    public void addToCalendar(View v){
+    public void addToCalendar(View v) {
         addZoomLink();
         System.out.println("Entered the event");
         Intent intent = new Intent(Intent.ACTION_INSERT);
         intent.setData(CalendarContract.Events.CONTENT_URI);
-        intent.putExtra(CalendarContract.Events.TITLE,"Course Name"); // Need to change it with course.
-        intent.putExtra(CalendarContract.Events.EVENT_LOCATION,"online course via zoom");
-        intent.putExtra(CalendarContract.Events.DESCRIPTION,"(Course Name with + leader name) \n" + "Zoom link : " + zoomLinkString);
-        intent.putExtra(CalendarContract.Events.ALL_DAY,"true");
-        intent.putExtra(CalendarContract.Events.RRULE,"FREQ=WEEKLY;UNTIL=20300116");
+        intent.putExtra(CalendarContract.Events.TITLE, "Course Name"); // Need to change it with course.
+        intent.putExtra(CalendarContract.Events.EVENT_LOCATION, "online course via zoom");
+        intent.putExtra(CalendarContract.Events.DESCRIPTION, "(Course Name with + leader name) \n" + "Zoom link : " + zoomLinkString);
+        intent.putExtra(CalendarContract.Events.ALL_DAY, "true");
+        intent.putExtra(CalendarContract.Events.RRULE, "FREQ=WEEKLY;UNTIL=20300116");
         System.out.println("Got the end of the event");
         startActivity(intent);
         System.out.println("started the event");
@@ -102,10 +103,9 @@ public class ForthParentReg extends AppCompatActivity {
         call.enqueue(new Callback<Course>() {
             @Override
             public void onResponse(Call<Course> call, Response<Course> response) {
-                course   = response.body();
-             //   zoomLinkString = course.getZoomMeetingLink();
-                zoomLinkString = "Dummy Link";
-//                date = course.getStartDateTime();
+                course = response.body();
+                zoomLinkString = course.getZoomMeetingLink();
+                date = course.getStartDateTime();
 
             }
 
@@ -117,6 +117,7 @@ public class ForthParentReg extends AppCompatActivity {
 
         });
     }
+
     public void openWebView(View v) {
         startActivity(new Intent(ForthParentReg.this, webViewBrowser.class));
     }
