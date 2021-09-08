@@ -34,11 +34,7 @@
         <activity
             android:name=".FirstScreen"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity> <!-- HOME LOGIN -->
         <activity
             android:name=".HomeLogin"
@@ -75,7 +71,13 @@
             android:exported="true" />
         <activity
             android:name=".LinksActivity"
-            android:exported="true" />
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name=".webViewBrowser"
             android:exported="true" />

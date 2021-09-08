@@ -13,6 +13,7 @@ import android.provider.CalendarContract;
 import android.view.View;
 import android.widget.Toast;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import retrofit2.Call;
@@ -102,8 +103,10 @@ public class ForthParentReg extends AppCompatActivity {
             @Override
             public void onResponse(Call<Course> call, Response<Course> response) {
                 course   = response.body();
-                zoomLinkString = course.getZoomMeetingLink();
-                date = course.getStartDateTime();
+             //   zoomLinkString = course.getZoomMeetingLink();
+                zoomLinkString = "Dummy Link";
+//                date = course.getStartDateTime();
+
             }
 
             @Override
@@ -114,7 +117,9 @@ public class ForthParentReg extends AppCompatActivity {
 
         });
     }
-
+    public void openWebView(View v) {
+        startActivity(new Intent(ForthParentReg.this, webViewBrowser.class));
+    }
 
 
 }

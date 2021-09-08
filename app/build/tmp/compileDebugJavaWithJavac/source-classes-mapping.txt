@@ -130,9 +130,10 @@ com/example/kidi2/VPAdapter2.java
  com.example.kidi2.VPAdapter2
  com.example.kidi2.VPAdapter2$1
  com.example.kidi2.VPAdapter2$ViewHolder
-com/example/kidi2/ForthParentReg.java
- com.example.kidi2.ForthParentReg
- com.example.kidi2.ForthParentReg$1
+com/example/kidi2/QuantityAapter.java
+ com.example.kidi2.QuantityAapter
+ com.example.kidi2.QuantityAapter$1
+ com.example.kidi2.QuantityAapter$viewHolder
 com/example/kidi2/PrivacyPolicy.java
  com.example.kidi2.PrivacyPolicy
  com.example.kidi2.PrivacyPolicy$1
@@ -323,7 +324,6 @@ com/example/kidi2/MyAdapter4.java
  com.example.kidi2.MyAdapter4
  com.example.kidi2.MyAdapter4$1
  com.example.kidi2.MyAdapter4$ViewHolder
-com/example/kidi2/QuantityAapter.java
- com.example.kidi2.QuantityAapter
- com.example.kidi2.QuantityAapter$1
- com.example.kidi2.QuantityAapter$viewHolder
+com/example/kidi2/ForthParentReg.java
+ com.example.kidi2.ForthParentReg
+ com.example.kidi2.ForthParentReg$1
