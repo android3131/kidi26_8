@@ -108,10 +108,20 @@
                         app:srcCompat="@drawable/gamepad_variant" />
 
                     <ImageButton
+                        android:id="@+id/linksBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="120dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="0"
+                        android:background="#edc967"
+                        app:srcCompat="@drawable/pencil" />
+
+                    <ImageButton
                         android:id="@+id/trashB"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="150dp"
+                        android:layout_marginLeft="20dp"
                         android:layout_marginTop="10dp"
                         android:background="#edc967"
                         app:srcCompat="@drawable/shape" />
@@ -125,6 +135,7 @@
                         android:background="#edc967"
                         android:foregroundGravity="right"
                         app:srcCompat="@drawable/chat_bubbles" />
+
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>

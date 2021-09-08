@@ -22,6 +22,12 @@
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name="com.example.kidi2.ChatLeader"
+            android:exported="true" />
+        <activity
+            android:name="com.example.kidi2.Notifications"
+            android:exported="true" />
+        <activity
             android:name="com.example.kidi2.AdminUpdateCourse"
             android:exported="true" />
         <activity
@@ -37,6 +43,11 @@
         <activity
             android:name="com.example.kidi2.FirstScreen"
             android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity> <!-- HOME LOGIN -->
         <activity
             android:name="com.example.kidi2.HomeLogin"
@@ -58,13 +69,7 @@
             android:exported="true" /> <!-- feisal and yael activities -->
         <activity
             android:name="com.example.kidi2.AdminSetCourse"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
         <activity
             android:name="com.example.kidi2.AdminAddCourse"
             android:exported="true" />

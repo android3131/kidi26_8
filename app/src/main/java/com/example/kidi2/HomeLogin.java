@@ -62,7 +62,7 @@ public class HomeLogin extends AppCompatActivity {
         SharedPreferences.Editor editor = pref.edit();
         String parentId;
 
-        parentId = pref.getString("ParentID", null); // getting Integer
+        parentId = pref.getString("parentID", null);
 
         navigationView = findViewById(R.id.navibarhomelogin);
         activityBtn = findViewById(R.id.activityButtonHomeID);
@@ -106,7 +106,7 @@ public class HomeLogin extends AppCompatActivity {
             }
         });
 
-
+        navigationView.setSelectedItemId(R.id.bottomNavigationHomeMenuId);
         navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -118,12 +118,13 @@ public class HomeLogin extends AppCompatActivity {
                         startActivity(new Intent(HomeLogin.this, ParentProfileActivity.class));
                         return true;
                     case R.id.bottomNavigationActivityMenuId:
-                        startActivity(new Intent(HomeLogin.this, ForthParentReg.class));
+                        startActivity(new Intent(HomeLogin.this, ChatLeader.class));
                         return true;
                     case R.id.bottomNavigationNotificatonsMenuId:
-                        startActivity(new Intent(HomeLogin.this, KidName.class));
+                        startActivity(new Intent(HomeLogin.this, Notifications.class));
                         return true;
                     case R.id.bottomNavigationMoreMenuId:
+
                         PopupMenu popup = new PopupMenu(HomeLogin.this, findViewById(R.id.bottomNavigationMoreMenuId));
                         MenuInflater inflater = popup.getMenuInflater();
                         inflater.inflate(R.menu.mymenu, popup.getMenu());
@@ -255,7 +256,7 @@ public class HomeLogin extends AppCompatActivity {
                 meeting.addAll(j);
             }
 
-            for (int i = 0; i < images.length; i++) {
+            for (int i = 0; i < images.length&&i<kid.size(); i++) {
                 kidsID[i]=kid.get(i).getId();
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
                 dates[i] = meeting.get(i).getMeetingDateTime();
@@ -307,7 +308,7 @@ public class HomeLogin extends AppCompatActivity {
             }
 
 
-            for (int i = 0; i < imagesCompleted.length; i++) {
+            for (int i = 0; i < imagesCompleted.length&&i<kid.size(); i++) {
                 kidsIDCompleted[i]=kid.get(i).getId();
 
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");

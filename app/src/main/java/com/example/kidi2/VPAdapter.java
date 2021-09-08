@@ -96,50 +96,37 @@ public class VPAdapter extends RecyclerView.Adapter<VPAdapter.ViewHolder> {
             }});
         //////////////////////////////////////////////////////////delete activity
         ImageButton trashBtn =(ImageButton) view.findViewById(R.id.trashB);
-        MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker();
-        final MaterialDatePicker materialDatePicker = builder.build();
-        builder.setTitleText("choose the date of your last meeting");
-        builder.setTheme(R.style.AlertDialog_AppCompat_Light);
         trashBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                materialDatePicker.show(getFm(), "quit_course");
+
+            }
+        });
+        ImageButton linksBtn =(ImageButton) view.findViewById(R.id.linksBtn);
+        trashBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+            }
+        });
+        ImageButton msgBtn =(ImageButton) view.findViewById(R.id.messageB);
+        msgBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getCtxA(), ChatLeader.class);
+
+                getCtxA().startActivity(intent);
+
+
+
             }
         });
 
-        materialDatePicker.addOnPositiveButtonClickListener
-                (new MaterialPickerOnPositiveButtonClickListener() {
-                    @Override
-                    public void onPositiveButtonClick(Object selection) {
-                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                switch (which){
-                                    case DialogInterface.BUTTON_POSITIVE:
-                                        //Yes button clicked
-                                        break;
 
-                                    case DialogInterface.BUTTON_NEGATIVE:
-                                        //No button clicked
-                                        break;
-                                }
-                            }
-                        };
-
-                        AlertDialog.Builder builder2 = new AlertDialog.Builder(getCtxA());
-
-                        builder2.setMessage("Are you sure you want to quit the course?").
-                                setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-
-                                    }
-                                })
-                                .setNegativeButton("No", dialogClickListener).show();
-                    }
-                });
 
         return new ViewHolder(view);
     }

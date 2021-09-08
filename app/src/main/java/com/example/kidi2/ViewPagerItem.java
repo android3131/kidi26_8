@@ -1,7 +1,7 @@
 package com.example.kidi2;
 
 
-import android.widget.TextView;
+
 
 public class ViewPagerItem {
 

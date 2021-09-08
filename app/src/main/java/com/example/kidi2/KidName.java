@@ -103,7 +103,7 @@ public class KidName extends AppCompatActivity {
                 startActivity(new Intent(KidName.this, Addactivity.class));
             }
         });
-        kidid = "kidid";
+        kidid = pref.getString("kidSeeProfile",null);
         viewActive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -232,50 +232,58 @@ public class KidName extends AppCompatActivity {
 
 ////////////////////////////////////////////////////////////////////getkid
         Call<Kid> call = retrofitAPI.getKid(kidid);
-
-        try{
-            Response<Kid> response=call.execute();
-            Kid kid=response.body();
-            Resources r = getResources();
-            int drawableId = r.getIdentifier(kid.getImage(), "drawable",
-                    "com.mypackage.myapp");
-
-            try {
-                Class res = R.drawable.class;
-                Field field = res.getField("drawableName");
-                drawableId = field.getInt(null);
-            } catch (Exception e) {
-                Log.e("MyTag", "Failure to get drawable id.", e);
-            }
-            kidProfilePic.setImageResource(drawableId);
-            kidName.setText(kid.getFullName());
-            kidName2.setText(kid.getFullName());
-            for (int i = 0; i < images.length; i++) {
-
-                viewPagerItemArrayList.get(i).setName(kid.getFullName());
-
-                viewPagerItemArrayList.get(i).setImageID(drawableId);
-                viewPagerItemArrayListCompleted.get(i).setName(kid.getFullName());
-
-                viewPagerItemArrayListCompleted.get(i).setImageID(drawableId);
-            }
-            viewPager.getAdapter().notifyDataSetChanged();
-            viewPager2.getAdapter().notifyDataSetChanged();
-        }
-        catch(Exception e){
-            kidName.setText("name");
-            kidName2.setText("name");
-            for (int i = 0; i < images.length; i++) {
-
-                viewPagerItemArrayList.get(i).setName("name test");
-                viewPagerItemArrayListCompleted.get(i).setName("name test2");
+       // call.enqueue(new Callback<Kid>() {
 
 
+                        // @Override
 
-            }
-            viewPager.getAdapter().notifyDataSetChanged();
-            viewPager2.getAdapter().notifyDataSetChanged();
-        }
+                       //  public void onResponse(Call<Kid> call, Response<Kid> response) {
+                             try{
+                              Response<Kid> response=call.execute();
+                             Kid kid = response.body();
+                             Resources r = getResources();
+                             int drawableId = r.getIdentifier(kid.getImage(), "drawable",
+                                     "com.mypackage.myapp");
+
+                             try {
+                                 Class res = R.drawable.class;
+                                 Field field = res.getField("drawableName");
+                                 drawableId = field.getInt(null);
+                             } catch (Exception e) {
+                                 Log.e("MyTag", "Failure to get drawable id.", e);
+                             }
+                             kidProfilePic.setImageResource(drawableId);
+                             kidName.setText(kid.getFullName());
+                             kidName2.setText(kid.getFullName());
+                             for (int i = 0; i < images.length; i++) {
+
+                                 viewPagerItemArrayList.get(i).setName(kid.getFullName());
+
+                                 viewPagerItemArrayList.get(i).setImageID(drawableId);
+                                 viewPagerItemArrayListCompleted.get(i).setName(kid.getFullName());
+
+                                 viewPagerItemArrayListCompleted.get(i).setImageID(drawableId);
+                             }
+                             viewPager.getAdapter().notifyDataSetChanged();
+                             viewPager2.getAdapter().notifyDataSetChanged();
+                         }
+
+                        // @Override
+                        // public void onFailure(Call<Kid> call, Throwable t) {
+                             catch(Exception e){
+                             kidName.setText("name");
+                             kidName2.setText("name");
+                             for (int i = 0; i < images.length; i++) {
+
+                                 viewPagerItemArrayList.get(i).setName("name test");
+                                 viewPagerItemArrayListCompleted.get(i).setName("name test2");
+
+
+                             }
+                             viewPager.getAdapter().notifyDataSetChanged();
+                             viewPager2.getAdapter().notifyDataSetChanged();
+                         }
+                     //});
 
         //get number of active courses
         Call<Integer> callnumberofactive = retrofitAPI.getNumberActiveCourses(kidid);
@@ -313,7 +321,7 @@ public class KidName extends AppCompatActivity {
         try {
             Response<List<Meeting>> response= callActiveCourses.execute();
             List<Meeting> meetings=response.body();
-            for (int i = 0; i < images.length; i++) {
+            for (int i = 0; i < images.length&&i<meetings.size(); i++) {
 
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
                 dates[i] = meetings.get(i).getMeetingDateTime();
@@ -348,7 +356,7 @@ public class KidName extends AppCompatActivity {
         try {
             Response<List<Meeting>> response= callActiveCourses.execute();
             List<Meeting> meetings=response.body();
-            for (int i = 0; i < images.length; i++) {
+            for (int i = 0; i < images.length&&i<meetings.size(); i++) {
 
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
                 datesCompleted[i] = meetings.get(i).getMeetingDateTime();

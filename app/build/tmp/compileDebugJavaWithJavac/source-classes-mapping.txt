@@ -1,13 +1,3 @@
-com/example/kidi2/CustomPagerAdapter.java
- com.example.kidi2.CustomPagerAdapter
-com/example/kidi2/AdapterRV.java
- com.example.kidi2.AdapterRV
-com/example/kidi2/ViewPagerItem.java
- com.example.kidi2.ViewPagerItem
-com/example/kidi2/Gender.java
- com.example.kidi2.Gender
-com/example/kidi2/RetrofitAPIAdminSetLeader.java
- com.example.kidi2.RetrofitAPIAdminSetLeader
 com/example/kidi2/CustomCheckbox.java
  com.example.kidi2.CustomCheckbox
 com/example/kidi2/MyAdapter.java
@@ -47,21 +37,8 @@ com/example/kidi2/RecyclerItemClickListener.java
  com.example.kidi2.RecyclerItemClickListener
  com.example.kidi2.RecyclerItemClickListener$1
  com.example.kidi2.RecyclerItemClickListener$OnItemClickListener
-com/example/kidi2/HomeLogin.java
- com.example.kidi2.HomeLogin
- com.example.kidi2.HomeLogin$1
- com.example.kidi2.HomeLogin$2
- com.example.kidi2.HomeLogin$3
- com.example.kidi2.HomeLogin$4
- com.example.kidi2.HomeLogin$5
-com/example/kidi2/RetroFitAPIForthParent.java
- com.example.kidi2.RetroFitAPIForthParent
-com/example/kidi2/Course_Addactivity.java
- com.example.kidi2.Course_Addactivity
 com/example/kidi2/RetrofitAPILoginScreen.java
  com.example.kidi2.RetrofitAPILoginScreen
-com/example/kidi2/MoreFragment.java
- com.example.kidi2.MoreFragment
 com/example/kidi2/AdminSetCourse.java
  com.example.kidi2.AdminSetCourse
  com.example.kidi2.AdminSetCourse$1
@@ -83,23 +60,14 @@ com/example/kidi2/DialogAdapter.java
  com.example.kidi2.DialogAdapter$1
  com.example.kidi2.DialogAdapter$2
  com.example.kidi2.DialogAdapter$3
-com/example/kidi2/TermsOfService.java
- com.example.kidi2.TermsOfService
- com.example.kidi2.TermsOfService$1
+com/example/kidi2/NotificationsAdapter.java
+ com.example.kidi2.NotificationsAdapter
+ com.example.kidi2.NotificationsAdapter$ViewHolder
 com/example/kidi2/MyAdapter3.java
  com.example.kidi2.MyAdapter3
  com.example.kidi2.MyAdapter3$MyViewHolder3
-com/example/kidi2/AdminAddCourse.java
- com.example.kidi2.AdminAddCourse
- com.example.kidi2.AdminAddCourse$1
- com.example.kidi2.AdminAddCourse$2
- com.example.kidi2.AdminAddCourse$3
- com.example.kidi2.AdminAddCourse$4
- com.example.kidi2.AdminAddCourse$5
- com.example.kidi2.AdminAddCourse$5$1
- com.example.kidi2.AdminAddCourse$6
- com.example.kidi2.AdminAddCourse$7
- com.example.kidi2.AdminAddCourse$7$1
+com/example/kidi2/NotificationItem.java
+ com.example.kidi2.NotificationItem
 com/example/kidi2/ThirdParentRegActivity.java
  com.example.kidi2.ThirdParentRegActivity
  com.example.kidi2.ThirdParentRegActivity$1
@@ -116,36 +84,150 @@ com/example/kidi2/VPAdapter.java
  com.example.kidi2.VPAdapter$1
  com.example.kidi2.VPAdapter$2
  com.example.kidi2.VPAdapter$3
- com.example.kidi2.VPAdapter$3$1
- com.example.kidi2.VPAdapter$3$2
+ com.example.kidi2.VPAdapter$4
  com.example.kidi2.VPAdapter$ViewHolder
-com/example/kidi2/DataModelParent.java
- com.example.kidi2.DataModelParent
-com/example/kidi2/KidiOnItemSelectedListener.java
- com.example.kidi2.KidiOnItemSelectedListener
+com/example/kidi2/FirstScreen.java
+ com.example.kidi2.FirstScreen
+ com.example.kidi2.FirstScreen$1
+ com.example.kidi2.FirstScreen$2
+ com.example.kidi2.FirstScreen$3
+ com.example.kidi2.FirstScreen$4
+ com.example.kidi2.FirstScreen$5
 com/example/kidi2/Course4.java
  com.example.kidi2.Course4
-com/example/kidi2/Course.java
- com.example.kidi2.Course
 com/example/kidi2/MeetingParticipant.java
  com.example.kidi2.MeetingParticipant
-com/example/kidi2/DataModel.java
- com.example.kidi2.DataModel
-com/example/kidi2/LogInScreenActivity.java
- com.example.kidi2.LogInScreenActivity
- com.example.kidi2.LogInScreenActivity$1
- com.example.kidi2.LogInScreenActivity$2
 com/example/kidi2/SimpleDividerItemDecoration.java
  com.example.kidi2.SimpleDividerItemDecoration
 com/example/kidi2/Course1.java
  com.example.kidi2.Course1
-com/example/kidi2/RetrofitAPIThirdParentReg.java
- com.example.kidi2.RetrofitAPIThirdParentReg
 com/example/kidi2/algorithm_spinner.java
  com.example.kidi2.algorithm_spinner
 com/example/kidi2/SliderAdapter.java
  com.example.kidi2.SliderAdapter
  com.example.kidi2.SliderAdapter$MyViewHolder
+com/example/kidi2/RvAdapter.java
+ com.example.kidi2.RvAdapter
+ com.example.kidi2.RvAdapter$MyViewHolder
+com/example/kidi2/SliderTransformer.java
+ com.example.kidi2.SliderTransformer
+com/example/kidi2/LinksActivity.java
+ com.example.kidi2.LinksActivity
+ com.example.kidi2.LinksActivity$1
+ com.example.kidi2.LinksActivity$2
+com/example/kidi2/RetrofitAPIAdminMain.java
+ com.example.kidi2.RetrofitAPIAdminMain
+com/example/kidi2/RVitem1.java
+ com.example.kidi2.RVitem1
+com/example/kidi2/AlgorithmItem.java
+ com.example.kidi2.AlgorithmItem
+com/example/kidi2/MainActivity.java
+ com.example.kidi2.MainActivity
+ com.example.kidi2.MainActivity$1
+com/example/kidi2/UserFragment.java
+ com.example.kidi2.UserFragment
+com/example/kidi2/VPAdapter2.java
+ com.example.kidi2.VPAdapter2
+ com.example.kidi2.VPAdapter2$1
+ com.example.kidi2.VPAdapter2$ViewHolder
+com/example/kidi2/ForthParentReg.java
+ com.example.kidi2.ForthParentReg
+ com.example.kidi2.ForthParentReg$1
+com/example/kidi2/PrivacyPolicy.java
+ com.example.kidi2.PrivacyPolicy
+ com.example.kidi2.PrivacyPolicy$1
+com/example/kidi2/ChatAdapter.java
+ com.example.kidi2.ChatAdapter
+ com.example.kidi2.ChatAdapter$ViewHolder
+com/example/kidi2/HomeFragment.java
+ com.example.kidi2.HomeFragment
+com/example/kidi2/ChatItem.java
+ com.example.kidi2.ChatItem
+com/example/kidi2/Kid.java
+ com.example.kidi2.Kid
+com/example/kidi2/KidGrp2.java
+ com.example.kidi2.KidGrp2
+com/example/kidi2/Category.java
+ com.example.kidi2.Category
+com/example/kidi2/Leaders.java
+ com.example.kidi2.Leaders
+com/example/kidi2/RetroFitAPI3.java
+ com.example.kidi2.RetroFitAPI3
+com/example/kidi2/User.java
+ com.example.kidi2.User
+com/example/kidi2/MainActivityGrp2.java
+ com.example.kidi2.MainActivityGrp2
+ com.example.kidi2.MainActivityGrp2$1
+com/example/kidi2/DataKid.java
+ com.example.kidi2.DataKid
+com/example/kidi2/LogInScreenActivity.java
+ com.example.kidi2.LogInScreenActivity
+ com.example.kidi2.LogInScreenActivity$1
+ com.example.kidi2.LogInScreenActivity$2
+com/example/kidi2/KidiOnItemSelectedListener.java
+ com.example.kidi2.KidiOnItemSelectedListener
+com/example/kidi2/RetrofitAPI6.java
+ com.example.kidi2.RetrofitAPI6
+com/example/kidi2/ChatLeader.java
+ com.example.kidi2.ChatLeader
+ com.example.kidi2.ChatLeader$1
+ com.example.kidi2.ChatLeader$2
+com/example/kidi2/CustomPagerAdapter.java
+ com.example.kidi2.CustomPagerAdapter
+com/example/kidi2/AdapterRV.java
+ com.example.kidi2.AdapterRV
+com/example/kidi2/ViewPagerItem.java
+ com.example.kidi2.ViewPagerItem
+com/example/kidi2/Gender.java
+ com.example.kidi2.Gender
+com/example/kidi2/RetrofitAPIAdminSetLeader.java
+ com.example.kidi2.RetrofitAPIAdminSetLeader
+com/example/kidi2/HomeLogin.java
+ com.example.kidi2.HomeLogin
+ com.example.kidi2.HomeLogin$1
+ com.example.kidi2.HomeLogin$2
+ com.example.kidi2.HomeLogin$3
+ com.example.kidi2.HomeLogin$4
+ com.example.kidi2.HomeLogin$5
+com/example/kidi2/RetroFitAPIForthParent.java
+ com.example.kidi2.RetroFitAPIForthParent
+com/example/kidi2/Course_Addactivity.java
+ com.example.kidi2.Course_Addactivity
+com/example/kidi2/MoreFragment.java
+ com.example.kidi2.MoreFragment
+com/example/kidi2/TermsOfService.java
+ com.example.kidi2.TermsOfService
+ com.example.kidi2.TermsOfService$1
+com/example/kidi2/AdminAddCourse.java
+ com.example.kidi2.AdminAddCourse
+ com.example.kidi2.AdminAddCourse$1
+ com.example.kidi2.AdminAddCourse$2
+ com.example.kidi2.AdminAddCourse$3
+ com.example.kidi2.AdminAddCourse$4
+ com.example.kidi2.AdminAddCourse$5
+ com.example.kidi2.AdminAddCourse$5$1
+ com.example.kidi2.AdminAddCourse$6
+ com.example.kidi2.AdminAddCourse$7
+ com.example.kidi2.AdminAddCourse$7$1
+com/example/kidi2/DataModelParent.java
+ com.example.kidi2.DataModelParent
+com/example/kidi2/Course.java
+ com.example.kidi2.Course
+com/example/kidi2/DataModel.java
+ com.example.kidi2.DataModel
+com/example/kidi2/FirstParentReg.java
+ com.example.kidi2.FirstParentReg
+ com.example.kidi2.FirstParentReg$1
+ com.example.kidi2.FirstParentReg$2
+ com.example.kidi2.FirstParentReg$3
+ com.example.kidi2.FirstParentReg$4
+ com.example.kidi2.FirstParentReg$5
+ com.example.kidi2.FirstParentReg$6
+ com.example.kidi2.FirstParentReg$7
+ com.example.kidi2.FirstParentReg$8
+ com.example.kidi2.FirstParentReg$9
+com/example/kidi2/RetrofitAPIThirdParentReg.java
+ com.example.kidi2.RetrofitAPIThirdParentReg
 com/example/kidi2/ThirdScreen.java
  com.example.kidi2.ThirdScreen
  com.example.kidi2.ThirdScreen$1
@@ -170,9 +252,6 @@ com/example/kidi2/ModelObject.java
  com.example.kidi2.ModelObject
 com/example/kidi2/StateVO.java
  com.example.kidi2.StateVO
-com/example/kidi2/RvAdapter.java
- com.example.kidi2.RvAdapter
- com.example.kidi2.RvAdapter$MyViewHolder
 com/example/kidi2/AdminSetLeader.java
  com.example.kidi2.AdminSetLeader
  com.example.kidi2.AdminSetLeader$1
@@ -184,16 +263,8 @@ com/example/kidi2/KidName.java
  com.example.kidi2.KidName$3
  com.example.kidi2.KidName$4
  com.example.kidi2.KidName$5
-com/example/kidi2/SliderTransformer.java
- com.example.kidi2.SliderTransformer
-com/example/kidi2/LinksActivity.java
- com.example.kidi2.LinksActivity
- com.example.kidi2.LinksActivity$1
- com.example.kidi2.LinksActivity$2
 com/example/kidi2/RetrofitAPIGrp2.java
  com.example.kidi2.RetrofitAPIGrp2
-com/example/kidi2/RetrofitAPIAdminMain.java
- com.example.kidi2.RetrofitAPIAdminMain
 com/example/kidi2/BuildConfig.java
  com.example.kidi2.BuildConfig
 com/example/kidi2/Activity.java
@@ -204,14 +275,11 @@ com/example/kidi2/Activity.java
  com.example.kidi2.Activity$4
  com.example.kidi2.Activity$5
  com.example.kidi2.Activity$6
-com/example/kidi2/RVitem1.java
- com.example.kidi2.RVitem1
-com/example/kidi2/QuantityAapter.java
- com.example.kidi2.QuantityAapter
- com.example.kidi2.QuantityAapter$1
- com.example.kidi2.QuantityAapter$viewHolder
-com/example/kidi2/AlgorithmItem.java
- com.example.kidi2.AlgorithmItem
+com/example/kidi2/FirstParentRegReal.java
+ com.example.kidi2.FirstParentRegReal
+ com.example.kidi2.FirstParentRegReal$1
+ com.example.kidi2.FirstParentRegReal$1$1
+ com.example.kidi2.FirstParentRegReal$2
 com/example/kidi2/Addactivity.java
  com.example.kidi2.Addactivity
  com.example.kidi2.Addactivity$1
@@ -222,89 +290,40 @@ com/example/kidi2/ParentProfileActivity.java
  com.example.kidi2.ParentProfileActivity$1
 com/example/kidi2/Status.java
  com.example.kidi2.Status
-com/example/kidi2/RetrofitAPI6.java
- com.example.kidi2.RetrofitAPI6
-com/example/kidi2/UserFragment.java
- com.example.kidi2.UserFragment
 com/example/kidi2/RetrofitAPI4.java
  com.example.kidi2.RetrofitAPI4
-com/example/kidi2/VPAdapter2.java
- com.example.kidi2.VPAdapter2
- com.example.kidi2.VPAdapter2$1
- com.example.kidi2.VPAdapter2$ViewHolder
 com/example/kidi2/RetroFitAPI2.java
  com.example.kidi2.RetroFitAPI2
-com/example/kidi2/ForthParentReg.java
- com.example.kidi2.ForthParentReg
- com.example.kidi2.ForthParentReg$1
 com/example/kidi2/DataModelCourse.java
  com.example.kidi2.DataModelCourse
-com/example/kidi2/PrivacyPolicy.java
- com.example.kidi2.PrivacyPolicy
- com.example.kidi2.PrivacyPolicy$1
 com/example/kidi2/CoursesFragment.java
  com.example.kidi2.CoursesFragment
-com/example/kidi2/HomeFragment.java
- com.example.kidi2.HomeFragment
 com/example/kidi2/Parent.java
  com.example.kidi2.Parent
 com/example/kidi2/AlgorithmAdapter.java
  com.example.kidi2.AlgorithmAdapter
-com/example/kidi2/Kid.java
- com.example.kidi2.Kid
-com/example/kidi2/KidGrp2.java
- com.example.kidi2.KidGrp2
 com/example/kidi2/Meeting.java
  com.example.kidi2.Meeting
-com/example/kidi2/Category.java
- com.example.kidi2.Category
 com/example/kidi2/RVitem.java
  com.example.kidi2.RVitem
-com/example/kidi2/Leaders.java
- com.example.kidi2.Leaders
 com/example/kidi2/MySingletone.java
  com.example.kidi2.MySingletone
-com/example/kidi2/RetroFitAPI3.java
- com.example.kidi2.RetroFitAPI3
-com/example/kidi2/User.java
- com.example.kidi2.User
+com/example/kidi2/Notifications.java
+ com.example.kidi2.Notifications
+ com.example.kidi2.Notifications$1
+ com.example.kidi2.Notifications$2
+ com.example.kidi2.Notifications$3
+ com.example.kidi2.Notifications$4
 com/example/kidi2/Day.java
  com.example.kidi2.Day
 com/example/kidi2/MyAdapter1.java
  com.example.kidi2.MyAdapter1
  com.example.kidi2.MyAdapter1$MyViewHolder
-com/example/kidi2/MainActivityGrp2.java
- com.example.kidi2.MainActivityGrp2
- com.example.kidi2.MainActivityGrp2$1
-com/example/kidi2/DataKid.java
- com.example.kidi2.DataKid
 com/example/kidi2/MyAdapter4.java
  com.example.kidi2.MyAdapter4
  com.example.kidi2.MyAdapter4$1
  com.example.kidi2.MyAdapter4$ViewHolder
-com/example/kidi2/FirstParentRegReal.java
- com.example.kidi2.FirstParentRegReal
- com.example.kidi2.FirstParentRegReal$1
- com.example.kidi2.FirstParentRegReal$1$1
- com.example.kidi2.FirstParentRegReal$2
-com/example/kidi2/MainActivity.java
- com.example.kidi2.MainActivity
- com.example.kidi2.MainActivity$1
-com/example/kidi2/FirstScreen.java
- com.example.kidi2.FirstScreen
- com.example.kidi2.FirstScreen$1
- com.example.kidi2.FirstScreen$2
- com.example.kidi2.FirstScreen$3
- com.example.kidi2.FirstScreen$4
- com.example.kidi2.FirstScreen$5
-com/example/kidi2/FirstParentReg.java
- com.example.kidi2.FirstParentReg
- com.example.kidi2.FirstParentReg$1
- com.example.kidi2.FirstParentReg$2
- com.example.kidi2.FirstParentReg$3
- com.example.kidi2.FirstParentReg$4
- com.example.kidi2.FirstParentReg$5
- com.example.kidi2.FirstParentReg$6
- com.example.kidi2.FirstParentReg$7
- com.example.kidi2.FirstParentReg$8
- com.example.kidi2.FirstParentReg$9
+com/example/kidi2/QuantityAapter.java
+ com.example.kidi2.QuantityAapter
+ com.example.kidi2.QuantityAapter$1
+ com.example.kidi2.QuantityAapter$viewHolder

@@ -52,10 +52,10 @@ public class FirstScreen extends AppCompatActivity {
                 openDialog();
             }
         });
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyKIDIPref", 0); // 0 - for private mode
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putString("ParentID", "207931536"); // Storing integer
-        editor.commit();//this should be in the log in screen
+       // SharedPreferences pref = getApplicationContext().getSharedPreferences("MyKIDIPref", 0); // 0 - for private mode
+       // SharedPreferences.Editor editor = pref.edit();
+       // editor.putString("ParentID", "207931536"); // Storing integer
+      //  editor.commit();//this should be in the log in screen
 
 
     }

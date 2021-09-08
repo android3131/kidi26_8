@@ -111,8 +111,10 @@ public class FirstParentRegReal extends AppCompatActivity {
 
                     }
                 });
-                }
 
+                }
+                Intent intent = new Intent(FirstParentRegReal.this, ThirdParentRegActivity.class);//elie changed this
+                startActivity(intent);
 
             }
         });

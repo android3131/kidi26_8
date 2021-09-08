@@ -13,6 +13,12 @@
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ChatLeader"
+            android:exported="true" />
+        <activity
+            android:name=".Notifications"
+            android:exported="true" />
+        <activity
             android:name=".AdminUpdateCourse"
             android:exported="true" />
         <activity
@@ -28,7 +34,11 @@
         <activity
             android:name=".FirstScreen"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity> <!-- HOME LOGIN -->
         <activity
             android:name=".HomeLogin"
@@ -50,13 +60,7 @@
             android:exported="true" /> <!-- feisal and yael activities -->
         <activity
             android:name=".AdminSetCourse"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".AdminAddCourse"
             android:exported="true" />

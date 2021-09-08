@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4e7fe7"
+    tools:context=".Notifications">
+
+    <LinearLayout
+        android:id="@+id/upperlayoutnot"
+        android:layout_width="0dp"
+        android:layout_height="92dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/innerlayoutnot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/returnNotiBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:background="#4e7fe7"
+            app:srcCompat="@drawable/right_arrow" />
+
+        <TextView
+            android:id="@+id/notificationsheader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Notifications"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/innerlayoutnot"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/myrect2"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/btvnotification"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upperlayoutnot">
+
+        <Button
+            android:id="@+id/readAllBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/myrect9"
+            android:text="Mark All As Read"
+            app:backgroundTint="#4e7fe7" />
+
+        <ScrollView
+            android:id="@+id/scrollViewNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
+
+            <LinearLayout
+                android:id="@+id/notofocationslayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#eeeeee"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recylenotifications"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#eeeeee"
+                    android:clipToPadding="false"
+                    android:scrollbars="vertical" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/btvnotification"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:itemIconTint="@drawable/navibarselected"
+        app:itemTextColor="@drawable/navibarselected"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/innerlayoutnot"
+        app:menu="@menu/navimenu" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1727,6 +1727,7 @@ drawable btn_radio_on_to_off_mtrl_animation
 drawable button_background
 drawable chat_bubbles
 drawable chat_bubbles_copy
+drawable chat_send
 drawable checkboxgrp6
 drawable checked_box
 drawable checkedgrp6
@@ -2010,6 +2011,7 @@ id bottomNavigationUserMenuId
 id bounce
 id boy_box
 id btnAdd
+id btvnotification
 id button2
 id buttonPanel
 id buttons
@@ -2023,6 +2025,7 @@ id center_horizontal
 id center_vertical
 id chain
 id chains
+id chatlayout
 id checkBox
 id checkBox3
 id check_box
@@ -2187,6 +2190,8 @@ id image_view
 id img
 id info
 id info_text
+id innerlayoutchat
+id innerlayoutnot
 id invisible
 id inward
 id italic
@@ -2213,6 +2218,9 @@ id linear1
 id linearLayout
 id linearLayout2
 id linearLayout3
+id linearLayout4
+id linearLayout5
+id linksBtn
 id listMode
 id list_item
 id llsubhead
@@ -2253,6 +2261,7 @@ id month_spinner
 id month_title
 id more_page
 id motion_base
+id msgText
 id mtrl_anchor_parent
 id mtrl_calendar_day_selector_frame
 id mtrl_calendar_days_of_week
@@ -2298,10 +2307,15 @@ id nextButton
 id noScroll
 id none
 id normal
+id notiText
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id notificationsheader
 id notificationsmenu
+id notiimage
+id notilayoutitem
+id notofocationslayout
 id notrelevant_box
 id numberofactive
 id numberofcompleted
@@ -2343,13 +2357,18 @@ id progress_circular
 id progress_horizontal
 id radio
 id ratio
+id readAllBtn
 id rectangles
+id recycleChat
 id recycler
 id recyclerView
 id recycler_view1
 id recycler_view2
 id recyclerview
+id recylenotifications
 id returnBID
+id returnBtnChat
+id returnNotiBtn
 id reverseSawtooth
 id right
 id rightToLeft
@@ -2370,6 +2389,7 @@ id scrollView
 id scrollView3
 id scrollViewID
 id scrollViewLayoutID
+id scrollViewNotifications
 id scrollable
 id search_badge
 id search_bar
@@ -2389,6 +2409,8 @@ id select_dialog_listview
 id selected
 id selected_date
 id selection_type
+id sendBtn
+id sendTxt
 id seventh_col
 id shape_layout
 id shortcut
@@ -2465,6 +2487,7 @@ id textView
 id textView2
 id textView3
 id textView4
+id textView5
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -2509,6 +2532,8 @@ id up
 id up_arrow
 id update_button
 id update_button1
+id upperlayoutchat
+id upperlayoutnot
 id urlEditText
 id urlLinkEditText1
 id useLogo
@@ -2634,6 +2659,8 @@ layout admin_add_course
 layout admin_set_course
 layout admin_update_course
 layout algorithm_spinner
+layout chat_item
+layout chat_leader
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -2709,10 +2736,12 @@ layout my_row3
 layout my_spinner
 layout notification_action
 layout notification_action_tombstone
+layout notification_layout
 layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout notifications
 layout privacy_policy
 layout recycler_layout
 layout reg_first_parent

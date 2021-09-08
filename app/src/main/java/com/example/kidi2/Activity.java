@@ -46,7 +46,9 @@ public class Activity extends AppCompatActivity {
         reloadavtivities();
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyKIDIPref", 0); // 0 - for private mode
         SharedPreferences.Editor editor = pref.edit();        navigationView = findViewById(R.id.navibarActivity);
+        String parentId;
 
+        parentId = pref.getString("parentID", null);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
 
