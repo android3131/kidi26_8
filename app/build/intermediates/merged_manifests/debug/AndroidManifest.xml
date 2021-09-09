@@ -39,7 +39,11 @@
         <activity
             android:name="com.example.kidi2.ForthParentReg"
             android:exported="true" > <!-- ACTIVITIES -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <!-- FIRST SCREEN -->
         <activity
@@ -82,11 +86,6 @@
         <activity
             android:name="com.example.kidi2.LinksActivity"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.example.kidi2.webViewBrowser"

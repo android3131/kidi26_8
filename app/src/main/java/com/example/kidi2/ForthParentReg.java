@@ -128,8 +128,8 @@ public class ForthParentReg extends AppCompatActivity {
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("message/rfc822");
         i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"recipient@example.com"});
-        i.putExtra(Intent.EXTRA_SUBJECT, "Zoom Link");
-        i.putExtra(Intent.EXTRA_TEXT   , "This is your Zoom link: "+zoomLinkString);
+        i.putExtra(Intent.EXTRA_SUBJECT, "Zoom Link Bellow:");
+        i.putExtra(Intent.EXTRA_TEXT   , zoomLinkString);
         try {
             startActivity(Intent.createChooser(i, "Send mail..."));
         } catch (android.content.ActivityNotFoundException ex) {

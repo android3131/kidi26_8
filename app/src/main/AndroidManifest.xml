@@ -30,12 +30,17 @@
         <activity
             android:name=".ForthParentReg"
             android:exported="true" > <!-- ACTIVITIES -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <!-- FIRST SCREEN -->
         <activity
             android:name=".FirstScreen"
             android:exported="true">
+
 
         </activity> <!-- HOME LOGIN -->
         <activity
@@ -74,12 +79,6 @@
         <activity
             android:name=".LinksActivity"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
 
         </activity>
         <activity
