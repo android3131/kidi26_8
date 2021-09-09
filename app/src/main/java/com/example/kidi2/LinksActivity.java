@@ -3,7 +3,6 @@ package com.example.kidi2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -22,6 +21,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Date;
+import java.util.Properties;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -111,10 +111,13 @@ public class LinksActivity extends AppCompatActivity {
 
     public void ZoomClick(View v) {
 
-        addZoomLink();
+        //addZoomLink();
+
         // Make a Toast to notify the user that the link was copied.
         Toast.makeText(getApplicationContext(), "Zoom link was copied to clipboard", Toast.LENGTH_LONG).show();
     }
+
+
 
     public void addToCalendar(View v) {
         addZoomLink();
@@ -157,6 +160,19 @@ public class LinksActivity extends AppCompatActivity {
 
     public void openWebView(View v) {
         startActivity(new Intent(LinksActivity.this, webViewBrowser.class));
+    }
+
+    public void sendEmail(View view) {
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("message/rfc822");
+        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"recipient@example.com"});
+        i.putExtra(Intent.EXTRA_SUBJECT, "Zoom Link");
+        i.putExtra(Intent.EXTRA_TEXT   , "This is your Zoom link: "+zoomLinkString);
+        try {
+            startActivity(Intent.createChooser(i, "Send mail..."));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(LinksActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+        }
     }
 }
 

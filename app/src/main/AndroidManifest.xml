@@ -29,7 +29,9 @@
             android:exported="true" /> <!-- ACTIVITIES -->
         <activity
             android:name=".ForthParentReg"
-            android:exported="true" /> <!-- ACTIVITIES -->
+            android:exported="true" > <!-- ACTIVITIES -->
+
+        </activity>
         <!-- FIRST SCREEN -->
         <activity
             android:name=".FirstScreen"
@@ -72,11 +74,13 @@
         <activity
             android:name=".LinksActivity"
             android:exported="true" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
         </activity>
         <activity
             android:name=".webViewBrowser"

@@ -80,6 +80,7 @@ public class ForthParentReg extends AppCompatActivity {
         startActivity(new Intent(ForthParentReg.this, LogInScreenActivity.class));
     }
 
+
     public void addToCalendar(View v) {
         addZoomLink();
         System.out.println("Entered the event");
@@ -104,8 +105,8 @@ public class ForthParentReg extends AppCompatActivity {
             @Override
             public void onResponse(Call<Course> call, Response<Course> response) {
                 course = response.body();
-                zoomLinkString = course.getZoomMeetingLink();
-                date = course.getStartDateTime();
+//                zoomLinkString = course.getZoomMeetingLink();
+//                date = course.getStartDateTime();
 
             }
 
@@ -123,4 +124,16 @@ public class ForthParentReg extends AppCompatActivity {
     }
 
 
+    public void sendEmail(View view) {
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("message/rfc822");
+        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"recipient@example.com"});
+        i.putExtra(Intent.EXTRA_SUBJECT, "Zoom Link");
+        i.putExtra(Intent.EXTRA_TEXT   , "This is your Zoom link: "+zoomLinkString);
+        try {
+            startActivity(Intent.createChooser(i, "Send mail..."));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(ForthParentReg.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

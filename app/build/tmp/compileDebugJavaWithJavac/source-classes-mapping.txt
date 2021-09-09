@@ -111,10 +111,10 @@ com/example/kidi2/RvAdapter.java
  com.example.kidi2.RvAdapter$MyViewHolder
 com/example/kidi2/SliderTransformer.java
  com.example.kidi2.SliderTransformer
-com/example/kidi2/LinksActivity.java
- com.example.kidi2.LinksActivity
- com.example.kidi2.LinksActivity$1
- com.example.kidi2.LinksActivity$2
+com/example/kidi2/MyAdapter4.java
+ com.example.kidi2.MyAdapter4
+ com.example.kidi2.MyAdapter4$1
+ com.example.kidi2.MyAdapter4$ViewHolder
 com/example/kidi2/RetrofitAPIAdminMain.java
  com.example.kidi2.RetrofitAPIAdminMain
 com/example/kidi2/RVitem1.java
@@ -320,10 +320,10 @@ com/example/kidi2/Day.java
 com/example/kidi2/MyAdapter1.java
  com.example.kidi2.MyAdapter1
  com.example.kidi2.MyAdapter1$MyViewHolder
-com/example/kidi2/MyAdapter4.java
- com.example.kidi2.MyAdapter4
- com.example.kidi2.MyAdapter4$1
- com.example.kidi2.MyAdapter4$ViewHolder
 com/example/kidi2/ForthParentReg.java
  com.example.kidi2.ForthParentReg
  com.example.kidi2.ForthParentReg$1
+com/example/kidi2/LinksActivity.java
+ com.example.kidi2.LinksActivity
+ com.example.kidi2.LinksActivity$1
+ com.example.kidi2.LinksActivity$2

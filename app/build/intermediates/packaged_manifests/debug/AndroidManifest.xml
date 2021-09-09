@@ -38,7 +38,9 @@
             android:exported="true" /> <!-- ACTIVITIES -->
         <activity
             android:name="com.example.kidi2.ForthParentReg"
-            android:exported="true" /> <!-- ACTIVITIES -->
+            android:exported="true" > <!-- ACTIVITIES -->
+
+        </activity>
         <!-- FIRST SCREEN -->
         <activity
             android:name="com.example.kidi2.FirstScreen"

@@ -15,7 +15,7 @@
 11-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:5:22-64
 12
 13    <application
-13-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:7:5-87:19
+13-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:7:5-91:19
 14        android:allowBackup="true"
 14-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:8:9-35
 15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -65,114 +65,116 @@
 38            android:exported="true" /> <!-- ACTIVITIES -->
 38-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:29:13-36
 39        <activity
-39-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:30:9-32:39
+39-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:30:9-34:20
 40            android:name="com.example.kidi2.ForthParentReg"
 40-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:31:13-43
-41            android:exported="true" /> <!-- ACTIVITIES -->
+41            android:exported="true" > <!-- ACTIVITIES -->
 41-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:32:13-36
-42        <!-- FIRST SCREEN -->
-43        <activity
-43-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:34:9-38:20
-44            android:name="com.example.kidi2.FirstScreen"
-44-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:35:13-40
-45            android:exported="true" >
-45-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:36:13-36
-46        </activity> <!-- HOME LOGIN -->
-47        <activity
-47-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:39:9-41:39
-48            android:name="com.example.kidi2.HomeLogin"
-48-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:40:13-38
-49            android:exported="true" /> <!-- KID NAME -->
-49-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:41:13-36
-50        <activity
-50-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:42:9-44:39
-51            android:name="com.example.kidi2.KidName"
+42
+43        </activity>
+44        <!-- FIRST SCREEN -->
+45        <activity
+45-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:36:9-40:20
+46            android:name="com.example.kidi2.FirstScreen"
+46-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:37:13-40
+47            android:exported="true" >
+47-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:38:13-36
+48        </activity> <!-- HOME LOGIN -->
+49        <activity
+49-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:41:9-43:39
+50            android:name="com.example.kidi2.HomeLogin"
+50-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:42:13-38
+51            android:exported="true" /> <!-- KID NAME -->
 51-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:43:13-36
-52            android:exported="true" /> <!-- ACTIVITY -->
-52-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:44:13-36
-53        <activity
-53-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:45:9-47:39
-54            android:name="com.example.kidi2.Activity"
-54-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:46:13-37
-55            android:exported="true" />
-55-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:47:13-36
-56        <activity
-56-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:48:9-50:39
-57            android:name="com.example.kidi2.LogInScreenActivity"
-57-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:49:13-48
-58            android:exported="true" />
-58-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:50:13-36
-59        <activity
-59-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:51:9-53:39
-60            android:name="com.example.kidi2.ThirdParentRegActivity"
-60-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:52:13-51
-61            android:exported="true" />
-61-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:53:13-36
-62        <activity
-62-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:54:9-56:39
-63            android:name="com.example.kidi2.Addactivity"
-63-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:55:13-40
-64            android:exported="true" /> <!-- feisal and yael activities -->
-64-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:56:13-36
-65        <activity
-65-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:57:9-59:39
-66            android:name="com.example.kidi2.AdminSetCourse"
-66-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:58:13-43
-67            android:exported="true" />
-67-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:59:13-36
-68        <activity
-68-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:60:9-62:39
-69            android:name="com.example.kidi2.AdminAddCourse"
-69-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:61:13-43
-70            android:exported="true" />
-70-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:62:13-36
-71        <activity
-71-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:63:9-65:39
-72            android:name="com.example.kidi2.FirstParentReg"
-72-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:64:13-43
-73            android:exported="true" /> <!-- muhanad activities -->
-73-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:65:13-36
-74        <activity
-74-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:66:9-68:39
-75            android:name="com.example.kidi2.FirstParentRegReal"
-75-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:67:13-47
-76            android:exported="true" />
-76-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:68:13-36
-77        <activity
-77-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:69:9-71:39
-78            android:name="com.example.kidi2.AdminMainActivity"
-78-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:70:13-46
-79            android:exported="true" />
-79-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:71:13-36
-80        <activity
-80-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:72:9-80:20
-81            android:name="com.example.kidi2.LinksActivity"
-81-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:73:13-42
-82            android:exported="true" >
-82-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:74:13-36
-83            <intent-filter>
-83-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:75:9-79:25
-84                <action android:name="android.intent.action.MAIN" />
-84-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:76:13-65
-84-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:76:21-62
-85
-86                <category android:name="android.intent.category.LAUNCHER" />
-86-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:78:13-73
-86-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:78:23-70
-87            </intent-filter>
-88        </activity>
-89        <activity
-89-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:81:9-83:39
-90            android:name="com.example.kidi2.webViewBrowser"
-90-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:82:13-43
-91            android:exported="true" />
-91-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:83:13-36
-92        <activity
-92-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:84:9-86:39
-93            android:name="com.example.kidi2.ParentProfileActivity"
-93-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:85:13-50
-94            android:exported="true" />
-94-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:86:13-36
-95    </application>
-96
-97</manifest>
+52        <activity
+52-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:44:9-46:39
+53            android:name="com.example.kidi2.KidName"
+53-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:45:13-36
+54            android:exported="true" /> <!-- ACTIVITY -->
+54-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:46:13-36
+55        <activity
+55-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:47:9-49:39
+56            android:name="com.example.kidi2.Activity"
+56-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:48:13-37
+57            android:exported="true" />
+57-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:49:13-36
+58        <activity
+58-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:50:9-52:39
+59            android:name="com.example.kidi2.LogInScreenActivity"
+59-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:51:13-48
+60            android:exported="true" />
+60-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:52:13-36
+61        <activity
+61-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:53:9-55:39
+62            android:name="com.example.kidi2.ThirdParentRegActivity"
+62-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:54:13-51
+63            android:exported="true" />
+63-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:55:13-36
+64        <activity
+64-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:56:9-58:39
+65            android:name="com.example.kidi2.Addactivity"
+65-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:57:13-40
+66            android:exported="true" /> <!-- feisal and yael activities -->
+66-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:58:13-36
+67        <activity
+67-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:59:9-61:39
+68            android:name="com.example.kidi2.AdminSetCourse"
+68-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:60:13-43
+69            android:exported="true" />
+69-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:61:13-36
+70        <activity
+70-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:62:9-64:39
+71            android:name="com.example.kidi2.AdminAddCourse"
+71-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:63:13-43
+72            android:exported="true" />
+72-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:64:13-36
+73        <activity
+73-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:65:9-67:39
+74            android:name="com.example.kidi2.FirstParentReg"
+74-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:66:13-43
+75            android:exported="true" /> <!-- muhanad activities -->
+75-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:67:13-36
+76        <activity
+76-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:68:9-70:39
+77            android:name="com.example.kidi2.FirstParentRegReal"
+77-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:69:13-47
+78            android:exported="true" />
+78-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:70:13-36
+79        <activity
+79-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:71:9-73:39
+80            android:name="com.example.kidi2.AdminMainActivity"
+80-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:72:13-46
+81            android:exported="true" />
+81-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:73:13-36
+82        <activity
+82-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:74:9-84:20
+83            android:name="com.example.kidi2.LinksActivity"
+83-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:75:13-42
+84            android:exported="true" >
+84-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:76:13-36
+85            <intent-filter>
+85-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:77:13-81:29
+86                <action android:name="android.intent.action.MAIN" />
+86-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:78:17-69
+86-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:78:25-66
+87
+88                <category android:name="android.intent.category.LAUNCHER" />
+88-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:80:17-77
+88-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:80:27-74
+89            </intent-filter>
+90        </activity>
+91        <activity
+91-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:85:9-87:39
+92            android:name="com.example.kidi2.webViewBrowser"
+92-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:86:13-43
+93            android:exported="true" />
+93-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:87:13-36
+94        <activity
+94-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:88:9-90:39
+95            android:name="com.example.kidi2.ParentProfileActivity"
+95-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:89:13-50
+96            android:exported="true" />
+96-->C:\Users\ahmed\Desktop\kidi26_8\app\src\main\AndroidManifest.xml:90:13-36
+97    </application>
+98
+99</manifest>
