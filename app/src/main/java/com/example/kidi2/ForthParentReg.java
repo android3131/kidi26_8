@@ -104,9 +104,11 @@ public class ForthParentReg extends AppCompatActivity {
         call.enqueue(new Callback<Course>() {
             @Override
             public void onResponse(Call<Course> call, Response<Course> response) {
+
                 course = response.body();
 //                zoomLinkString = course.getZoomMeetingLink();
 //                date = course.getStartDateTime();
+
 
             }
 

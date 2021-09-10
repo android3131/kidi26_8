@@ -1974,7 +1974,6 @@ id add_button
 id add_column
 id add_leader_button
 id add_to_my_calendar
-id address_text
 id admin_main_fragments
 id age
 id age_tv
@@ -1994,7 +1993,6 @@ id autoCompleteToStart
 id back
 id backButtonReg
 id backTo2
-id back_arrow_parent
 id bar_chart
 id barrier
 id baseline
@@ -2043,7 +2041,6 @@ id chooseKid
 id chooseState
 id chronometer
 id circle_center
-id city_text
 id clear_text
 id clip_horizontal
 id clip_vertical
@@ -2058,7 +2055,6 @@ id contiguous
 id coordinator
 id cos
 id counterclockwise
-id country_text
 id courseName
 id course_name
 id course_page
@@ -2426,7 +2422,6 @@ id snackbar_action
 id snackbar_text
 id snap
 id snapMargins
-id some_text
 id spacer
 id special_effects_controller_view_tag
 id spinner

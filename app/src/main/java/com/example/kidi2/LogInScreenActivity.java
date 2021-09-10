@@ -32,7 +32,7 @@ public class LogInScreenActivity extends AppCompatActivity {
     EditText passwordText;
     TextView forgotPassword;
     String leaderId;
-    SharedPreferences pref ;
+    SharedPreferences pref;
     SharedPreferences.Editor editor;
 
     //Retrofit calls
@@ -72,31 +72,32 @@ public class LogInScreenActivity extends AppCompatActivity {
 
     private void checkData(String username, String password) {
         ////////////////////// delete after test ///////////////
-        if(username.equals("Parent")){
+        if (username.equals("Parent")) {
             startActivity(new Intent(LogInScreenActivity.this, HomeLogin.class));
             return;
-        }
-        else if(username.equals("Admin")){
+        } else if (username.equals("Admin")) {
             startActivity(new Intent(LogInScreenActivity.this, AdminMainActivity.class));
             return;
         }
 
 
-
-
-
-
         ////////////////////////////////////////
         Log.d("Mohammad", "success" + username + " " + password);
         User user = new User(username, password);
-        Call<HashMap<String,String>> call = retrofitAPI.createCheckUserPass(user);
-        call.enqueue(new Callback<HashMap<String,String>>() {
+        editor.putString("username", username);
+        editor.putString("password", password);
+//        LogInInfo logInInfo=new LogInInfo(pref.getString("username",null),
+//                pref.getString("password",null));
+//        AuthorizationsCall authorizationsCall=new AuthorizationsCall(getString(R.string.BASE_URL),logInInfo);
+        Call<HashMap<String, String>> call = retrofitAPI.createCheckUserPass(user);
+        call.enqueue(new Callback<HashMap<String, String>>() {
             @Override
-            public void onResponse(Call<HashMap<String,String>> call, Response<HashMap<String,String>> response) {
+            public void onResponse(Call<HashMap<String, String>> call, Response<HashMap<String, String>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     Log.d("Mohammad", "success");
                     System.out.println(response.body().get("flag") + "flag");
                     if (response.body().get("flag").equals("0")) {
+                        System.out.println("flag 0");
                         usernameText.getText().clear();
                         passwordText.setText("");
                         Toast.makeText(LogInScreenActivity.this, "Username or password are worng", Toast.LENGTH_SHORT).show();
@@ -104,7 +105,8 @@ public class LogInScreenActivity extends AppCompatActivity {
                     }
                     // ADMIN username and password
                     else if ((response.body().get("flag")).equals("1")) {
-                        editor.putString("adminID",response.body().get("ID"));
+                        System.out.println("flag 1");
+                        editor.putString("adminID", response.body().get("ID"));
                         editor.commit();
                         Toast.makeText(LogInScreenActivity.this, "---ADMIN LOGIN---", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LogInScreenActivity.this, AdminMainActivity.class));
@@ -113,22 +115,27 @@ public class LogInScreenActivity extends AppCompatActivity {
                     }
                     //LEADER  username and password -> first access change password
                     else if ((response.body().get("flag")).equals("2")) {
-                        editor.putString("leaderID",response.body().get("ID"));
+                        System.out.println("flag 2");
+
+                        editor.putString("leaderID", response.body().get("ID"));
                         editor.commit();
                         Toast.makeText(LogInScreenActivity.this, "---LEADER LOGIN FIRST TIME---", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LogInScreenActivity.this, LeaderFirstLoginActivity.class));
                     }
                     //LEADER  username and password -> not a first access change password
                     else if ((response.body().get("flag")).equals("3")) {
-                        editor.putString("leaderID",response.body().get("ID"));
+                        System.out.println("flag 3");
+                        editor.putString("userType", "leader");
+                        editor.putString("leaderID", response.body().get("ID"));
                         editor.commit();
                         Toast.makeText(LogInScreenActivity.this, "---LEADER LOGIN ---", Toast.LENGTH_SHORT).show();
                         //        startActivity(new Intent(LogInScreenActivity.this, LeaderFirstLoginActivity.class));
                     }
                     //PARENTS username and password
                     else if ((response.body().get("flag")).equals("4")) {
+                        editor.putString("userType", "parent");
                         String id = response.body().get("ID");
-                        editor.putString("parentID",id);
+                        editor.putString("parentID", id);
                         editor.commit();
                         Toast.makeText(LogInScreenActivity.this, "---PARENT LOGIN---", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LogInScreenActivity.this, HomeLogin.class));
@@ -137,7 +144,7 @@ public class LogInScreenActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<HashMap<String,String>> call, Throwable t) {
+            public void onFailure(Call<HashMap<String, String>> call, Throwable t) {
                 Log.d("Mohammad", "failed");
                 usernameText.setText("");
                 passwordText.setText("");
@@ -158,11 +165,11 @@ public class LogInScreenActivity extends AppCompatActivity {
                 passwordText.getText().toString()
 
         );
-        System.out.println(pref.getString("parentID","") +"wa7wa7");
+        System.out.println(pref.getString("parentID", "") + "wa7wa7");
     }
 
-    public void openDialog(){
-        DialogAdapter dialog=new DialogAdapter(LogInScreenActivity.this);
+    public void openDialog() {
+        DialogAdapter dialog = new DialogAdapter(LogInScreenActivity.this);
         dialog.show(getSupportFragmentManager(), "dialog");
     }
 }

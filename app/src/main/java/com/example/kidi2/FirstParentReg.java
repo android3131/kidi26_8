@@ -368,6 +368,7 @@ public class FirstParentReg extends AppCompatActivity  {
     private void initList2 () {
         algorithmItems.clear();
         adpt.notifyDataSetChanged();
+
         Call<List<DataModel>> call = retrofitAPI.getArtsCourses();
         //algorithmItems.add(new AlgorithmItem("choose course", "",R.color.white));
         call.enqueue(new Callback<List<DataModel>>() {
@@ -424,6 +425,9 @@ public class FirstParentReg extends AppCompatActivity  {
     private void initListgen (String s) {
         algorithmItems.clear();
         adpt.notifyDataSetChanged();
+       // LogInInfo logInInfo=new LogInInfo("user","password");
+      //  AuthorizationsCall authorizationsCall=new AuthorizationsCall(getString(R.string.BASE_URL),logInInfo);
+
         Call<List<Course4>> call = retrofitAPI.getcatcourses(s);
         //algorithmItems.add(new AlgorithmItem("choose course", "",R.color.white));
         call.enqueue(new Callback<List<Course4>>() {
@@ -445,6 +449,7 @@ public class FirstParentReg extends AppCompatActivity  {
                 adpt.setItems(algorithmItems);
                 adpt.notifyDataSetChanged();
             }
+
 
             @Override
             public void onFailure(Call<List<Course4>> call, Throwable t) {

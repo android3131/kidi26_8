@@ -5,6 +5,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Path;
 
 public interface RetrofitAPI4 {
@@ -33,4 +34,6 @@ public interface RetrofitAPI4 {
     Call <List<Parent>> getAllParents();
     @GET("getallCategories")
     Call<List<Category>> getAllCategories();
+    @GET("user")
+    Call<User> getUser(@Header("Authorization") String authorization);
 }

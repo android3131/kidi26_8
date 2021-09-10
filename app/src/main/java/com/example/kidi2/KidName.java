@@ -230,6 +230,7 @@ public class KidName extends AppCompatActivity {
         // create an instance for our retrofit api class.
         RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
 
+
 ////////////////////////////////////////////////////////////////////getkid
         Call<Kid> call = retrofitAPI.getKid(kidid);
        // call.enqueue(new Callback<Kid>() {
@@ -286,6 +287,7 @@ public class KidName extends AppCompatActivity {
                      //});
 
         //get number of active courses
+
         Call<Integer> callnumberofactive = retrofitAPI.getNumberActiveCourses(kidid);
 
         try {
@@ -300,7 +302,6 @@ public class KidName extends AppCompatActivity {
             numberofactive.setText(String.valueOf(numofactive));
         }
 
-
         /////get number of completed courses
         Call<Integer> callnumberofcompleted = retrofitAPI.getNumberCompletedCourses(kidid);
         try {
@@ -314,6 +315,8 @@ public class KidName extends AppCompatActivity {
             int numofcompleted = 3;
             numberofcompleted.setText(String.valueOf(numofcompleted));
         }
+        LogInInfo logInInfo4=new LogInInfo(pref.getString("username",null),
+                pref.getString("password",null));
 
 ////////////////get list of active courses
         Call<List<Meeting>> callActiveCourses = retrofitAPI.getAllKidsActiveCoursesSortedKidProfile(kidid);

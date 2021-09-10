@@ -106,6 +106,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -117,7 +119,7 @@
                     android:id="@+id/hour_start"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:text="From Hour :"
@@ -129,7 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="20dp"
                     android:layout_weight="1"
                     android:text="To Hour :"
                     android:textSize="16sp"

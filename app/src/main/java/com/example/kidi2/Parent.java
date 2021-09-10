@@ -2,20 +2,34 @@ package com.example.kidi2;
 
 
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+
+        import java.util.Date;
+        import java.util.ArrayList;
+        import java.util.List;
+        import java.util.Objects;
+
+
+
 
 public class Parent {
+
     private String id;
+
     private String fullName;
+
     private String phoneNumber;
+
     private String email;
+
     private String password;
     private String paymentMethod; // ??
+
     private String paymentDetails;
-    private Status active;
-    private List<String> kids = new ArrayList<>();
+    private Status status;
+    private List <String> kids= new ArrayList<String>();;
+    //@Field
+    //private List <Bills> bill;
+
     private Date activeDate; //first time login
 
     public Parent() {
@@ -23,13 +37,20 @@ public class Parent {
         activeDate = new Date();
     }
 
-    public Parent(String fullName, String phoneNumber, String email, String password,Date d) {
+    public Parent(String fullName, String phoneNumber, String email, String password) {
         super();
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
-        activeDate = d;
+        status = Status.Active;
+        activeDate = new Date();
+    }
+    public Parent(String fullName, String phoneNumber, String email) {
+        super();
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
     }
 
     public String getId() {
@@ -93,21 +114,20 @@ public class Parent {
         return kids;
     }
 
-    public void setKids(List<String> kids) {
-        this.kids = kids;
+    public void setKids(List<String> kidsIds) {
+        this.kids = kidsIds;
     }
 
-    public void removeKid (String id){
-        kids.remove(id);
+    public void removeKid (String kidId){
+        kids.remove(kidId);
 
     }
-    public void addKid (String id) {
-        kids.add(id);
+    public void addKid (String kidId) {
+        kids.add(kidId);
     }
 /*	public List<Bills> getBill() {
 		return bill;
 	}
-
 	public void setBill(List<Bills> bill) {
 		this.bill = bill;
 	}*/
@@ -119,12 +139,31 @@ public class Parent {
     public void setActiveDate(Date activeDate) {
         this.activeDate = activeDate;
     }
-    public Status getActive () {
-        return active;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setActive (Status s) {
-        active = s;
+    public void setStatus (Status s) {
+        status = s;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(email, fullName, id, password, phoneNumber);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Parent other = (Parent) obj;
+        return Objects.equals(email, other.email) && Objects.equals(fullName, other.fullName)
+                && Objects.equals(id, other.id) && Objects.equals(password, other.password)
+                && Objects.equals(phoneNumber, other.phoneNumber);
     }
 
     @Override

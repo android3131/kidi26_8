@@ -21,7 +21,6 @@
         android:textSize="30sp" />
 
     <ImageView
-        android:id="@+id/back_arrow_parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -56,29 +55,18 @@
             android:id="@+id/my_kids_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:paddingTop="20dp"
             android:text="My Kids"
             android:textColor="#000000"
             android:textSize="30sp" />
 
-        <TextView
-            android:id="@+id/some_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="40dp"
-            android:paddingTop="5dp"
-            android:text="Lorem ipsom dollar sit map"
-            android:textColor="#97000000"
-            android:textSize="16sp" />
-
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:layout_marginTop="5dp"
             android:orientation="horizontal">
             <RelativeLayout
@@ -87,7 +75,6 @@
                 android:layout_height="40dp"
                 android:background="@drawable/add_kid_background"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
                 android:layout_centerHorizontal="true">
                 <androidx.cardview.widget.CardView
@@ -167,17 +154,18 @@
             android:id="@+id/my_bills_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="40dp"
-            android:paddingTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
             android:text="My Bills"
             android:textColor="#000000"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
         <TextView
             android:id="@+id/info_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="40dp"
-            android:paddingTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="5dp"
             android:text="Ibraheem and Lena have participated in X activities
                             with Y events. You are now paying Z for their current
                             activities per month"
@@ -187,77 +175,53 @@
             android:id="@+id/my_bills_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="30dp"
             android:textAllCaps="false"
             android:text="My Bills"
             app:backgroundTint="#4E7FE7"
             />
 
         <androidx.cardview.widget.CardView
-            android:layout_marginTop="10dp"
-            android:layout_width="250dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
             app:cardElevation="20dp"
             app:cardCornerRadius="30dp"
-            android:layout_height="280dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingTop="10dp"
+                android:paddingTop="5dp"
                 android:paddingRight="15dp"
                 android:paddingLeft="15dp">
-            <TextView
-                android:id="@+id/my_details_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="My Details"
-                android:textColor="#000000"
-                android:textSize="16sp" />
-            <EditText
-                android:id="@+id/name_text"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="John Doe"
-                android:focusable="false"
-                android:textSize="10sp"
-                />
+                <TextView
+                    android:id="@+id/my_details_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="My Details"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
                 <EditText
-                    android:id="@+id/address_text"
+                    android:id="@+id/name_text"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:textSize="10sp"
-                    android:focusable="false"
-                    android:text="33 avenue hills Berlin, Germany"
+                    android:text="John Doe"
+                    android:enabled="false"
+                    android:textSize="14sp"
                     />
-                <EditText
-                    android:id="@+id/city_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:textSize="10sp"
-                    android:focusable="false"
-                    android:text="Berlin City 345353"
-                    />
-                <EditText
-                    android:id="@+id/country_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:textSize="10sp"
-                    android:focusable="false"
-                    android:text="New State, Germany"
-                    />
+
                 <EditText
                     android:id="@+id/phone_text"
                     android:layout_width="match_parent"
                     android:layout_marginBottom="2dp"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:textSize="10sp"
-                    android:focusable="false"
+                    android:textSize="14sp"
+                    android:enabled="false"
                     android:text="+958358923479823"
                     />
                 <EditText
@@ -265,8 +229,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:textSize="10sp"
-                    android:focusable="false"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="2dp"
+                    android:enabled="false"
                     android:text="Jhondeo@mail.com" />
 
                 <Button
@@ -274,10 +239,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+
                     android:text="Edit info"
                     android:layout_gravity="center_vertical|center_horizontal"
                     android:textColor="#000000"
-                    android:textSize="8sp"
+                    android:textSize="16sp"
                     android:textAllCaps="false"
                     app:backgroundTint="#F0F8FF"
                     android:onClick="editeInfo"/>

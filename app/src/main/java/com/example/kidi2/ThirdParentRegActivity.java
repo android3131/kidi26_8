@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
@@ -68,11 +69,15 @@ public class ThirdParentRegActivity extends AppCompatActivity implements Adapter
     Retrofit retrofit ;
 
     RetrofitAPIThirdParentReg retrofitAPI ;
-
+    SharedPreferences pref ;
+    SharedPreferences.Editor editor ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third_parent_reg);
+         pref = getApplicationContext().getSharedPreferences("MyKIDIPref", 0); // 0 - for private mode
+         editor = pref.edit();
+
          retrofit = new Retrofit.Builder()
                 .baseUrl(getString(R.string.BASE_URL)
                 )
@@ -82,8 +87,9 @@ public class ThirdParentRegActivity extends AppCompatActivity implements Adapter
                 .build();
 
          retrofitAPI = retrofit.create(RetrofitAPIThirdParentReg.class);
-        switchToThirdActivity = findViewById(R.id.fourth_next_button);
+
         backButton = findViewById(R.id.fourth_back_button);
+
         backButton.setOnClickListener(view -> finish());
         addSpinners();
         // initializing our views
@@ -141,6 +147,7 @@ public class ThirdParentRegActivity extends AppCompatActivity implements Adapter
                     Toast.makeText(ThirdParentRegActivity.this, "Please enter all the values", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 // calling a method to post our new car's data
                 postData(etFullName.getText().toString(),
                         etDayBirth.getSelectedItem().toString(),
@@ -285,7 +292,8 @@ public class ThirdParentRegActivity extends AppCompatActivity implements Adapter
         // create retrofit builder and pass our base url
         // create an instance for our retrofit api class.
         // passing data from our text fields to our modal class.
-        DataKid myKidData = new DataKid(fullName,date,gender, "0");
+        String parentID =pref.getString("Id",null);
+        DataKid myKidData = new DataKid(fullName,date,gender, parentID);
         // calling a method to create a post and passing our model class.
         Call<List<DataKid>> call = retrofitAPI.createPost(myKidData);
 
@@ -323,6 +331,7 @@ public class ThirdParentRegActivity extends AppCompatActivity implements Adapter
                 //String responseString = "Response Code : " + response.code() + "\n" + response.body();
 
                 // setting responseString string to our text view
+                startActivity(new Intent(ThirdParentRegActivity.this, ForthParentReg.class));
             }
 
             @Override

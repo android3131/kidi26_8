@@ -59,6 +59,7 @@ public class AdminAddCourse extends AppCompatActivity {
     Spinner categorySpinner;
     Retrofit retrofit;
     RetroFitAPI3 retrofitAPI3;
+    int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -219,7 +220,7 @@ public class AdminAddCourse extends AppCompatActivity {
                 }
 
 
-                Course course1 = new Course(courseName.getText().toString(), strtdate, endDt, "String categoryId", ZoomLink.getText().toString(),
+                Course course1 = new Course(courseName.getText().toString(), strtdate, endDt, categoryIds.get(position), ZoomLink.getText().toString(),
                         daySelection.toString(), selectedHourStart.getItemName(), selectedHourEnd.getItemName(), urlLink.getText().toString());
 
                 // calling a method to create a post and passing our model class.
@@ -262,7 +263,7 @@ public class AdminAddCourse extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.d("ofra", "on Button click: " + daySpinner.getSelectedItem());
-                pos=i;
+                position=i;
                 daySelection = daySpinner.getSelectedItem();
             }
 
@@ -382,7 +383,9 @@ public class AdminAddCourse extends AppCompatActivity {
                     categoryIds.add(responseFromAPI.get(i).getId());
                 }
 
+
                 ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(AdminAddCourse.this, android.R.layout.simple_spinner_item, categoryList);
+
                 categorySpinner.setAdapter(categoryAdapter);
                 categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override

@@ -39,16 +39,17 @@
         <activity
             android:name="com.example.kidi2.ForthParentReg"
             android:exported="true" > <!-- ACTIVITIES -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <!-- FIRST SCREEN -->
         <activity
             android:name="com.example.kidi2.FirstScreen"
             android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity> <!-- HOME LOGIN -->
         <activity
             android:name="com.example.kidi2.HomeLogin"
@@ -70,7 +71,8 @@
             android:exported="true" /> <!-- feisal and yael activities -->
         <activity
             android:name="com.example.kidi2.AdminSetCourse"
-            android:exported="true" />
+            android:exported="true" >
+        </activity>
         <activity
             android:name="com.example.kidi2.AdminAddCourse"
             android:exported="true" />

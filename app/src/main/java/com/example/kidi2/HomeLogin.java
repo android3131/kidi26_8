@@ -26,6 +26,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,7 +38,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,7 +55,7 @@ public class HomeLogin extends AppCompatActivity {
     private static final int limit_of_activities = 5;
     private BottomNavigationView navigationView;
     private ImageButton activityBtn, addBtn;
-    private TextView viewActive, viewCompleted;
+    private TextView viewActive, viewCompleted,screenTitle,funwehad,funweplan;
     private ArrayList<ViewPagerItem> viewPagerItemArrayList, viewPagerItemArrayListCompleted;
 
     @Override
@@ -61,14 +65,28 @@ public class HomeLogin extends AppCompatActivity {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyKIDIPref", 0); // 0 - for private mode
         SharedPreferences.Editor editor = pref.edit();
         String parentId;
-
+        String userType;
+       // userType=pref.getString("userType",null);
+        userType="leader";
         parentId = pref.getString("parentID", null);
-
+screenTitle=findViewById(R.id.kidiT);
+funweplan=findViewById(R.id.funT);
+funwehad=findViewById(R.id.funwehadText);
         navigationView = findViewById(R.id.navibarhomelogin);
         activityBtn = findViewById(R.id.activityButtonHomeID);
         addBtn = findViewById(R.id.addButtonHomeID);
         viewActive = findViewById(R.id.viewAllActiveHomeID);
         viewCompleted = findViewById(R.id.viewAllCompletedHomeID);
+        if(userType.equals("leader")){
+            screenTitle.setText("Leader");
+            funwehad.setText("Completed Courses");
+            funweplan.setText("Active Courses");
+        }
+        else{
+            screenTitle.setText("KIDI");
+            funwehad.setText("Fun we had");
+            funweplan.setText("Fun we plan");
+        }
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,8 +173,8 @@ public class HomeLogin extends AppCompatActivity {
 
         String[] describtion = {"math", "art", "sport", "space", "physics"};
         String[] describtionCompleted = {"math2", "art2", "sport2", "space2", "physics2"};
-        String[] kidsID=new String[images.length];
-        String[] kidsIDCompleted=new String[images.length];
+        String[] kidsID = new String[images.length];
+        String[] kidsIDCompleted = new String[images.length];
         //call backend
         viewPager = findViewById(R.id.viewpager);
         viewPager2 = findViewById(R.id.viewpager2);
@@ -228,7 +246,6 @@ public class HomeLogin extends AppCompatActivity {
 ///////////////////////////////////////////////////
 
 
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(getString(R.string.BASE_URL)
                 )
@@ -237,112 +254,155 @@ public class HomeLogin extends AppCompatActivity {
                 // and build our retrofit builder.
                 .build();
 
+
+        parentId = "61373a2ac1866b7771fe78d7"; //getString("parentID",null);
         // create an instance for our retrofit api class.
         RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
         //DataModel user = new DataModel();
+//        LogInInfo logInInfo=new LogInInfo(pref.getString("username",null),
+//                pref.getString("password",null));
 
-        Call<HashMap<List<Kid>,List<Meeting>>> call = retrofitAPI.getAllKidsNextCoursesSorted(parentId);
+        Call<HashMap<List<Kid>, List<Meeting>>> call2 = retrofitAPI.getAllKidsNextCoursesSorted
+                ("61373a2ac1866b7771fe78d7");
+        // try {
+        //  Response<HashMap<List<Kid>, List<Meeting>>> response2 = call2.execute();
+        call2.enqueue(new Callback<HashMap<List<Kid>, List<Meeting>>>() {
+            @Override
+            public void onResponse(Call<HashMap<List<Kid>, List<Meeting>>> call2, Response<HashMap<List<Kid>, List<Meeting>>> response2) {
+                //  try {
 
-        try {
-            Response<HashMap<List<Kid>,List<Meeting>>> response = call.execute();
-            HashMap<List<Kid>,List<Meeting>> meetingsHashMap = response.body();
+                //Response<HashMap<List<Kid>, List<Meeting>>> response2 = call2.execute();
 
-            List<Kid> kid=new ArrayList<Kid>();
-            List<Meeting> meeting=new ArrayList<Meeting>();
-            for (List<Kid> i : meetingsHashMap.keySet()) {
-                kid.addAll(i);
-            }
-            for (List<Meeting> j : meetingsHashMap.values()) {
-                meeting.addAll(j);
-            }
 
-            for (int i = 0; i < images.length&&i<kid.size(); i++) {
-                kidsID[i]=kid.get(i).getId();
-                DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-                dates[i] = meeting.get(i).getMeetingDateTime();
-                String strDate = dateFormat.format(dates[i]);
-                describtion[i] = meeting.get(i).getId();
-                names[i] = kid.get(i).getFullName();
-                Resources r = getResources();
-                int drawableId = r.getIdentifier(kid.get(i).getImage(), "drawable",
-                        "com.mypackage.myapp");
+                HashMap<List<Kid>, List<Meeting>> meetingsHashMap = response2.body();
+                //meetingsHashMap=new HashMap<>(response2.body());
 
-                try {
-                    Class res = R.drawable.class;
-                    Field field = res.getField("drawableName");
-                    drawableId = field.getInt(null);
-                } catch (Exception e) {
-                    Log.e("MyTag", "Failure to get drawable id.", e);
+                if (response2.body() != null) {
+                    System.out.println("inside if");
+                    List<Kid> kid = new ArrayList<Kid>();
+                    List<Meeting> meeting = new ArrayList<Meeting>();
+                    for (List<Kid> i : meetingsHashMap.keySet()) {
+                        kid.addAll(i);
+                    }
+                    for (List<Meeting> j : meetingsHashMap.values()) {
+                        meeting.addAll(j);
+                    }
+
+                    for (int i = 0; i < images.length && i < kid.size(); i++) {
+                        kidsID[i] = kid.get(i).getId();
+                        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+                        dates[i] = meeting.get(i).getMeetingDateTime();
+                        String strDate = dateFormat.format(dates[i]);
+                        describtion[i] = meeting.get(i).getId();
+                        names[i] = kid.get(i).getFullName();
+                        Resources r = getResources();
+                        int drawableId = r.getIdentifier(kid.get(i).getImage(), "drawable",
+                                "com.mypackage.myapp");
+
+                        try {
+                            Class res = R.drawable.class;
+                            Field field = res.getField("drawableName");
+                            drawableId = field.getInt(null);
+                        } catch (Exception e) {
+                            Log.e("MyTag", "Failure to get drawable id.", e);
+                        }
+                        images[i] = drawableId;
+
+                        viewPagerItemArrayList.get(i).setName(names[i]);
+                        viewPagerItemArrayList.get(i).setDescription(describtion[i]);
+                        viewPagerItemArrayList.get(i).setImageID(images[i]);
+                        viewPagerItemArrayList.get(i).setDate(strDate);
+
+
+                    }
+                    viewPager.getAdapter().notifyDataSetChanged();
                 }
-                images[i] = drawableId;
-
-                viewPagerItemArrayList.get(i).setName(names[i]);
-                viewPagerItemArrayList.get(i).setDescription(describtion[i]);
-                viewPagerItemArrayList.get(i).setImageID(images[i]);
-                viewPagerItemArrayList.get(i).setDate(strDate);
-
-
-            }
-            viewPager.getAdapter().notifyDataSetChanged();
-        } catch (Exception ex) {
-
-        }
-        vpAdapter.setKidsID(kidsID,viewPager.getCurrentItem());
-
-
-        //end call
-
-        Call<HashMap<List<Kid>,List<Meeting>>> callCompleted = retrofitAPI.getAllKidsFinishedCoursesSorted(parentId);
-
-        try {
-            Response<HashMap<List<Kid>,List<Meeting>>> response = callCompleted.execute();
-            HashMap<List<Kid>,List<Meeting>> meetingsHashMap = response.body();
-
-            List<Kid> kid=new ArrayList<Kid>();
-            List<Meeting> meeting=new ArrayList<Meeting>();
-            for (List<Kid> i : meetingsHashMap.keySet()) {
-                kid.addAll(i);
-            }
-            for (List<Meeting> j : meetingsHashMap.values()) {
-                meeting.addAll(j);
+//                                     } catch (Exception e) {
+//                                         Log.e("MYAPP", "exception", e);
             }
 
-
-            for (int i = 0; i < imagesCompleted.length&&i<kid.size(); i++) {
-                kidsIDCompleted[i]=kid.get(i).getId();
-
-                DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-                datesCompleted[i] = meeting.get(i).getMeetingDateTime();
-                String strDate = dateFormat.format(datesCompleted[i]);
-                describtionCompleted[i] = meeting.get(i).getId();
-                namesCompleted[i] = kid.get(i).getFullName();
-                Resources r = getResources();
-                int drawableId = r.getIdentifier(kid.get(i).getImage(), "drawable",
-                        "com.mypackage.myapp");
-
-                try {
-                    Class res = R.drawable.class;
-                    Field field = res.getField("drawableName");
-                    drawableId = field.getInt(null);
-                } catch (Exception e) {
-                    Log.e("MyTag", "Failure to get drawable id.", e);
-                }
-                imagesCompleted[i] = drawableId;
-
-                viewPagerItemArrayListCompleted.get(i).setName(namesCompleted[i]);
-                viewPagerItemArrayListCompleted.get(i).setDescription(describtionCompleted[i]);
-                viewPagerItemArrayListCompleted.get(i).setImageID(imagesCompleted[i]);
-                viewPagerItemArrayListCompleted.get(i).setDate(strDate);
-
-
+            public void onFailure(Call<HashMap<List<Kid>, List<Meeting>>> call2, Throwable t) {
+                Log.e("tag", "msg", t);
             }
-            viewPager2.getAdapter().notifyDataSetChanged();
-        } catch (Exception ex) {
-
-        }
-
-
-        vpAdapter2.setKidsID(kidsID,viewPager2.getCurrentItem());
+        });
+//        } catch (Exception e) {
+//
+//        }
 
 
-    }}
+        vpAdapter.setKidsID(kidsID, viewPager.getCurrentItem());
+
+
+//        Call<HashMap<String, List<?>>> callCompleted = retrofitAPI.getAllKidsFinishedCoursesSorted
+//                ("61373a2ac1866b7771fe78d7");
+//
+//        //try {
+//        callCompleted.enqueue(new Callback<HashMap<String, List<?>>>() {
+//            @Override
+//            public void onResponse(Call<HashMap<String, List<?>>> callCompleted, Response<HashMap<String, List<?>>> response2) {
+//                //  try {
+//                // Response<HashMap<String, List>> response2 = callCompleted.execute();
+//                HashMap<String, List<?>> meetingsHashMap = response2.body();
+//
+//                List<Kid> kid = new ArrayList<Kid>();
+//                List<Meeting> meeting = new ArrayList<Meeting>();
+//
+//                for (Map.Entry<String, List<?>> entry : meetingsHashMap.entrySet()) {
+//                    String elie = entry.getKey();
+//                    if (elie.equals("elie1")) {
+//                        List<?> value = entry.getValue();
+//                        for (Object j : value) {
+//                            kid.add((Kid)j);
+//                        }
+//                    }
+//
+//                    if (elie.equals("elie2")) {
+//                        List<?> value = entry.getValue();
+//                        for(Object j: value){
+//                            meeting.add((Meeting) j);
+//                        }
+//                    }
+//
+//                }
+//
+//                for (int i = 0; i < imagesCompleted.length && i < kid.size(); i++) {
+//                    kidsIDCompleted[i] = kid.get(i).getId();
+//
+//                    DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+//                    datesCompleted[i] = meeting.get(i).getMeetingDateTime();
+//                    String strDate = dateFormat.format(datesCompleted[i]);
+//                    describtionCompleted[i] = meeting.get(i).getId();
+//                    namesCompleted[i] = kid.get(i).getFullName();
+//                    Resources r = getResources();
+//                    int drawableId = r.getIdentifier(kid.get(i).getImage(), "drawable",
+//                            "com.mypackage.myapp");
+//
+//                    try {
+//                        Class res = R.drawable.class;
+//                        Field field = res.getField("drawableName");
+//                        drawableId = field.getInt(null);
+//                    } catch (Exception e) {
+//                        Log.e("MyTag", "Failure to get drawable id.", e);
+//                    }
+//                    imagesCompleted[i] = drawableId;
+//
+//                    viewPagerItemArrayListCompleted.get(i).setName(namesCompleted[i]);
+//                    viewPagerItemArrayListCompleted.get(i).setDescription(describtionCompleted[i]);
+//                    viewPagerItemArrayListCompleted.get(i).setImageID(imagesCompleted[i]);
+//                    viewPagerItemArrayListCompleted.get(i).setDate(strDate);
+//
+//
+//                }
+//                viewPager2.getAdapter().notifyDataSetChanged();
+//            }
+//
+//            public void onFailure(Call<HashMap<String, List<?>>> callCompleted, Throwable t) {
+//                Log.e("funwehad", "msg", t);
+//            }
+//        });
+
+        vpAdapter2.setKidsID(kidsID, viewPager2.getCurrentItem());
+
+
+    }
+}

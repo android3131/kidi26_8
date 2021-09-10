@@ -44,7 +44,7 @@ public class AdminSetCourse extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_set_course);
-        addSpinner();
+
          retrofit = new Retrofit.Builder()
                 .baseUrl(getString(R.string.BASE_URL))
                 // when sending data in json format we have to add Gson converter factory
@@ -55,7 +55,7 @@ public class AdminSetCourse extends AppCompatActivity {
          retrofitAPI2 = retrofit.create(RetroFitAPI2.class);
         //lists
         lis=new ArrayList<Course2>();
-
+        addSpinner();
 
         //findViewById- all
         bt_delete=findViewById(R.id.delete_button);
@@ -120,7 +120,7 @@ public class AdminSetCourse extends AppCompatActivity {
                                     editor.putString("courseName", lis.get(position).getName());
                                     editor.putString("startDate", lis.get(position).getStartDateTime());
                                     editor.putString("endDate", lis.get(position).getFinishDateTime());
-                                    editor.putString("day", "Monday");
+                                    editor.putString("day", lis.get(position).getDay());
                                     editor.putString("startHour", lis.get(position).getStartOclock());
                                     editor.putString("endHour", lis.get(position).getEndOclock());
                                     editor.putString("zoomLink", lis.get(position).getZoomMeetingLink());
@@ -279,12 +279,14 @@ public class AdminSetCourse extends AppCompatActivity {
             public void onResponse(Call<List<Course>> call, Response<List<Course>> response) {
 
                 List<Course> responseFromAPI = response.body();
-                int len=responseFromAPI.size();
+                int len=0;
+                if(responseFromAPI!=null)
+                 len=responseFromAPI.size();
                 for (int i=0;i<len;i++) {
                     lis.add(new Course2(responseFromAPI.get(i).getName()
                             , responseFromAPI.get(i).getPrice(), responseFromAPI.get(i).getStartDateTime().getDay() + "/" + responseFromAPI.get(i).getStartDateTime().getMonth() + "/" + responseFromAPI.get(i).getStartDateTime().getYear()
                             , responseFromAPI.get(i).getFinishDateTime().getDay() + "/" + responseFromAPI.get(i).getFinishDateTime().getMonth() + "/" + responseFromAPI.get(i).getFinishDateTime().getYear()
-                            , new Category(responseFromAPI.get(i).getCategoryName(), "responseFromAPI.get(i).getCategoryImage()"), responseFromAPI.get(i).getZoomMeetingLink(),
+                            , new Category(responseFromAPI.get(i).getCategoryName(),""), responseFromAPI.get(i).getZoomMeetingLink(),
                             responseFromAPI.get(i).getDay(), responseFromAPI.get(i).getStartHour(), responseFromAPI.get(i).getEndHour(), 0, responseFromAPI.get(i).getUrlLink()));
 
                     coursesIds.add(responseFromAPI.get(i).getID());

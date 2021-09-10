@@ -1,10 +1,15 @@
 package com.example.kidi2;
 
+import com.google.gson.JsonObject;
+
 import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface RetrofitAPI {
@@ -17,10 +22,15 @@ public interface RetrofitAPI {
 
     //HomeLogin
 
+
     @GET("funweplangetkidscoursessorted/{id}")
-    Call<HashMap<List<Kid>,List<Meeting>>> getAllKidsNextCoursesSorted(@Path("id") String id);
-    @GET("funwehadgetfinishedkidscoursessorted/{id}")
-    Call<HashMap<List<Kid>,List<Meeting>>> getAllKidsFinishedCoursesSorted(@Path("id") String id);
+    Call<HashMap<List<Kid>,List<Meeting>>> getAllKidsNextCoursesSorted(@Path("id") String id
+                                                                      );
+
+   // @GET("funwehadgetfinishedkidscoursessorted/{id}")
+   // Call<HashMap<String, List<?>>> getAllKidsFinishedCoursesSorted(@Path("id") String id
+                                                                   //        );
+
     //KidName
     @GET("getkidbyid/{kidid}")
     Call<Kid> getKid(@Path("kidid") String kidid);
@@ -30,10 +40,19 @@ public interface RetrofitAPI {
 
     @GET("getnumbercompletedcourses/{kidid}")
     Call<Integer> getNumberCompletedCourses(@Path("kidid") String kidid);
-    @GET("getlistofkidsactivecoursessorted/{id}")
-    Call<List<Meeting>> getAllKidsActiveCoursesSortedKidProfile(@Path("id") String id);
-    @GET("getlistofkidscompletedcoursessortedkid/{id}")
-    Call<List<Meeting>> getAllKidsCompletedCoursesSortedKidProfile(@Path("id") String id);
 
+    @GET("getlistofkidsactivecoursessorted/{id}")
+    Call<List<Meeting>> getAllKidsActiveCoursesSortedKidProfile(@Path("id") String id
+                                                                );
+
+    @GET("getlistofkidscompletedcoursessortedkid/{id}")
+    Call<List<Meeting>> getAllKidsCompletedCoursesSortedKidProfile(@Path("id") String id
+                                                                  );
+
+    @POST("/authenticate")
+    Call<JsonObject> getJWT(@Body LogInInfo logInInfo);
+
+    @GET("getmeetingbyid/{id}")
+    Call<Meeting> getMeetingById(@Path("id") String id);
 
 }

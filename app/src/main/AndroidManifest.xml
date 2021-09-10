@@ -30,17 +30,17 @@
         <activity
             android:name=".ForthParentReg"
             android:exported="true" > <!-- ACTIVITIES -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <!-- FIRST SCREEN -->
         <activity
             android:name=".FirstScreen"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity> <!-- HOME LOGIN -->
         <activity
@@ -63,7 +63,9 @@
             android:exported="true" /> <!-- feisal and yael activities -->
         <activity
             android:name=".AdminSetCourse"
-            android:exported="true" />
+            android:exported="true" >
+
+        </activity>
         <activity
             android:name=".AdminAddCourse"
             android:exported="true" />
