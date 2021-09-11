@@ -36,12 +36,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class FirstParentReg extends AppCompatActivity  {
-    private Button bt1,nextB,backB;
+public class FirstParentReg extends AppCompatActivity {
+    private Button bt1, nextB, backB;
     public ArrayList<AlgorithmItem> algorithmItems;
     private AlgorithmAdapter adapter;
-    boolean first_one=true;
-    static int counter=0;
+    boolean first_one = true;
+    static int counter = 0;
     RvAdapter adpt;
     SharedPreferences s;
 
@@ -53,15 +53,15 @@ public class FirstParentReg extends AppCompatActivity  {
     TextView[] dots;
     LinearLayout layout;
     RecyclerView rv;
-    String space_id="612a326989674a4e38a688a0";
-    String art_id="612a326989674a4e38a688a1";
-    String animal_id="612a326989674a4e38a688a2";
-    String siecnce_id="612a326989674a4e38a688a3";
-    String music_id="612a326989674a4e38a688a4";
+    String space_id = "612a326989674a4e38a688a0";
+    String art_id = "612a326989674a4e38a688a1";
+    String animal_id = "612a326989674a4e38a688a2";
+    String siecnce_id = "612a326989674a4e38a688a3";
+    String music_id = "612a326989674a4e38a688a4";
 
 
     Spinner spinner;
-
+    SharedPreferences pref;
     Retrofit retrofit;
     RetroFitAPI2 retrofitAPI;
 
@@ -71,14 +71,23 @@ public class FirstParentReg extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_parent_reg);
         nextB = findViewById(R.id.nextButton);
-         retrofit = new Retrofit.Builder()
+        pref = getSharedPreferences("MyKIDIPref",0);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("fullName", "");
+        editor.putString("email", "");
+        editor.putString("phone", "");
+        editor.putString("password", "");
+        editor.putInt("code", 100);
+        editor.putString("parentIDReg","");
+        editor.commit();
+        retrofit = new Retrofit.Builder()
                 .baseUrl(getString(R.string.BASE_URL))
                 // when sending data in json format we have to add Gson converter factory
                 .addConverterFactory(GsonConverterFactory.create())
                 // and build our retrofit builder.
                 .build();
         // create an instance for our retrofit api class.
-         retrofitAPI = retrofit.create(RetroFitAPI2.class);
+        retrofitAPI = retrofit.create(RetroFitAPI2.class);
         nextB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,11 +107,11 @@ public class FirstParentReg extends AppCompatActivity  {
         //v.setAdapter(new CustomPagerAdapter(this));//,algorithmItems));
 
         // we pass our item list and context to our Adapter.
-        rv=findViewById(R.id.rv_1);
+        rv = findViewById(R.id.rv_1);
         imageContainer = findViewById(R.id.image_container);
         layout = findViewById(R.id.dots_container);
         algorithmItems = new ArrayList<AlgorithmItem>();
-        algorithmItems.add(new AlgorithmItem("choose course", "",R.color.white));
+        algorithmItems.add(new AlgorithmItem("choose course", "", R.color.white));
 
         dots = new TextView[5];
         //spinner = findViewById(R.id.spinner);
@@ -122,17 +131,21 @@ public class FirstParentReg extends AppCompatActivity  {
             public void onPageSelected(int position) {
                 selectedDots(position);
                 super.onPageSelected(position);
-                switch (position)
-                {
-                    case 0:initListgen(space_id);
+                switch (position) {
+                    case 0:
+                        initListgen(space_id);
                         break;
-                    case 1:initListgen(animal_id);
+                    case 1:
+                        initListgen(animal_id);
                         break;
-                    case 2:initListgen(art_id);
+                    case 2:
+                        initListgen(art_id);
                         break;
-                    case 3:initListgen(siecnce_id);
+                    case 3:
+                        initListgen(siecnce_id);
                         break;
-                    case 4:initListgen(music_id);
+                    case 4:
+                        initListgen(music_id);
                         break;
                     default:
                         // code block
@@ -154,17 +167,18 @@ public class FirstParentReg extends AppCompatActivity  {
             }
         });
 
-        adpt=new RvAdapter(this,algorithmItems);
+        adpt = new RvAdapter(this, algorithmItems);
         rv.setAdapter(adpt);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
 
-        rv.addOnItemTouchListener(new RecyclerItemClickListener(this, rv ,new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view, int position) {
+        rv.addOnItemTouchListener(new RecyclerItemClickListener(this, rv, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
 
-                        Toast.makeText(FirstParentReg.this,   " selected", Toast.LENGTH_SHORT).show();
-                        for (int i=0;i<algorithmItems.size();i++) {
-                            if(position!=i) {
+                        Toast.makeText(FirstParentReg.this, " selected", Toast.LENGTH_SHORT).show();
+                        for (int i = 0; i < algorithmItems.size(); i++) {
+                            if (position != i) {
                                 algorithmItems.get(i).setIm(R.drawable.gradgrey);
                             }
                         }
@@ -174,11 +188,10 @@ public class FirstParentReg extends AppCompatActivity  {
                         adpt.notifyDataSetChanged();
 
 
-
-
                     }
 
-                    @Override public void onLongItemClick(View view, int position) {
+                    @Override
+                    public void onLongItemClick(View view, int position) {
                         // do whatever
 
 
@@ -201,8 +214,7 @@ public class FirstParentReg extends AppCompatActivity  {
 
     }
 
-    private  void  initvp()
-    {
+    private void initvp() {
 
         Call<List<Category>> call = retrofitAPI.getallctg();
         //algorithmItems.add(new AlgorithmItem("choose course", "",R.color.white));
@@ -220,10 +232,8 @@ public class FirstParentReg extends AppCompatActivity  {
                 //list[4] = getResources().getColor(R.color.orange);
 
 
-
-
-                int len=responseFromAPI.size();
-                for (int i=0;i<len;i++)
+                int len = responseFromAPI.size();
+                for (int i = 0; i < len; i++)
                     ;
                 // list[i] = responseFromAPI.get(i).getImage();                //algorithmItems.add(new AlgorithmItem(responseFromAPI.get(1).getCourseName(), responseFromAPI.get(1).getDay() + " " + responseFromAPI.get(1).getTime() + responseFromAPI.get(1).getLength()));
                 //algorithmItems.add(new AlgorithmItem(responseFromAPI.get(2).getCourseName(), responseFromAPI.get(2).getDay() +" "+ responseFromAPI.get(2).getTime() + responseFromAPI.get(2).getLength()));
@@ -239,7 +249,7 @@ public class FirstParentReg extends AppCompatActivity  {
 
             @Override
             public void onFailure(Call<List<Category>> call, Throwable t) {
-
+                int x = 5;
             }
         });
 
@@ -253,13 +263,14 @@ public class FirstParentReg extends AppCompatActivity  {
 
     // It is used to set the algorithm names to our array list.
 
-    private  void initrv(){
+    private void initrv() {
         algorithmItems.clear();
         adpt.notifyDataSetChanged();
         Call<List<DataModel>> call = retrofitAPI.getSpacesCourses();
 
 
     }
+
     //    private void initRetrofit() {
 //
 //        Retrofit retrofit = new Retrofit.Builder()
@@ -318,9 +329,9 @@ public class FirstParentReg extends AppCompatActivity  {
             public void onResponse(Call<List<DataModel>> call, Response<List<DataModel>> response) {
 
                 List<DataModel> responseFromAPI = response.body();
-                int len=responseFromAPI.size();
-                for (int i=0;i<len;i++)
-                    algorithmItems.add(new AlgorithmItem(responseFromAPI.get(i).getCourseName(), responseFromAPI.get(i).getDay() + " " + responseFromAPI.get(i).getTime() + responseFromAPI.get(i).getLength(),R.drawable.gradgrey));
+                int len = responseFromAPI.size();
+                for (int i = 0; i < len; i++)
+                    algorithmItems.add(new AlgorithmItem(responseFromAPI.get(i).getCourseName(), responseFromAPI.get(i).getDay() + " " + responseFromAPI.get(i).getTime() + responseFromAPI.get(i).getLength(), R.drawable.gradgrey));
 
 
                 adpt.setItems(algorithmItems);
@@ -334,7 +345,8 @@ public class FirstParentReg extends AppCompatActivity  {
             }
         });
     }
-    private void initList1 () {
+
+    private void initList1() {
         algorithmItems.clear();
         adpt.notifyDataSetChanged();
         Call<List<DataModel>> call = retrofitAPI.getAnimalsCourses();
@@ -344,9 +356,9 @@ public class FirstParentReg extends AppCompatActivity  {
             public void onResponse(Call<List<DataModel>> call, Response<List<DataModel>> response) {
 
                 List<DataModel> responseFromAPI = response.body();
-                int len=responseFromAPI.size();
-                for (int i=0;i<len;i++)
-                    algorithmItems.add(new AlgorithmItem(responseFromAPI.get(i).getCourseName(), responseFromAPI.get(i).getDay() + " " + responseFromAPI.get(i).getTime() + responseFromAPI.get(i).getLength(),R.drawable.gradgrey));
+                int len = responseFromAPI.size();
+                for (int i = 0; i < len; i++)
+                    algorithmItems.add(new AlgorithmItem(responseFromAPI.get(i).getCourseName(), responseFromAPI.get(i).getDay() + " " + responseFromAPI.get(i).getTime() + responseFromAPI.get(i).getLength(), R.drawable.gradgrey));
                 //algorithmItems.add(new AlgorithmItem(responseFromAPI.get(1).getCourseName(), responseFromAPI.get(1).getDay() +" "+ responseFromAPI.get(1).getTime() + responseFromAPI.get(1).getLength()));
                 //algorithmItems.add(new AlgorithmItem(responseFromAPI.get(2).getCourseName(), responseFromAPI.get(2).getDay() +" "+ responseFromAPI.get(2).getTime() + responseFromAPI.get(2).getLength()));
                 //algorithmItems.add(new AlgorithmItem(responseFromAPI.get(3).getCourseName(), responseFromAPI.get(3).getDay() +" "+ responseFromAPI.get(3).getTime() + responseFromAPI.get(3).getLength()));
@@ -365,7 +377,7 @@ public class FirstParentReg extends AppCompatActivity  {
 
     }
 
-    private void initList2 () {
+    private void initList2() {
         algorithmItems.clear();
         adpt.notifyDataSetChanged();
 
@@ -376,9 +388,9 @@ public class FirstParentReg extends AppCompatActivity  {
             public void onResponse(Call<List<DataModel>> call, Response<List<DataModel>> response) {
 
                 List<DataModel> responseFromAPI = response.body();
-                int len=responseFromAPI.size();
-                for (int i=0;i<len;i++)
-                    algorithmItems.add(new AlgorithmItem(responseFromAPI.get(i).getCourseName(), responseFromAPI.get(i).getDay() + " " + responseFromAPI.get(i).getTime() + responseFromAPI.get(i).getLength(),R.drawable.gradgrey));
+                int len = responseFromAPI.size();
+                for (int i = 0; i < len; i++)
+                    algorithmItems.add(new AlgorithmItem(responseFromAPI.get(i).getCourseName(), responseFromAPI.get(i).getDay() + " " + responseFromAPI.get(i).getTime() + responseFromAPI.get(i).getLength(), R.drawable.gradgrey));
                 //algorithmItems.add(new AlgorithmItem(responseFromAPI.get(1).getCourseName(), responseFromAPI.get(1).getDay() +" "+ responseFromAPI.get(1).getTime() + responseFromAPI.get(1).getLength()));
                 //algorithmItems.add(new AlgorithmItem(responseFromAPI.get(2).getCourseName(), responseFromAPI.get(2).getDay() +" "+ responseFromAPI.get(2).getTime() + responseFromAPI.get(2).getLength()));
                 //algorithmItems.add(new AlgorithmItem(responseFromAPI.get(3).getCourseName(), responseFromAPI.get(3).getDay() +" "+ responseFromAPI.get(3).getTime() + responseFromAPI.get(3).getLength()));
@@ -397,7 +409,7 @@ public class FirstParentReg extends AppCompatActivity  {
 
     }
 
-    private void selectedDots ( int position){
+    private void selectedDots(int position) {
         for (int i = 0; i < dots.length; i++) {
             if (i == position) {
                 dots[i].setTextColor(list[position]);
@@ -408,7 +420,7 @@ public class FirstParentReg extends AppCompatActivity  {
         }
     }
 
-    private void setIndicators () {
+    private void setIndicators() {
         for (int i = 0; i < dots.length; i++) {
             dots[i] = new TextView(this);
             dots[i].setText(Html.fromHtml("&#9679;"));
@@ -418,15 +430,11 @@ public class FirstParentReg extends AppCompatActivity  {
     }
 
 
-
-
-
-
-    private void initListgen (String s) {
+    private void initListgen(String s) {
         algorithmItems.clear();
         adpt.notifyDataSetChanged();
-       // LogInInfo logInInfo=new LogInInfo("user","password");
-      //  AuthorizationsCall authorizationsCall=new AuthorizationsCall(getString(R.string.BASE_URL),logInInfo);
+        // LogInInfo logInInfo=new LogInInfo("user","password");
+        //  AuthorizationsCall authorizationsCall=new AuthorizationsCall(getString(R.string.BASE_URL),logInInfo);
 
         Call<List<Course4>> call = retrofitAPI.getcatcourses(s);
         //algorithmItems.add(new AlgorithmItem("choose course", "",R.color.white));
@@ -435,11 +443,11 @@ public class FirstParentReg extends AppCompatActivity  {
             public void onResponse(Call<List<Course4>> call, Response<List<Course4>> response) {
 
                 List<Course4> responseFromAPI = response.body();
-                int len=0;
-                if(responseFromAPI!=null)
-                len=responseFromAPI.size();
-                for (int i=0;i<len;i++)
-                    algorithmItems.add(new AlgorithmItem(responseFromAPI.get(i).getName(), responseFromAPI.get(i).getDay() + ", " + responseFromAPI.get(i).getStartHour()+"+ "+responseFromAPI.get(i).getMeetingDuration() /*+ responseFromAPI.get(i).getd()*/,R.drawable.gradgrey));
+                int len = 0;
+                if (responseFromAPI != null)
+                    len = responseFromAPI.size();
+                for (int i = 0; i < len; i++)
+                    algorithmItems.add(new AlgorithmItem(responseFromAPI.get(i).getName(), responseFromAPI.get(i).getDay() + ", " + responseFromAPI.get(i).getStartHour() + "+ " + responseFromAPI.get(i).getMeetingDuration() /*+ responseFromAPI.get(i).getd()*/, R.drawable.gradgrey));
                 //algorithmItems.add(new AlgorithmItem(responseFromAPI.get(1).getCourseName(), responseFromAPI.get(1).getDay() +" "+ responseFromAPI.get(1).getTime() + responseFromAPI.get(1).getLength()));
                 //algorithmItems.add(new AlgorithmItem(responseFromAPI.get(2).getCourseName(), responseFromAPI.get(2).getDay() +" "+ responseFromAPI.get(2).getTime() + responseFromAPI.get(2).getLength()));
                 //algorithmItems.add(new AlgorithmItem(responseFromAPI.get(3).getCourseName(), responseFromAPI.get(3).getDay() +" "+ responseFromAPI.get(3).getTime() + responseFromAPI.get(3).getLength()));
@@ -458,13 +466,6 @@ public class FirstParentReg extends AppCompatActivity  {
         });
 
     }
-
-
-
-
-
-
-
 
 
 }

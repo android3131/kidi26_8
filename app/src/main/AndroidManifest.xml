@@ -42,13 +42,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
+
         </activity> <!-- HOME LOGIN -->
         <activity
             android:name=".HomeLogin"
             android:exported="true" /> <!-- KID NAME -->
         <activity
             android:name=".KidName"
-            android:exported="true" /> <!-- ACTIVITY -->
+            android:exported="true" >
+
+        </activity><!-- ACTIVITY -->
         <activity
             android:name=".Activity"
             android:exported="true" />
@@ -57,7 +60,9 @@
             android:exported="true" />
         <activity
             android:name=".ThirdParentRegActivity"
-            android:exported="true" />
+            android:exported="true" >
+
+        </activity>
         <activity
             android:name=".Addactivity"
             android:exported="true" /> <!-- feisal and yael activities -->

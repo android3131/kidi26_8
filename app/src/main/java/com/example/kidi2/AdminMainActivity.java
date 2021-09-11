@@ -1,5 +1,6 @@
 package com.example.kidi2;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -81,15 +82,9 @@ public class AdminMainActivity extends AppCompatActivity {
             Color.parseColor("#0091FF"),Color.parseColor("#D0DBFF"),Color.parseColor("#FFB0B1") };
 
 
-    Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl(getString(R.string.BASE_URL)
-            )
-            // when sending data in json format we have to add Gson converter factory
-            .addConverterFactory(GsonConverterFactory.create())
-            // and build our retrofit builder.
-            .build();
+    Retrofit retrofit ;
     // create an instance for our retrofit api class.
-    RetrofitAPIAdminMain retrofitAPI = retrofit.create(RetrofitAPIAdminMain.class);
+    RetrofitAPIAdminMain retrofitAPI;
 
 
 
@@ -100,7 +95,14 @@ public class AdminMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_main);
         barChart = findViewById(R.id.bar_chart);
         BottomNavigationView bottomNav = findViewById(R.id.nav_view);
-
+        retrofit = new Retrofit.Builder()
+                .baseUrl(getString(R.string.BASE_URL)
+                )
+                // when sending data in json format we have to add Gson converter factory
+                .addConverterFactory(GsonConverterFactory.create())
+                // and build our retrofit builder.
+                .build();
+        retrofitAPI = retrofit.create(RetrofitAPIAdminMain.class);
         //find texts inputs
          activitiesText = (TextView) findViewById(R.id.activities_perc);
          parentsText = (TextView) findViewById(R.id.parents_perc);
@@ -195,23 +197,28 @@ public class AdminMainActivity extends AppCompatActivity {
                 Fragment selectedFragment = null;
                 switch (item.getItemId()) {
                     case R.id.home_page:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, homeFragment).commit();
+                        startActivity(new Intent(AdminMainActivity.this, AdminAddCourse.class));
+                       // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, homeFragment).commit();
                         return true;
 
                     case R.id.leaders_page:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, leadersFragment).commit();
+                        startActivity(new Intent(AdminMainActivity.this, AdminSetCourse.class));
+                       // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, leadersFragment).commit();
                         return true;
 
                     case R.id.users_page:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, userFragment).commit();
+                        startActivity(new Intent(AdminMainActivity.this, AdminSetLeader.class));
+                       // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, userFragment).commit();
                         return true;
 
                     case R.id.course_page:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, coursesFragment).commit();
+                        startActivity(new Intent(AdminMainActivity.this, AdminUpdateCourse.class));
+                      //  getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, coursesFragment).commit();
                         return true;
 
                     case R.id.more_page:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, moreFragment).commit();
+                        startActivity(new Intent(AdminMainActivity.this, LeaderFirstLoginActivity.class));
+                       // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, moreFragment).commit();
                         return true;
                 }
                 return false;
@@ -244,7 +251,9 @@ public class AdminMainActivity extends AppCompatActivity {
         // below line is to remove description
         // label of our bar chart.
         barChart.getDescription().setEnabled(false);
-
+        CustomBarChartRender barChartRender = new CustomBarChartRender(barChart, barChart.getAnimator(), barChart.getViewPortHandler());
+        barChartRender.setRadius(12);
+        barChart.setRenderer(barChartRender);
         // below line is to get x axis
         // of our bar chart.
         XAxis xAxis = barChart.getXAxis();

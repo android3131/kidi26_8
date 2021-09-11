@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".HomeLogin">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,28 +20,30 @@
 
         <TextView
             android:id="@+id/kidiT"
-            android:layout_width="86dp"
+            android:layout_width="wrap_content"
             android:layout_height="67dp"
-            android:layout_marginLeft="140dp"
+            android:layout_marginLeft="120dp"
             android:gravity="center"
             android:text="KIDI"
             android:textColor="#FFFFFF"
             android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/userImage"
             app:layout_constraintHorizontal_bias="0.526"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/userImage"
             android:layout_width="49dp"
             android:layout_height="52dp"
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
+            android:background="#4e7fe7"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/kidiT"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/bitmap" />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout5"

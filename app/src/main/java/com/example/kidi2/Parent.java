@@ -3,10 +3,12 @@ package com.example.kidi2;
 
 
 
-        import java.util.Date;
-        import java.util.ArrayList;
-        import java.util.List;
-        import java.util.Objects;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 
 
@@ -22,35 +24,51 @@ public class Parent {
     private String email;
 
     private String password;
+
     private String paymentMethod; // ??
 
     private String paymentDetails;
+
     private Status status;
+
     private List <String> kids= new ArrayList<String>();;
     //@Field
     //private List <Bills> bill;
 
-    private Date activeDate; //first time login
+    private String activeDate; //first time login
 
     public Parent() {
         super();
-        activeDate = new Date();
+        initMyDate(new Date());
+
     }
 
     public Parent(String fullName, String phoneNumber, String email, String password) {
         super();
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
-        this.email = email;
+        this.email = email.toLowerCase();
         this.password = password;
-        status = Status.Active;
-        activeDate = new Date();
+        this.status = Status.Active;
+
+       initMyDate(new Date());
+
+    }
+    private void initMyDate(Date date){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+
+
+        String strDate = dateFormat.format(date);
+        this.activeDate=strDate;
     }
     public Parent(String fullName, String phoneNumber, String email) {
         super();
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
-        this.email = email;
+        this.email = email.toLowerCase();
+
+       // status = Status.Active;
+        initMyDate(new Date());
     }
 
     public String getId() {
@@ -132,13 +150,14 @@ public class Parent {
 		this.bill = bill;
 	}*/
 
-    public Date getActiveDate() {
+    public String getActiveDate() {
         return activeDate;
     }
 
-    public void setActiveDate(Date activeDate) {
+    public void setActiveDate(String activeDate) {
         this.activeDate = activeDate;
     }
+
     public Status getStatus() {
         return status;
     }
@@ -147,9 +166,11 @@ public class Parent {
         status = s;
     }
 
+
+
     @Override
     public int hashCode() {
-        return Objects.hash(email, fullName, id, password, phoneNumber);
+        return Objects.hash(email, phoneNumber);
     }
 
     @Override
@@ -161,14 +182,12 @@ public class Parent {
         if (getClass() != obj.getClass())
             return false;
         Parent other = (Parent) obj;
-        return Objects.equals(email, other.email) && Objects.equals(fullName, other.fullName)
-                && Objects.equals(id, other.id) && Objects.equals(password, other.password)
-                && Objects.equals(phoneNumber, other.phoneNumber);
+        return Objects.equals(email, other.email) && Objects.equals(phoneNumber, other.phoneNumber);
     }
 
     @Override
     public String toString() {
-        return "Parent [fullName=" + fullName + ", phoneNumnber=" + phoneNumber + ", email=" + email + "]";
+        return "Parent [fullName=" + fullName + ", phoneNumnber=" + phoneNumber + ", email=" + email +"Date"+activeDate +"]";
     }
 
 

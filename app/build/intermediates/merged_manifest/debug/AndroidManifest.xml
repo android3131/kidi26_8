@@ -56,7 +56,8 @@
             android:exported="true" /> <!-- KID NAME -->
         <activity
             android:name="com.example.kidi2.KidName"
-            android:exported="true" /> <!-- ACTIVITY -->
+            android:exported="true" >
+        </activity> <!-- ACTIVITY -->
         <activity
             android:name="com.example.kidi2.Activity"
             android:exported="true" />
@@ -65,7 +66,8 @@
             android:exported="true" />
         <activity
             android:name="com.example.kidi2.ThirdParentRegActivity"
-            android:exported="true" />
+            android:exported="true" >
+        </activity>
         <activity
             android:name="com.example.kidi2.Addactivity"
             android:exported="true" /> <!-- feisal and yael activities -->

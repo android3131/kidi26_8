@@ -55,4 +55,7 @@ public interface RetrofitAPI {
     @GET("getmeetingbyid/{id}")
     Call<Meeting> getMeetingById(@Path("id") String id);
 
+    @POST("/addNewParent")
+     Call<Parent> createParent(@Body Parent parent);
+
 }

@@ -105,11 +105,12 @@ public class VPAdapter extends RecyclerView.Adapter<VPAdapter.ViewHolder> {
             }
         });
         ImageButton linksBtn =(ImageButton) view.findViewById(R.id.linksBtn);
-        trashBtn.setOnClickListener(new View.OnClickListener() {
+        linksBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
+                Intent openThree = new Intent(getCtxA(),LinksActivity.class);
+                getCtxA().startActivity(openThree);
 
             }
         });

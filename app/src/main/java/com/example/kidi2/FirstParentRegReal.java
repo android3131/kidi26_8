@@ -20,6 +20,8 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FirstParentRegReal extends AppCompatActivity {
 
@@ -40,6 +42,15 @@ public class FirstParentRegReal extends AppCompatActivity {
         setContentView(R.layout.reg_first_parent);
         pref = getSharedPreferences(MYPREF,0);
         SharedPreferences.Editor editor = pref.edit();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(getString(R.string.BASE_URL))
+                // when sending data in json format we have to add Gson converter factory
+                .addConverterFactory(GsonConverterFactory.create())
+                // and build our retrofit builder.
+                .build();
+
+        // create an instance for our retrofit api class.
+        RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
         /**
          * a Spinner is created from locally saved phone area codes.
          */
@@ -47,11 +58,13 @@ public class FirstParentRegReal extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.dialCodes, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         phoneCode.setAdapter(adapter);
-        phoneCode.setSelection(pref.getInt("code", 0));
+        phoneCode.setSelection(pref.getInt("code", 100));
         password1 = findViewById(R.id.editTextTextPassword);
-        password1.setText(pref.getString("password", ""));
+       // password1.setText(pref.getString("password", ""));
         password2 = findViewById(R.id.editTextTextPassword2);
+       // password2.setText(pref.getString("password", ""));
         fullName = findViewById(R.id.editTextTextPersonName);
         fullName.setText(pref.getString("fullName", ""));
         email = findViewById(R.id.editTextTextEmailAddress);
@@ -68,7 +81,7 @@ public class FirstParentRegReal extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (checkName() && checkEmail() && checkPhone() && check_password()) {
-                com.example.kidi2.ParentGrp2 p = new com.example.kidi2.ParentGrp2(fullName.getText().toString(),phone.getText().toString(), email.getText().toString()
+                Parent p = new Parent(fullName.getText().toString(),phone.getText().toString(), email.getText().toString()
                         , password1.getText().toString());
 
                 //parents.add(p);
@@ -76,43 +89,45 @@ public class FirstParentRegReal extends AppCompatActivity {
                 /**
                  * the new created parent, wrapped by retrofit in order to send post http request.
                  */
-                Call<List<com.example.kidi2.ParentGrp2>> call = com.example.kidi2.RetrofitClientGrp2.getInstance().getAPI().createParent(p);
-
-
+                Call<Parent> call = retrofitAPI.createParent(p);
                 /**
                  * when onResponse is called we get response from our api and the view will change to ThirdRegScreen, otherwise onFailure will return error toast.
                  */
-                call.enqueue(new Callback<List<com.example.kidi2.ParentGrp2>>() {
+                call.enqueue(new Callback<Parent>() {
                     @Override
-                    public void onResponse(Call<List<com.example.kidi2.ParentGrp2>> call, Response<List<com.example.kidi2.ParentGrp2>> response) {
+                    public void onResponse(Call<Parent> call, Response<Parent> response) {
                         // this method is called when we get response from our api.
                         editor.putString("fullName", fullName.getText().toString());
                         editor.putString("email", email.getText().toString());
                         editor.putString("phone", phone.getText().toString());
                         editor.putString("password", password1.getText().toString());
                         editor.putInt("code", phoneCode.getSelectedItemPosition());
-                        List<com.example.kidi2.ParentGrp2> prtLst = response.body();
-                        editor.putString("Id", prtLst.get(prtLst.size()-1).getId());
+                        editor.putString("parentIDReg",response.body().getId());
+                      //  List<Parent> prtLst = response.body();
+                       // editor.putString("Id", prtLst.get(prtLst.size()-1).getId());
                         editor.commit();
                         Toast.makeText(FirstParentRegReal.this, "Data added to API", Toast.LENGTH_SHORT).show();
-                        List<com.example.kidi2.ParentGrp2> responseFromAPI = response.body();
+                        if (response.code() == 400) {
+                            Log.v("Error code 400",response.errorBody().toString());
+                        }
+                        Parent responseFromAPI =response.body();
                         Log.d("Muhannad", "Response= "+response.body());
                         //Log.d("Muhannad", "responseFromAPI, " + responseFromAPI);
                         Toast.makeText(FirstParentRegReal.this, "The new Parent: " + p.toString(), Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(FirstParentRegReal.this, com.example.kidi2.ThirdScreen.class);
-                        FirstParentRegReal.this.startActivity(intent);
+                        Intent intent = new Intent(FirstParentRegReal.this, ThirdParentRegActivity.class);//elie changed this
+                        startActivity(intent);
                     }
 
                     @Override
-                    public void onFailure(Call<List<com.example.kidi2.ParentGrp2>> call, Throwable t) {
+                    public void onFailure(Call<Parent> call, Throwable t) {
                         int x=5;
-                        Log.d("Muhannad", "responseFromAPI" + t);
+                        Log.d("Muhannad", "responseFromAPI " + t);
                         Toast.makeText(FirstParentRegReal.this, "Error", Toast.LENGTH_SHORT).show();
 
                     }
                 });
-                    Intent intent = new Intent(FirstParentRegReal.this, ThirdParentRegActivity.class);//elie changed this
-                    startActivity(intent);
+//                    Intent intent = new Intent(FirstParentRegReal.this, ThirdParentRegActivity.class);//elie changed this
+//                    startActivity(intent);
                 }
 
 

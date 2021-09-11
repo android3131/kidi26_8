@@ -67,7 +67,7 @@ public class LinksActivity extends AppCompatActivity {
         zoomLink = findViewById(R.id.zoomLinkCard);
         System.out.println("Entered here");
         browser = (WebView) findViewById(R.id.webView);
-        navigationView = (BottomNavigationView) findViewById(R.id.navibarhomelogin);
+        navigationView = (BottomNavigationView) findViewById(R.id.navibarlinks);
 
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 

@@ -2204,6 +2204,7 @@ id kidiT
 id kidnameIDText
 id labeled
 id layout
+id layoutlinks
 id leaders_page
 id left
 id leftToRight
@@ -2216,6 +2217,7 @@ id linearLayout2
 id linearLayout3
 id linearLayout4
 id linearLayout5
+id linearlayoutlink
 id linksBtn
 id listMode
 id list_item
@@ -2292,6 +2294,7 @@ id nav_view
 id navibarActivity
 id navibarKidName
 id navibarhomelogin
+id navibarlinks
 id navigation_bar_item_icon_view
 id navigation_bar_item_labels_group
 id navigation_bar_item_large_label_view
@@ -2483,6 +2486,7 @@ id textView2
 id textView3
 id textView4
 id textView5
+id textView6
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -2504,6 +2508,7 @@ id title_template
 id toggle
 id top
 id topPanel
+id toplinearlatoutlinks
 id totalActivitiesTextID
 id totelPerCat_chart
 id touch_outside

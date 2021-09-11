@@ -1,4 +1,4 @@
-#Fri Sep 10 09:16:21 IDT 2021
+#Sat Sep 11 10:40:05 IDT 2021
 base.0=C\:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

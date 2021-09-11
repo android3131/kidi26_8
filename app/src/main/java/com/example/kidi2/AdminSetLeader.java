@@ -42,7 +42,7 @@ public class AdminSetLeader extends AppCompatActivity   {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.set_leader_admin);
         //Retrofit retrofit = new Retrofit.Builder().baseUrl(String.valueOf(R.string.BASE_URL)).addConverterFactory(GsonConverterFactory.create()).build();
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10:8080").addConverterFactory(GsonConverterFactory.create()).build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(getString(R.string.BASE_URL)).addConverterFactory(GsonConverterFactory.create()).build();
         RetrofitAPIAdminSetLeader retrofitAPI = retrofit.create(RetrofitAPIAdminSetLeader.class);
 
         Call<List<Leaders>> myLeaders = retrofitAPI.retrieveAllLeaders();

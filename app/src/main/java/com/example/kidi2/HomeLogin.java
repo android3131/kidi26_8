@@ -54,8 +54,8 @@ public class HomeLogin extends AppCompatActivity {
     ViewPager2 viewPager, viewPager2;
     private static final int limit_of_activities = 5;
     private BottomNavigationView navigationView;
-    private ImageButton activityBtn, addBtn;
-    private TextView viewActive, viewCompleted,screenTitle,funwehad,funweplan;
+    private ImageButton activityBtn, addBtn,parentImage;
+    private TextView viewActive, viewCompleted, screenTitle, funwehad, funweplan;
     private ArrayList<ViewPagerItem> viewPagerItemArrayList, viewPagerItemArrayListCompleted;
 
     @Override
@@ -66,23 +66,30 @@ public class HomeLogin extends AppCompatActivity {
         SharedPreferences.Editor editor = pref.edit();
         String parentId;
         String userType;
-       // userType=pref.getString("userType",null);
-        userType="leader";
+        userType = pref.getString("userType", "parent");
+        //userType="leader";
         parentId = pref.getString("parentID", null);
-screenTitle=findViewById(R.id.kidiT);
-funweplan=findViewById(R.id.funT);
-funwehad=findViewById(R.id.funwehadText);
+        screenTitle = findViewById(R.id.kidiT);
+        funweplan = findViewById(R.id.funT);
+        funwehad = findViewById(R.id.funwehadText);
         navigationView = findViewById(R.id.navibarhomelogin);
         activityBtn = findViewById(R.id.activityButtonHomeID);
         addBtn = findViewById(R.id.addButtonHomeID);
         viewActive = findViewById(R.id.viewAllActiveHomeID);
         viewCompleted = findViewById(R.id.viewAllCompletedHomeID);
-        if(userType.equals("leader")){
+        parentImage=findViewById(R.id.userImage);
+        parentImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeLogin.this, ParentProfileActivity.class));
+
+            }
+        });
+        if (userType.equals("leader")) {
             screenTitle.setText("Leader");
             funwehad.setText("Completed Courses");
             funweplan.setText("Active Courses");
-        }
-        else{
+        } else {
             screenTitle.setText("KIDI");
             funwehad.setText("Fun we had");
             funweplan.setText("Fun we plan");
@@ -255,7 +262,7 @@ funwehad=findViewById(R.id.funwehadText);
                 .build();
 
 
-        parentId = "61373a2ac1866b7771fe78d7"; //getString("parentID",null);
+        parentId = pref.getString("parentID",null); //getString("parentID",null);
         // create an instance for our retrofit api class.
         RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
         //DataModel user = new DataModel();
@@ -263,7 +270,7 @@ funwehad=findViewById(R.id.funwehadText);
 //                pref.getString("password",null));
 
         Call<HashMap<List<Kid>, List<Meeting>>> call2 = retrofitAPI.getAllKidsNextCoursesSorted
-                ("61373a2ac1866b7771fe78d7");
+                (parentId);
         // try {
         //  Response<HashMap<List<Kid>, List<Meeting>>> response2 = call2.execute();
         call2.enqueue(new Callback<HashMap<List<Kid>, List<Meeting>>>() {

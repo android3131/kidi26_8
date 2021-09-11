@@ -18,9 +18,9 @@ public interface RetrofitAPIThirdParentReg {
 
     //mongodb://kidi1:kidi1234@cluster0-shard-00-00.hwayp.mongodb.net:27017,cluster0-shard-00-01.hwayp.mongodb.net:27017,cluster0-shard-00-02.hwayp.mongodb.net:27017/Kidi?ssl=true&replicaSet=atlas-c4n8qa-shard-0&authSource=admin&retryWrites=true&w=majority
 
-    @POST("/createkid")
+    @POST("/AddNewKid")
         //creating a method to post our data.
-    Call <List<DataKid>>createPost(@Body DataKid kid);
+    Call <Kid>createPost(@Body Kid kid);
 
     @GET("/{getKidWithName}")
     Call <DataKid>createGet(@Path("getKidWithName") String getKidWithName);

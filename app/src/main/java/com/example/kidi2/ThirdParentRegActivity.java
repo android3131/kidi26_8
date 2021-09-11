@@ -61,7 +61,7 @@ public class ThirdParentRegActivity extends AppCompatActivity implements Adapter
     Spinner etDayBirth;
     Spinner etMonthBirth;
     Spinner etYearBirth;
-    String etGender;
+    Gender etGender;
     Button postDataBtn;
 
     boolean flag=false;
@@ -128,13 +128,16 @@ public class ThirdParentRegActivity extends AppCompatActivity implements Adapter
             @Override
             public void onClick(View v) {
                 box = findViewById(R.id.girl_box);
+                etGender=Gender.Girl;
                 if(!box.isChecked()){
                     box = findViewById(R.id.boy_box);
+                    etGender=Gender.Boy;
                     if(!box.isChecked()){
                         box = findViewById(R.id.notrelevant_box);
+                        etGender=Gender.NotRelevant;
                     }
                 }
-                etGender = box.getText().toString();
+             //   etGender = box.getText().toString();
                 /*System.out.println("wawa" + etFullName.getText().toString());
                 System.out.println("wawa" +etGender);
                 System.out.println("wawa" + etDayBirth);*/
@@ -143,7 +146,7 @@ public class ThirdParentRegActivity extends AppCompatActivity implements Adapter
                         || etDayBirth.getSelectedItem().toString().isEmpty()
                         || etMonthBirth.getSelectedItem().toString().isEmpty()
                         || etYearBirth.getSelectedItem().toString().isEmpty()
-                        || etGender.isEmpty()) {
+                        || etGender==null) {
                     Toast.makeText(ThirdParentRegActivity.this, "Please enter all the values", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -155,6 +158,7 @@ public class ThirdParentRegActivity extends AppCompatActivity implements Adapter
                         etYearBirth.getSelectedItem().toString(),
                         etGender
                 );
+                //startActivity(new Intent(ThirdParentRegActivity.this, ForthParentReg.class));
             }
         });
 
@@ -272,70 +276,80 @@ public class ThirdParentRegActivity extends AppCompatActivity implements Adapter
 
     }
 
-    private void postData(String fullName, String dayBirth, String monthBirth, String yearBirth,String gender) {
+    private void postData(String fullName, String dayBirth, String monthBirth, String yearBirth,Gender gender) {
         String date = yearBirth + "-" + monthBirth + "-" + dayBirth;
+        Date date2=new Date();
+        try {
+            date2 = new SimpleDateFormat("yyyy-mm-dd").parse(date);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            System.out.println("parsing date failed");
+            e.printStackTrace();
+        }
         // display our progress bar.
         try {
             Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(date);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        if(gender.equals("A boy")) {
-            gender = gender.replace("A boy", "Boy");
-        }
-        else if(gender.equals("A girl")) {
-            gender = gender.replace("A girl", "Girl");
-        }
-        else{
-            gender = gender.replace("Not relevant","NotRelevant");
-        }
+//        if(gender) {
+//            gender = gender.replace("A boy", "Boy");
+//        }
+//        else if(gender.equals("A girl")) {
+//            gender = gender.replace("A girl", "Girl");
+//        }
+//        else{
+//            gender = gender.replace("Not relevant","NotRelevant");
+//        }
         // create retrofit builder and pass our base url
         // create an instance for our retrofit api class.
         // passing data from our text fields to our modal class.
-        String parentID =pref.getString("Id",null);
-        DataKid myKidData = new DataKid(fullName,date,gender, parentID);
+        String parentID =pref.getString("parentIDReg",null);
+        Kid myKidData = new Kid(fullName,date2,gender, parentID);
         // calling a method to create a post and passing our model class.
-        Call<List<DataKid>> call = retrofitAPI.createPost(myKidData);
+        Call<Kid> call = retrofitAPI.createPost(myKidData);
 
         // add the http request to queue
-        call.enqueue(new Callback<List<DataKid>>() {
+        call.enqueue(new Callback<Kid>() {
             @Override
-            public void onResponse(Call<List<DataKid>> call, Response<List<DataKid>> response) {
+            public void onResponse(Call<Kid> call, Response<Kid> response) {
                 // this method is called when we get response from our api.
                 Toast.makeText(ThirdParentRegActivity.this, "Data added to API", Toast.LENGTH_SHORT).show();
 
                 // hiding our progress bar.
 
                 // setting edit text to empty text
-                ((EditText)findViewById(R.id.editTextTextPersonName)).setText("");
-                ((Spinner)findViewById(R.id.day_spinner)).setSelection(0);
-                ((Spinner)findViewById(R.id.month_spinner)).setSelection(0);
-                ((Spinner)findViewById(R.id.year_spinner)).setSelection(0);
-                ((CheckedTextView)findViewById(R.id.girl_box)).setChecked(true);
-                ((CheckedTextView)findViewById(R.id.boy_box)).setChecked(false);
-                ((CheckedTextView)findViewById(R.id.notrelevant_box)).setChecked(false);
+                ((EditText) findViewById(R.id.editTextTextPersonName)).setText("");
+                ((Spinner) findViewById(R.id.day_spinner)).setSelection(0);
+                ((Spinner) findViewById(R.id.month_spinner)).setSelection(0);
+                ((Spinner) findViewById(R.id.year_spinner)).setSelection(0);
+                ((CheckedTextView) findViewById(R.id.girl_box)).setChecked(true);
+                ((CheckedTextView) findViewById(R.id.boy_box)).setChecked(false);
+                ((CheckedTextView) findViewById(R.id.notrelevant_box)).setChecked(false);
 
                 // getting response from our body
                 // and passing it to our model class.
-                List <DataKid> responseFromAPI = response.body();
-                DataKid dk = responseFromAPI.get(0);
-                System.out.println("reem" + response.code());
-                // getting our data from model class and adding it to our string.
-                String responseString = "Response Code : " + response.code() +
-                        "\nFull Name : " + dk.getFullName()  +
-                        "Birth Date : " + dk.getDateOfBirth().toString().substring(0,11) +
-                        "Gender : " + dk.getGender().toString() ;
-
-                Toast.makeText(ThirdParentRegActivity.this, "The new Kid: " + responseString, Toast.LENGTH_SHORT).show();
-
-                //String responseString = "Response Code : " + response.code() + "\n" + response.body();
-
-                // setting responseString string to our text view
+                Kid responseFromAPI = response.body();
+//                if (responseFromAPI != null) {
+//                    DataKid dk = responseFromAPI.get(0);
+//                    System.out.println("reem" + response.code());
+//                    // getting our data from model class and adding it to our string.
+//                    String responseString = "Response Code : " + response.code() +
+//                            "\nFull Name : " + dk.getFullName() +
+//                            "Birth Date : " + dk.getDateOfBirth().toString().substring(0, 11) +
+//                            "Gender : " + dk.getGender().toString();
+//
+//                    Toast.makeText(ThirdParentRegActivity.this, "The new Kid: " + responseString, Toast.LENGTH_SHORT).show();
+//
+//                    //String responseString = "Response Code : " + response.code() + "\n" + response.body();
+//
+//                    // setting responseString string to our text view
+//
+//                }
                 startActivity(new Intent(ThirdParentRegActivity.this, ForthParentReg.class));
             }
-
             @Override
-            public void onFailure(Call<List<DataKid>> call, Throwable t) {
+            public void onFailure(Call<Kid> call, Throwable t) {
                 // setting text to our text view when
                 // we get error response from API.
                 System.out.println("avital" + t);
