@@ -1,6 +1,8 @@
 package com.example.kidi2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,12 +11,16 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +36,8 @@ public class AdminSetCourse extends AppCompatActivity {
     //Context context;
     public ArrayList<Course2> lis;
     MyAdapter myAdapter;
-    Button bt_delete,bt_update,bt_add,bt_add_leader;
-
+    Button bt_delete, bt_update, bt_add, bt_add_leader;
+    BottomNavigationView bottomnav;
 
     List<String> categoryIds;
     List<String> categoryList;
@@ -54,30 +60,64 @@ public class AdminSetCourse extends AppCompatActivity {
         // create an instance for our retrofit api class.
         retrofitAPI2 = retrofit.create(RetroFitAPI2.class);
         //lists
-        lis=new ArrayList<Course2>();
+        lis = new ArrayList<Course2>();
         addSpinner();
 
         //findViewById- all
-        bt_delete=findViewById(R.id.delete_button);
-        bt_update=findViewById(R.id.update_button);
-        bt_add=findViewById(R.id.add_button);
-        bt_add_leader=findViewById(R.id.add_leader_button);
+        bt_delete = findViewById(R.id.delete_button);
+        bt_update = findViewById(R.id.update_button);
+        bt_add = findViewById(R.id.add_button);
+        bt_add_leader = findViewById(R.id.add_leader_button);
         recyclerView = findViewById(R.id.recyclerView);
         bt_delete.setEnabled(false);
         bt_update.setEnabled(false);
         bt_add_leader.setEnabled(false);
 
+        bottomnav = findViewById(R.id.nav_viewsetcourse);
+        bottomnav.setSelectedItemId(R.id.course_page);
 
+        bottomnav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment selectedFragment = null;
+                switch (item.getItemId()) {
+                    case R.id.home_page:
+                        startActivity(new Intent(AdminSetCourse.this, AdminMainActivity.class));
+                        return true;
 
+                    case R.id.users_page:
+                        startActivity(new Intent(AdminSetCourse.this, AdminAddCourse.class));
+                        // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, leadersFragment).commit();
+                        return true;
+
+                    case R.id.leaders_page:
+                        startActivity(new Intent(AdminSetCourse.this, AdminSetLeader.class));
+                        // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, userFragment).commit();
+                        return true;
+
+                    case R.id.course_page:
+                        startActivity(new Intent(AdminSetCourse.this, AdminSetCourse.class));
+                        //  getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, coursesFragment).commit();
+                        return true;
+
+                    case R.id.more_page:
+                        startActivity(new Intent(AdminSetCourse.this, LeaderFirstLoginActivity.class));
+                        // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, moreFragment).commit();
+                        return true;
+                }
+                return false;
+            }
+        });
 
 
         recyclerView.addOnItemTouchListener(
-                new RecyclerItemClickListener(this, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view, int position) {
-                        if(position!=0) {
+                new RecyclerItemClickListener(this, recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        if (position != 0) {
                             //Toast.makeText(AdminSetCourse.this, "Course " + lis.get(position).getName()+" selected", Toast.LENGTH_SHORT).show();
-                            for (int i=0;i<lis.size();i++) {
-                                if(i!=position) //dont include the first row of the heads
+                            for (int i = 0; i < lis.size(); i++) {
+                                if (i != position) //dont include the first row of the heads
                                     lis.get(i).setClr(0);
                             }
                             lis.get(position).setClr(R.color.black); //mark the selected course in RV
@@ -92,7 +132,7 @@ public class AdminSetCourse extends AppCompatActivity {
                             bt_delete.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    Call<Boolean> call= retrofitAPI2.deleteCourse1(coursesIds.get(position));
+                                    Call<Boolean> call = retrofitAPI2.deleteCourse1(coursesIds.get(position));
 
                                     call.enqueue(new Callback<Boolean>() {
                                         @Override
@@ -100,11 +140,12 @@ public class AdminSetCourse extends AppCompatActivity {
                                             //Toast.makeText(AdminSetCourse.this,"deleted  "+position,Toast.LENGTH_SHORT).show();
                                             lis.remove(position); //delete the selected course from RV
                                             myAdapter.notifyDataSetChanged();//update the recyclerView
-                                            Toast.makeText(getApplicationContext(),"course deleted successfully",Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), "course deleted successfully", Toast.LENGTH_SHORT).show();
                                         }
+
                                         @Override
                                         public void onFailure(Call<Boolean> call, Throwable t) {
-                                            Toast.makeText(getApplicationContext(),"A problem occured",Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), "A problem occured", Toast.LENGTH_SHORT).show();
                                         }
                                     });
                                 }
@@ -130,12 +171,11 @@ public class AdminSetCourse extends AppCompatActivity {
                                     editor.commit();
 
                                     //after put all the relevant fields in shared Preferences go to update activity
-                                    Intent intent=new Intent(AdminSetCourse.this,AdminUpdateCourse.class);
+                                    Intent intent = new Intent(AdminSetCourse.this, AdminUpdateCourse.class);
                                     startActivity(intent);
 
                                 }
                             });
-
 
 
                             bt_add_leader.setOnClickListener(new View.OnClickListener() {
@@ -147,7 +187,7 @@ public class AdminSetCourse extends AppCompatActivity {
                                     editor.commit();
 
                                     //after put all the relevant fields in shared Preferences go to update activity
-                                    Intent intent=new Intent(AdminSetCourse.this,LeaderPerCourse.class);
+                                    Intent intent = new Intent(AdminSetCourse.this, LeaderPerCourse.class);
                                     startActivity(intent);
 
                                 }
@@ -155,17 +195,17 @@ public class AdminSetCourse extends AppCompatActivity {
 
                         }
                     }
-                    @Override public void onLongItemClick(View view, int position) {
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
                         // do whatever
                     }
                 })
         );
 
 
-
-
-        myAdapter = new MyAdapter(this,lis);
-        init("",0);
+        myAdapter = new MyAdapter(this, lis);
+        init("", 0);
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -173,7 +213,7 @@ public class AdminSetCourse extends AppCompatActivity {
         bt_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(AdminSetCourse.this,AdminAddCourse.class);
+                Intent intent = new Intent(AdminSetCourse.this, AdminAddCourse.class);
                 startActivity(intent);
 
             }
@@ -193,14 +233,14 @@ public class AdminSetCourse extends AppCompatActivity {
         ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(AdminSetCourse.this, android.R.layout.simple_spinner_item, categoryList);
         categorySpinner.setAdapter(categoryAdapter);
         Call<List<Category>> call;
-        call=retrofitAPI2.getallCat();
+        call = retrofitAPI2.getallCat();
         call.enqueue(new Callback<List<Category>>() {
             @Override
             public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
 
                 List<Category> responseFromAPI = response.body();
-                int len=responseFromAPI.size();
-                for (int i=0;i<len;i++) {
+                int len = responseFromAPI.size();
+                for (int i = 0; i < len; i++) {
                     categoryList.add(responseFromAPI.get(i).getName());
                     categoryIds.add(responseFromAPI.get(i).getId());
                 }
@@ -215,11 +255,13 @@ public class AdminSetCourse extends AppCompatActivity {
                         myAdapter.notifyDataSetChanged();
                         Toast.makeText(AdminSetCourse.this, "item selected" + categoryList.get(i), Toast.LENGTH_SHORT).show();
                     }
+
                     @Override
                     public void onNothingSelected(AdapterView<?> adapterView) {
                     }
                 });
             }
+
             @Override
             public void onFailure(Call<List<Category>> call, Throwable t) {
             }
@@ -247,51 +289,51 @@ public class AdminSetCourse extends AppCompatActivity {
     }
 
 
-    public  void  init(String catg,int k)
-    {
+    public void init(String catg, int k) {
         lis.clear();
 
 
         coursesIds.clear();
         //courses added to check the adminUpdateCourse activity
-        lis.add(new Course2("Course",50,"Start","End",
-                new Category("Category","img"),
+        lis.add(new Course2("Course", 50, "Start", "End",
+                new Category("Category", "img"),
                 "zoom.com"
-                ,"Day","From","To",0, "urlLink.com"));
+                , "Day", "From", "To", 0, "urlLink.com"));
         coursesIds.add("");
 
         //this should be deleted !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        lis.add(new Course2("Course",50,"14/5/2020","14/8/2020",
-                new Category("Animal","img"),
+        lis.add(new Course2("Course", 50, "14/5/2020", "14/8/2020",
+                new Category("Animal", "img"),
                 "zoom.com"
-                ,"Day","14:00","17:00",0, "urlLink.com"));
+                , "Day", "14:00", "17:00", 0, "urlLink.com"));
 
         myAdapter.notifyDataSetChanged();
 
         Call<List<Course>> call;
-        if(k==0)
-            call=retrofitAPI2.getAllCourses();
+        if (k == 0)
+            call = retrofitAPI2.getAllCourses();
         else
-            call=retrofitAPI2.getcoursesofcat(catg);
+            call = retrofitAPI2.getcoursesofcat(catg);
         call.enqueue(new Callback<List<Course>>() {
             @Override
             public void onResponse(Call<List<Course>> call, Response<List<Course>> response) {
 
                 List<Course> responseFromAPI = response.body();
-                int len=0;
-                if(responseFromAPI!=null)
-                    len=responseFromAPI.size();
-                for (int i=0;i<len;i++) {
+                int len = 0;
+                if (responseFromAPI != null)
+                    len = responseFromAPI.size();
+                for (int i = 0; i < len; i++) {
                     lis.add(new Course2(responseFromAPI.get(i).getName()
                             , responseFromAPI.get(i).getPrice(), responseFromAPI.get(i).getStartDateTime().getDay() + "/" + responseFromAPI.get(i).getStartDateTime().getMonth() + "/" + responseFromAPI.get(i).getStartDateTime().getYear()
                             , responseFromAPI.get(i).getFinishDateTime().getDay() + "/" + responseFromAPI.get(i).getFinishDateTime().getMonth() + "/" + responseFromAPI.get(i).getFinishDateTime().getYear()
-                            , new Category(responseFromAPI.get(i).getCategoryName(),""), responseFromAPI.get(i).getZoomMeetingLink(),
+                            , new Category(responseFromAPI.get(i).getCategoryName(), ""), responseFromAPI.get(i).getZoomMeetingLink(),
                             responseFromAPI.get(i).getDay(), responseFromAPI.get(i).getStartHour(), responseFromAPI.get(i).getEndHour(), 0, responseFromAPI.get(i).getUrlLink()));
 
                     coursesIds.add(responseFromAPI.get(i).getID());
                 }
                 myAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onFailure(Call<List<Course>> call, Throwable t) {
             }

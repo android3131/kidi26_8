@@ -1,14 +1,22 @@
 package com.example.kidi2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.SearchView;
 
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,10 +33,45 @@ public class AdminSetLeader extends AppCompatActivity   {
     ArrayList<Leader> leaders;
     ArrayList<String> usernamesList=new ArrayList<>();
     List<Leader> leadersManagement=new ArrayList<>();
+    BottomNavigationView bottomnav;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.set_leader_admin);
+        bottomnav=findViewById(R.id.nav_viewsetleader);
+        bottomnav.setSelectedItemId(R.id.leaders_page);
+        bottomnav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment selectedFragment = null;
+                switch (item.getItemId()) {
+                    case R.id.home_page:
+                        startActivity(new Intent(AdminSetLeader.this, AdminMainActivity.class));
+                        return true;
+
+                    case R.id.users_page:
+                        startActivity(new Intent(AdminSetLeader.this, AdminAddCourse.class));
+                        // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, leadersFragment).commit();
+                        return true;
+
+                    case R.id.leaders_page:
+                        startActivity(new Intent(AdminSetLeader.this, AdminSetLeader.class));
+                        // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, userFragment).commit();
+                        return true;
+
+                    case R.id.course_page:
+                        startActivity(new Intent(AdminSetLeader.this, AdminSetCourse.class));
+                        //  getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, coursesFragment).commit();
+                        return true;
+
+                    case R.id.more_page:
+                        startActivity(new Intent(AdminSetLeader.this, LeaderFirstLoginActivity.class));
+                        // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, moreFragment).commit();
+                        return true;
+                }
+                return false;
+            }
+        });
         //Retrofit retrofit = new Retrofit.Builder().baseUrl(String.valueOf(R.string.BASE_URL)).addConverterFactory(GsonConverterFactory.create()).build();
         Retrofit retrofit = new Retrofit.Builder().baseUrl(getString(R.string.BASE_URL)).
                 addConverterFactory(GsonConverterFactory.create()).build();

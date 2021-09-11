@@ -94,35 +94,23 @@ com/example/kidi2/DataKid.java
  com.example.kidi2.DataKid
 com/example/kidi2/RetrofitAPIThirdParentReg.java
  com.example.kidi2.RetrofitAPIThirdParentReg
-com/example/kidi2/AdapterRV.java
- com.example.kidi2.AdapterRV
+com/example/kidi2/Leader.java
+ com.example.kidi2.Leader
 com/example/kidi2/RVitemPerLeader.java
  com.example.kidi2.RVitemPerLeader
+com/example/kidi2/RetroFitAPI3.java
+ com.example.kidi2.RetroFitAPI3
+com/example/kidi2/AdapterRV.java
+ com.example.kidi2.AdapterRV
 com/example/kidi2/CustomCheckbox.java
  com.example.kidi2.CustomCheckbox
 com/example/kidi2/MyAdapter.java
  com.example.kidi2.MyAdapter
  com.example.kidi2.MyAdapter$MyViewHolder
-com/example/kidi2/AdminMainActivity.java
- com.example.kidi2.AdminMainActivity
- com.example.kidi2.AdminMainActivity$1
- com.example.kidi2.AdminMainActivity$10
- com.example.kidi2.AdminMainActivity$11
- com.example.kidi2.AdminMainActivity$12
- com.example.kidi2.AdminMainActivity$13
- com.example.kidi2.AdminMainActivity$14
- com.example.kidi2.AdminMainActivity$15
- com.example.kidi2.AdminMainActivity$16
- com.example.kidi2.AdminMainActivity$17
- com.example.kidi2.AdminMainActivity$18
- com.example.kidi2.AdminMainActivity$2
- com.example.kidi2.AdminMainActivity$3
- com.example.kidi2.AdminMainActivity$4
- com.example.kidi2.AdminMainActivity$5
- com.example.kidi2.AdminMainActivity$6
- com.example.kidi2.AdminMainActivity$7
- com.example.kidi2.AdminMainActivity$8
- com.example.kidi2.AdminMainActivity$9
+com/example/kidi2/ChatLeader.java
+ com.example.kidi2.ChatLeader
+ com.example.kidi2.ChatLeader$1
+ com.example.kidi2.ChatLeader$2
 com/example/kidi2/HomeLogin.java
  com.example.kidi2.HomeLogin
  com.example.kidi2.HomeLogin$1
@@ -134,10 +122,10 @@ com/example/kidi2/HomeLogin.java
  com.example.kidi2.HomeLogin$7
 com/example/kidi2/MoreFragment.java
  com.example.kidi2.MoreFragment
-com/example/kidi2/QuantityAapter.java
- com.example.kidi2.QuantityAapter
- com.example.kidi2.QuantityAapter$1
- com.example.kidi2.QuantityAapter$viewHolder
+com/example/kidi2/MyAdapter4.java
+ com.example.kidi2.MyAdapter4
+ com.example.kidi2.MyAdapter4$1
+ com.example.kidi2.MyAdapter4$ViewHolder
 com/example/kidi2/LeaderAdapter.java
  com.example.kidi2.LeaderAdapter
  com.example.kidi2.LeaderAdapter$1
@@ -231,12 +219,10 @@ com/example/kidi2/ModelObject.java
 com/example/kidi2/RvAdapter.java
  com.example.kidi2.RvAdapter
  com.example.kidi2.RvAdapter$MyViewHolder
-com/example/kidi2/Leader.java
- com.example.kidi2.Leader
-com/example/kidi2/AdminSetLeader.java
- com.example.kidi2.AdminSetLeader
- com.example.kidi2.AdminSetLeader$1
- com.example.kidi2.AdminSetLeader$2
+com/example/kidi2/QuantityAapter.java
+ com.example.kidi2.QuantityAapter
+ com.example.kidi2.QuantityAapter$1
+ com.example.kidi2.QuantityAapter$viewHolder
 com/example/kidi2/KidName.java
  com.example.kidi2.KidName
  com.example.kidi2.KidName$1
@@ -253,10 +239,11 @@ com/example/kidi2/LinksActivity.java
  com.example.kidi2.LinksActivity
  com.example.kidi2.LinksActivity$1
  com.example.kidi2.LinksActivity$2
-com/example/kidi2/ChatLeader.java
- com.example.kidi2.ChatLeader
- com.example.kidi2.ChatLeader$1
- com.example.kidi2.ChatLeader$2
+com/example/kidi2/LeaderPerCourse.java
+ com.example.kidi2.LeaderPerCourse
+ com.example.kidi2.LeaderPerCourse$1
+ com.example.kidi2.LeaderPerCourse$1$1
+ com.example.kidi2.LeaderPerCourse$1$1$1
 com/example/kidi2/Activity.java
  com.example.kidi2.Activity
  com.example.kidi2.Activity$1
@@ -307,8 +294,6 @@ com/example/kidi2/HomeFragment.java
  com.example.kidi2.HomeFragment
 com/example/kidi2/AlgorithmAdapter.java
  com.example.kidi2.AlgorithmAdapter
-com/example/kidi2/RetroFitAPI3.java
- com.example.kidi2.RetroFitAPI3
 com/example/kidi2/Notifications.java
  com.example.kidi2.Notifications
  com.example.kidi2.Notifications$1
@@ -321,27 +306,44 @@ com/example/kidi2/MyAdapter1.java
 com/example/kidi2/MainActivityGrp2.java
  com.example.kidi2.MainActivityGrp2
  com.example.kidi2.MainActivityGrp2$1
-com/example/kidi2/MyAdapter4.java
- com.example.kidi2.MyAdapter4
- com.example.kidi2.MyAdapter4$1
- com.example.kidi2.MyAdapter4$ViewHolder
+com/example/kidi2/AdminMainActivity.java
+ com.example.kidi2.AdminMainActivity
+ com.example.kidi2.AdminMainActivity$1
+ com.example.kidi2.AdminMainActivity$10
+ com.example.kidi2.AdminMainActivity$11
+ com.example.kidi2.AdminMainActivity$12
+ com.example.kidi2.AdminMainActivity$13
+ com.example.kidi2.AdminMainActivity$14
+ com.example.kidi2.AdminMainActivity$15
+ com.example.kidi2.AdminMainActivity$16
+ com.example.kidi2.AdminMainActivity$17
+ com.example.kidi2.AdminMainActivity$18
+ com.example.kidi2.AdminMainActivity$2
+ com.example.kidi2.AdminMainActivity$3
+ com.example.kidi2.AdminMainActivity$4
+ com.example.kidi2.AdminMainActivity$5
+ com.example.kidi2.AdminMainActivity$6
+ com.example.kidi2.AdminMainActivity$7
+ com.example.kidi2.AdminMainActivity$8
+ com.example.kidi2.AdminMainActivity$9
 com/example/kidi2/LogInScreenActivity.java
  com.example.kidi2.LogInScreenActivity
  com.example.kidi2.LogInScreenActivity$1
  com.example.kidi2.LogInScreenActivity$2
-com/example/kidi2/LeaderPerCourse.java
- com.example.kidi2.LeaderPerCourse
- com.example.kidi2.LeaderPerCourse$1
- com.example.kidi2.LeaderPerCourse$1$1
- com.example.kidi2.LeaderPerCourse$1$1$1
+com/example/kidi2/AdminSetLeader.java
+ com.example.kidi2.AdminSetLeader
+ com.example.kidi2.AdminSetLeader$1
+ com.example.kidi2.AdminSetLeader$2
+ com.example.kidi2.AdminSetLeader$3
 com/example/kidi2/AdminSetCourse.java
  com.example.kidi2.AdminSetCourse
  com.example.kidi2.AdminSetCourse$1
- com.example.kidi2.AdminSetCourse$1$1
- com.example.kidi2.AdminSetCourse$1$1$1
- com.example.kidi2.AdminSetCourse$1$2
- com.example.kidi2.AdminSetCourse$1$3
  com.example.kidi2.AdminSetCourse$2
+ com.example.kidi2.AdminSetCourse$2$1
+ com.example.kidi2.AdminSetCourse$2$1$1
+ com.example.kidi2.AdminSetCourse$2$2
+ com.example.kidi2.AdminSetCourse$2$3
  com.example.kidi2.AdminSetCourse$3
- com.example.kidi2.AdminSetCourse$3$1
  com.example.kidi2.AdminSetCourse$4
+ com.example.kidi2.AdminSetCourse$4$1
+ com.example.kidi2.AdminSetCourse$5

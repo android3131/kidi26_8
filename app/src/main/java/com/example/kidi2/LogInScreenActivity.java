@@ -129,7 +129,7 @@ public class LogInScreenActivity extends AppCompatActivity {
                         editor.putString("leaderID", response.body().get("ID"));
                         editor.commit();
                         Toast.makeText(LogInScreenActivity.this, "---LEADER LOGIN ---", Toast.LENGTH_SHORT).show();
-                        //        startActivity(new Intent(LogInScreenActivity.this, LeaderFirstLoginActivity.class));
+                              startActivity(new Intent(LogInScreenActivity.this, HomeLogin.class));
                     }
                     //PARENTS username and password
                     else if ((response.body().get("flag")).equals("4")) {

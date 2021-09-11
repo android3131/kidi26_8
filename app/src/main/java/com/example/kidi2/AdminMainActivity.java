@@ -190,7 +190,7 @@ public class AdminMainActivity extends AppCompatActivity {
         });
 
         showBarChart(weeks, "weeks");
-
+        bottomNav.setSelectedItemId(R.id.home_page);
         bottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

@@ -2178,6 +2178,7 @@ id home
 id homeAsUp
 id homeCard
 id home_page
+id homeloginlayoutfragment
 id honorRequest
 id horizontalScrollView
 id hour_end
@@ -2218,7 +2219,10 @@ id kidiT
 id kidnameIDText
 id labeled
 id layout
+id layoutActivityFragment
 id layoutlinks
+id layoutsetcourse
+id layoutsetleader
 id leaderSpinner
 id leaders_page
 id ledersPerCourse
@@ -2307,6 +2311,8 @@ id my_details_text
 id my_kids_text
 id name_text
 id nav_view
+id nav_viewsetcourse
+id nav_viewsetleader
 id navibarActivity
 id navibarKidName
 id navibarhomelogin

@@ -2177,6 +2177,7 @@ int id home 0x7f090113
 int id homeAsUp 0x7f090114
 int id homeCard 0x7f090115
 int id home_page 0x7f090116
+int id homeloginlayoutfragment 0x7f0902c5
 int id honorRequest 0x7f090117
 int id horizontalScrollView 0x7f090118
 int id hour_end 0x7f090119
@@ -2217,7 +2218,10 @@ int id kidiT 0x7f09013b
 int id kidnameIDText 0x7f09013c
 int id labeled 0x7f09013d
 int id layout 0x7f09013e
+int id layoutActivityFragment 0x7f0902c4
 int id layoutlinks 0x7f09013f
+int id layoutsetcourse 0x7f0902c6
+int id layoutsetleader 0x7f0902c9
 int id leaderSpinner 0x7f0902c1
 int id leaders_page 0x7f090140
 int id ledersPerCourse 0x7f0902c2
@@ -2306,6 +2310,8 @@ int id my_details_text 0x7f090192
 int id my_kids_text 0x7f090193
 int id name_text 0x7f090194
 int id nav_view 0x7f090195
+int id nav_viewsetcourse 0x7f0902c7
+int id nav_viewsetleader 0x7f0902c8
 int id navibarActivity 0x7f090196
 int id navibarKidName 0x7f090197
 int id navibarhomelogin 0x7f090198
