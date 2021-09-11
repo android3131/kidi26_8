@@ -364,7 +364,7 @@ public class AdminAddCourse extends AppCompatActivity {
 //            }
 //
 //        });
-        categorySpinner = findViewById(R.id.categorySpinner);
+        categorySpinner = findViewById(R.id.spinner_category);
         categoryList = new ArrayList<>();
         categoryIds = new ArrayList<>();
         categoryList.add("Choose Category");

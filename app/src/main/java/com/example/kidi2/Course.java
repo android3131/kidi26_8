@@ -33,6 +33,15 @@ public class Course {
 
     private Status status;
 
+private int clr ;
+
+    public int getClr() {
+        return clr;
+    }
+
+    public void setClr(int clr) {
+        this.clr = clr;
+    }
 
     private ArrayList<String> leadersIDs;
 

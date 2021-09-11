@@ -42,7 +42,7 @@ public interface RetroFitAPI2 {
     /* for admin */
 
     //get courses from server
-    @GET("getallCourses")
+    @GET("getAllCourses")
     Call<List<Course>> getAllCourses();
     @GET("/getCoursesOfCategory/{categoryid}")
     Call <List<Course>> getcoursesofcat(@Path("categoryid")String categoryid);
@@ -54,8 +54,6 @@ public interface RetroFitAPI2 {
     Call <List<Course2>> deleteCourse(@Path("name") String name);
     @PUT("/deleteCourse/{courseId}")
     Call <Boolean> deleteCourse1(@Path("courseId") String name);
-
-
 
 
 

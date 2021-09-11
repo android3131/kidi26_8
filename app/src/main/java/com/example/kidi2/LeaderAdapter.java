@@ -11,21 +11,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.ParseException;
 import java.util.Calendar;
 
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.ViewHolder> implements Filterable {
     Context context;
-    private List<Leaders> leader_list;
-    private List<Leaders> FullList;
+    private List<Leader> leader_list;
+    private List<Leader> FullList;
 
-    public LeaderAdapter(List<Leaders> leader_list) {
+    public LeaderAdapter(List<Leader> leader_list) {
         //this.context=context;
         this.leader_list = leader_list;
 
@@ -43,7 +40,7 @@ public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if (leader_list != null && leader_list.size() > 0) {
-            Leaders currentItem = leader_list.get(position);
+            Leader currentItem = leader_list.get(position);
             holder.username_tv.setText(currentItem.getFullName());
             int age=getAge(currentItem.getDateOfBirth());
              holder.age_tv.setText(String.valueOf(age));
@@ -84,12 +81,12 @@ public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.ViewHolder
     private Filter Searched_Filter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            ArrayList<Leaders> filteredList = new ArrayList<>();
+            ArrayList<Leader> filteredList = new ArrayList<>();
             if (constraint == null || constraint.length() == 0) {
                 filteredList.addAll(FullList);
             } else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
-                for (Leaders item : FullList) {
+                for (Leader item : FullList) {
                     if (item.getFullName().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }
@@ -109,28 +106,32 @@ public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.ViewHolder
     };
 
     public static int getAge(Date date) {
-
-        int age = 0;
-        Calendar now = Calendar.getInstance();
-        Calendar dob = Calendar.getInstance();
-        dob.setTime(date);
-        if (dob.after(now)) {
-            throw new IllegalArgumentException("Can't be born in the future");
-        }
-        int year1 = now.get(Calendar.YEAR);
-        int year2 = dob.get(Calendar.YEAR);
-        age = year1 - year2;
-        int month1 = now.get(Calendar.MONTH);
-        int month2 = dob.get(Calendar.MONTH);
-        if (month2 > month1) {
-            age--;
-        } else if (month1 == month2) {
-            int day1 = now.get(Calendar.DAY_OF_MONTH);
-            int day2 = dob.get(Calendar.DAY_OF_MONTH);
-            if (day2 > day1) {
-                age--;
+        if (date != null) {
+            int age = 0;
+            Calendar now = Calendar.getInstance();
+            Calendar dob = Calendar.getInstance();
+            dob.setTime(date);
+            if (dob.after(now)) {
+                throw new IllegalArgumentException("Can't be born in the future");
             }
+            int year1 = now.get(Calendar.YEAR);
+            int year2 = dob.get(Calendar.YEAR);
+            age = year1 - year2;
+            int month1 = now.get(Calendar.MONTH);
+            int month2 = dob.get(Calendar.MONTH);
+            if (month2 > month1) {
+                age--;
+            } else if (month1 == month2) {
+                int day1 = now.get(Calendar.DAY_OF_MONTH);
+                int day2 = dob.get(Calendar.DAY_OF_MONTH);
+                if (day2 > day1) {
+                    age--;
+                }
+            }
+
+            return age;
         }
-        return age;
+        return 0;
     }
+
 }

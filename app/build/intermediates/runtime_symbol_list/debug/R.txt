@@ -1888,7 +1888,15 @@ int id ALT 0x7f090000
 int id BOTTOM_END 0x7f090001
 int id BOTTOM_START 0x7f090002
 int id CTRL 0x7f090003
+int id DateEnd 0x7f0902b3
+int id DateStart 0x7f0902b4
 int id FUNCTION 0x7f090004
+int id HeaderDateEnd 0x7f0902b5
+int id HeaderDateStart 0x7f0902b6
+int id HeaderHourEnd 0x7f0902b7
+int id HeaderHourStart 0x7f0902b8
+int id HourEnd 0x7f0902b9
+int id HourStart 0x7f0902ba
 int id LoginButton 0x7f090005
 int id META 0x7f090006
 int id NO_DEBUG 0x7f090007
@@ -1967,6 +1975,7 @@ int id add 0x7f09004f
 int id addActivityBtn 0x7f090050
 int id addBtn 0x7f090051
 int id addButtonHomeID 0x7f090052
+int id addLeader_button2 0x7f0902bb
 int id addToCalendar 0x7f090053
 int id addToCalendarCard 0x7f090054
 int id add_button 0x7f090055
@@ -2016,6 +2025,8 @@ int id cache_measures 0x7f090080
 int id cancel_button 0x7f090081
 int id categoriesmenu 0x7f090082
 int id category 0x7f090083
+int id category1 0x7f0902bc
+int id categoryHeader 0x7f0902bd
 int id categorySpinner 0x7f090084
 int id center 0x7f090085
 int id center_horizontal 0x7f090086
@@ -2054,7 +2065,9 @@ int id contiguous 0x7f0900a6
 int id coordinator 0x7f0900a7
 int id cos 0x7f0900a8
 int id counterclockwise 0x7f0900a9
+int id courseHeader 0x7f0902be
 int id courseName 0x7f0900aa
+int id courseName1 0x7f0902bf
 int id course_name 0x7f0900ab
 int id course_page 0x7f0900ac
 int id custom 0x7f0900ad
@@ -2073,6 +2086,7 @@ int id decelerateAndComplete 0x7f0900b9
 int id decor_content_parent 0x7f0900ba
 int id default_activity_button 0x7f0900bb
 int id delete_button 0x7f0900bc
+int id delete_button2 0x7f0902c0
 int id deltaRelative 0x7f0900bd
 int id dependency_ordering 0x7f0900be
 int id descrebtionText 0x7f0900bf
@@ -2204,7 +2218,9 @@ int id kidnameIDText 0x7f09013c
 int id labeled 0x7f09013d
 int id layout 0x7f09013e
 int id layoutlinks 0x7f09013f
+int id leaderSpinner 0x7f0902c1
 int id leaders_page 0x7f090140
+int id ledersPerCourse 0x7f0902c2
 int id left 0x7f090141
 int id leftToRight 0x7f090142
 int id line1 0x7f090143
@@ -2401,6 +2417,7 @@ int id search_src_text 0x7f090201
 int id search_voice_btn 0x7f090202
 int id secend_col 0x7f090203
 int id second_card 0x7f090204
+int id second_col 0x7f0902c3
 int id second_image 0x7f090205
 int id second_shape_layout 0x7f090206
 int id select_dialog_listview 0x7f090207
@@ -2646,6 +2663,7 @@ int layout activity 0x7f0c001c
 int layout activity_admin_main 0x7f0c001d
 int layout activity_forth_parent_reg2 0x7f0c001e
 int layout activity_leader_first_login 0x7f0c001f
+int layout activity_leader_per_course 0x7f0c00a0
 int layout activity_links 0x7f0c0020
 int layout activity_login_screen 0x7f0c0021
 int layout activity_main 0x7f0c0022
@@ -2732,6 +2750,7 @@ int layout mtrl_picker_text_input_date 0x7f0c0072
 int layout mtrl_picker_text_input_date_range 0x7f0c0073
 int layout my_row 0x7f0c0074
 int layout my_row3 0x7f0c0075
+int layout my_row4 0x7f0c00a1
 int layout my_spinner 0x7f0c0076
 int layout notification_action 0x7f0c0077
 int layout notification_action_tombstone 0x7f0c0078

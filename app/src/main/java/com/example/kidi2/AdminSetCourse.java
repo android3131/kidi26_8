@@ -45,14 +45,14 @@ public class AdminSetCourse extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_set_course);
 
-         retrofit = new Retrofit.Builder()
+        retrofit = new Retrofit.Builder()
                 .baseUrl(getString(R.string.BASE_URL))
                 // when sending data in json format we have to add Gson converter factory
                 .addConverterFactory(GsonConverterFactory.create())
                 // and build our retrofit builder.
                 .build();
         // create an instance for our retrofit api class.
-         retrofitAPI2 = retrofit.create(RetroFitAPI2.class);
+        retrofitAPI2 = retrofit.create(RetroFitAPI2.class);
         //lists
         lis=new ArrayList<Course2>();
         addSpinner();
@@ -138,20 +138,20 @@ public class AdminSetCourse extends AppCompatActivity {
 
 
 
-//                            bt_add_leader.setOnClickListener(new View.OnClickListener() {
-//                                @Override
-//                                public void onClick(View v) {
-//                                    SharedPreferences mPrefrences = PreferenceManager.getDefaultSharedPreferences(AdminSetCourse.this);
-//                                    SharedPreferences.Editor editor = mPrefrences.edit();
-//                                    editor.putString("courseId", coursesIds.get(position));
-//                                    editor.commit();
-//
-//                                    //after put all the relevant fields in shared Preferences go to update activity
-//                                    Intent intent=new Intent(AdminSetCourse.this,AdminAddLeader.class);
-//                                    startActivity(intent);
-//
-//                                }
-//                            });
+                            bt_add_leader.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    SharedPreferences mPrefrences = PreferenceManager.getDefaultSharedPreferences(AdminSetCourse.this);
+                                    SharedPreferences.Editor editor = mPrefrences.edit();
+                                    editor.putString("courseId", coursesIds.get(position));
+                                    editor.commit();
+
+                                    //after put all the relevant fields in shared Preferences go to update activity
+                                    Intent intent=new Intent(AdminSetCourse.this,LeaderPerCourse.class);
+                                    startActivity(intent);
+
+                                }
+                            });
 
                         }
                     }
@@ -243,7 +243,6 @@ public class AdminSetCourse extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-
          */
     }
 
@@ -281,7 +280,7 @@ public class AdminSetCourse extends AppCompatActivity {
                 List<Course> responseFromAPI = response.body();
                 int len=0;
                 if(responseFromAPI!=null)
-                 len=responseFromAPI.size();
+                    len=responseFromAPI.size();
                 for (int i=0;i<len;i++) {
                     lis.add(new Course2(responseFromAPI.get(i).getName()
                             , responseFromAPI.get(i).getPrice(), responseFromAPI.get(i).getStartDateTime().getDay() + "/" + responseFromAPI.get(i).getStartDateTime().getMonth() + "/" + responseFromAPI.get(i).getStartDateTime().getYear()

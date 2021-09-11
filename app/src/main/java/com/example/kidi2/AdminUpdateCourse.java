@@ -432,39 +432,39 @@ public class AdminUpdateCourse extends AppCompatActivity {
         categoryIds = new ArrayList<>();
         categoryList.add("Choose Category");
         Call<List<Category>> call;
-        call=retrofitAPI3.getallCat1();
-        call.enqueue(new Callback<List<Category>>() {
-            @Override
-            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
-
-                int len=0;
-                List<Category> responseFromAPI = response.body();
-                if(responseFromAPI!=null)
-                    len=responseFromAPI.size();
-                for (int i=0;i<len;i++) {
-                    categoryList.add(responseFromAPI.get(i).getName());
-                    categoryIds.add(responseFromAPI.get(i).getId());
-                }
-
-                ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(AdminUpdateCourse.this, android.R.layout.simple_spinner_item, categoryList);
-                categorySpinner.setAdapter(categoryAdapter);
-                categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                        //Log.d("ofra", "on Button click: " + categorySpinner.getSelectedItem());
-                        pos=i;
-                        categorySelection = categorySpinner.getSelectedItem();
-
-                    }
-                    @Override
-                    public void onNothingSelected(AdapterView<?> adapterView) {
-                    }
-                });
-            }
-            @Override
-            public void onFailure(Call<List<Category>> call, Throwable t) {
-            }
-        });
+//        call=retrofitAPI3.getallCat1();
+//        call.enqueue(new Callback<List<Category>>() {
+//            @Override
+//            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
+//
+//                int len=0;
+//                List<Category> responseFromAPI = response.body();
+//                if(responseFromAPI!=null)
+//                    len=responseFromAPI.size();
+//                for (int i=0;i<len;i++) {
+//                    categoryList.add(responseFromAPI.get(i).getName());
+//                    categoryIds.add(responseFromAPI.get(i).getId());
+//                }
+//
+//                ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(AdminUpdateCourse.this, android.R.layout.simple_spinner_item, categoryList);
+//                categorySpinner.setAdapter(categoryAdapter);
+//                categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//                    @Override
+//                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                        //Log.d("ofra", "on Button click: " + categorySpinner.getSelectedItem());
+//                        pos=i;
+//                        categorySelection = categorySpinner.getSelectedItem();
+//
+//                    }
+//                    @Override
+//                    public void onNothingSelected(AdapterView<?> adapterView) {
+//                    }
+//                });
+//            }
+//            @Override
+//            public void onFailure(Call<List<Category>> call, Throwable t) {
+//            }
+//        });
 
     }
 

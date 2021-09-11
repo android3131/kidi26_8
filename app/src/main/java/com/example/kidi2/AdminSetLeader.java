@@ -4,25 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
-import android.app.SearchManager;
 import android.widget.SearchView;
 
 
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -34,27 +22,28 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class AdminSetLeader extends AppCompatActivity   {
     RecyclerView recyclerview;
     LeaderAdapter adapter;
-    ArrayList<Leaders> leaders;
+    ArrayList<Leader> leaders;
     ArrayList<String> usernamesList=new ArrayList<>();
-    List<Leaders> leadersManagement=new ArrayList<>();
+    List<Leader> leadersManagement=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.set_leader_admin);
         //Retrofit retrofit = new Retrofit.Builder().baseUrl(String.valueOf(R.string.BASE_URL)).addConverterFactory(GsonConverterFactory.create()).build();
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(getString(R.string.BASE_URL)).addConverterFactory(GsonConverterFactory.create()).build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(getString(R.string.BASE_URL)).
+                addConverterFactory(GsonConverterFactory.create()).build();
         RetrofitAPIAdminSetLeader retrofitAPI = retrofit.create(RetrofitAPIAdminSetLeader.class);
 
-        Call<List<Leaders>> myLeaders = retrofitAPI.retrieveAllLeaders();
-        myLeaders.enqueue(new Callback<List<Leaders>>() {
+        Call<List<Leader>> myLeaders = retrofitAPI.retrieveAllLeaders();
+        myLeaders.enqueue(new Callback<List<Leader>>() {
             @Override
-            public void onResponse(Call<List<Leaders>> call, Response<List<Leaders>> response) {
-                   List<Leaders> allLeaders=response.body();
+            public void onResponse(Call<List<Leader>> call, Response<List<Leader>> response) {
+                   List<Leader> allLeaders=response.body();
                 setRecyclerView(allLeaders);
             }
 
             @Override
-            public void onFailure(Call<List<Leaders>> call, Throwable t) {
+            public void onFailure(Call<List<Leader>> call, Throwable t) {
 
             }
         });
@@ -64,7 +53,7 @@ public class AdminSetLeader extends AppCompatActivity   {
 
 
         recyclerview=(RecyclerView)findViewById(R.id.recyclerview);
-        for(Leaders m : leadersManagement){
+        for(Leader m : leadersManagement){
             usernamesList.add( m.getFullName());
         }
         System.out.println(usernamesList.toString());
@@ -103,7 +92,7 @@ public class AdminSetLeader extends AppCompatActivity   {
         //arrayList.add("40");
        // return arrayList;
    // }
-    private void setRecyclerView( List<Leaders> all_leaders) {
+    private void setRecyclerView( List<Leader> all_leaders) {
         recyclerview.setHasFixedSize(true);
         recyclerview.setLayoutManager(new LinearLayoutManager(this));
         //adapter=new QuantityAapter(this,getQuantityData(),this );

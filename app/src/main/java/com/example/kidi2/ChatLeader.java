@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -50,7 +49,7 @@ public class ChatLeader extends AppCompatActivity {
             }
         });
     }
-    private void sendMessage(Leaders leader,Parent parent,String message){
+    private void sendMessage(Leader leader, Parent parent, String message){
         HashMap<String,Object> chatmap=new HashMap<>();
         chatmap.put("sender",parent);
         chatmap.put("reciever",leader);

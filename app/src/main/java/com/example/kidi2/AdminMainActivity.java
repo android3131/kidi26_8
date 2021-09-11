@@ -197,22 +197,22 @@ public class AdminMainActivity extends AppCompatActivity {
                 Fragment selectedFragment = null;
                 switch (item.getItemId()) {
                     case R.id.home_page:
-                        startActivity(new Intent(AdminMainActivity.this, AdminAddCourse.class));
+                        //startActivity(new Intent(AdminMainActivity.this, AdminUpdateCourse.class));
                        // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, homeFragment).commit();
                         return true;
 
-                    case R.id.leaders_page:
-                        startActivity(new Intent(AdminMainActivity.this, AdminSetCourse.class));
+                    case R.id.users_page:
+                        startActivity(new Intent(AdminMainActivity.this, AdminAddCourse.class));
                        // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, leadersFragment).commit();
                         return true;
 
-                    case R.id.users_page:
+                    case R.id.leaders_page:
                         startActivity(new Intent(AdminMainActivity.this, AdminSetLeader.class));
                        // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, userFragment).commit();
                         return true;
 
                     case R.id.course_page:
-                        startActivity(new Intent(AdminMainActivity.this, AdminUpdateCourse.class));
+                        startActivity(new Intent(AdminMainActivity.this, AdminSetCourse.class));
                       //  getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, coursesFragment).commit();
                         return true;
 

@@ -1889,7 +1889,15 @@ id ALT
 id BOTTOM_END
 id BOTTOM_START
 id CTRL
+id DateEnd
+id DateStart
 id FUNCTION
+id HeaderDateEnd
+id HeaderDateStart
+id HeaderHourEnd
+id HeaderHourStart
+id HourEnd
+id HourStart
 id LoginButton
 id META
 id NO_DEBUG
@@ -1968,6 +1976,7 @@ id add
 id addActivityBtn
 id addBtn
 id addButtonHomeID
+id addLeader_button2
 id addToCalendar
 id addToCalendarCard
 id add_button
@@ -2017,6 +2026,8 @@ id cache_measures
 id cancel_button
 id categoriesmenu
 id category
+id category1
+id categoryHeader
 id categorySpinner
 id center
 id center_horizontal
@@ -2055,7 +2066,9 @@ id contiguous
 id coordinator
 id cos
 id counterclockwise
+id courseHeader
 id courseName
+id courseName1
 id course_name
 id course_page
 id custom
@@ -2074,6 +2087,7 @@ id decelerateAndComplete
 id decor_content_parent
 id default_activity_button
 id delete_button
+id delete_button2
 id deltaRelative
 id dependency_ordering
 id descrebtionText
@@ -2205,7 +2219,9 @@ id kidnameIDText
 id labeled
 id layout
 id layoutlinks
+id leaderSpinner
 id leaders_page
+id ledersPerCourse
 id left
 id leftToRight
 id line1
@@ -2402,6 +2418,7 @@ id search_src_text
 id search_voice_btn
 id secend_col
 id second_card
+id second_col
 id second_image
 id second_shape_layout
 id select_dialog_listview
@@ -2647,6 +2664,7 @@ layout activity
 layout activity_admin_main
 layout activity_forth_parent_reg2
 layout activity_leader_first_login
+layout activity_leader_per_course
 layout activity_links
 layout activity_login_screen
 layout activity_main
@@ -2733,6 +2751,7 @@ layout mtrl_picker_text_input_date
 layout mtrl_picker_text_input_date_range
 layout my_row
 layout my_row3
+layout my_row4
 layout my_spinner
 layout notification_action
 layout notification_action_tombstone

@@ -12,14 +12,14 @@ public interface RetrofitAPIAdminSetLeader {
 
 
         @GET("/getAllLeaders")
-        Call<List<Leaders>> retrieveAllLeaders();
+        Call<List<Leader>> retrieveAllLeaders();
 
         @GET("/findByID/{id}")
-        Call<Leaders> findLeaderByID(@Path("id") String id);
+        Call<Leader> findLeaderByID(@Path("id") String id);
 
 
         @PUT("/updatestatus/{leaderID}")
-        Call<List<Leaders>> updateLeadersStatus(@Path("id") String id);
+        Call<List<Leader>> updateLeadersStatus(@Path("id") String id);
 
     }
 

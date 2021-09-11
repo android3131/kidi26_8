@@ -80,16 +80,16 @@
         "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\src\\main\\res\\drawable-xxhdpi\\ic_delete.png"
     },
     {
-        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\layout_activity.xml.flat",
-        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\src\\main\\res\\layout\\activity.xml"
+        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi-v21_ic_edit.xml.flat",
+        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_edit.xml"
     },
     {
         "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\layout_first_parent_reg.xml.flat",
         "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\src\\main\\res\\layout\\first_parent_reg.xml"
     },
     {
-        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi-v21_ic_edit.xml.flat",
-        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_edit.xml"
+        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\layout_activity.xml.flat",
+        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\src\\main\\res\\layout\\activity.xml"
     },
     {
         "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_add_kid_background.xml.flat",
@@ -104,20 +104,20 @@
         "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\src\\main\\res\\drawable\\checkedgrp6.xml"
     },
     {
-        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\drawable_myrectgrp6.xml.flat",
-        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\src\\main\\res\\drawable\\myrectgrp6.xml"
-    },
-    {
         "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\drawable_checkmark.xml.flat",
         "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\src\\main\\res\\drawable\\checkmark.xml"
     },
     {
-        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxxhdpi_ic_courses.png.flat",
-        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_courses.png"
+        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\drawable_myrectgrp6.xml.flat",
+        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\src\\main\\res\\drawable\\myrectgrp6.xml"
     },
     {
         "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi-v21_ic_prev_arrow.xml.flat",
         "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_prev_arrow.xml"
+    },
+    {
+        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxxhdpi_ic_courses.png.flat",
+        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_courses.png"
     },
     {
         "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_path_263.png.flat",
@@ -144,12 +144,16 @@
         "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\src\\main\\res\\drawable-hdpi\\month_background.xml"
     },
     {
+        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_ic_user.png.flat",
+        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\src\\main\\res\\drawable-hdpi\\ic_user.png"
+    },
+    {
         "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\drawable_selected_dot_completed.xml.flat",
         "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\src\\main\\res\\drawable\\selected_dot_completed.xml"
     },
     {
-        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_ic_user.png.flat",
-        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\src\\main\\res\\drawable-hdpi\\ic_user.png"
+        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_leader_per_course.xml.flat",
+        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\src\\main\\res\\layout\\activity_leader_per_course.xml"
     },
     {
         "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_ic_drop.png.flat",
@@ -176,12 +180,12 @@
         "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_calender.png"
     },
     {
-        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\drawable_home.png.flat",
-        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\src\\main\\res\\drawable\\home.png"
-    },
-    {
         "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxxhdpi_ic_launcher_backgroundgrp6.png.flat",
         "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_launcher_backgroundgrp6.png"
+    },
+    {
+        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\drawable_home.png.flat",
+        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\src\\main\\res\\drawable\\home.png"
     },
     {
         "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\layout_algorithm_spinner.xml.flat",
@@ -200,16 +204,16 @@
         "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_more.png"
     },
     {
-        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\layout_kid_name.xml.flat",
-        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\src\\main\\res\\layout\\kid_name.xml"
+        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_ic_baseline_edit_24.png.flat",
+        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_baseline_edit_24.png"
     },
     {
         "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\layout_slider_item.xml.flat",
         "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\src\\main\\res\\layout\\slider_item.xml"
     },
     {
-        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_ic_baseline_edit_24.png.flat",
-        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_baseline_edit_24.png"
+        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\layout_kid_name.xml.flat",
+        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\src\\main\\res\\layout\\kid_name.xml"
     },
     {
         "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_action_name.png.flat",
@@ -614,6 +618,10 @@
     {
         "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_home.xml.flat",
         "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\src\\main\\res\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\layout_my_row4.xml.flat",
+        "source": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\src\\main\\res\\layout\\my_row4.xml"
     },
     {
         "merged": "C:\\Users\\win10\\AndroidStudioProjects\\KIDI3\\kidi26_8\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxxhdpi_ic_edit.png.flat",

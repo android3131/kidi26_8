@@ -22,6 +22,9 @@
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name="com.example.kidi2.LeaderPerCourse"
+            android:exported="true" />
+        <activity
             android:name="com.example.kidi2.ChatLeader"
             android:exported="true" />
         <activity
@@ -40,8 +43,7 @@
             android:name="com.example.kidi2.ForthParentReg"
             android:exported="true" > <!-- ACTIVITIES -->
 
-        </activity>
-        <!-- FIRST SCREEN -->
+        </activity> <!-- FIRST SCREEN -->
         <activity
             android:name="com.example.kidi2.FirstScreen"
             android:exported="true" >
@@ -56,8 +58,7 @@
             android:exported="true" /> <!-- KID NAME -->
         <activity
             android:name="com.example.kidi2.KidName"
-            android:exported="true" >
-        </activity> <!-- ACTIVITY -->
+            android:exported="true" /> <!-- ACTIVITY -->
         <activity
             android:name="com.example.kidi2.Activity"
             android:exported="true" />
@@ -66,15 +67,13 @@
             android:exported="true" />
         <activity
             android:name="com.example.kidi2.ThirdParentRegActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
         <activity
             android:name="com.example.kidi2.Addactivity"
             android:exported="true" /> <!-- feisal and yael activities -->
         <activity
             android:name="com.example.kidi2.AdminSetCourse"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
         <activity
             android:name="com.example.kidi2.AdminAddCourse"
             android:exported="true" />
@@ -89,8 +88,7 @@
             android:exported="true" />
         <activity
             android:name="com.example.kidi2.LinksActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
         <activity
             android:name="com.example.kidi2.webViewBrowser"
             android:exported="true" />
