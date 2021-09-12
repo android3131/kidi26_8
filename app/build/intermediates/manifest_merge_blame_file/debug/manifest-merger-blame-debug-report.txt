@@ -6,179 +6,185 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="19"
-8-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml
+8-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="30" />
-9-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml
+9-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:5:5-67
-11-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:5:22-64
+11-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:5:5-67
+11-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:5:22-64
 12
 13    <application
-13-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:7:5-89:19
+13-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:7:5-93:19
 14        android:allowBackup="true"
-14-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:8:9-35
+14-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:8:9-35
 15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-15-->[androidx.core:core:1.5.0] C:\Users\win10\.gradle\caches\transforms-3\255d63c0f9f8f5d12ab3191ffb377750\transformed\core-1.5.0\AndroidManifest.xml:24:18-86
+15-->[androidx.core:core:1.5.0] C:\Program Files\Android\Android Studio\jre\caches\transforms-3\255d63c0f9f8f5d12ab3191ffb377750\transformed\core-1.5.0\AndroidManifest.xml:24:18-86
 16        android:debuggable="true"
 17        android:icon="@mipmap/ic_launcher"
-17-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:9:9-43
+17-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:9:9-43
 18        android:label="@string/app_name"
-18-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:10:9-41
+18-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:10:9-41
 19        android:roundIcon="@mipmap/ic_launcher_round"
-19-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:11:9-54
+19-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:11:9-54
 20        android:supportsRtl="true"
-20-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:12:9-35
+20-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:12:9-35
 21        android:testOnly="true"
 22        android:theme="@style/AppTheme.NoActionBar"
-22-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:13:9-52
+22-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:13:9-52
 23        android:usesCleartextTraffic="true" >
-23-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:14:9-44
+23-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:14:9-44
 24        <activity
-24-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:15:9-17:39
+24-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:15:9-17:39
 25            android:name="com.example.kidi2.LeaderPerCourse"
-25-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:16:13-44
+25-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:16:13-44
 26            android:exported="true" />
-26-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:17:13-36
+26-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:17:13-36
 27        <activity
-27-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:18:9-20:39
+27-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:18:9-20:39
 28            android:name="com.example.kidi2.ChatLeader"
-28-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:19:13-39
+28-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:19:13-39
 29            android:exported="true" />
-29-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:20:13-36
+29-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:20:13-36
 30        <activity
-30-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:21:9-23:39
+30-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:21:9-23:39
 31            android:name="com.example.kidi2.Notifications"
-31-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:22:13-42
+31-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:22:13-42
 32            android:exported="true" />
-32-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:23:13-36
+32-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:23:13-36
 33        <activity
-33-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:24:9-26:39
+33-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:24:9-26:39
 34            android:name="com.example.kidi2.AdminUpdateCourse"
-34-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:25:13-46
+34-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:25:13-46
 35            android:exported="true" />
-35-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:26:13-36
+35-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:26:13-36
 36        <activity
-36-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:27:9-29:39
+36-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:27:9-29:39
 37            android:name="com.example.kidi2.LeaderFirstLoginActivity"
-37-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:28:13-53
+37-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:28:13-53
 38            android:exported="true" />
-38-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:29:13-36
+38-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:29:13-36
 39        <activity
-39-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:30:9-32:39
+39-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:30:9-32:39
 40            android:name="com.example.kidi2.AdminSetLeader"
-40-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:31:13-43
+40-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:31:13-43
 41            android:exported="true" /> <!-- ACTIVITIES -->
-41-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:32:13-36
+41-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:32:13-36
 42        <activity
-42-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:33:9-37:20
+42-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:33:9-37:20
 43            android:name="com.example.kidi2.ForthParentReg"
-43-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:34:13-43
+43-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:34:13-43
 44            android:exported="true" > <!-- ACTIVITIES -->
-44-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:35:13-36
+44-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:35:13-36
 45
 46        </activity> <!-- FIRST SCREEN -->
 47        <activity
-47-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:38:9-46:20
+47-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:38:9-46:20
 48            android:name="com.example.kidi2.FirstScreen"
-48-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:39:13-40
+48-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:39:13-40
 49            android:exported="true" >
-49-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:40:13-36
+49-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:40:13-36
 50            <intent-filter>
-50-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:41:13-45:29
+50-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:41:13-45:29
 51                <action android:name="android.intent.action.MAIN" />
-51-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:42:17-69
-51-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:42:25-66
+51-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:42:17-69
+51-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:42:25-66
 52
 53                <category android:name="android.intent.category.LAUNCHER" />
-53-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:44:17-77
-53-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:44:27-74
+53-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:44:17-77
+53-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:44:27-74
 54            </intent-filter>
 55        </activity> <!-- HOME LOGIN -->
 56        <activity
-56-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:47:9-49:39
+56-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:47:9-49:39
 57            android:name="com.example.kidi2.HomeLogin"
-57-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:48:13-38
+57-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:48:13-38
 58            android:exported="true" /> <!-- KID NAME -->
-58-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:49:13-36
+58-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:49:13-36
 59        <activity
-59-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:50:9-52:48
+59-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:50:9-52:48
 60            android:name="com.example.kidi2.KidName"
-60-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:51:13-36
+60-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:51:13-36
 61            android:exported="true" /> <!-- ACTIVITY -->
-61-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:52:13-36
+61-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:52:13-36
 62        <activity
-62-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:53:9-55:39
+62-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:53:9-55:39
 63            android:name="com.example.kidi2.Activity"
-63-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:54:13-37
+63-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:54:13-37
 64            android:exported="true" />
-64-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:55:13-36
+64-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:55:13-36
 65        <activity
-65-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:56:9-58:39
+65-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:56:9-58:39
 66            android:name="com.example.kidi2.LogInScreenActivity"
-66-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:57:13-48
+66-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:57:13-48
 67            android:exported="true" />
-67-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:58:13-36
+67-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:58:13-36
 68        <activity
-68-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:59:9-61:48
+68-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:59:9-61:48
 69            android:name="com.example.kidi2.ThirdParentRegActivity"
-69-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:60:13-51
+69-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:60:13-51
 70            android:exported="true" />
-70-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:61:13-36
+70-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:61:13-36
 71        <activity
-71-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:62:9-64:39
+71-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:62:9-64:39
 72            android:name="com.example.kidi2.Addactivity"
-72-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:63:13-40
+72-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:63:13-40
 73            android:exported="true" /> <!-- feisal and yael activities -->
-73-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:64:13-36
+73-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:64:13-36
 74        <activity
-74-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:65:9-67:48
+74-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:65:9-67:48
 75            android:name="com.example.kidi2.AdminSetCourse"
-75-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:66:13-43
+75-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:66:13-43
 76            android:exported="true" />
-76-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:67:13-36
+76-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:67:13-36
 77        <activity
-77-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:68:9-70:39
+77-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:68:9-70:39
 78            android:name="com.example.kidi2.AdminAddCourse"
-78-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:69:13-43
+78-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:69:13-43
 79            android:exported="true" />
-79-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:70:13-36
+79-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:70:13-36
 80        <activity
-80-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:71:9-73:39
+80-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:71:9-73:39
 81            android:name="com.example.kidi2.FirstParentReg"
-81-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:72:13-43
+81-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:72:13-43
 82            android:exported="true" /> <!-- muhanad activities -->
-82-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:73:13-36
+82-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:73:13-36
 83        <activity
-83-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:74:9-76:39
+83-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:74:9-76:39
 84            android:name="com.example.kidi2.FirstParentRegReal"
-84-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:75:13-47
+84-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:75:13-47
 85            android:exported="true" />
-85-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:76:13-36
+85-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:76:13-36
 86        <activity
-86-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:77:9-79:39
+86-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:77:9-79:39
 87            android:name="com.example.kidi2.AdminMainActivity"
-87-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:78:13-46
+87-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:78:13-46
 88            android:exported="true" />
-88-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:79:13-36
+88-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:79:13-36
 89        <activity
-89-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:80:9-82:48
+89-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:80:9-82:48
 90            android:name="com.example.kidi2.LinksActivity"
-90-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:81:13-42
+90-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:81:13-42
 91            android:exported="true" />
-91-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:82:13-36
+91-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:82:13-36
 92        <activity
-92-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:83:9-85:39
+92-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:83:9-85:39
 93            android:name="com.example.kidi2.webViewBrowser"
-93-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:84:13-43
+93-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:84:13-43
 94            android:exported="true" />
-94-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:85:13-36
+94-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:85:13-36
 95        <activity
-95-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:86:9-88:39
+95-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:86:9-88:39
 96            android:name="com.example.kidi2.ParentProfileActivity"
-96-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:87:13-50
+96-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:87:13-50
 97            android:exported="true" />
-97-->C:\Users\win10\AndroidStudioProjects\KIDI3\kidi26_8\app\src\main\AndroidManifest.xml:88:13-36
-98    </application>
-99
-100</manifest>
+97-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:88:13-36
+98        <activity
+98-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:89:9-91:39
+99            android:name="com.example.kidi2.AdminAddLeader"
+99-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:90:13-43
+100            android:exported="true" />
+100-->C:\Users\moham\Desktop\finalkidi\kidi26_8\app\src\main\AndroidManifest.xml:91:13-36
+101    </application>
+102
+103</manifest>

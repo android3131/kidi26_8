@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4E7FE7"
+    android:orientation="vertical"
+    tools:context=".AdminAddLeader">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:foregroundGravity="center"
+        android:text="@string/app_title"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="769dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/myrect10"
+            android:foregroundGravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/detailsLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:text="@string/leader_details"
+                android:textColor="#070101"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/leaderName"
+                android:layout_width="364dp"
+                android:layout_height="53dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/text_background2"
+                android:ems="10"
+                android:hint="@string/full_name"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/leaderEmail"
+                android:layout_width="364dp"
+                android:layout_height="53dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/text_background2"
+                android:ems="10"
+                android:hint="@string/email"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="364dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="53dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_weight="3"
+                    android:background="@drawable/text_background2"
+                    android:popupBackground="@drawable/text_background"
+                    android:textSize="18sp"/>
+
+                <EditText
+                    android:id="@+id/leaderPhone"
+                    android:layout_width="231dp"
+                    android:layout_height="53dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/text_background2"
+                    android:ems="10"
+                    android:hint="@string/leader_phone" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/leaderStreetAddress"
+                android:layout_width="364dp"
+                android:layout_height="53dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/text_background2"
+                android:ems="10"
+                android:hint="@string/street_address"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="364dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/leaderState"
+                    android:layout_width="259dp"
+                    android:layout_height="53dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/text_background2"
+                    android:ems="10"
+                    android:hint="@string/state" />
+
+                <EditText
+                    android:id="@+id/leaderCity"
+                    android:layout_width="259dp"
+                    android:layout_height="53dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/text_background2"
+                    android:ems="10"
+                    android:hint="@string/city" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="364dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/leaderCountry"
+                    android:layout_width="259dp"
+                    android:layout_height="53dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/text_background2"
+                    android:ems="10"
+                    android:hint="@string/country" />
+
+                <EditText
+                    android:id="@+id/countryZip"
+                    android:layout_width="259dp"
+                    android:layout_height="53dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/text_background2"
+                    android:ems="10"
+                    android:hint="@string/zip" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/birthdayLabel"
+                android:layout_width="259dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/birthday"
+                android:textColor="#070101"
+                android:textSize="25sp" />
+
+            <EditText
+                android:id="@+id/leaderBirthday"
+                android:layout_width="189dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/text_background2"
+                android:drawableRight="@drawable/icons8_calendar_10_48"
+                android:hint="@string/date"
+                android:ems="10"
+                android:inputType="date" />
+
+            <Button
+                android:id="@+id/addImageButton"
+                android:layout_width="165dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_background"
+                android:text="@string/profile_pic" />
+
+            <LinearLayout
+                android:layout_width="364dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/category_shape"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/categoryNameLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="#9aaed9"
+                    android:layout_weight="1"
+                    android:text="@string/category_name"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/canLeadLable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="#9aaed9"
+                    android:layout_weight="1"
+                    android:text="@string/can_lead"
+                    android:textAlignment="textEnd"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewer"
+                android:layout_width="364dp"
+                android:layout_height="180dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/text_background1">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="364dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/text_background1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/updateLeader"
+                    android:layout_width="165dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/button_background"
+                    android:text="@string/update" />
+
+                <Button
+                    android:id="@+id/addLeader"
+                    android:layout_width="165dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/button_background"
+                    android:text="@string/add_leader" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+

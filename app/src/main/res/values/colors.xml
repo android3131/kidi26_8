@@ -22,6 +22,7 @@
 //yael and feisal colors
 
 
+    <color name="MainBackground">#4E7FE7</color>
 
     <color name="grey">#d2d2d2</color>
     <color name="red">#F44336</color>

@@ -63,16 +63,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:text="TextView" />
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/courseName1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:text="TextView" />
+                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
@@ -113,8 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:text="textView" />
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/DateEnd"
@@ -122,8 +119,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:text="TextView" />
+                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
@@ -163,8 +159,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:text="textView" />
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/HourEnd"
@@ -172,8 +167,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:text="TextView" />
+                android:layout_weight="1" />
         </LinearLayout>
 
         <TextView
@@ -221,14 +215,12 @@
                 android:text="Add New Leader:"
                 android:textStyle="bold" />
 
-            <Spinner
-                android:id="@+id/leaderSpinner"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1" />
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="130dp"/>
 
         </LinearLayout>
 

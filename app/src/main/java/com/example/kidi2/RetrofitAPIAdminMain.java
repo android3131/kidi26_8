@@ -20,25 +20,17 @@ public interface RetrofitAPIAdminMain {
     @GET("/getactivitiesperyear")
     Call <HashMap<String, Integer>>createGetActivityPerYear();
 
-    @GET("/getpercentactivitiesperweek")
-    Call <Double> createGetPercentActivitiesPerWeek();
-
-    @GET("/getpercentactivitiespermonth")
-    Call <Double> createGetPercentActivitiesPerMonth();
-
-    @GET("/getpercentactivitiesperyear")
-    Call <Double> createGetPercentActivitiesPerYear();
 
 
     //=============bottom left pie=========
-    @GET("/getlistofactivekidsperweek")
-    Call <HashMap<String, Integer>>createGetActiveKidsPerWeek();
+    @GET("/getNewKids/{period}")
+    Call <HashMap<String, Integer>>createGetActiveKids(@Path("period") int period);
 
-    @GET("/getlistofactivekidspermonth")
-    Call <HashMap<String, Integer>>createGetActiveKidsPerMonth();
-
-    @GET("/getlistofactivekidsperyear")
-    Call <HashMap<String, Integer>>createGetActiveKidsPerYear();
+//    @GET("/getlistofactivekidspermonth")
+//    Call <HashMap<String, Integer>>createGetActiveKidsPerMonth();
+//
+//    @GET("/getlistofactivekidsperyear")
+//    Call <HashMap<String, Integer>>createGetActiveKidsPerYear();
 
 
     @GET("/getpercentactivekidsbyweek")

@@ -4,39 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4E7FE7"
+    android:background="@color/MainBackground"
     tools:context=".FirstParentRegReal">
 
-    <LinearLayout
-        android:id="@+id/progress"
-        android:layout_width="match_parent"
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_weight="1"
-            android:foregroundGravity="center"
-            app:srcCompat="@drawable/progress_bar2" />
-    </LinearLayout>
+        android:src="@drawable/progress_bar_2"
+        app:layout_constraintBottom_toTopOf="@id/v_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <LinearLayout
-        android:id="@+id/mainLayout"
+        android:id="@+id/v_layout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:layout_marginTop="80dp"
-        android:background="@drawable/background_grp2"
+        android:background="@drawable/myrect10"
+        android:clipToPadding="false"
+        android:hapticFeedbackEnabled="false"
         android:orientation="vertical"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
         <TextView
             android:id="@+id/textView"
@@ -47,34 +47,29 @@
             android:textColor="#070101"
             android:textSize="25dp" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Lorem ipsom dollar sit map"
-            android:textSize="16sp" />
-
         <EditText
             android:id="@+id/editTextTextPersonName"
-            android:layout_width="341dp"
-            android:layout_height="53dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_marginTop="20dp"
             android:background="@drawable/text_background_grp2"
-            android:ems="10"
             android:hint="@string/full_name"
+            android:ems="10"
             android:inputType="textPersonName"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="match_parent"
-                android:layout_height="53dp"
+                android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:background="@drawable/arrow_grp2"
                 android:popupBackground="@drawable/text_background_grp2"
@@ -83,7 +78,7 @@
             <EditText
                 android:id="@+id/editTextPhone2"
                 android:layout_width="match_parent"
-                android:layout_height="53dp"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/text_background_grp2"
@@ -97,7 +92,8 @@
         <EditText
             android:id="@+id/editTextTextEmailAddress"
             android:layout_width="match_parent"
-            android:layout_height="53dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_marginTop="20dp"
             android:background="@drawable/text_background_grp2"
             android:ems="10"
@@ -107,48 +103,57 @@
         <EditText
             android:id="@+id/editTextTextPassword"
             android:layout_width="match_parent"
-            android:layout_height="53dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_marginTop="20dp"
             android:background="@drawable/text_background_grp2"
-            android:ems="10"
             android:hint="@string/password"
+            android:textSize="16sp"
             android:inputType="textPassword" />
 
         <EditText
             android:id="@+id/editTextTextPassword2"
             android:layout_width="match_parent"
-            android:layout_height="53dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_marginTop="20dp"
             android:background="@drawable/text_background_grp2"
-            android:ems="10"
             android:hint="@string/retype_password"
             android:inputType="textPassword" />
 
         <LinearLayout
-            android:id="@+id/buttons"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp">
-
-            <Button
-                android:id="@+id/back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:text="Back"
-                tools:layout_editor_absoluteY="683dp" />
-
-            <Button
-                android:id="@+id/next"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
-                android:text="Next"
-                tools:layout_editor_absoluteY="708dp" />
-
-        </LinearLayout>
-
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            ></LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="Next"
+        app:backgroundTint="#4E7FE7"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/back_label"
+        android:textColor="#000000"
+        app:backgroundTint="#EDE7E7"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

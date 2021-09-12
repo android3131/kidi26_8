@@ -17,6 +17,11 @@ public class Category {
     public Category() {
 
     }
+    public Category(String name) {
+        this.name = name;
+    }
+
+
     public Category(String name, String image) {
         super();
         this.name = name;

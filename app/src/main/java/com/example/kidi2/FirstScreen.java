@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class FirstScreen extends AppCompatActivity {
-    private TextView privacyT,termsT;
-    private Button loginB,firstB,forgotB;
+    private TextView privacyT,termsT,forgotB;
+    private Button loginB,firstB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

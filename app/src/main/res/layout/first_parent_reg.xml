@@ -1,60 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#4e7fe7"
-
+    android:background="@color/MainBackground"
     tools:context=".FirstParentReg">
 
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:contentDescription="@string/todo"
-        app:srcCompat="@drawable/prgrsdrft" />
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/progress_bar_1"
+        app:layout_constraintBottom_toTopOf="@id/linear1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linear1"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="40dp"
-        android:layout_weight="1"
-        android:background="@drawable/myrect"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@drawable/myrect10"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:layout_marginBottom="10dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:text="@string/welcome_to_kidi"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_marginStart="15dp" />
+                android:layout_marginTop="30dp"
+                android:text="Welcome to KIDI"
+                android:textColor="#070101"
+                android:layout_marginBottom="10dp"
+                android:textSize="25dp" />
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_marginLeft="15dp"
-                android:text="@string/lorem_ipsom_dollar_sit_map"
-                android:textSize="18sp"
-                android:layout_marginStart="15dp" />
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/image_container"
@@ -73,79 +70,66 @@
         </LinearLayout>
 
 
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="31dp"
-            android:clickable="false"
-            android:gravity="center"
-            android:text="@string/select_date"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_1"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:padding="10dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:background="@color/white"
+            android:orientation="vertical">
 
-
-            <Button
-                android:id="@+id/backButtonReg"
+            <TextView
+                android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="100dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginBottom="30dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:shadowColor="#FFFFFF"
-                android:text="@string/back"
+                android:clickable="false"
+                android:gravity="center"
+                android:text="@string/select_date"
                 android:textColor="@color/black"
-                android:textColorHint="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:backgroundTint="#FFE6F6F8"
-                app:cornerRadius="15dp" />
+                android:textSize="18sp" />
 
-            <Button
-                android:id="@+id/nextButton"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="100dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginBottom="30dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@string/next"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:backgroundTint="#4e7fe7"
-                app:cornerRadius="15dp" />
+                android:layout_height="match_parent"
+                android:padding="10dp" />
 
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:orientation="vertical">
         </LinearLayout>
     </LinearLayout>
 
+    <Button
+        android:id="@+id/backButtonReg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/back_label"
+        android:textColor="#000000"
+        app:backgroundTint="#EDE7E7"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="Next"
+        app:backgroundTint="#4E7FE7"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

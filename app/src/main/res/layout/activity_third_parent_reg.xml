@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4E7FE7"
+    android:background="@color/MainBackground"
     android:hapticFeedbackEnabled="false"
     tools:context=".ThirdParentRegActivity">
 
@@ -18,6 +18,7 @@
         android:text="@string/back_label"
         android:textColor="#000000"
         app:backgroundTint="#EDE7E7"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -30,20 +31,20 @@
         android:layout_marginBottom="20dp"
         android:text="Next"
         app:backgroundTint="#4E7FE7"
+        android:textAllCaps="false"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-<ImageView
-    android:layout_width="150dp"
-    android:layout_height="wrap_content"
-    android:src="@drawable/progress_bar_3"
-    app:layout_constraintBottom_toTopOf="@id/v_layout"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    >
-
-</ImageView>
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/progress_bar_3"
+        app:layout_constraintBottom_toTopOf="@id/v_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </ImageView>
     <LinearLayout
         android:id="@+id/v_layout"
         android:layout_width="match_parent"
@@ -56,38 +57,31 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:ignore="ExtraText">
+        >
 
-
-        <TextView
-            android:id="@+id/welcome_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="30dp"
-            android:paddingTop="20dp"
-            android:text="@string/welcome_to_kidi"
-            android:textColor="#000000"
-            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="40dp"
-            android:paddingTop="5dp"
-            android:text="Lorem ipsom dollar sit map"
-            android:textColor="#97000000"
-            android:textSize="16sp" />
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="Welcome to KIDI"
+            android:textColor="#070101"
+            android:textSize="25dp" />
 
         <RelativeLayout
             android:id="@+id/shape_layout"
             android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
             android:background="@drawable/circular_bordershape"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true">
             <androidx.cardview.widget.CardView
@@ -108,22 +102,12 @@
             </androidx.cardview.widget.CardView>
         </RelativeLayout>
 
-<!--        <ImageView-->
-<!--            android:id="@+id/imageView2"-->
-<!--            android:layout_width="50dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_marginLeft="20dp"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:layout_marginRight="20dp"-->
-<!--            app:background ="@drawable/circular_bordershape"-->
-<!--            app:srcCompat="@drawable/girl"-->
-<!--            android:backgroundTintMode="src_in"/>-->
 
         <TextView
             android:id="@+id/editTextKid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="40dp"
             android:layout_marginRight="20dp"
             android:text="Lena"
             android:textColor="@color/black" />
@@ -131,19 +115,21 @@
         <EditText
             android:id="@+id/editTextTextPersonName"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/myrect"
             android:hint="  Kid full name"
             android:inputType="text"
-             />
+            />
 
         <Button
             android:id="@+id/photoField"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
@@ -159,16 +145,18 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <Spinner
                 android:id="@+id/day_spinner"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:background="@drawable/style_spinner1"
                 android:hint="@string/choose_day"
                 android:popupBackground="@color/grey_blue"
@@ -176,8 +164,9 @@
 
             <Spinner
                 android:id="@+id/month_spinner"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:layout_marginLeft="35dp"
                 android:background="@drawable/style_spinner1"
                 android:hint="@string/choose_month"
@@ -187,8 +176,9 @@
 
             <Spinner
                 android:id="@+id/year_spinner"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:layout_marginLeft="35dp"
                 android:background="@drawable/style_spinner1"
                 android:hint="@string/choose_year"
@@ -198,10 +188,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <CheckedTextView
@@ -250,8 +241,14 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"/>
+
 
     </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

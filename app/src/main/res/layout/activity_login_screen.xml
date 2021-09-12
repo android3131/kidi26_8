@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#4E7FE7"
+    android:background="@drawable/login_bk"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LogInScreenActivity">
@@ -11,8 +11,6 @@
         android:id="@+id/vlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="80dp"
-        android:background="@drawable/myrect10"
         android:clipToPadding="false"
         android:hapticFeedbackEnabled="false"
         android:orientation="vertical"
@@ -24,23 +22,27 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ExtraText">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="0dp"
+            android:layout_weight="2">
 
             <ImageView
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:layout_centerInParent="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
                 android:background="@drawable/shape_user"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_user" />
 
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:orientation="vertical">
@@ -65,7 +67,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="20dp"
@@ -92,13 +95,13 @@
 
         <Button
             android:id="@+id/signin_button"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Sign in"
+            android:layout_gravity="center_horizontal"
+            app:backgroundTint="@null"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            android:layout_margin="20dp"
-            android:backgroundTintMode="@null"
             android:onClick="SendData"
             android:background="@drawable/shape_sign_in_button"
             android:textSize="20sp"/>
@@ -106,10 +109,16 @@
         <TextView
             android:id="@+id/forgot_password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:text="Forgot Password?"
             android:textColor="@android:color/black"
             android:gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 

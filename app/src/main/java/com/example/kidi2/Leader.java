@@ -17,7 +17,7 @@ public class Leader {
     private String email;
     private String password;
     private String phoneNumber;
-    private Address address;
+    private com.example.kidi2.Address address;
     private Date dateOfBirth;
     private String profilePic;
     private ArrayList<String> categoriesIDs = new ArrayList<>();
@@ -27,9 +27,13 @@ public class Leader {
     private Boolean generatedPassowrd;
     private int clr;
 
+
+
     public int getClr() {
         return clr;
     }
+
+
 
     public void setClr(int clr) {
         this.clr = clr;
@@ -57,7 +61,7 @@ public class Leader {
 
     }
 
-    public Leader(String fullName, String email, String phoneNumber, Address address, Date dateOfBirth,
+    public Leader(String fullName, String email, String phoneNumber, com.example.kidi2.Address address, Date dateOfBirth,
                   String profilePic) {
         super();
         this.fullName = fullName;
@@ -70,6 +74,8 @@ public class Leader {
         this.password = generatePassword();
 
     }
+
+
 
     private String generatePassword() {
         Random random=new Random();
@@ -113,11 +119,11 @@ public class Leader {
         this.phoneNumber = phoneNumber;
     }
 
-    public Address getAddress() {
+    public com.example.kidi2.Address getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(com.example.kidi2.Address address) {
         this.address = address;
     }
 

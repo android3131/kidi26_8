@@ -5,23 +5,25 @@ import java.util.List;
 
 import retrofit2.http.Body;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
+import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.Call;
 
 public interface RetrofitAPI6 {
 
-    @GET("/getCoursesOfCategory/{categoryid}")
-    Call<List<Course_Addactivity>> getCourseOfCategory(@Path("categoryid") int categoryid);
+    @GET("/getCategoriesForNewActivity/{parentId}/{kidId}")
+    Call<List<Course>> getCategoriesForNewAct(@Path("parentId") String parentId, @Path("kidId") String kidId);
 
-    @GET("/getCoursesOfChild/{childId}")
-    Call<List<Course_Addactivity>> getCoursesOfChild(@Path("childId") int childId);
+    @GET("/getCoursesForNewActivity/{parentId}/{kidId}/{catId}")
+    Call<List<Course>> getCourseByCatNewAct(@Path("parentId") String parentId, @Path("kidId") String kidId, @Path("catId") String catId);
 
-    @PUT("/UpdateChildsCourses/{childId}")
-        //creating a method to post our data.
-    Call<List<Course_Addactivity>> updateChilsCcurses(@Path("childId") int childId, @Body List<Course_Addactivity> courses);
+    @GET("/getAllParentsChildren/{parentId}")
+    Call<List<Kid>> getParentsChildren(@Path("parentId") String parentId);
 
-    @GET("user")
-    Call<User> getUser(@Header("Authorization") String authorization);
+    @POST("/addCourseToChild/{parentId}/{kidId}/{courseId}")
+    Call<Kid> updateKidsCourses(@Path("parentId") String parentId, @Path("kidId") String kidId, @Path("courseId") String courseId);
+
+
+
 }

@@ -107,9 +107,10 @@ public class AdminMainActivity extends AppCompatActivity {
          activitiesText = (TextView) findViewById(R.id.activities_perc);
          parentsText = (TextView) findViewById(R.id.parents_perc);
          childrenText = (TextView) findViewById(R.id.children_perc);
-
+        month = findViewById(R.id.month_button);
+        month.setSelected(true);
         // retrieve data by month as default
-        Call<HashMap<String,Integer>> newKids = retrofitAPI.createGetActiveKidsPerMonth();
+        Call<HashMap<String,Integer>> newKids = retrofitAPI.createGetActiveKids(2);
         Call<HashMap<String,Integer>> newParents = retrofitAPI.createGetActiveParentsPerMonth();
         Call<HashMap<String,Integer>> activityTime = retrofitAPI.createGetActivityPerMonth();
         Call<HashMap<String,Integer>> kidsByCategory = retrofitAPI.createGetActiveKidsPerCategoryPerMonth();
@@ -676,7 +677,7 @@ public class AdminMainActivity extends AppCompatActivity {
 
         // update the rest of the charts
         // retrieve data by month as default
-        Call<HashMap<String,Integer>> newKids = retrofitAPI.createGetActiveKidsPerYear();
+        Call<HashMap<String,Integer>> newKids = retrofitAPI.createGetActiveKids(3);
         Call<HashMap<String,Integer>> newParents = retrofitAPI.createGetActiveParentsPerYear();
         Call<HashMap<String,Integer>> activityTime = retrofitAPI.createGetActivityPerYear();
         Call<HashMap<String,Integer>> kidsByCategory = retrofitAPI.createGetActiveKidsPerCategoryPerYear();
@@ -756,7 +757,7 @@ public class AdminMainActivity extends AppCompatActivity {
 
         // update the rest of the charts
         // retrieve data by month as default
-        Call<HashMap<String,Integer>> newKids = retrofitAPI.createGetActiveKidsPerMonth();
+        Call<HashMap<String,Integer>> newKids = retrofitAPI.createGetActiveKids(2);;
         Call<HashMap<String,Integer>> newParents = retrofitAPI.createGetActiveParentsPerMonth();
         Call<HashMap<String,Integer>> activityTime = retrofitAPI.createGetActivityPerMonth();
         Call<HashMap<String,Integer>> kidsByCategory = retrofitAPI.createGetActiveKidsPerCategoryPerMonth();
@@ -832,7 +833,7 @@ public class AdminMainActivity extends AppCompatActivity {
 
         // update the rest of the charts
         // retrieve data by month as default
-        Call<HashMap<String,Integer>> newKids = retrofitAPI.createGetActiveKidsPerWeek();
+        Call<HashMap<String,Integer>> newKids = retrofitAPI.createGetActiveKids(1);
         Call<HashMap<String,Integer>> newParents = retrofitAPI.createGetActiveParentsPerWeek();
         Call<HashMap<String,Integer>> activityTime = retrofitAPI.createGetActivityPerWeek();
         Call<HashMap<String,Integer>> kidsByCategory = retrofitAPI.createGetActiveKidsPerCategoryPerWeek();

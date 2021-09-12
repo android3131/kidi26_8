@@ -3,6 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/moham/Desktop/finalkidi/kidi26_8/app/src/main/res/drawable-xxhdpi/category_shape.xml" value="0.18518518518518517" />
+        <entry key="..\:/Users/moham/Desktop/finalkidi/kidi26_8/app/src/main/res/drawable-xxhdpi/recycler_layout.xml" value="0.14322916666666666" />
+        <entry key="..\:/Users/moham/Desktop/finalkidi/kidi26_8/app/src/main/res/drawable-xxhdpi/text_background1.xml" value="0.18518518518518517" />
+        <entry key="..\:/Users/moham/Desktop/finalkidi/kidi26_8/app/src/main/res/drawable/addkidback.xml" value="0.18518518518518517" />
+        <entry key="..\:/Users/moham/Desktop/finalkidi/kidi26_8/app/src/main/res/drawable/first_screen_background.xml" value="0.14322916666666666" />
+        <entry key="..\:/Users/moham/Desktop/finalkidi/kidi26_8/app/src/main/res/drawable/first_screen_button.xml" value="0.14322916666666666" />
+        <entry key="..\:/Users/moham/Desktop/finalkidi/kidi26_8/app/src/main/res/drawable/shape_sign_in_button.xml" value="0.14322916666666666" />
+        <entry key="..\:/Users/moham/Desktop/finalkidi/kidi26_8/app/src/main/res/layout/activity_add_kid.xml" value="0.2" />
+        <entry key="..\:/Users/moham/Desktop/finalkidi/kidi26_8/app/src/main/res/layout/activity_forth_parent_reg2.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/moham/Desktop/finalkidi/kidi26_8/app/src/main/res/layout/activity_leader_first_login.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/moham/Desktop/finalkidi/kidi26_8/app/src/main/res/layout/activity_leader_per_course.xml" value="0.17753623188405798" />
+        <entry key="..\:/Users/moham/Desktop/finalkidi/kidi26_8/app/src/main/res/layout/activity_login_screen.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/moham/Desktop/finalkidi/kidi26_8/app/src/main/res/layout/activity_maingroup6.xml" value="0.152" />
+        <entry key="..\:/Users/moham/Desktop/finalkidi/kidi26_8/app/src/main/res/layout/activity_parent_profile.xml" value="0.17481884057971014" />
+        <entry key="..\:/Users/moham/Desktop/finalkidi/kidi26_8/app/src/main/res/layout/activity_third_parent_reg.xml" value="0.3615023474178404" />
+        <entry key="..\:/Users/moham/Desktop/finalkidi/kidi26_8/app/src/main/res/layout/admin_add_leader.xml" value="0.2" />
+        <entry key="..\:/Users/moham/Desktop/finalkidi/kidi26_8/app/src/main/res/layout/first_parent_reg.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/moham/Desktop/finalkidi/kidi26_8/app/src/main/res/layout/first_screen.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/moham/Desktop/finalkidi/kidi26_8/app/src/main/res/layout/recycle_data.xml" value="0.17481884057971014" />
+        <entry key="..\:/Users/moham/Desktop/finalkidi/kidi26_8/app/src/main/res/layout/reg_first_parent.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/moham/Desktop/finalkidi/kidi26_8/app/src/main/res/layout/rv_add_activity.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/win10/AndroidStudioProjects/KIDI3/kidi26_8/app/src/main/res/drawable-anydpi/chat_send.xml" value="0.26615384615384613" />
         <entry key="..\:/Users/win10/AndroidStudioProjects/KIDI3/kidi26_8/app/src/main/res/layout/activity.xml" value="0.21829710144927536" />
         <entry key="..\:/Users/win10/AndroidStudioProjects/KIDI3/kidi26_8/app/src/main/res/layout/activity_admin_main.xml" value="0.19791666666666666" />

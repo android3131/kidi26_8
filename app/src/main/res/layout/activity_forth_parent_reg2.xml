@@ -5,30 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:background="#4E7FE7"
+    android:background="@color/MainBackground"
     tools:context=".ForthParentReg">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="407dp"
-        android:layout_height="59dp">
+
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="318dp"
-            android:layout_height="37dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/progressbar_4"
+            app:layout_constraintBottom_toTopOf="@id/scrollLayout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.516"
-            app:srcCompat="@drawable/progressbar_4" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+             />
 
     <ScrollView
+        android:id="@+id/scrollLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,30 +40,21 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="60dp"
                 android:background="@drawable/rounded_corner"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/bold"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="30dp"
                     android:text="Welcome to KIDI"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textColor="#070101"
+                    android:textSize="25dp" />
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginBottom="20dp"
-                    android:text="Lorem ipsom dollar sit map"
-                    app:layout_constraintTop_toBottomOf="@+id/bold" />
 
 
                 <androidx.cardview.widget.CardView
@@ -100,7 +93,7 @@
                     android:layout_marginTop="15dp"
                     android:clickable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:onClick="sendEmail"
+                    android:onClick="ZoomClick"
                     app:cardCornerRadius="15dp"
                     app:cardElevation="20dp">
 

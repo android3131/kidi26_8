@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/MainBackground"
+    android:hapticFeedbackEnabled="false"
+    tools:context=".AddKidActivity">
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/back_label"
+        android:onClick="backBtnPressed"
+        android:textColor="#000000"
+        app:backgroundTint="#EDE7E7"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/add_kid_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="Add Kid"
+        app:backgroundTint="#4E7FE7"
+        android:textAllCaps="false"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/add_kid_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Kid"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@id/v_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </TextView>
+    <LinearLayout
+        android:id="@+id/v_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/myrect10"
+        android:clipToPadding="false"
+        android:hapticFeedbackEnabled="false"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="Welcome to KIDI"
+            android:textColor="#070101"
+            android:textSize="25dp" />
+
+        <RelativeLayout
+            android:id="@+id/shape_layout"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            android:background="@drawable/circular_bordershape"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/myCardView"
+                android:layout_width="50dp"
+                app:cardCornerRadius="25dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                >
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    />
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/editTextKid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="20dp"
+            android:text="Lena"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/addkidback"
+            android:hint="  Kid full name"
+            android:inputType="text"
+            />
+
+        <Button
+            android:id="@+id/photoField"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/addkidback"
+            android:backgroundTintMode="src_atop"
+            android:drawableLeft="@drawable/image_custome"
+            android:gravity="center_vertical|start"
+            android:inputType="text"
+            android:hint="@string/upload"
+            android:stateListAnimator="@null"
+            android:textAlignment="gravity"
+            app:backgroundTint="@null" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/day_spinner"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/style_spinner1"
+                android:hint="@string/choose_day"
+                android:popupBackground="@color/grey_blue"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/month_spinner"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="35dp"
+                android:background="@drawable/style_spinner1"
+                android:hint="@string/choose_month"
+                android:popupBackground="@color/grey_blue"
+                android:prompt="@string/choose_month"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/year_spinner"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="35dp"
+                android:background="@drawable/style_spinner1"
+                android:hint="@string/choose_year"
+                android:popupBackground="@color/grey_blue"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <CheckedTextView
+                android:id="@+id/girl_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:drawableTop="@drawable/checkmark"
+                android:gravity="center_horizontal"
+                android:minWidth="48dp"
+                android:onClick="setCheckedButton"
+                android:text="A girl"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <CheckedTextView
+                android:id="@+id/boy_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="85dp"
+                android:checked="false"
+                android:drawableTop="@drawable/checkmark"
+                android:gravity="center_horizontal"
+                android:minWidth="48dp"
+                android:onClick="setCheckedButton"
+                android:text="A boy"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <CheckedTextView
+                android:id="@+id/notrelevant_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="85dp"
+                android:drawableTop="@drawable/checkmark"
+                android:gravity="center_horizontal"
+                android:text="Not relevant"
+                android:textAlignment="center"
+                android:checked="false"
+                android:textSize="16sp"
+                android:onClick="setCheckedButton"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"/>
+
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

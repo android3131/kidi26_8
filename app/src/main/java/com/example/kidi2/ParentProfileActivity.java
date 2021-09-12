@@ -84,4 +84,8 @@ public class ParentProfileActivity extends AppCompatActivity {
         });
 
     }
+
+    public void addKidParent(View view) {
+        startActivity(new Intent(ParentProfileActivity.this, AddKidActivity.class));
+    }
 }

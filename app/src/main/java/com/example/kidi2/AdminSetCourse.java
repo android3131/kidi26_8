@@ -184,6 +184,15 @@ public class AdminSetCourse extends AppCompatActivity {
                                     SharedPreferences mPrefrences = PreferenceManager.getDefaultSharedPreferences(AdminSetCourse.this);
                                     SharedPreferences.Editor editor = mPrefrences.edit();
                                     editor.putString("courseId", coursesIds.get(position));
+                                    editor.putString("category", lis.get(position).getCategory().getName());
+                                    editor.putString("courseName", lis.get(position).getName());
+                                    editor.putString("startDate", lis.get(position).getStartDateTime());
+                                    editor.putString("endDate", lis.get(position).getFinishDateTime());
+                                    editor.putString("day", lis.get(position).getDay());
+                                    editor.putString("startHour", lis.get(position).getStartOclock());
+                                    editor.putString("endHour", lis.get(position).getEndOclock());
+                                    editor.putString("zoomLink", lis.get(position).getZoomMeetingLink());
+                                    editor.putString("urlLink", lis.get(position).getUrlLink());
                                     editor.commit();
 
                                     //after put all the relevant fields in shared Preferences go to update activity
