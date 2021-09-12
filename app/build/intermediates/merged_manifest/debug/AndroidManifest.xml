@@ -98,6 +98,9 @@
         <activity
             android:name="com.example.kidi2.AdminAddLeader"
             android:exported="true" />
+        <activity
+            android:name="com.example.kidi2.AddKidActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

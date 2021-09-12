@@ -296,7 +296,7 @@ public class AddKidActivity extends AppCompatActivity {
         // create retrofit builder and pass our base url
         // create an instance for our retrofit api class.
         // passing data from our text fields to our modal class.
-        String parentID =pref.getString("parentIDReg",null);
+        String parentID =pref.getString("parentID",null);
         Kid myKidData = new Kid(fullName,date2,gender, parentID);
         // calling a method to create a post and passing our model class.
         Call<Kid> call = retrofitAPI.createPost(myKidData);

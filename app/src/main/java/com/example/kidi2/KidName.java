@@ -329,7 +329,7 @@ public class KidName extends AppCompatActivity {
                 //Response<Integer> response = callnumberofcompleted.execute();
                 int numofcompleted = response.body();
 
-                numberofactive.setText(String.valueOf(numofcompleted));
+                numberofcompleted.setText(String.valueOf(numofcompleted));
 
 
             }
@@ -397,7 +397,7 @@ public class KidName extends AppCompatActivity {
                     }
                     for (int i = 0; i < images.length && i < meetings.size(); i++) {
 
-                        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+                        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
                         datesCompleted[i] = meetings.get(i).getMeetingDateTime();
                         String strDate = dateFormat.format(dates[i]);
                         describtionCompleted[i] = meetings.get(i).getId();

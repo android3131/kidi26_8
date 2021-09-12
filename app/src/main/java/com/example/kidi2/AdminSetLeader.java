@@ -10,8 +10,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.SearchView;
 
 
@@ -34,6 +36,7 @@ public class AdminSetLeader extends AppCompatActivity   {
     ArrayList<String> usernamesList=new ArrayList<>();
     List<Leader> leadersManagement=new ArrayList<>();
     BottomNavigationView bottomnav;
+    Button addLeaderBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +73,14 @@ public class AdminSetLeader extends AppCompatActivity   {
                         return true;
                 }
                 return false;
+            }
+        });
+        addLeaderBtn=findViewById(R.id.btnAdd);
+        addLeaderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AdminSetLeader.this, AdminAddLeader.class));
+
             }
         });
         //Retrofit retrofit = new Retrofit.Builder().baseUrl(String.valueOf(R.string.BASE_URL)).addConverterFactory(GsonConverterFactory.create()).build();

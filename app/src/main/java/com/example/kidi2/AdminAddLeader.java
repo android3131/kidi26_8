@@ -53,14 +53,9 @@ public class AdminAddLeader extends AppCompatActivity {
 
     /*********************Building retrofit********************************/
 
-    Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl(String.valueOf(R.string.BASE_URL))
-            // when sending data in json format we have to add Gson converter factory
-            .addConverterFactory(GsonConverterFactory.create())
-            // and build our retrofit builder.
-            .build();
+    Retrofit retrofit ;
 
-    RetrofitAPIGrp2AdminLeader retrofitAPI = retrofit.create(RetrofitAPIGrp2AdminLeader.class);
+    RetrofitAPIGrp2AdminLeader retrofitAPI ;
 
     /*********************Variables Define - XML- ********************************/
 
@@ -85,7 +80,14 @@ public class AdminAddLeader extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_add_leader);
+       retrofit = new Retrofit.Builder()
+                .baseUrl(getString(R.string.BASE_URL))
+                // when sending data in json format we have to add Gson converter factory
+                .addConverterFactory(GsonConverterFactory.create())
+                // and build our retrofit builder.
+                .build();
 
+         retrofitAPI = retrofit.create(RetrofitAPIGrp2AdminLeader.class);
 
         /****************assigning data from xml to java******************/
         fullName = findViewById(R.id.leaderName);

@@ -1,21 +1,15 @@
-com/example/kidi2/AdminSetCourse.java
- com.example.kidi2.AdminSetCourse
- com.example.kidi2.AdminSetCourse$1
- com.example.kidi2.AdminSetCourse$2
- com.example.kidi2.AdminSetCourse$2$1
- com.example.kidi2.AdminSetCourse$2$1$1
- com.example.kidi2.AdminSetCourse$2$2
- com.example.kidi2.AdminSetCourse$2$3
- com.example.kidi2.AdminSetCourse$3
- com.example.kidi2.AdminSetCourse$4
- com.example.kidi2.AdminSetCourse$4$1
- com.example.kidi2.AdminSetCourse$5
+com/example/kidi2/ParentProfileActivity.java
+ com.example.kidi2.ParentProfileActivity
+ com.example.kidi2.ParentProfileActivity$1
 com/example/kidi2/RVitemPerLeader.java
  com.example.kidi2.RVitemPerLeader
-com/example/kidi2/LogInScreenActivity.java
- com.example.kidi2.LogInScreenActivity
- com.example.kidi2.LogInScreenActivity$1
- com.example.kidi2.LogInScreenActivity$2
+com/example/kidi2/VPAdapter.java
+ com.example.kidi2.VPAdapter
+ com.example.kidi2.VPAdapter$1
+ com.example.kidi2.VPAdapter$2
+ com.example.kidi2.VPAdapter$3
+ com.example.kidi2.VPAdapter$4
+ com.example.kidi2.VPAdapter$ViewHolder
 com/example/kidi2/MyAdapter.java
  com.example.kidi2.MyAdapter
  com.example.kidi2.MyAdapter$MyViewHolder
@@ -39,12 +33,9 @@ com/example/kidi2/RecyclerItemClickListener.java
  com.example.kidi2.RecyclerItemClickListener$OnItemClickListener
 com/example/kidi2/RetrofitAPILoginScreen.java
  com.example.kidi2.RetrofitAPILoginScreen
-com/example/kidi2/Notifications.java
- com.example.kidi2.Notifications
- com.example.kidi2.Notifications$1
- com.example.kidi2.Notifications$2
- com.example.kidi2.Notifications$3
- com.example.kidi2.Notifications$4
+com/example/kidi2/MyAdapter1.java
+ com.example.kidi2.MyAdapter1
+ com.example.kidi2.MyAdapter1$MyViewHolder
 com/example/kidi2/ParentGrp2.java
  com.example.kidi2.ParentGrp2
 com/example/kidi2/LeaderAdapter.java
@@ -82,13 +73,8 @@ com/example/kidi2/LeaderFirstLoginActivity.java
  com.example.kidi2.LeaderFirstLoginActivity$1
 com/example/kidi2/AlgorithmAdapter_grp6.java
  com.example.kidi2.AlgorithmAdapter_grp6
-com/example/kidi2/VPAdapter.java
- com.example.kidi2.VPAdapter
- com.example.kidi2.VPAdapter$1
- com.example.kidi2.VPAdapter$2
- com.example.kidi2.VPAdapter$3
- com.example.kidi2.VPAdapter$4
- com.example.kidi2.VPAdapter$ViewHolder
+com/example/kidi2/Day.java
+ com.example.kidi2.Day
 com/example/kidi2/FirstScreen.java
  com.example.kidi2.FirstScreen
  com.example.kidi2.FirstScreen$1
@@ -119,14 +105,14 @@ com/example/kidi2/Leader.java
  com.example.kidi2.Leader
 com/example/kidi2/SliderTransformer.java
  com.example.kidi2.SliderTransformer
-com/example/kidi2/LinksActivity.java
- com.example.kidi2.LinksActivity
- com.example.kidi2.LinksActivity$1
- com.example.kidi2.LinksActivity$2
-com/example/kidi2/MyAdapter4.java
- com.example.kidi2.MyAdapter4
- com.example.kidi2.MyAdapter4$1
- com.example.kidi2.MyAdapter4$ViewHolder
+com/example/kidi2/AdminSetLeader.java
+ com.example.kidi2.AdminSetLeader
+ com.example.kidi2.AdminSetLeader$1
+ com.example.kidi2.AdminSetLeader$2
+ com.example.kidi2.AdminSetLeader$3
+ com.example.kidi2.AdminSetLeader$4
+com/example/kidi2/RetrofitAPIAdminMain.java
+ com.example.kidi2.RetrofitAPIAdminMain
 com/example/kidi2/RVitem1.java
  com.example.kidi2.RVitem1
 com/example/kidi2/AlgorithmItem.java
@@ -136,18 +122,32 @@ com/example/kidi2/MainActivity.java
  com.example.kidi2.MainActivity$1
 com/example/kidi2/UserFragment.java
  com.example.kidi2.UserFragment
-com/example/kidi2/VPAdapter2.java
- com.example.kidi2.VPAdapter2
- com.example.kidi2.VPAdapter2$1
- com.example.kidi2.VPAdapter2$ViewHolder
-com/example/kidi2/AddKidActivity.java
- com.example.kidi2.AddKidActivity
- com.example.kidi2.AddKidActivity$1
- com.example.kidi2.AddKidActivity$2
- com.example.kidi2.AddKidActivity$3
- com.example.kidi2.AddKidActivity$4
- com.example.kidi2.AddKidActivity$5
- com.example.kidi2.AddKidActivity$6
+com/example/kidi2/AdminMainActivity.java
+ com.example.kidi2.AdminMainActivity
+ com.example.kidi2.AdminMainActivity$1
+ com.example.kidi2.AdminMainActivity$10
+ com.example.kidi2.AdminMainActivity$11
+ com.example.kidi2.AdminMainActivity$12
+ com.example.kidi2.AdminMainActivity$13
+ com.example.kidi2.AdminMainActivity$14
+ com.example.kidi2.AdminMainActivity$15
+ com.example.kidi2.AdminMainActivity$16
+ com.example.kidi2.AdminMainActivity$17
+ com.example.kidi2.AdminMainActivity$18
+ com.example.kidi2.AdminMainActivity$2
+ com.example.kidi2.AdminMainActivity$3
+ com.example.kidi2.AdminMainActivity$4
+ com.example.kidi2.AdminMainActivity$5
+ com.example.kidi2.AdminMainActivity$6
+ com.example.kidi2.AdminMainActivity$7
+ com.example.kidi2.AdminMainActivity$8
+ com.example.kidi2.AdminMainActivity$9
+com/example/kidi2/Notifications.java
+ com.example.kidi2.Notifications
+ com.example.kidi2.Notifications$1
+ com.example.kidi2.Notifications$2
+ com.example.kidi2.Notifications$3
+ com.example.kidi2.Notifications$4
 com/example/kidi2/ForthParentReg.java
  com.example.kidi2.ForthParentReg
  com.example.kidi2.ForthParentReg$1
@@ -176,9 +176,10 @@ com/example/kidi2/MainActivityGrp2.java
  com.example.kidi2.MainActivityGrp2$1
 com/example/kidi2/DataKid.java
  com.example.kidi2.DataKid
-com/example/kidi2/MyAdapter1.java
- com.example.kidi2.MyAdapter1
- com.example.kidi2.MyAdapter1$MyViewHolder
+com/example/kidi2/LogInScreenActivity.java
+ com.example.kidi2.LogInScreenActivity
+ com.example.kidi2.LogInScreenActivity$1
+ com.example.kidi2.LogInScreenActivity$2
 com/example/kidi2/KidiOnItemSelectedListener.java
  com.example.kidi2.KidiOnItemSelectedListener
 com/example/kidi2/RetrofitAPI6.java
@@ -232,15 +233,18 @@ com/example/kidi2/AdminAddCourse.java
  com.example.kidi2.AdminAddCourse$6
  com.example.kidi2.AdminAddCourse$7
  com.example.kidi2.AdminAddCourse$7$1
-com/example/kidi2/AdminAddLeader.java
- com.example.kidi2.AdminAddLeader
- com.example.kidi2.AdminAddLeader$1
- com.example.kidi2.AdminAddLeader$2
- com.example.kidi2.AdminAddLeader$3
- com.example.kidi2.AdminAddLeader$4
- com.example.kidi2.AdminAddLeader$4$1
- com.example.kidi2.AdminAddLeader$5
- com.example.kidi2.AdminAddLeader$6
+com/example/kidi2/AdminSetCourse.java
+ com.example.kidi2.AdminSetCourse
+ com.example.kidi2.AdminSetCourse$1
+ com.example.kidi2.AdminSetCourse$2
+ com.example.kidi2.AdminSetCourse$2$1
+ com.example.kidi2.AdminSetCourse$2$1$1
+ com.example.kidi2.AdminSetCourse$2$2
+ com.example.kidi2.AdminSetCourse$2$3
+ com.example.kidi2.AdminSetCourse$3
+ com.example.kidi2.AdminSetCourse$4
+ com.example.kidi2.AdminSetCourse$4$1
+ com.example.kidi2.AdminSetCourse$5
 com/example/kidi2/LogInInfo.java
  com.example.kidi2.LogInInfo
 com/example/kidi2/DataModelParent.java
@@ -282,28 +286,12 @@ com/example/kidi2/ModelObject.java
  com.example.kidi2.ModelObject
 com/example/kidi2/StateVO.java
  com.example.kidi2.StateVO
-com/example/kidi2/Day.java
- com.example.kidi2.Day
-com/example/kidi2/AdminMainActivity.java
- com.example.kidi2.AdminMainActivity
- com.example.kidi2.AdminMainActivity$1
- com.example.kidi2.AdminMainActivity$10
- com.example.kidi2.AdminMainActivity$11
- com.example.kidi2.AdminMainActivity$12
- com.example.kidi2.AdminMainActivity$13
- com.example.kidi2.AdminMainActivity$14
- com.example.kidi2.AdminMainActivity$15
- com.example.kidi2.AdminMainActivity$16
- com.example.kidi2.AdminMainActivity$17
- com.example.kidi2.AdminMainActivity$18
- com.example.kidi2.AdminMainActivity$2
- com.example.kidi2.AdminMainActivity$3
- com.example.kidi2.AdminMainActivity$4
- com.example.kidi2.AdminMainActivity$5
- com.example.kidi2.AdminMainActivity$6
- com.example.kidi2.AdminMainActivity$7
- com.example.kidi2.AdminMainActivity$8
- com.example.kidi2.AdminMainActivity$9
+com/example/kidi2/MyAdapter4.java
+ com.example.kidi2.MyAdapter4
+ com.example.kidi2.MyAdapter4$1
+ com.example.kidi2.MyAdapter4$ViewHolder
+com/example/kidi2/MySingletone.java
+ com.example.kidi2.MySingletone
 com/example/kidi2/LeaderPerCourse.java
  com.example.kidi2.LeaderPerCourse
  com.example.kidi2.LeaderPerCourse$1
@@ -312,14 +300,15 @@ com/example/kidi2/LeaderPerCourse.java
  com.example.kidi2.LeaderPerCourse$2
 com/example/kidi2/BuildConfig.java
  com.example.kidi2.BuildConfig
-com/example/kidi2/Activity.java
- com.example.kidi2.Activity
- com.example.kidi2.Activity$1
- com.example.kidi2.Activity$2
- com.example.kidi2.Activity$3
- com.example.kidi2.Activity$4
- com.example.kidi2.Activity$5
- com.example.kidi2.Activity$6
+com/example/kidi2/AdminAddLeader.java
+ com.example.kidi2.AdminAddLeader
+ com.example.kidi2.AdminAddLeader$1
+ com.example.kidi2.AdminAddLeader$2
+ com.example.kidi2.AdminAddLeader$3
+ com.example.kidi2.AdminAddLeader$4
+ com.example.kidi2.AdminAddLeader$4$1
+ com.example.kidi2.AdminAddLeader$5
+ com.example.kidi2.AdminAddLeader$6
 com/example/kidi2/MyAdapterPerLeader.java
  com.example.kidi2.MyAdapterPerLeader
  com.example.kidi2.MyAdapterPerLeader$MyViewHolder4
@@ -328,14 +317,18 @@ com/example/kidi2/FirstParentRegReal.java
  com.example.kidi2.FirstParentRegReal$1
  com.example.kidi2.FirstParentRegReal$1$1
  com.example.kidi2.FirstParentRegReal$2
-com/example/kidi2/AdminSetLeader.java
- com.example.kidi2.AdminSetLeader
- com.example.kidi2.AdminSetLeader$1
- com.example.kidi2.AdminSetLeader$2
- com.example.kidi2.AdminSetLeader$3
-com/example/kidi2/ParentProfileActivity.java
- com.example.kidi2.ParentProfileActivity
- com.example.kidi2.ParentProfileActivity$1
+com/example/kidi2/AddKidActivity.java
+ com.example.kidi2.AddKidActivity
+ com.example.kidi2.AddKidActivity$1
+ com.example.kidi2.AddKidActivity$2
+ com.example.kidi2.AddKidActivity$3
+ com.example.kidi2.AddKidActivity$4
+ com.example.kidi2.AddKidActivity$5
+ com.example.kidi2.AddKidActivity$6
+com/example/kidi2/VPAdapter2.java
+ com.example.kidi2.VPAdapter2
+ com.example.kidi2.VPAdapter2$1
+ com.example.kidi2.VPAdapter2$ViewHolder
 com/example/kidi2/Status.java
  com.example.kidi2.Status
 com/example/kidi2/RetrofitAPI4.java
@@ -358,10 +351,18 @@ com/example/kidi2/Meeting.java
  com.example.kidi2.Meeting
 com/example/kidi2/RVitem.java
  com.example.kidi2.RVitem
-com/example/kidi2/MySingletone.java
- com.example.kidi2.MySingletone
-com/example/kidi2/RetrofitAPIAdminMain.java
- com.example.kidi2.RetrofitAPIAdminMain
+com/example/kidi2/LinksActivity.java
+ com.example.kidi2.LinksActivity
+ com.example.kidi2.LinksActivity$1
+ com.example.kidi2.LinksActivity$2
+com/example/kidi2/Activity.java
+ com.example.kidi2.Activity
+ com.example.kidi2.Activity$1
+ com.example.kidi2.Activity$2
+ com.example.kidi2.Activity$3
+ com.example.kidi2.Activity$4
+ com.example.kidi2.Activity$5
+ com.example.kidi2.Activity$6
 com/example/kidi2/MyAdapter2.java
  com.example.kidi2.MyAdapter2
  com.example.kidi2.MyAdapter2$1

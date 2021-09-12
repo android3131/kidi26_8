@@ -89,6 +89,9 @@
         <activity
             android:name=".AdminAddLeader"
             android:exported="true" />
+        <activity
+            android:name=".AddKidActivity"
+            android:exported="true" />
 
     </application>
 

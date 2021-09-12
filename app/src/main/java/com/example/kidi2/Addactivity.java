@@ -99,15 +99,16 @@ public class Addactivity extends AppCompatActivity {
         //String.valueOf(R.string.BASE_URL)
         // create an instance for our retrofit api class.
          retrofitAPI = retrofit.create(RetrofitAPI6.class);
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyKIDIPref", 0); // 0 - for private mode
+        SharedPreferences.Editor editor = pref.edit();
+        parentId = pref.getString("parentID", null);
 
         getKidsData();
 
         addBtn = findViewById(R.id.addActivityBtn);
         backBtn = findViewById(R.id.backBtn);
 
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyKIDIPref", 0); // 0 - for private mode
-        SharedPreferences.Editor editor = pref.edit();
-        parentId = pref.getString("parentID", null);
+
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,6 +133,7 @@ public class Addactivity extends AppCompatActivity {
                         Toast.makeText(com.example.kidi2.Addactivity.this,   "Add failed", Toast.LENGTH_SHORT).show();
                     }
                 });
+                startActivity(new Intent(Addactivity.this, HomeLogin.class));
 
             }
         });
@@ -299,6 +301,7 @@ public class Addactivity extends AppCompatActivity {
         // create retrofit builder and pass our base url
         //String parentId = "611e33e1127e135d805b4efa"; //temp!!!
         //m_adapter.notifyDataSetChanged();
+
         Call<List<Kid>> getAllParentsChildren = retrofitAPI.getParentsChildren(parentId);
         getAllParentsChildren.enqueue(new Callback<List<Kid>>() {
             @Override
