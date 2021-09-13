@@ -58,4 +58,66 @@ public interface RetrofitAPI {
     @POST("/addNewParent")
      Call<Parent> createParent(@Body Parent parent);
 
+
+    @GET("/getNewKids/{period}")
+    Call<HashMap<String,Integer>>getNewKids(@Path("period") int period);
+
+    @GET("/getNewParents/{period}")
+    Call<HashMap<String,Integer>> getNewParents(@Path("period") int period);
+
+    @GET("/getKidsCountByCategory/{period}")
+    Call<HashMap<String,Integer>> getKidsCountByCategory(@Path("period") int period);
+
+    @GET("/getActivityTime/{period}")
+    Call<HashMap<String,Double>> getActivityTime(@Path("period") int period);
+
+
+
+
+    //==================activity Pie================//
+    @GET("/getactivitiesperweek")
+    Call <HashMap<String, Integer>> createGetActivityPerWeek();
+
+    @GET("/getactivitiespermonth")
+    Call <HashMap<String, Integer>>createGetActivityPerMonth();
+
+    @GET("/getactivitiesperyear")
+    Call <HashMap<String, Integer>>createGetActivityPerYear();
+
+
+    //=============kids pie=========
+    @GET("/getlistofactivekidsperweek")
+    Call <HashMap<String, Integer>> createGetActiveKidsPerWeek();
+
+    @GET("/getlistofactivekidspermonth")
+    Call <HashMap<String, Integer>> createGetActiveKidsPerMonth();
+
+    @GET("/getlistofactivekidsperyear")
+    Call <HashMap<String, Integer>> createGetActiveKidsPerYear();
+
+
+
+    //============= parents pie ==========
+
+    @GET("/getallactiveparentsbyweek")
+    Call <HashMap<String, Integer>> createGetActiveParentsPerWeek();
+
+    @GET("/getallactiveparentsbymonth")
+    Call<HashMap<String, Integer>> activeParentsMonth();
+
+    @GET("/getallactiveparentsbyyear")
+    Call<HashMap<String, Integer>>activeParentsYear();
+
+
+    //========= gets by category pie==========/
+
+    @GET("/getlistofactivekidspercategoryperweek")
+    Call<HashMap<String, Integer>> activeKidsCategWeek();
+
+    @GET("/getlistofactivekidspercategorypermonth")
+    Call<HashMap<String, Integer>> activeKidsCategMonth();
+
+    @GET("/getlistofactivekidspercategoryperyear")
+    Call<HashMap<String, Integer>> activeKidsCategYear();
+
 }

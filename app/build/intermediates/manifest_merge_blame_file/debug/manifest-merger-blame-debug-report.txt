@@ -15,7 +15,7 @@
 11-->C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:5:22-64
 12
 13    <application
-13-->C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:7:5-96:19
+13-->C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:7:5-100:19
 14        android:allowBackup="true"
 14-->C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:8:9-35
 15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -191,6 +191,12 @@
 102-->C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:93:13-43
 103            android:exported="true" />
 103-->C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:94:13-36
-104    </application>
-105
-106</manifest>
+104        <activity
+104-->C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:96:9-98:39
+105            android:name="com.example.kidi2.AdminSetUser"
+105-->C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:97:13-41
+106            android:exported="true" />
+106-->C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:98:13-36
+107    </application>
+108
+109</manifest>

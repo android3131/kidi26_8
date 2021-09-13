@@ -34,6 +34,11 @@
     <color name="Python">#66BB6A</color>
     <color name="CPP">#EF5350</color>
     <color name="Java">#29B6F6</color>
-
+    <color name="card_1">#A3E4D7</color>
+    <color name="card_2">#F9E77F</color>
+    <color name="card_3">#D7BDE2</color>
+    <color name="card_4">#D2C3D8</color>
+    <color name="card_5">#BDC1C6</color>
+    <color name="card_6">#F1F3F4</color>
 
 </resources>

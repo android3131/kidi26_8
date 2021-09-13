@@ -4,10 +4,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,29 +16,32 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.github.mikephil.charting.animation.Easing;
+import com.example.kidi2.AdminAddCourse;
+import com.example.kidi2.AdminSetCourse;
+import com.example.kidi2.AdminSetLeader;
+import com.example.kidi2.FirstScreen;
+import com.example.kidi2.R;
+import com.example.kidi2.RetrofitAPI;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
-import com.github.mikephil.charting.utils.ViewPortHandler;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,181 +49,430 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+
 public class AdminMainActivity extends AppCompatActivity {
-    PieChart activitiesChart;
-    PieChart parentsChart;
-    BarChart barChart;
-    PieChart childrenChart;
-    PieChart totalCatChart;
-    // variable for our bar data set.
-    BarDataSet barCategory1, barCategory2, barCategory3, barCategory4, barCategory5;
-    HomeFragment homeFragment = new HomeFragment();
-    LeadersFragment leadersFragment = new LeadersFragment();
-    UserFragment userFragment = new UserFragment();
-    CoursesFragment coursesFragment = new CoursesFragment();
-    MoreFragment moreFragment = new MoreFragment();
-
-    // buttons
-    Button button ;
-    Button week ;
-    Button month ;
-    Button year ;
 
 
-    // array list for storing entries.
-    ArrayList barEntries;
 
-    //initializing percentage texts
-    TextView activitiesText ;
-    TextView parentsText ;
-    TextView childrenText ;
-
-    // creating a string array for displaying days.
-    String[] days = new String[]{"Sunday", "Monday", "Tuesday", "Thursday", "Friday", "Saturday"};
-    String[] weeks = new String[]{"Week 1","Week 2","Week 3","Week 4","Week 5"};
-    String[] months = new String[]{"January","February","March","April","May","June","July","August","September","October","November","December"};
-    int[] colorClassArray = new int[]{Color.parseColor("#5377EE"),Color.parseColor("#EDC655"),
-            Color.parseColor("#0091FF"),Color.parseColor("#D0DBFF"),Color.parseColor("#FFB0B1") };
+    //private int[] yDataTotal = {23, 30, 18, 10};
+    //private String[]    xDataTotal = {"sport", "space", "art", "ff"};
 
 
-    Retrofit retrofit ;
-    // create an instance for our retrofit api class.
-    RetrofitAPIAdminMain retrofitAPI;
+
+    ////////////////PIE CHARTS///////////////
+    PieChart pieChartHours, pieChartParents, pieChartKids, pieChartTotal;
 
 
+
+    BarChart barchart;
+    BarChart mChart;
+
+
+    //////////PERCENTAGE VIEWS///////////////////
+    TextView  percentage_hour,percentage_Parent,percentage_Children;
+
+    /////////NAVIGATION BAR///////////
+    BottomNavigationView navigationView;
+
+    /////////////////BUTTONS FOR DATASET/////////////
+    Button btn_week , btn_month , btn_year;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_main);
-        barChart = findViewById(R.id.bar_chart);
-        BottomNavigationView bottomNav = findViewById(R.id.nav_view);
-        retrofit = new Retrofit.Builder()
-                .baseUrl(getString(R.string.BASE_URL)
-                )
-                // when sending data in json format we have to add Gson converter factory
-                .addConverterFactory(GsonConverterFactory.create())
-                // and build our retrofit builder.
-                .build();
-        retrofitAPI = retrofit.create(RetrofitAPIAdminMain.class);
-        //find texts inputs
-         activitiesText = (TextView) findViewById(R.id.activities_perc);
-         parentsText = (TextView) findViewById(R.id.parents_perc);
-         childrenText = (TextView) findViewById(R.id.children_perc);
-        month = findViewById(R.id.month_button);
-        month.setSelected(true);
-        // retrieve data by month as default
-        Call<HashMap<String,Integer>> newKids = retrofitAPI.createGetActiveKids(2);
-        Call<HashMap<String,Integer>> newParents = retrofitAPI.createGetActiveParentsPerMonth();
-        Call<HashMap<String,Integer>> activityTime = retrofitAPI.createGetActivityPerMonth();
-        Call<HashMap<String,Integer>> kidsByCategory = retrofitAPI.createGetActiveKidsPerCategoryPerMonth();
+
+        ////////////RETROFIT API///////////////////////////////
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(getString(R.string.BASE_URL))
+                .addConverterFactory(GsonConverterFactory.create()).build();
+        RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
+
+        //////////////CHARTS VIEW////////////////
+        pieChartHours = findViewById(R.id.idPieChartHours);
+        pieChartParents = findViewById(R.id.idPieChartParent);
+        pieChartKids = findViewById(R.id.idPieChartKids);
+        pieChartTotal = findViewById(R.id.idPieChartTotal);
+        barchart = findViewById(R.id.barchart);
 
 
-        //find charts in layout
-        Log.d("Mohammad","here");
-        PieChart newKidsChart = (PieChart)findViewById(R.id.children_chart);
-        PieChart newParentsChart = (PieChart)findViewById(R.id.parents_chart);
-        PieChart activityTimeChart = (PieChart)findViewById(R.id.activities_chart);
-        PieChart kidsByCategoryChart = (PieChart)findViewById(R.id.totelPerCat_chart);
+        ////////////PERCENTAGE LABELS//////////////
+        navigationView=findViewById(R.id.bottom_navigation);
+        percentage_hour=findViewById(R.id.textView2);
+        percentage_Parent=findViewById(R.id.textView3);
+        percentage_Children=findViewById(R.id.textView4);
 
-        //get the data
-        Log.d("Mohammad","here here");
 
-        newKids.enqueue(new Callback<HashMap<String, Integer>>() {
+        ////////////On CLick Listener for bottoms (Weekly-Monthly-Year)///////////
+        btn_week = findViewById(R.id.weekBtn);
+        btn_month = findViewById(R.id.monthBtn);
+        btn_year = findViewById(R.id.yearBtn);
+
+
+        //////////DEFAULT START//////////
+
+        Call<HashMap<String,Integer>> kids = retrofitAPI.createGetActiveKidsPerMonth();
+        kids.enqueue(new Callback<HashMap<String, Integer>>() {
             @Override
-            public void onResponse(Call<HashMap<String, Integer>> call, Response<HashMap<String, Integer>> response) {
-                if(response.isSuccessful() && response.body() !=null){
-                    Log.d("Mohammad","success");
-                    initialzieChildrenChart(response.body());
+            public void onResponse(Call<HashMap<String, Integer>> kids, Response<HashMap<String, Integer>> response) {
+                HashMap<String,Integer> theKids = response.body();
+                Integer kidsCount = theKids.get("newKids");
+                Integer totalKids = theKids.get("totalKids");
+                // DataKids();
 
+                ArrayList<PieEntry> yEntrys = new ArrayList<>();
+                ArrayList<String> xEntrys = new ArrayList<>();
+
+                int[] yData = {kidsCount, totalKids};
+                String[] xData = {"newKids", "totalKids"};
+
+                for (int i = 0; i < yData.length; i++) {
+                    yEntrys.add(new PieEntry(i, yData[i]));
                 }
+
+                for (int i = 1; i < xData.length; i++) {
+                    xEntrys.add(xData[i]);
+                }
+
+
+                //create the data set
+                PieDataSet pieDataSet = new PieDataSet(yEntrys, "                  New Children");
+                pieDataSet.setSliceSpace(2);
+                pieDataSet.setValueTextSize(12);
+
+
+                //add colors to dataset
+                ArrayList<Integer> colors = new ArrayList<>();
+                colors.add(Color.parseColor("#4A92FC"));
+                colors.add(Color.parseColor("#E8EAF6"));
+
+                pieDataSet.setColors(colors);
+                pieDataSet.setDrawValues(false);
+                pieDataSet.setSliceSpace(0f);
+                pieChartKids.setDrawSliceText((boolean) false);
+                //add legend to chart
+                Legend legend = pieChartKids.getLegend();
+                legend.setForm(Legend.LegendForm.NONE);
+                // legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+                legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+                legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+                // legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                legend.setDrawInside(false);
+                //create pie data object
+                PieData pieData = new PieData(pieDataSet);
+                pieChartKids.setData(pieData);
+
+                pieChartKids.invalidate();
+                //pieChart.getLegend().setEnabled(false);
+
+                Integer percent = kidsCount *100/totalKids;
+                percentage_Children.setText(String.valueOf(percent) +"%");
+                pieChartKids.setCenterText(kidsCount.toString());
+                pieChartKids.setRotationEnabled(false);
+                pieChartKids.setUsePercentValues(false);
+                pieChartKids.setHoleRadius(83f);
+                pieChartKids.setTransparentCircleAlpha(0);
+                pieChartKids.setCenterTextSize(20);
+                pieChartKids.setCenterTextTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                pieChartKids.getDescription().setEnabled(false);
+                pieChartKids.setHighlightPerTapEnabled(false);
+
+
+                //Toast.makeText(MainActivity.this," youClickWeekBtn",Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
-                Log.d("Mohammad","failed");
-                Toast.makeText(AdminMainActivity.this, "----Failure, Please Do something.---", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AdminMainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                //Toast.makeText(MainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
             }
         });
-        newParents.enqueue(new Callback<HashMap<String, Integer>>() {
+
+
+        Call<HashMap<String,Integer>> parents = retrofitAPI.activeParentsMonth();
+        parents.enqueue(new Callback<HashMap<String, Integer>>() {
             @Override
-            public void onResponse(Call<HashMap<String, Integer>> call, Response<HashMap<String, Integer>> response) {
-                if(response.isSuccessful() && response.body() !=null){
-                    Log.d("Mohammad", ""+response.body().get("totalParents"));
-                    initialzieParentsChart(response.body());
+            public void onResponse(Call<HashMap<String, Integer>> parents, Response<HashMap<String, Integer>> response) {
+                HashMap<String,Integer> theParents = response.body();
+                Integer parentsCount = theParents.get("newParents");
+                Integer totalParents = theParents.get("totalParents");
+                //DataParents();
+
+                ArrayList<PieEntry> yEntrys = new ArrayList<>();
+                ArrayList<String> xEntrys = new ArrayList<>();
+
+                int[] yData = {parentsCount, totalParents};
+                String[] xData = {"newParents", "totalParents"};
+
+                for (int i = 0; i < yData.length; i++) {
+                    yEntrys.add(new PieEntry(yData[i], i));
                 }
+
+                for (int i = 1; i < xData.length; i++) {
+                    xEntrys.add(xData[i]);
+                }
+
+                //create the data set
+                PieDataSet pieDataSet = new PieDataSet(yEntrys, "                   New Parents");
+                pieDataSet.setSliceSpace(2);
+                pieDataSet.setValueTextSize(12);
+
+                //add colors to dataset
+                ArrayList<Integer> colors = new ArrayList<>();
+                colors.add(Color.parseColor("#ffbb33"));
+                colors.add(Color.parseColor("#E8EAF6"));
+
+
+                pieDataSet.setColors(colors);
+                pieDataSet.setDrawValues(false);
+                pieDataSet.setSliceSpace(0f);
+                pieChartParents.setDrawSliceText(false);
+                //add legend to chart
+                Legend legend = pieChartParents.getLegend();
+                legend.setForm(Legend.LegendForm.NONE);
+                // legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+                legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+                legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+                // legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                legend.setDrawInside(false);
+                //create pie data object
+                PieData pieData = new PieData(pieDataSet);
+                pieChartParents.setData(pieData);
+
+                pieChartParents.invalidate();
+                //pieChart.getLegend().setEnabled(false);
+
+                ////////////////////////////////
+
+
+                Integer percent = parentsCount *100/totalParents;
+                percentage_Parent.setText(String.valueOf(percent) +"%");
+                pieChartParents.setCenterText(parentsCount.toString());
+                pieChartParents.setRotationEnabled(false);
+                pieChartParents.setUsePercentValues(false);
+                pieChartParents.setHoleRadius(83f);
+                pieChartParents.setTransparentCircleAlpha(0);
+                pieChartParents.setCenterTextSize(20);
+                pieChartParents.setCenterTextTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                pieChartParents.getDescription().setEnabled(false);
+                pieChartParents.setHighlightPerTapEnabled(false);
+
+                //Toast.makeText(MainActivity.this," youClickWeekBtn",Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
-                Log.d("Mohammad","failed");
-                Toast.makeText(AdminMainActivity.this, "----Failure, Please Do something.---", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AdminMainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                //Toast.makeText(MainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
             }
         });
 
-        activityTime.enqueue(new Callback<HashMap<String, Integer>>() {
-            @Override
-            public void onResponse(Call<HashMap<String, Integer>> call, Response<HashMap<String, Integer>> response) {
-                if(response.isSuccessful() && response.body() !=null){
-                    initialzieActivitiesChart(response.body());
-                }
-            }
 
-            @Override
-            public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
-                Log.d("Mohammad","6th");
-                Toast.makeText(AdminMainActivity.this, "----Failure, Please Do something.---", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
+        Call<HashMap<String,Integer>> kidsByCategory = retrofitAPI.activeKidsCategMonth();
         kidsByCategory.enqueue(new Callback<HashMap<String, Integer>>() {
             @Override
-            public void onResponse(Call<HashMap<String, Integer>> call, Response<HashMap<String, Integer>> response) {
-                if(response.isSuccessful() && response.body() !=null){
-                    initialzieTotalCatChart(response.body());
+            public void onResponse(Call<HashMap<String, Integer>> kidsByCategory, Response<HashMap<String, Integer>> response) {
+                HashMap<String,Integer> categoryCount = response.body();
+                Integer artCount = categoryCount.get("art");
+                Integer musicCount = categoryCount.get("music");
+                Integer scienceCount = categoryCount.get("sience");
+                Integer animalCount = categoryCount.get("animal");
+                Integer spaceCount = categoryCount.get("space");
+                Integer poetryCount = categoryCount.get("poetry");
+
+                //DataTotal();
+                ArrayList<PieEntry> yEntrysTotal = new ArrayList<>();
+                ArrayList<String> xEntrysTotal = new ArrayList<>();
+
+                int[] yDataTotal = {artCount, musicCount, scienceCount, animalCount,spaceCount,poetryCount};
+                String[] xDataTotal = {"art", "music", "sience", "animal", "space" , "poetry"};
+
+                for (int i = 0; i < yDataTotal.length; i++) {
+                    yEntrysTotal.add(new PieEntry(yDataTotal[i], i));
                 }
+
+                for (int i = 1; i < xDataTotal.length; i++) {
+                    xEntrysTotal.add(xDataTotal[i]);
+                }
+                PieDataSet pieDataSetTotal = new PieDataSet(yEntrysTotal, "     Total Per Category");
+                ArrayList<Integer> colors = new ArrayList<>();
+                colors.add(Color.parseColor("#E8EAF6"));
+                colors.add(Color.parseColor("#4A92FC"));
+                colors.add(Color.parseColor("#ffbb33"));
+                colors.add(Color.parseColor("#4E7FE7"));
+
+
+                pieDataSetTotal.setSliceSpace(2);
+                pieDataSetTotal.setValueTextSize(12);
+                pieDataSetTotal.setColors(colors);
+                pieDataSetTotal.setDrawValues(true);
+                pieDataSetTotal.setSliceSpace(0f);
+                // pieChartTotal.setDrawSliceText(false);
+                //add legend to chart
+
+
+                pieDataSetTotal.setColors(colors);
+                pieDataSetTotal.setDrawValues(true);
+                pieDataSetTotal.setSliceSpace(0f);
+                //  pieChartTotal.setDrawSliceText(true);
+                ValueFormatter vf = new ValueFormatter() { //value format here, here is the overridden method
+                    @Override
+                    public String getFormattedValue(float value) {
+                        return "" + (int) value;
+                    }
+                };
+                pieDataSetTotal.setValueFormatter(vf);
+                Legend legendTotal = pieChartTotal.getLegend();
+                legendTotal.setForm(Legend.LegendForm.NONE);
+
+                // legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+                legendTotal.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+                legendTotal.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+                // legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                legendTotal.setDrawInside(false);
+                //create pie data object
+                PieData pieDataTotal = new PieData(pieDataSetTotal);
+                pieChartTotal.setData(pieDataTotal);
+
+                pieChartTotal.invalidate();
+
+                pieChartTotal.setRotationEnabled(false);
+                pieChartTotal.setUsePercentValues(false);
+                pieChartTotal.setHoleRadius(0f);
+                pieChartTotal.setTransparentCircleAlpha(0);
+                pieChartTotal.getDescription().setEnabled(false);
+                pieChartTotal.setHighlightPerTapEnabled(false);
+
+
+                //Toast.makeText(MainActivity.this," youClickWeekBtn",Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
-                Log.d("Mohammad","6th");
-                Toast.makeText(AdminMainActivity.this, "----Failure, Please Do something.---", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(AdminMainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                //Toast.makeText(MainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
             }
         });
 
-        showBarChart(weeks, "weeks");
-        bottomNav.setSelectedItemId(R.id.home_page);
-        bottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+
+
+        Call<HashMap<String,Integer>> activityTime = retrofitAPI.createGetActivityPerMonth();
+        activityTime.enqueue(new Callback<HashMap<String,Integer>>() {
+            @Override
+            public void onResponse(Call<HashMap<String, Integer>> activityTime, Response<HashMap<String, Integer>> response) {
+                HashMap<String,Integer> times = response.body();
+
+                Integer allTime = times.get("totalTime");
+                Integer activeTime = times.get("activityTime");
+                Integer percent = activeTime *100/allTime;
+                //DataHours();
+                ArrayList<PieEntry> yEntrys = new ArrayList<>();
+                ArrayList<String> xEntrys = new ArrayList<>();
+
+                Integer [] yData = {activeTime, allTime};
+                String[] xData = {"activityTime", "totalTime"};
+
+                for (int i = 0; i < yData.length; i++) {
+                    yEntrys.add(new PieEntry(yData[i].intValue(), i));
+                }
+
+                for (int i = 1; i < xData.length; i++) {
+                    xEntrys.add(xData[i]);
+                }
+
+
+                //create the data set
+                PieDataSet pieDataSet = new PieDataSet(yEntrys, "          Monthly Activities In Hour");
+
+                pieDataSet.setSliceSpace(2);
+                pieDataSet.setValueTextSize(12);
+
+                //add colors to dataset
+                ArrayList<Integer> colors = new ArrayList<>();
+                colors.add(Color.parseColor("#4E7FE7"));
+                colors.add(Color.parseColor("#E8EAF6"));
+
+
+                pieDataSet.setColors(colors);
+                pieDataSet.setDrawValues(false);
+                pieDataSet.setSliceSpace(0f);
+                pieChartHours.setDrawSliceText(false);
+                //add legend to chart
+                Legend legend = pieChartHours.getLegend();
+                legend.setForm(Legend.LegendForm.NONE);
+                // legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+                legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+                legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+                // legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                legend.setDrawInside(false);
+                //create pie data object
+                PieData pieData = new PieData(pieDataSet);
+                pieChartHours.setData(pieData);
+                pieChartHours.invalidate();
+                //pieChart.getLegend().setEnabled(false);
+
+                ////////////////////////////////
+                pieChartHours.setCenterText(activeTime.toString());
+                percentage_hour.setText(String.valueOf(percent) +"%");
+                pieChartHours.setCenterText(activeTime.toString());
+                pieChartHours.setRotationEnabled(false);
+                pieChartHours.setUsePercentValues(false);
+                pieChartHours.setHoleRadius(83f);
+                pieChartHours.setTransparentCircleAlpha(0);
+                pieChartHours.setCenterTextTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                pieChartHours.setCenterTextSize(20);
+                pieChartHours.getDescription().setEnabled(false);
+                pieChartHours.setHighlightPerTapEnabled(false);
+                //Toast.makeText(MainActivity.this," youClickWeekBtn",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
+                Toast.makeText(AdminMainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                //Toast.makeText(MainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+        navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment selectedFragment = null;
                 switch (item.getItemId()) {
                     case R.id.home_page:
                         //startActivity(new Intent(AdminMainActivity.this, AdminUpdateCourse.class));
-                       // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, homeFragment).commit();
+                        // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, homeFragment).commit();
                         return true;
 
                     case R.id.users_page:
-                        startActivity(new Intent(AdminMainActivity.this, AdminAddCourse.class));
-                       // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, leadersFragment).commit();
+                        startActivity(new Intent(AdminMainActivity.this, AdminSetUser.class));
+                        // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, leadersFragment).commit();
                         return true;
 
                     case R.id.leaders_page:
                         startActivity(new Intent(AdminMainActivity.this, AdminSetLeader.class));
-                       // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, userFragment).commit();
+                        // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, userFragment).commit();
                         return true;
 
                     case R.id.course_page:
                         startActivity(new Intent(AdminMainActivity.this, AdminSetCourse.class));
-                      //  getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, coursesFragment).commit();
+                        //  getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, coursesFragment).commit();
                         return true;
 
                     case R.id.more_page:
-                        startActivity(new Intent(AdminMainActivity.this, LeaderFirstLoginActivity.class));
-                       // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, moreFragment).commit();
+
+                        PopupMenu popup = new PopupMenu(AdminMainActivity.this, findViewById(R.id.more_page));
+                        MenuInflater inflater = popup.getMenuInflater();
+                        inflater.inflate(R.menu.mymenu, popup.getMenu());
+                        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                            public boolean onMenuItemClick(MenuItem item) {
+                                if(item.getItemId()==R.id.logoutmenu)
+                                    startActivity(new Intent(AdminMainActivity.this, FirstScreen.class));
+
+                                return true;
+                            }
+                        });
+                        popup.show();
                         return true;
                 }
                 return false;
@@ -227,231 +480,1316 @@ public class AdminMainActivity extends AppCompatActivity {
         });
 
 
-    }
 
-    private void showBarChart(String[] dataArray, String s) {
-        // creating a new bar data set.
-        barCategory1 = new BarDataSet(getBarEntriesOne(s), "art");
-        barCategory1.setColor(getApplicationContext().getResources().getColor(R.color.purple_200));
-        barCategory2 = new BarDataSet(getBarEntriesTwo(s), "music");
-        barCategory2.setColor(Color.BLUE);
-        barCategory3 = new BarDataSet(getBarEntriesThree(s), "science");
-        barCategory3.setColor(getApplicationContext().getResources().getColor(R.color.black));
-        barCategory4 = new BarDataSet(getBarEntriesFour(s), "space");
-        barCategory4.setColor(getApplicationContext().getResources().getColor(R.color.parents_colour));
-        barCategory5 = new BarDataSet(getBarEntriesFive(s), "poetry");
-        barCategory5.setColor(getApplicationContext().getResources().getColor(R.color.children_colour));
+        // week button listener
+        btn_week.setOnClickListener(new View.OnClickListener(){
 
-        // below line is to add bar data set to our bar data.
-        BarData data = new BarData(barCategory1, barCategory2, barCategory3, barCategory4, barCategory5);
+            @Override
+            public void onClick(View view) {
+                Call<HashMap<String,Integer>> kids = retrofitAPI.createGetActiveKidsPerWeek();
+                kids.enqueue(new Callback<HashMap<String, Integer>>() {
+                    @Override
+                    public void onResponse(Call<HashMap<String, Integer>> kids, Response<HashMap<String, Integer>> response) {
+                        HashMap<String,Integer> theKids = response.body();
+                        Integer kidsCount = theKids.get("newKids");
+                        Integer totalKids = theKids.get("totalKids");
+                        //DataKids();
 
-        // after adding data to our bar data we
-        // are setting that data to our bar chart.
-        barChart.setData(data);
+                        ArrayList<PieEntry> yEntrys = new ArrayList<>();
+                        ArrayList<String> xEntrys = new ArrayList<>();
 
-        // below line is to remove description
-        // label of our bar chart.
-        barChart.getDescription().setEnabled(false);
-        CustomBarChartRender barChartRender = new CustomBarChartRender(barChart, barChart.getAnimator(), barChart.getViewPortHandler());
-        barChartRender.setRadius(12);
-        barChart.setRenderer(barChartRender);
-        // below line is to get x axis
-        // of our bar chart.
-        XAxis xAxis = barChart.getXAxis();
+                        int[] yData = {kidsCount, totalKids};
+                        String[] xData = {"newKids", "totalKids"};
 
-        // below line is to set value formatter to our x-axis and
-        // we are adding our days to our x axis.
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(dataArray));
+                        for (int i = 0; i < yData.length; i++) {
+                            yEntrys.add(new PieEntry(yData[i], i));
+                        }
 
-        // below line is to set center axis
-        // labels to our bar chart.
-        xAxis.setCenterAxisLabels(true);
-
-        // below line is to set position
-        // to our x-axis to bottom.
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-
-        // below line is to set granularity
-        // to our x axis labels.
-        xAxis.setGranularity(1);
-
-        // below line is to enable
-        // granularity to our x axis.
-        xAxis.setGranularityEnabled(true);
-
-        // below line is to make our
-        // bar chart as draggable.
-        barChart.setDragEnabled(true);
-
-        // below line is to make visible
-        // range for our bar chart.
-        barChart.setVisibleXRangeMaximum(3);
-
-        // below line is to add bar
-        // space to our chart.
-        float barSpace = 0.1f;
-
-        // below line is use to add group
-        // spacing to our bar chart.
-        float groupSpace = 0.5f;
-
-        // we are setting width of
-        // bar in below line.
-        data.setBarWidth(0.15f);
-
-        // below line is to set minimum
-        // axis to our chart.
-        barChart.getXAxis().setAxisMinimum(0);
-
-        // below line is to
-        // animate our chart.
-        barChart.animate();
-
-        // below line is to group bars
-        // and add spacing to it.
-        barChart.groupBars(0, groupSpace, barSpace);
-
-        // below line is to invalidate
-        // our bar chart.
-        barChart.invalidate();
-    }
-
-    private List<BarEntry> getBarEntriesFive(String s) {
-        // creating a new array list
-        ArrayList<BarEntry> barEntries = new ArrayList<>();
-
-        // adding new entry to our array list with bar
-        // entry and passing x and y axis value to it.
-        if(s.equals("days")) {
-                barEntries.add(new BarEntry(1f, 3));
-                barEntries.add(new BarEntry(2f, 11));
-                barEntries.add(new BarEntry(3f, 5));
-                barEntries.add(new BarEntry(4f, 2));
-                barEntries.add(new BarEntry(5f, 6));
-                barEntries.add(new BarEntry(6f, 3));
-                barEntries.add(new BarEntry(7f, 1));
-
-            } else if (s.equals("weeks")) {
-                barEntries.add(new BarEntry(1f, 2));
-                barEntries.add(new BarEntry(2f, 2));
-                barEntries.add(new BarEntry(3f, 3));
-                barEntries.add(new BarEntry(4f, 2));
-                barEntries.add(new BarEntry(5f, 0));
-            } else if (s.equals("months")){
-                barEntries.add(new BarEntry(1f, 2));
-            barEntries.add(new BarEntry(2f, 1));
-            barEntries.add(new BarEntry(3f, 1));
-            barEntries.add(new BarEntry(4f, 2));
-            barEntries.add(new BarEntry(5f, 0));
-            barEntries.add(new BarEntry(6f, 2));
-            barEntries.add(new BarEntry(7f, 2));
-            barEntries.add(new BarEntry(8f, 0));
-            barEntries.add(new BarEntry(9f, 1));
-            barEntries.add(new BarEntry(10f, 1));
-            barEntries.add(new BarEntry(11f, 1));
-            barEntries.add(new BarEntry(12f, 0));
-        }
-        return barEntries;
-    }
-
-    private List<BarEntry> getBarEntriesFour(String s) {
-        // creating a new array list
-        ArrayList<BarEntry> barEntries = new ArrayList<>();
-
-        // adding new entry to our array list with bar
-        // entry and passing x and y axis value to it.
-        barEntries.add(new BarEntry(1f, 8));
-        barEntries.add(new BarEntry(2f, 2));
-        barEntries.add(new BarEntry(3f, 9));
-        barEntries.add(new BarEntry(4f, 10));
-        barEntries.add(new BarEntry(5f, 17));
-        barEntries.add(new BarEntry(6f, 5));
-        return barEntries;
-    }
-
-    private List<BarEntry> getBarEntriesThree(String s) {
-        // creating a new array list
-        ArrayList<BarEntry> barEntries = new ArrayList<>();
-
-        // adding new entry to our array list with bar
-        // entry and passing x and y axis value to it.
-        barEntries.add(new BarEntry(1f, 2));
-        barEntries.add(new BarEntry(2f, 12));
-        barEntries.add(new BarEntry(3f, 4));
-        barEntries.add(new BarEntry(4f, 6));
-        barEntries.add(new BarEntry(5f, 22));
-        barEntries.add(new BarEntry(6f, 13));
-        return barEntries;
-    }
+                        for (int i = 1; i < xData.length; i++) {
+                            xEntrys.add(xData[i]);
+                        }
 
 
-    private List<BarEntry> getBarEntriesTwo(String s) {
-        // creating a new array list
-        ArrayList<BarEntry> barEntries = new ArrayList<>();
-
-        // adding new entry to our array list with bar
-        // entry and passing x and y axis value to it.
-        barEntries.add(new BarEntry(1f, 8));
-        barEntries.add(new BarEntry(2f, 12));
-        barEntries.add(new BarEntry(3f, 4));
-        barEntries.add(new BarEntry(4f, 1));
-        barEntries.add(new BarEntry(5f, 7));
-        barEntries.add(new BarEntry(6f, 3));
-        return barEntries;
-    }
-
-    private List<BarEntry> getBarEntriesOne(String s) {
-        // creating a new array list
-        ArrayList<BarEntry> barEntries = new ArrayList<>();
+                        //create the data set
+                        PieDataSet pieDataSet = new PieDataSet(yEntrys, "                  New Children");
+                        pieDataSet.setSliceSpace(2);
+                        pieDataSet.setValueTextSize(12);
 
 
-        // adding new entry to our array list with bar
-        // entry and passing x and y axis value to it.
-        barEntries.add(new BarEntry(1f, 4));
-        barEntries.add(new BarEntry(2f, 6));
-        barEntries.add(new BarEntry(3f, 8));
-        barEntries.add(new BarEntry(4f, 2));
-        barEntries.add(new BarEntry(5f, 4));
-        barEntries.add(new BarEntry(6f, 1));
-        return barEntries;
-    }
+                        //add colors to dataset
+                        ArrayList<Integer> colors = new ArrayList<>();
+                        colors.add(Color.parseColor("#4A92FC"));
+                        colors.add(Color.parseColor("#E8EAF6"));
 
-    private void initialzieTotalCatChart(HashMap<String, Integer> map) {
-        ArrayList<PieEntry> pieEntries = new ArrayList<PieEntry>();
-        Map<String, Integer> typeAmountMap = map;
-        pieEntries.add(new PieEntry(typeAmountMap.get("art")));
-        pieEntries.add(new PieEntry(typeAmountMap.get("music")));
-        pieEntries.add(new PieEntry(typeAmountMap.get("science")));
-        pieEntries.add(new PieEntry(typeAmountMap.get("space")));
-        pieEntries.add(new PieEntry(typeAmountMap.get("poetry")));
+                        pieDataSet.setColors(colors);
+                        pieDataSet.setDrawValues(false);
+                        pieDataSet.setSliceSpace(0f);
+                        pieChartKids.setDrawSliceText((boolean) false);
+                        //add legend to chart
+                        Legend legend = pieChartKids.getLegend();
+                        legend.setForm(Legend.LegendForm.NONE);
+                        // legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+                        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+                        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+                        // legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                        legend.setDrawInside(false);
+                        //create pie data object
+                        PieData pieData = new PieData(pieDataSet);
+                        pieChartKids.setData(pieData);
+
+                        pieChartKids.invalidate();
+                        //pieChart.getLegend().setEnabled(false);
 
 
-//        for(String type: typeAmountMap.keySet()){
-//            pieEntries.add(new PieEntry(typeAmountMap.get(type).floatValue()));
-//        }
+                        Integer percent = kidsCount *100/totalKids;
+                        percentage_Children.setText(String.valueOf(percent) +"%");
+                        pieChartKids.setCenterText(kidsCount.toString());
+                        pieChartKids.setRotationEnabled(false);
+                        pieChartKids.setUsePercentValues(false);
+                        pieChartKids.setHoleRadius(83f);
+                        pieChartKids.setTransparentCircleAlpha(0);
+                        pieChartKids.setCenterTextSize(20);
+                        pieChartKids.setCenterTextTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                        pieChartKids.getDescription().setEnabled(false);
+                        pieChartKids.setHighlightPerTapEnabled(false);
 
-        totalCatChart = findViewById(R.id.totelPerCat_chart);
-        PieDataSet pieDataSet = new PieDataSet(pieEntries,"        Total per Category");
-        pieDataSet.setColors(colorClassArray);
-        ValueFormatter formatter = new ValueFormatter() {
-            public String getFormatterValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler){
-                return ""+((int)Math.round(value));
+
+                        //Toast.makeText(MainActivity.this," youClickWeekBtn",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
+                        Toast.makeText(AdminMainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                        //Toast.makeText(MainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                    }
+                });
+
+
+                Call<HashMap<String,Integer>> parents = retrofitAPI.createGetActiveParentsPerWeek();
+                parents.enqueue(new Callback<HashMap<String, Integer>>() {
+                    @Override
+                    public void onResponse(Call<HashMap<String, Integer>> parents, Response<HashMap<String, Integer>> response) {
+                        HashMap<String,Integer> theParents = response.body();
+                        Integer parentsCount = theParents.get("newParents");
+                        Integer totalParents = theParents.get("totalParents");
+                        //DataParents();
+                        ArrayList<PieEntry> yEntrys = new ArrayList<>();
+                        ArrayList<String> xEntrys = new ArrayList<>();
+
+                        int[] yData = {parentsCount, totalParents};
+                        String[] xData = {"New Parents", "totalParents"};
+
+                        for (int i = 0; i < yData.length; i++) {
+                            yEntrys.add(new PieEntry(yData[i], i));
+                        }
+
+                        for (int i = 1; i < xData.length; i++) {
+                            xEntrys.add(xData[i]);
+                        }
+
+                        //create the data set
+                        PieDataSet pieDataSet = new PieDataSet(yEntrys, "                   New Parents");
+                        pieDataSet.setSliceSpace(2);
+                        pieDataSet.setValueTextSize(12);
+
+                        //add colors to dataset
+                        ArrayList<Integer> colors = new ArrayList<>();
+                        colors.add(Color.parseColor("#ffbb33"));
+                        colors.add(Color.parseColor("#E8EAF6"));
+
+
+                        pieDataSet.setColors(colors);
+                        pieDataSet.setDrawValues(false);
+                        pieDataSet.setSliceSpace(0f);
+                        pieChartParents.setDrawSliceText(false);
+                        //add legend to chart
+                        Legend legend = pieChartParents.getLegend();
+                        legend.setForm(Legend.LegendForm.NONE);
+                        // legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+                        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+                        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+                        // legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                        legend.setDrawInside(false);
+                        //create pie data object
+                        PieData pieData = new PieData(pieDataSet);
+                        pieChartParents.setData(pieData);
+
+                        pieChartParents.invalidate();
+                        //pieChart.getLegend().setEnabled(false);
+
+                        ////////////////////////////////
+
+                        Integer percent = parentsCount *100/totalParents;
+                        percentage_Parent.setText(String.valueOf(percent) +"%");
+                        pieChartParents.setCenterText(parentsCount.toString());
+                        pieChartParents.setRotationEnabled(false);
+                        pieChartParents.setUsePercentValues(false);
+                        pieChartParents.setHoleRadius(83f);
+                        pieChartParents.setTransparentCircleAlpha(0);
+                        pieChartParents.setCenterTextSize(20);
+                        pieChartParents.setCenterTextTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                        pieChartParents.getDescription().setEnabled(false);
+                        pieChartParents.setHighlightPerTapEnabled(false);
+
+                        //Toast.makeText(MainActivity.this," youClickWeekBtn",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
+                        Toast.makeText(AdminMainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                        //Toast.makeText(MainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                    }
+                });
+
+
+                Call<HashMap<String,Integer>> kidsByCategory = retrofitAPI.activeKidsCategWeek();
+                kidsByCategory.enqueue(new Callback<HashMap<String, Integer>>() {
+                    @Override
+                    public void onResponse(Call<HashMap<String, Integer>> kidsByCategory, Response<HashMap<String, Integer>> response) {
+                        HashMap<String,Integer> categoryCount = response.body();
+                        Integer artCount = categoryCount.get("art");
+                        Integer musicCount = categoryCount.get("music");
+                        Integer scienceCount = categoryCount.get("sience");
+                        Integer animalCount = categoryCount.get("animal");
+                        Integer spaceCount = categoryCount.get("space");
+                        Integer poetryCount = categoryCount.get("poetry");
+
+
+                        //DataTotal();
+
+                        ArrayList<PieEntry> yEntrysTotal = new ArrayList<>();
+                        ArrayList<String> xEntrysTotal = new ArrayList<>();
+
+
+                        Integer[] yDataTotal = {artCount, musicCount, scienceCount, animalCount,spaceCount,poetryCount};
+                        String[] xDataTotal = {"art", "music", "sience", "animal", "space", "poetry"};
+
+                        for (int i = 0; i < yDataTotal.length; i++) {
+                            yEntrysTotal.add(new PieEntry(yDataTotal[i], i));
+                        }
+
+                        for (int i = 1; i < xDataTotal.length; i++) {
+                            xEntrysTotal.add(xDataTotal[i]);
+                        }
+                        PieDataSet pieDataSetTotal = new PieDataSet(yEntrysTotal, "     Total Per Category");
+                        ArrayList<Integer> colors = new ArrayList<>();
+                        colors.add(Color.parseColor("#E8EAF6"));
+                        colors.add(Color.parseColor("#4A92FC"));
+                        colors.add(Color.parseColor("#ffbb33"));
+                        colors.add(Color.parseColor("#4E7FE7"));
+
+
+                        pieDataSetTotal.setSliceSpace(2);
+                        pieDataSetTotal.setValueTextSize(12);
+                        pieDataSetTotal.setColors(colors);
+                        pieDataSetTotal.setDrawValues(true);
+                        pieDataSetTotal.setSliceSpace(0f);
+                        // pieChartTotal.setDrawSliceText(false);
+                        //add legend to chart
+
+
+                        pieDataSetTotal.setColors(colors);
+                        pieDataSetTotal.setDrawValues(true);
+                        pieDataSetTotal.setSliceSpace(0f);
+                        //  pieChartTotal.setDrawSliceText(true);
+                        ValueFormatter vf = new ValueFormatter() { //value format here, here is the overridden method
+                            @Override
+                            public String getFormattedValue(float value) {
+                                return "" + (int) value;
+                            }
+                        };
+                        pieDataSetTotal.setValueFormatter(vf);
+                        Legend legendTotal = pieChartTotal.getLegend();
+                        legendTotal.setForm(Legend.LegendForm.NONE);
+
+                        // legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+                        legendTotal.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+                        legendTotal.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+                        // legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                        legendTotal.setDrawInside(false);
+                        //create pie data object
+                        PieData pieDataTotal = new PieData(pieDataSetTotal);
+                        pieChartTotal.setData(pieDataTotal);
+
+                        pieChartTotal.invalidate();
+
+                        pieChartTotal.setRotationEnabled(false);
+                        pieChartTotal.setUsePercentValues(false);
+                        pieChartTotal.setHoleRadius(0f);
+                        pieChartTotal.setTransparentCircleAlpha(0);
+                        pieChartTotal.getDescription().setEnabled(false);
+                        pieChartTotal.setHighlightPerTapEnabled(false);
+
+
+                        //Toast.makeText(MainActivity.this," youClickWeekBtn",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
+                        Toast.makeText(AdminMainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                        //Toast.makeText(MainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                    }
+                });
+
+
+                Call<HashMap<String,Integer>> activityTime = retrofitAPI.createGetActivityPerWeek();
+                activityTime.enqueue(new Callback<HashMap<String,Integer>>() {
+                    @Override
+                    public void onResponse(Call<HashMap<String, Integer>> activityTime, Response<HashMap<String, Integer>> response) {
+                        HashMap<String,Integer> times = response.body();
+
+                        Integer allTime = times.get("totalTime");
+                        Integer activeTime = times.get("activityTime");
+                        Integer percent = activeTime *100/allTime;
+                        //DataHours();
+                        ArrayList<PieEntry> yEntrys = new ArrayList<>();
+                        ArrayList<String> xEntrys = new ArrayList<>();
+
+                        Integer [] yData = {activeTime, allTime};
+                        String[] xData = {"activityTime", "totalTime"};
+
+                        for (int i = 0; i < yData.length; i++) {
+                            yEntrys.add(new PieEntry(yData[i].intValue(), i));
+                        }
+
+                        for (int i = 1; i < xData.length; i++) {
+                            xEntrys.add(xData[i]);
+                        }
+
+
+                        //create the data set
+                        PieDataSet pieDataSet = new PieDataSet(yEntrys, "          Weekly Activities In Hour");
+
+                        pieDataSet.setSliceSpace(2);
+                        pieDataSet.setValueTextSize(12);
+
+                        //add colors to dataset
+                        ArrayList<Integer> colors = new ArrayList<>();
+                        colors.add(Color.parseColor("#4E7FE7"));
+                        colors.add(Color.parseColor("#E8EAF6"));
+
+
+                        pieDataSet.setColors(colors);
+                        pieDataSet.setDrawValues(false);
+                        pieDataSet.setSliceSpace(0f);
+                        pieChartHours.setDrawSliceText(false);
+                        //add legend to chart
+                        Legend legend = pieChartHours.getLegend();
+                        legend.setForm(Legend.LegendForm.NONE);
+                        // legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+                        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+                        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+                        // legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                        legend.setDrawInside(false);
+                        //create pie data object
+                        PieData pieData = new PieData(pieDataSet);
+                        pieChartHours.setData(pieData);
+                        pieChartHours.invalidate();
+                        //pieChart.getLegend().setEnabled(false);
+
+                        ////////////////////////////////
+                        pieChartHours.setCenterText(activeTime.toString());
+                        percentage_hour.setText(String.valueOf(percent) +"%");
+                        pieChartHours.setCenterText(allTime.toString());
+                        pieChartHours.setRotationEnabled(false);
+                        pieChartHours.setUsePercentValues(false);
+                        pieChartHours.setHoleRadius(83f);
+                        pieChartHours.setTransparentCircleAlpha(0);
+                        pieChartHours.setCenterTextTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                        pieChartHours.setCenterTextSize(20);
+                        pieChartHours.getDescription().setEnabled(false);
+                        pieChartHours.setHighlightPerTapEnabled(false);
+                        //Toast.makeText(MainActivity.this," youClickWeekBtn",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
+                        Toast.makeText(AdminMainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                        //Toast.makeText(MainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                    }
+                });
+
             }
-        };
-        PieData pieData = new PieData(pieDataSet);
-        pieData.setValueFormatter(formatter);
+        });
+
+        // month button listener
+
+        btn_month.setOnClickListener(new View.OnClickListener(){
+
+
+            @Override
+            public void onClick(View view) {
+
+                Call<HashMap<String,Integer>> kids = retrofitAPI.createGetActiveKidsPerMonth();
+                kids.enqueue(new Callback<HashMap<String, Integer>>() {
+                    @Override
+                    public void onResponse(Call<HashMap<String, Integer>> kids, Response<HashMap<String, Integer>> response) {
+                        HashMap<String,Integer> theKids = response.body();
+                        Integer kidsCount = theKids.get("newKids");
+                        Integer totalKids = theKids.get("totalKids");
+                        // DataKids();
+
+                        ArrayList<PieEntry> yEntrys = new ArrayList<>();
+                        ArrayList<String> xEntrys = new ArrayList<>();
+
+                        int[] yData = {kidsCount, totalKids};
+                        String[] xData = {"newKids", "totalKids"};
+
+                        for (int i = 0; i < yData.length; i++) {
+                            yEntrys.add(new PieEntry(yData[i], i));
+                        }
+
+                        for (int i = 1; i < xData.length; i++) {
+                            xEntrys.add(xData[i]);
+                        }
+
+
+                        //create the data set
+                        PieDataSet pieDataSet = new PieDataSet(yEntrys, "                  New Children");
+                        pieDataSet.setSliceSpace(2);
+                        pieDataSet.setValueTextSize(12);
+
+
+                        //add colors to dataset
+                        ArrayList<Integer> colors = new ArrayList<>();
+                        colors.add(Color.parseColor("#4A92FC"));
+                        colors.add(Color.parseColor("#E8EAF6"));
+
+                        pieDataSet.setColors(colors);
+                        pieDataSet.setDrawValues(false);
+                        pieDataSet.setSliceSpace(0f);
+                        pieChartKids.setDrawSliceText((boolean) false);
+                        //add legend to chart
+                        Legend legend = pieChartKids.getLegend();
+                        legend.setForm(Legend.LegendForm.NONE);
+                        // legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+                        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+                        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+                        // legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                        legend.setDrawInside(false);
+                        //create pie data object
+                        PieData pieData = new PieData(pieDataSet);
+                        pieChartKids.setData(pieData);
+
+                        pieChartKids.invalidate();
+                        //pieChart.getLegend().setEnabled(false);
+
+                        Integer percent = kidsCount *100/totalKids;
+                        percentage_Children.setText(String.valueOf(percent) +"%");
+                        pieChartKids.setCenterText(kidsCount.toString());
+                        pieChartKids.setRotationEnabled(false);
+                        pieChartKids.setUsePercentValues(false);
+                        pieChartKids.setHoleRadius(83f);
+                        pieChartKids.setTransparentCircleAlpha(0);
+                        pieChartKids.setCenterTextSize(20);
+                        pieChartKids.setCenterTextTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                        pieChartKids.getDescription().setEnabled(false);
+                        pieChartKids.setHighlightPerTapEnabled(false);
+
+
+                        //Toast.makeText(MainActivity.this," youClickWeekBtn",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
+                        Toast.makeText(AdminMainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                        //Toast.makeText(MainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                    }
+                });
+
+
+                Call<HashMap<String,Integer>> parents = retrofitAPI.activeParentsMonth();
+                parents.enqueue(new Callback<HashMap<String, Integer>>() {
+                    @Override
+                    public void onResponse(Call<HashMap<String, Integer>> parents, Response<HashMap<String, Integer>> response) {
+                        HashMap<String,Integer> theParents = response.body();
+                        Integer parentsCount = theParents.get("newParents");
+                        Integer totalParents = theParents.get("totalParents");
+                        //DataParents();
+
+                        ArrayList<PieEntry> yEntrys = new ArrayList<>();
+                        ArrayList<String> xEntrys = new ArrayList<>();
+
+                        int[] yData = {parentsCount, totalParents};
+                        String[] xData = {"New Parents", "totalParents"};
+
+                        for (int i = 0; i < yData.length; i++) {
+                            yEntrys.add(new PieEntry(yData[i], i));
+                        }
+
+                        for (int i = 1; i < xData.length; i++) {
+                            xEntrys.add(xData[i]);
+                        }
+
+                        //create the data set
+                        PieDataSet pieDataSet = new PieDataSet(yEntrys, "                   New Parents");
+                        pieDataSet.setSliceSpace(2);
+                        pieDataSet.setValueTextSize(12);
+
+                        //add colors to dataset
+                        ArrayList<Integer> colors = new ArrayList<>();
+                        colors.add(Color.parseColor("#ffbb33"));
+                        colors.add(Color.parseColor("#E8EAF6"));
+
+
+                        pieDataSet.setColors(colors);
+                        pieDataSet.setDrawValues(false);
+                        pieDataSet.setSliceSpace(0f);
+                        pieChartParents.setDrawSliceText(false);
+                        //add legend to chart
+                        Legend legend = pieChartParents.getLegend();
+                        legend.setForm(Legend.LegendForm.NONE);
+                        // legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+                        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+                        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+                        // legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                        legend.setDrawInside(false);
+                        //create pie data object
+                        PieData pieData = new PieData(pieDataSet);
+                        pieChartParents.setData(pieData);
+
+                        pieChartParents.invalidate();
+                        //pieChart.getLegend().setEnabled(false);
+
+                        ////////////////////////////////
+
+
+                        Integer percent = parentsCount *100/totalParents;
+                        percentage_Parent.setText(String.valueOf(percent) +"%");
+                        pieChartParents.setCenterText(parentsCount.toString());
+                        pieChartParents.setRotationEnabled(false);
+                        pieChartParents.setUsePercentValues(false);
+                        pieChartParents.setHoleRadius(83f);
+                        pieChartParents.setTransparentCircleAlpha(0);
+                        pieChartParents.setCenterTextSize(20);
+                        pieChartParents.setCenterTextTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                        pieChartParents.getDescription().setEnabled(false);
+                        pieChartParents.setHighlightPerTapEnabled(false);
+
+                        //Toast.makeText(MainActivity.this," youClickWeekBtn",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
+                        Toast.makeText(AdminMainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                        //Toast.makeText(MainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                    }
+                });
+
+
+                Call<HashMap<String,Integer>> kidsByCategory = retrofitAPI.activeKidsCategMonth();
+                kidsByCategory.enqueue(new Callback<HashMap<String, Integer>>() {
+                    @Override
+                    public void onResponse(Call<HashMap<String, Integer>> kidsByCategory, Response<HashMap<String, Integer>> response) {
+                        HashMap<String,Integer> categoryCount = response.body();
+                        Integer artCount = categoryCount.get("art");
+                        Integer musicCount = categoryCount.get("music");
+                        Integer scienceCount = categoryCount.get("sience");
+                        Integer animalCount = categoryCount.get("animal");
+                        Integer spaceCount = categoryCount.get("space");
+                        Integer poetryCount = categoryCount.get("poetry");
+
+
+                        //DataTotal();
+
+                        ArrayList<PieEntry> yEntrysTotal = new ArrayList<>();
+                        ArrayList<String> xEntrysTotal = new ArrayList<>();
+
+
+                        Integer[] yDataTotal = {artCount, musicCount, scienceCount, animalCount,spaceCount,poetryCount};
+                        String[] xDataTotal = {"art", "music", "sience", "animal", "space", "poetry"};
+
+                        for (int i = 0; i < yDataTotal.length; i++) {
+                            yEntrysTotal.add(new PieEntry(yDataTotal[i], i));
+                        }
+
+                        for (int i = 1; i < xDataTotal.length; i++) {
+                            xEntrysTotal.add(xDataTotal[i]);
+                        }
+                        PieDataSet pieDataSetTotal = new PieDataSet(yEntrysTotal, "     Total Per Category");
+                        ArrayList<Integer> colors = new ArrayList<>();
+                        colors.add(Color.parseColor("#E8EAF6"));
+                        colors.add(Color.parseColor("#4A92FC"));
+                        colors.add(Color.parseColor("#ffbb33"));
+                        colors.add(Color.parseColor("#4E7FE7"));
+
+
+                        pieDataSetTotal.setSliceSpace(2);
+                        pieDataSetTotal.setValueTextSize(12);
+                        pieDataSetTotal.setColors(colors);
+                        pieDataSetTotal.setDrawValues(true);
+                        pieDataSetTotal.setSliceSpace(0f);
+                        // pieChartTotal.setDrawSliceText(false);
+                        //add legend to chart
+
+
+                        pieDataSetTotal.setColors(colors);
+                        pieDataSetTotal.setDrawValues(true);
+                        pieDataSetTotal.setSliceSpace(0f);
+                        //  pieChartTotal.setDrawSliceText(true);
+                        ValueFormatter vf = new ValueFormatter() { //value format here, here is the overridden method
+                            @Override
+                            public String getFormattedValue(float value) {
+                                return "" + (int) value;
+                            }
+                        };
+                        pieDataSetTotal.setValueFormatter(vf);
+                        Legend legendTotal = pieChartTotal.getLegend();
+                        legendTotal.setForm(Legend.LegendForm.NONE);
+
+                        // legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+                        legendTotal.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+                        legendTotal.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+                        // legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                        legendTotal.setDrawInside(false);
+                        //create pie data object
+                        PieData pieDataTotal = new PieData(pieDataSetTotal);
+                        pieChartTotal.setData(pieDataTotal);
+
+                        pieChartTotal.invalidate();
+
+                        pieChartTotal.setRotationEnabled(false);
+                        pieChartTotal.setUsePercentValues(false);
+                        pieChartTotal.setHoleRadius(0f);
+                        pieChartTotal.setTransparentCircleAlpha(0);
+                        pieChartTotal.getDescription().setEnabled(false);
+                        pieChartTotal.setHighlightPerTapEnabled(false);
+
+
+                        //Toast.makeText(MainActivity.this," youClickWeekBtn",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
+                        Toast.makeText(AdminMainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                        //Toast.makeText(MainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                    }
+                });
+
+
+
+                Call<HashMap<String,Integer>> activityTime = retrofitAPI.createGetActivityPerMonth();
+                activityTime.enqueue(new Callback<HashMap<String,Integer>>() {
+                    @Override
+                    public void onResponse(Call<HashMap<String, Integer>> activityTime, Response<HashMap<String, Integer>> response) {
+                        HashMap<String,Integer> times = response.body();
+
+                        Integer allTime = times.get("totalTime");
+                        Integer activeTime = times.get("activityTime");
+                        Integer percent = activeTime *100/allTime;
+                        //DataHours();
+                        ArrayList<PieEntry> yEntrys = new ArrayList<>();
+                        ArrayList<String> xEntrys = new ArrayList<>();
+
+                        Integer [] yData = {activeTime,allTime};
+                        String[] xData = {"activityTime", "totalTime"};
+
+                        for (int i = 0; i < yData.length; i++) {
+                            yEntrys.add(new PieEntry(yData[i].intValue(), i));
+                        }
+
+                        for (int i = 1; i < xData.length; i++) {
+                            xEntrys.add(xData[i]);
+                        }
+
+
+                        //create the data set
+                        PieDataSet pieDataSet = new PieDataSet(yEntrys, "          Monthly Activities In Hour");
+
+                        pieDataSet.setSliceSpace(2);
+                        pieDataSet.setValueTextSize(12);
+
+                        //add colors to dataset
+                        ArrayList<Integer> colors = new ArrayList<>();
+                        colors.add(Color.parseColor("#4E7FE7"));
+                        colors.add(Color.parseColor("#E8EAF6"));
+
+
+                        pieDataSet.setColors(colors);
+                        pieDataSet.setDrawValues(false);
+                        pieDataSet.setSliceSpace(0f);
+                        pieChartHours.setDrawSliceText(false);
+                        //add legend to chart
+                        Legend legend = pieChartHours.getLegend();
+                        legend.setForm(Legend.LegendForm.NONE);
+                        // legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+                        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+                        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+                        // legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                        legend.setDrawInside(false);
+                        //create pie data object
+                        PieData pieData = new PieData(pieDataSet);
+                        pieChartHours.setData(pieData);
+                        pieChartHours.invalidate();
+                        //pieChart.getLegend().setEnabled(false);
+
+                        ////////////////////////////////
+                        pieChartHours.setCenterText(activeTime.toString());
+                        percentage_hour.setText(String.valueOf(percent) +"%");
+                        pieChartHours.setCenterText(activeTime.toString());
+                        pieChartHours.setRotationEnabled(false);
+                        pieChartHours.setUsePercentValues(false);
+                        pieChartHours.setHoleRadius(83f);
+                        pieChartHours.setTransparentCircleAlpha(0);
+                        pieChartHours.setCenterTextTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                        pieChartHours.setCenterTextSize(20);
+                        pieChartHours.getDescription().setEnabled(false);
+                        pieChartHours.setHighlightPerTapEnabled(false);
+                        //Toast.makeText(MainActivity.this," youClickWeekBtn",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
+                        Toast.makeText(AdminMainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                        //Toast.makeText(MainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                // Toast.makeText(MainActivity.this," youClickMonthBtn",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        // year button listener
+
+        btn_year.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+
+                Call<HashMap<String,Integer>> kids = retrofitAPI.createGetActiveKidsPerYear();
+                kids.enqueue(new Callback<HashMap<String, Integer>>() {
+                    @Override
+                    public void onResponse(Call<HashMap<String, Integer>> kids, Response<HashMap<String, Integer>> response) {
+                        HashMap<String,Integer> theKids = response.body();
+                        Integer kidsCount = theKids.get("newKids");
+                        Integer totalKids = theKids.get("totalKids");
+                        //DataKids();
+
+                        ArrayList<PieEntry> yEntrys = new ArrayList<>();
+                        ArrayList<String> xEntrys = new ArrayList<>();
+
+                        int[] yData = {kidsCount, totalKids};
+                        String[] xData = {"newKids", "totalKids"};
+
+                        for (int i = 0; i < yData.length; i++) {
+                            yEntrys.add(new PieEntry(yData[i], i));
+                        }
+
+                        for (int i = 1; i < xData.length; i++) {
+                            xEntrys.add(xData[i]);
+                        }
+
+
+                        //create the data set
+                        PieDataSet pieDataSet = new PieDataSet(yEntrys, "                  New Children");
+                        pieDataSet.setSliceSpace(2);
+                        pieDataSet.setValueTextSize(12);
+
+
+                        //add colors to dataset
+                        ArrayList<Integer> colors = new ArrayList<>();
+                        colors.add(Color.parseColor("#4A92FC"));
+                        colors.add(Color.parseColor("#E8EAF6"));
+
+                        pieDataSet.setColors(colors);
+                        pieDataSet.setDrawValues(false);
+                        pieDataSet.setSliceSpace(0f);
+                        pieChartKids.setDrawSliceText((boolean) false);
+                        //add legend to chart
+                        Legend legend = pieChartKids.getLegend();
+                        legend.setForm(Legend.LegendForm.NONE);
+                        // legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+                        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+                        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+                        // legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                        legend.setDrawInside(false);
+                        //create pie data object
+                        PieData pieData = new PieData(pieDataSet);
+                        pieChartKids.setData(pieData);
+
+                        pieChartKids.invalidate();
+                        //pieChart.getLegend().setEnabled(false);
+
+                        Integer percent = kidsCount *100/totalKids;
+                        percentage_Children.setText(String.valueOf(percent) +"%");
+                        pieChartKids.setCenterText(kidsCount.toString());
+                        pieChartKids.setRotationEnabled(false);
+                        pieChartKids.setUsePercentValues(false);
+                        pieChartKids.setHoleRadius(83f);
+                        pieChartKids.setTransparentCircleAlpha(0);
+                        pieChartKids.setCenterTextSize(20);
+                        pieChartKids.setCenterTextTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                        pieChartKids.getDescription().setEnabled(false);
+                        pieChartKids.setHighlightPerTapEnabled(false);
+
+
+                        //Toast.makeText(MainActivity.this," youClickWeekBtn",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
+                        Toast.makeText(AdminMainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                        //Toast.makeText(MainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                Call<HashMap<String,Integer>> parents = retrofitAPI.activeParentsYear();
+                parents.enqueue(new Callback<HashMap<String, Integer>>() {
+                    @Override
+                    public void onResponse(Call<HashMap<String, Integer>> parents, Response<HashMap<String, Integer>> response) {
+                        HashMap<String,Integer> theParents = response.body();
+                        Integer parentsCount = theParents.get("newParents");
+                        Integer totalParents = theParents.get("totalParents");
+                        //DataParents();
+
+                        ArrayList<PieEntry> yEntrys = new ArrayList<>();
+                        ArrayList<String> xEntrys = new ArrayList<>();
+
+                        int[] yData = {parentsCount, totalParents};
+                        String[] xData = {"New Parents", "totalParents"};
+
+                        for (int i = 0; i < yData.length; i++) {
+                            yEntrys.add(new PieEntry(yData[i], i));
+                        }
+
+                        for (int i = 1; i < xData.length; i++) {
+                            xEntrys.add(xData[i]);
+                        }
+
+                        //create the data set
+                        PieDataSet pieDataSet = new PieDataSet(yEntrys, "                   New Parents");
+                        pieDataSet.setSliceSpace(2);
+                        pieDataSet.setValueTextSize(12);
+
+                        //add colors to dataset
+                        ArrayList<Integer> colors = new ArrayList<>();
+                        colors.add(Color.parseColor("#ffbb33"));
+                        colors.add(Color.parseColor("#E8EAF6"));
+
+
+                        pieDataSet.setColors(colors);
+                        pieDataSet.setDrawValues(false);
+                        pieDataSet.setSliceSpace(0f);
+                        pieChartParents.setDrawSliceText(false);
+                        //add legend to chart
+                        Legend legend = pieChartParents.getLegend();
+                        legend.setForm(Legend.LegendForm.NONE);
+                        // legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+                        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+                        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+                        // legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                        legend.setDrawInside(false);
+                        //create pie data object
+                        PieData pieData = new PieData(pieDataSet);
+                        pieChartParents.setData(pieData);
+
+                        pieChartParents.invalidate();
+                        //pieChart.getLegend().setEnabled(false);
+
+                        ////////////////////////////////
+
+                        Integer percent = parentsCount *100/totalParents;
+                        percentage_Parent.setText(String.valueOf(percent) +"%");
+                        pieChartParents.setCenterText(parentsCount.toString());
+                        pieChartParents.setRotationEnabled(false);
+                        pieChartParents.setUsePercentValues(false);
+                        pieChartParents.setHoleRadius(83f);
+                        pieChartParents.setTransparentCircleAlpha(0);
+                        pieChartParents.setCenterTextSize(20);
+                        pieChartParents.setCenterTextTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                        pieChartParents.getDescription().setEnabled(false);
+                        pieChartParents.setHighlightPerTapEnabled(false);
+
+                        //Toast.makeText(MainActivity.this," youClickWeekBtn",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
+                        Toast.makeText(AdminMainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                        //Toast.makeText(MainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                    }
+                });
+
+
+                Call<HashMap<String,Integer>> kidsByCategory = retrofitAPI.activeKidsCategYear();
+                kidsByCategory.enqueue(new Callback<HashMap<String, Integer>>() {
+                    @Override
+                    public void onResponse(Call<HashMap<String, Integer>> kidsByCategory, Response<HashMap<String, Integer>> response) {
+
+                        HashMap<String,Integer> categoryCount = response.body();
+                        Integer artCount = categoryCount.get("art");
+                        Integer musicCount = categoryCount.get("music");
+                        Integer scienceCount = categoryCount.get("sience");
+                        Integer animalCount = categoryCount.get("animal");
+                        Integer spaceCount = categoryCount.get("space");
+                        Integer poetryCount = categoryCount.get("poetry");
+
+
+                        //DataTotal();
+
+                        ArrayList<PieEntry> yEntrysTotal = new ArrayList<>();
+                        ArrayList<String> xEntrysTotal = new ArrayList<>();
+
+
+                        Integer[] yDataTotal = {artCount, musicCount, scienceCount, animalCount,spaceCount,poetryCount};
+                        String[] xDataTotal = {"art", "music", "sience", "animal", "space", "poetry"};
+
+                        for (int i = 0; i < yDataTotal.length; i++) {
+                            yEntrysTotal.add(new PieEntry(yDataTotal[i], i));
+                        }
+
+                        for (int i = 1; i < xDataTotal.length; i++) {
+                            xEntrysTotal.add(xDataTotal[i]);
+                        }
+                        PieDataSet pieDataSetTotal = new PieDataSet(yEntrysTotal, "     Total Per Category");
+                        ArrayList<Integer> colors = new ArrayList<>();
+                        colors.add(Color.parseColor("#E8EAF6"));
+                        colors.add(Color.parseColor("#4A92FC"));
+                        colors.add(Color.parseColor("#ffbb33"));
+                        colors.add(Color.parseColor("#4E7FE7"));
+
+
+                        pieDataSetTotal.setSliceSpace(2);
+                        pieDataSetTotal.setValueTextSize(12);
+                        pieDataSetTotal.setColors(colors);
+                        pieDataSetTotal.setDrawValues(true);
+                        pieDataSetTotal.setSliceSpace(0f);
+                        // pieChartTotal.setDrawSliceText(false);
+                        //add legend to chart
+
+
+                        pieDataSetTotal.setColors(colors);
+                        pieDataSetTotal.setDrawValues(true);
+                        pieDataSetTotal.setSliceSpace(0f);
+                        //  pieChartTotal.setDrawSliceText(true);
+                        ValueFormatter vf = new ValueFormatter() { //value format here, here is the overridden method
+                            @Override
+                            public String getFormattedValue(float value) {
+                                return "" + (int) value;
+                            }
+                        };
+                        pieDataSetTotal.setValueFormatter(vf);
+                        Legend legendTotal = pieChartTotal.getLegend();
+                        legendTotal.setForm(Legend.LegendForm.NONE);
+
+                        // legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+                        legendTotal.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+                        legendTotal.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+                        // legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                        legendTotal.setDrawInside(false);
+                        //create pie data object
+                        PieData pieDataTotal = new PieData(pieDataSetTotal);
+                        pieChartTotal.setData(pieDataTotal);
+
+                        pieChartTotal.invalidate();
+                        pieChartTotal.setRotationEnabled(false);
+                        pieChartTotal.setUsePercentValues(false);
+                        pieChartTotal.setHoleRadius(0f);
+                        pieChartTotal.setTransparentCircleAlpha(0);
+                        pieChartTotal.getDescription().setEnabled(false);
+                        pieChartTotal.setHighlightPerTapEnabled(false);
+
+
+                        //Toast.makeText(MainActivity.this," youClickWeekBtn",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
+                        Toast.makeText(AdminMainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                        //Toast.makeText(MainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                    }
+                });
+
+
+                Call<HashMap<String,Integer>> activityTime = retrofitAPI.createGetActivityPerYear();
+                activityTime.enqueue(new Callback<HashMap<String,Integer>>() {
+                    @Override
+                    public void onResponse(Call<HashMap<String, Integer>> activityTime, Response<HashMap<String, Integer>> response) {
+                        HashMap<String,Integer> times = response.body();
+
+                        Integer allTime = times.get("totalTime");
+                        Integer activeTime = times.get("activityTime");
+                        Integer percent = activeTime *100/allTime;
+                        //DataHours();
+                        ArrayList<PieEntry> yEntrys = new ArrayList<>();
+                        ArrayList<String> xEntrys = new ArrayList<>();
+
+                        Integer [] yData = {activeTime, allTime};
+                        String[] xData = {"activityTime", "totalTime"};
+
+                        for (int i = 0; i < yData.length; i++) {
+                            yEntrys.add(new PieEntry(yData[i].intValue(), i));
+                        }
+
+                        for (int i = 1; i < xData.length; i++) {
+                            xEntrys.add(xData[i]);
+                        }
+
+
+                        //create the data set
+                        PieDataSet pieDataSet = new PieDataSet(yEntrys, "          Yearly Activities In Hour");
+
+                        pieDataSet.setSliceSpace(2);
+                        pieDataSet.setValueTextSize(12);
+
+                        //add colors to dataset
+                        ArrayList<Integer> colors = new ArrayList<>();
+                        colors.add(Color.parseColor("#4E7FE7"));
+                        colors.add(Color.parseColor("#E8EAF6"));
+
+
+                        pieDataSet.setColors(colors);
+                        pieDataSet.setDrawValues(false);
+                        pieDataSet.setSliceSpace(0f);
+                        pieChartHours.setDrawSliceText(false);
+                        //add legend to chart
+                        Legend legend = pieChartHours.getLegend();
+                        legend.setForm(Legend.LegendForm.NONE);
+                        // legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+                        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+                        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+                        // legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                        legend.setDrawInside(false);
+                        //create pie data object
+                        PieData pieData = new PieData(pieDataSet);
+                        pieChartHours.setData(pieData);
+                        pieChartHours.invalidate();
+                        //pieChart.getLegend().setEnabled(false);
+
+                        ////////////////////////////////
+
+                        percentage_hour.setText(String.valueOf(percent) +"%");
+                        pieChartHours.setCenterText(activeTime.toString());
+                        pieChartHours.setCenterText(allTime.toString());
+                        pieChartHours.setRotationEnabled(false);
+                        pieChartHours.setUsePercentValues(false);
+                        pieChartHours.setHoleRadius(83f);
+                        pieChartHours.setTransparentCircleAlpha(0);
+                        pieChartHours.setCenterTextTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                        pieChartHours.setCenterTextSize(20);
+                        pieChartHours.getDescription().setEnabled(false);
+                        pieChartHours.setHighlightPerTapEnabled(false);
+                        //Toast.makeText(MainActivity.this," youClickWeekBtn",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
+                        Toast.makeText(AdminMainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                        //Toast.makeText(MainActivity.this,t.toString(),Toast.LENGTH_LONG).show();
+                    }
+                });
+                // Toast.makeText(MainActivity.this," youClickYearBtn",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
+        //////////////////////////////////////////////
+
+        //DataHours();
+        // DataParents();
+        //DataTotal();
+        //DataKids();
+        GroupBarChart();
+    }
+
+    public void GroupBarChart(){
+        mChart = (BarChart) findViewById(R.id.barchart);
+        mChart.setDrawBarShadow(false);
+        mChart.getDescription().setEnabled(false);
+        mChart.setPinchZoom(false);
+        mChart.setDrawGridBackground(false);
+        // empty labels so that the names are spread evenly
+        String[] labels = {"", "1", "2", "3", "4", "5","6","7","8","9","10","11","12", ""};
+        XAxis xAxis = mChart.getXAxis();
+        xAxis.setCenterAxisLabels(true);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawGridLines(false);
+        xAxis.setGranularity(1f); // only intervals of 1 day
+        xAxis.setTextColor(Color.BLACK);
+        xAxis.setTextSize(12);
+        xAxis.setAxisLineColor(Color.WHITE);
+        xAxis.setAxisMinimum(1f);
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(labels));
+
+
+        YAxis leftAxis = mChart.getAxisLeft();
+        leftAxis.setAxisMinimum(0);
+
+        leftAxis.setTextColor(Color.BLACK);
+        leftAxis.setTextSize(12);
+        leftAxis.setAxisLineColor(Color.WHITE);
+        leftAxis.setDrawGridLines(true);
+        leftAxis.setGranularity(2);
+        leftAxis.setLabelCount(7, true);
+        leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
+
+
+
+        mChart.getAxisRight().setEnabled(false);
+        mChart.getLegend().setEnabled(false);
+
+        float[] valOne = {10, 10, 10, 10, 10};
+        float[] valTwo = {60, 50, 40, 30, 20};
+        float[] valThree = {50, 60, 20, 10, 30};
+        float[] valfour = {50, 80, 10, 10, 30};
+        float[] valfive = {50, 70, 90, 10, 20};
+
+        ArrayList<BarEntry> barOne = new ArrayList<>();
+        ArrayList<BarEntry> barTwo = new ArrayList<>();
+        ArrayList<BarEntry> barThree = new ArrayList<>();
+        ArrayList<BarEntry> barFour = new ArrayList<>();
+        ArrayList<BarEntry> barFive= new ArrayList<>();
+        for (int i = 0; i < valOne.length; i++) {
+            barOne.add(new BarEntry(i, valOne[i]));
+            barTwo.add(new BarEntry(i, valTwo[i]));
+            barThree.add(new BarEntry(i, valThree[i]));
+            barFour.add(new BarEntry(i, valfour[i]));
+            barFive.add(new BarEntry(i, valfive[i]));
+        }
+
+        BarDataSet set1 = new BarDataSet(barOne, "barOne");
+        set1.setColor(Color.BLUE);
+        BarDataSet set2 = new BarDataSet(barTwo, "barTwo");
+        set2.setColor(Color.parseColor("#4E7FE7"));
+
+        BarDataSet set3 = new BarDataSet(barThree, "barThree");
+        set3.setColor(Color.GREEN);
+
+        BarDataSet set4 = new BarDataSet(barFour, "barFour");
+        set4.setColor(Color.parseColor("#ffbb33"));
+
+        BarDataSet set5 = new BarDataSet(barFive, "barFive");
+        set5.setColor(Color.parseColor("#4A92FC"));
+        //  barDataSet.setColors(new int[]{Color.parseColor("#4A92FC"),
+        //  Color.parseColor("#ffbb33"), Color.parseColor("#4E7FE7"), Color.GRAY, Color.BLUE});
+
+        set1.setHighlightEnabled(false);
+        set2.setHighlightEnabled(false);
+        set3.setHighlightEnabled(false);
+        set4.setHighlightEnabled(false);
+        set5.setHighlightEnabled(false);
+        set1.setDrawValues(false);
+        set2.setDrawValues(false);
+        set3.setDrawValues(false);
+        set4.setDrawValues(false);
+        set5.setDrawValues(false);
+
+        ArrayList<IBarDataSet> dataSets = new ArrayList<IBarDataSet>();
+        dataSets.add(set1);
+        dataSets.add(set2);
+        dataSets.add(set3);
+        dataSets.add(set4);
+        dataSets.add(set5);
+        BarData data = new BarData(dataSets);
+        float groupSpace = 0.5f;
+        float barSpace = 0.01f;
+        float barWidth = 0.1f;
+        // (barSpace + barWidth) * 2 + groupSpace = 1
+        data.setBarWidth(barWidth);
+        // so that the entire chart is shown when scrolled from right to left
+        xAxis.setAxisMaximum(labels.length - 1.1f);
+        mChart.setData(data);
+        mChart.setScaleEnabled(false);
+        mChart.setVisibleXRangeMaximum(6f);
+        mChart.groupBars(1f, groupSpace, barSpace);
+        mChart.invalidate();
+        mChart.setBackgroundColor(Color.WHITE);
+
+    }
+
+    private void showBarChart() {
+        ArrayList<Double> valueList = new ArrayList<Double>();
+        ArrayList<BarEntry> entries = new ArrayList<>();
+        //input data
+        // for (int i = 0; i < 5; i++) {
+        valueList.add((double) 50);
+        valueList.add((double) 60);
+        valueList.add((double) 90);
+        valueList.add((double) 200);
+        valueList.add((double) 150);
+        //}
+
+        //fit the data into a bar
+        for (int i = 0; i < valueList.size(); i++) {
+            BarEntry barEntry = new BarEntry(i, valueList.get(i).floatValue());
+            entries.add(barEntry);
+        }
+
+        BarDataSet barDataSet = new BarDataSet(entries, "");
+        barDataSet.setColors(new int[]{Color.parseColor("#4A92FC"),
+                Color.parseColor("#ffbb33"), Color.parseColor("#4E7FE7"), Color.GRAY, Color.BLUE});
+        BarData data = new BarData(barDataSet);
+        barchart.setData(data);
+        barchart.invalidate();
+        //Changing the color of the bar
+        //barDataSet.setColor(Color.parseColor("#304567"));
+        //Setting the size of the form in the legend
+        barDataSet.setFormSize(15f);
+        //showing the value of the bar, default true if not set
+        barDataSet.setDrawValues(false);
+
+        //setting the text size of the value of the bar
+        barDataSet.setValueTextSize(0f);
+        barchart.setDoubleTapToZoomEnabled(false);
+
+    }
+
+    private void initBarChart() {
+        //hiding the grey background of the chart, default false if not set
+        barchart.setDrawGridBackground(false);
+        //remove the bar shadow, default false if not set
+        barchart.setDrawBarShadow(false);
+        //remove border of the chart, default false if not set
+        barchart.setDrawBorders(false);
+
+        //remove the description label text located at the lower right corner
+        Description description = new Description();
+        description.setEnabled(false);
+        barchart.setDescription(description);
+
+        //setting animation for y-axis, the bar will pop up from 0 to its value within the time we set
+        barchart.animateY(1000);
+        //setting animation for x-axis, the bar will pop up separately within the time we set
+        barchart.animateX(1000);
+        barchart.getDescription().setEnabled(false);
+        barchart.setHighlightPerTapEnabled(false);
+        XAxis xAxis = barchart.getXAxis();
+        //change the position of x-axis to the bottom
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        //set the horizontal distance of the grid line
+        xAxis.setGranularity(1f);
+        //hiding the x-axis line, default true if not set
+        xAxis.setDrawAxisLine(false);
+        //hiding the vertical grid lines, default true if not set
+        xAxis.setDrawGridLines(false);
+
+        YAxis leftAxis = barchart.getAxisLeft();
+        //hiding the left y-axis line, default true if not set
+        leftAxis.setDrawAxisLine(false);
+
+        YAxis rightAxis = barchart.getAxisRight();
+        //hiding the right y-axis line, default true if not set
+        rightAxis.setDrawAxisLine(false);
+
+        Legend legend = barchart.getLegend();
+        //setting the shape of the legend form to line, default square shape
+        legend.setForm(Legend.LegendForm.LINE);
+        //setting the text size of the legend
+        legend.setTextSize(11f);
+        //setting the alignment of legend toward the chart
+        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+        //setting the stacking direction of legend
+        legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+        //setting the location of legend outside the chart, default false if not set
+        legend.setDrawInside(false);
+        xAxis.setDrawLabels(false);
+        barchart.setHighlightPerTapEnabled(false);
+        barchart.getAxisLeft().setDrawLabels(true);
+        barchart.getAxisRight().setDrawLabels(false);
+        barchart.getXAxis().setDrawLabels(false);
+        barchart.setTouchEnabled(false);
+        barchart.getLegend().setEnabled(false);
+
+
+
+
+    }
+
+/*
+    private void DataHours() {
+
+        ArrayList<PieEntry> yEntrys = new ArrayList<>();
+        ArrayList<String> xEntrys = new ArrayList<>();
+
+
+        for (int i = 0; i < yData.length; i++) {
+            yEntrys.add(new PieEntry(yData[i], i));
+        }
+
+        for (int i = 1; i < xData.length; i++) {
+            xEntrys.add(xData[i]);
+        }
+
+
+        //create the data set
+        PieDataSet pieDataSet = new PieDataSet(yEntrys, "          Monthly Activities In Hour");
+
+        pieDataSet.setSliceSpace(2);
         pieDataSet.setValueTextSize(12);
 
-        totalCatChart.setRotationEnabled(false);
-        totalCatChart.setUsePercentValues(false);
-        totalCatChart.setHoleRadius(0f);
-        totalCatChart.setTransparentCircleAlpha(0);
-        totalCatChart.getDescription().setEnabled(false);
-        totalCatChart.setHighlightPerTapEnabled(false);
-        totalCatChart.setHoleRadius(0);
-        totalCatChart.setTransparentCircleRadius(0);
-        totalCatChart.getDescription().setEnabled(false);
-        Legend legendTotal = totalCatChart.getLegend();
+        //add colors to dataset
+        ArrayList<Integer> colors = new ArrayList<>();
+        colors.add(Color.parseColor("#4E7FE7"));
+        colors.add(Color.parseColor("#E8EAF6"));
+
+
+        pieDataSet.setColors(colors);
+        pieDataSet.setDrawValues(false);
+        pieDataSet.setSliceSpace(0f);
+        pieChartHours.setDrawSliceText(false);
+        //add legend to chart
+        Legend legend = pieChartHours.getLegend();
+        legend.setForm(Legend.LegendForm.NONE);
+        // legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+        // legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+        legend.setDrawInside(false);
+        //create pie data object
+        PieData pieData = new PieData(pieDataSet);
+        pieChartHours.setData(pieData);
+        pieChartHours.invalidate();
+        //pieChart.getLegend().setEnabled(false);
+
+        ////////////////////////////////
+
+
+    }
+
+    private void DataTotal() {
+        ArrayList<PieEntry> yEntrysTotal = new ArrayList<>();
+        ArrayList<String> xEntrysTotal = new ArrayList<>();
+
+        for (int i = 0; i < yDataTotal.length; i++) {
+            yEntrysTotal.add(new PieEntry(yDataTotal[i], i));
+        }
+
+        for (int i = 1; i < xDataTotal.length; i++) {
+            xEntrysTotal.add(xDataTotal[i]);
+        }
+        PieDataSet pieDataSetTotal = new PieDataSet(yEntrysTotal, "     Total Per Category");
+        ArrayList<Integer> colors = new ArrayList<>();
+        colors.add(Color.parseColor("#E8EAF6"));
+        colors.add(Color.parseColor("#4A92FC"));
+        colors.add(Color.parseColor("#ffbb33"));
+        colors.add(Color.parseColor("#4E7FE7"));
+
+
+        pieDataSetTotal.setSliceSpace(2);
+        pieDataSetTotal.setValueTextSize(12);
+        pieDataSetTotal.setColors(colors);
+        pieDataSetTotal.setDrawValues(true);
+        pieDataSetTotal.setSliceSpace(0f);
+        // pieChartTotal.setDrawSliceText(false);
+        //add legend to chart
+
+
+        pieDataSetTotal.setColors(colors);
+        pieDataSetTotal.setDrawValues(true);
+        pieDataSetTotal.setSliceSpace(0f);
+        //  pieChartTotal.setDrawSliceText(true);
+        ValueFormatter vf = new ValueFormatter() { //value format here, here is the overridden method
+            @Override
+            public String getFormattedValue(float value) {
+                return "" + (int) value;
+            }
+        };
+        pieDataSetTotal.setValueFormatter(vf);
+        Legend legendTotal = pieChartTotal.getLegend();
         legendTotal.setForm(Legend.LegendForm.NONE);
 
         // legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
@@ -460,44 +1798,43 @@ public class AdminMainActivity extends AppCompatActivity {
         // legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         legendTotal.setDrawInside(false);
         //create pie data object
-        totalCatChart.setData(pieData);
-        totalCatChart.animateY(1400,Easing.EaseInOutQuad);
-        totalCatChart.invalidate();
+        PieData pieDataTotal = new PieData(pieDataSetTotal);
+        pieChartTotal.setData(pieDataTotal);
+
+        pieChartTotal.invalidate();
     }
 
-    private void initialzieParentsChart(HashMap<String, Integer> map) {
-        ArrayList<PieEntry> pieEntries = new ArrayList<PieEntry>();
-        Map<String, Integer> typeAmountMap = map;
-        pieEntries.add(new PieEntry(typeAmountMap.get("New Parents")));
-        pieEntries.add(new PieEntry(typeAmountMap.get("totalParents")-typeAmountMap.get("New Parents")));
-//        for(String type: typeAmountMap.keySet()){
-//            pieEntries.add(new PieEntry(typeAmountMap.get(type).floatValue()));
-//        }
-        parentsChart = findViewById(R.id.parents_chart);
-        PieDataSet pieDataSet = new PieDataSet(pieEntries,"        New Parents");
-        pieDataSet.setColors(Color.parseColor("#EDC655"),Color.parseColor("#D0DBFF"));
+    private void DataParents() {
+
+        ArrayList<PieEntry> yEntrys = new ArrayList<>();
+        ArrayList<String> xEntrys = new ArrayList<>();
+
+
+        for (int i = 0; i < yData.length; i++) {
+            yEntrys.add(new PieEntry(yData[i], i));
+        }
+
+        for (int i = 1; i < xData.length; i++) {
+            xEntrys.add(xData[i]);
+        }
+
+        //create the data set
+        PieDataSet pieDataSet = new PieDataSet(yEntrys, "                   New Parents");
         pieDataSet.setSliceSpace(2);
         pieDataSet.setValueTextSize(12);
 
-        //update percentage
-        double d = ((Double.valueOf(typeAmountMap.get("New Parents")))/(Double.valueOf(typeAmountMap.get("totalParents")))*100);
-        parentsText.setText(""+new DecimalFormat("##.##").format(d)+"%");
+        //add colors to dataset
+        ArrayList<Integer> colors = new ArrayList<>();
+        colors.add(Color.parseColor("#ffbb33"));
+        colors.add(Color.parseColor("#E8EAF6"));
 
-        parentsChart.setRotationEnabled(false);
-        parentsChart.setUsePercentValues(false);
-        parentsChart.setHoleRadius(83f);
-        parentsChart.setTransparentCircleAlpha(0);
-        parentsChart.setCenterText(Integer.toString(typeAmountMap.get("New Parents")));
-        parentsChart.setCenterTextSize(20);
-        parentsChart.setCenterTextTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-        parentsChart.getDescription().setEnabled(false);
-        parentsChart.setHighlightPerTapEnabled(false);
 
+        pieDataSet.setColors(colors);
         pieDataSet.setDrawValues(false);
         pieDataSet.setSliceSpace(0f);
-        parentsChart.setDrawSliceText(false);
+        pieChartParents.setDrawSliceText(false);
         //add legend to chart
-        Legend legend = parentsChart.getLegend();
+        Legend legend = pieChartParents.getLegend();
         legend.setForm(Legend.LegendForm.NONE);
         // legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
         legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
@@ -506,47 +1843,47 @@ public class AdminMainActivity extends AppCompatActivity {
         legend.setDrawInside(false);
         //create pie data object
         PieData pieData = new PieData(pieDataSet);
+        pieChartParents.setData(pieData);
 
-        parentsChart.setData(pieData);
-        parentsChart.animateY(1400, Easing.EaseInOutQuad);
-        parentsChart.invalidate();
+        pieChartParents.invalidate();
+        //pieChart.getLegend().setEnabled(false);
+
+        ////////////////////////////////
 
     }
 
-    private void initialzieChildrenChart(HashMap<String, Integer> map) {
-        ArrayList<PieEntry> pieEntries = new ArrayList<PieEntry>();
-        Map<String, Integer> typeAmountMap = map;
-        pieEntries.add(new PieEntry(typeAmountMap.get("newKids")));
-        pieEntries.add(new PieEntry(typeAmountMap.get("totalKids")-typeAmountMap.get("newKids")));
-//        for(String type: typeAmountMap.keySet()){
-//            pieEntries.add(new PieEntry(typeAmountMap.get(type).floatValue()));
-//        }
-        childrenChart = findViewById(R.id.children_chart);
-        PieDataSet pieDataSet = new PieDataSet(pieEntries,"    New Children");
-        pieDataSet.setColors(Color.parseColor("#0091FF"),Color.parseColor("#D0DBFF"));
+    private void DataKids() {
+
+        ArrayList<PieEntry> yEntrys = new ArrayList<>();
+        ArrayList<String> xEntrys = new ArrayList<>();
+
+
+        for (int i = 0; i < yData.length; i++) {
+            yEntrys.add(new PieEntry(yData[i], i));
+        }
+
+        for (int i = 1; i < xData.length; i++) {
+            xEntrys.add(xData[i]);
+        }
+
+
+        //create the data set
+        PieDataSet pieDataSet = new PieDataSet(yEntrys, "                  New Children");
         pieDataSet.setSliceSpace(2);
         pieDataSet.setValueTextSize(12);
-        //update percentage
-        double d = ((Double.valueOf(typeAmountMap.get("newKids")))/(Double.valueOf(typeAmountMap.get("totalKids")))*100);
-        childrenText.setText(""+new DecimalFormat("##.##").format(d)+"%");
 
 
-        ////
-        childrenChart.setRotationEnabled(false);
-        childrenChart.setUsePercentValues(false);
-        childrenChart.setHoleRadius(83f);
-        childrenChart.setTransparentCircleAlpha(0);
-        childrenChart.setCenterText(Integer.toString(typeAmountMap.get("newKids")));
-        childrenChart.setCenterTextSize(20);
-        childrenChart.setCenterTextTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-        childrenChart.getDescription().setEnabled(false);
-        childrenChart.setHighlightPerTapEnabled(false);
+        //add colors to dataset
+        ArrayList<Integer> colors = new ArrayList<>();
+        colors.add(Color.parseColor("#4A92FC"));
+        colors.add(Color.parseColor("#E8EAF6"));
 
+        pieDataSet.setColors(colors);
         pieDataSet.setDrawValues(false);
         pieDataSet.setSliceSpace(0f);
-        childrenChart.setDrawSliceText(false);
+        pieChartKids.setDrawSliceText((boolean) false);
         //add legend to chart
-        Legend legend = childrenChart.getLegend();
+        Legend legend = pieChartKids.getLegend();
         legend.setForm(Legend.LegendForm.NONE);
         // legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
         legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
@@ -555,354 +1892,14 @@ public class AdminMainActivity extends AppCompatActivity {
         legend.setDrawInside(false);
         //create pie data object
         PieData pieData = new PieData(pieDataSet);
-        childrenChart.setData(pieData);
-        childrenChart.animateY(1400, Easing.EaseInOutQuad);
-        childrenChart.invalidate();
-    }
+        pieChartKids.setData(pieData);
 
-    private void initialzieActivitiesChart(HashMap<String, Integer> map) {
-        ArrayList<PieEntry> pieEntries = new ArrayList<PieEntry>();
-        Map<String, Integer> typeAmountMap = map;
-        pieEntries.add(new PieEntry(typeAmountMap.get("activityTime")));
-        pieEntries.add(new PieEntry(typeAmountMap.get("totalTime")-typeAmountMap.get("activityTime")));
-//        for(String type: typeAmountMap.keySet()){
-//            pieEntries.add(new PieEntry(typeAmountMap.get(type).floatValue()));
-//        }
-        activitiesChart = findViewById(R.id.activities_chart);
-        PieDataSet pieDataSet = new PieDataSet(pieEntries,"Monthly Activities in Hour");
-        pieDataSet.setColors(Color.parseColor("#5377EE"),Color.parseColor("#D0DBFF"));
-        pieDataSet.setSliceSpace(2);
-        pieDataSet.setValueTextSize(12);
+        pieChartKids.invalidate();
+        //pieChart.getLegend().setEnabled(false);
 
-
-        //update percentage
-        double d = ((Double.valueOf(typeAmountMap.get("activityTime")))/(Double.valueOf(typeAmountMap.get("totalTime")))*100);
-        activitiesText.setText(""+new DecimalFormat("##.##").format(d)+"%");
-
-        activitiesChart.setRotationEnabled(false);
-        activitiesChart.setUsePercentValues(false);
-        activitiesChart.setHoleRadius(83f);
-        activitiesChart.setTransparentCircleAlpha(0);
-        activitiesChart.setCenterText(Integer.toString(typeAmountMap.get("activityTime")));
-        activitiesChart.setCenterTextSize(20);
-        activitiesChart.setCenterTextTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-        activitiesChart.getDescription().setEnabled(false);
-        activitiesChart.setHighlightPerTapEnabled(false);
-
-        pieDataSet.setDrawValues(false);
-        pieDataSet.setSliceSpace(0f);
-        activitiesChart.setDrawSliceText(false);
-        //add legend to chart
-        Legend legend = activitiesChart.getLegend();
-        legend.setForm(Legend.LegendForm.NONE);
-        // legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
-        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
-        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
-        // legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
-        legend.setDrawInside(false);
-        //create pie data object
-        PieData pieData = new PieData(pieDataSet);
-        activitiesChart.setData(pieData);
-        activitiesChart.animateY(1400,Easing.EaseInOutQuad);
-        activitiesChart.invalidate();
-    }
-
-
-
-
-
-    public void buttonPressed(View view) {
-         button = findViewById(view.getId());
-         week = findViewById(R.id.week_button);
-         month = findViewById(R.id.month_button);
-         year = findViewById(R.id.year_button);
-
-        if (button.isSelected()) {
-            button.setSelected(false);
-            button.setTextColor(Color.parseColor("#000000"));
-        } else if (!button.isSelected()){
-            button.setSelected(true);
-            button.setTextColor(Color.parseColor("#ffffff"));
-        }
-        if(week.isSelected() && month.isSelected()){
-            if(view.getId()==week.getId()){
-                month.setSelected(false);
-                month.setTextColor(Color.parseColor("#000000"));
-
-            }
-            if(view.getId()==month.getId()){
-                week.setSelected(false);
-                week.setTextColor(Color.parseColor("#000000"));
-
-            }
-        }
-        if(month.isSelected() && year.isSelected()){
-            if(view.getId()==month.getId()){
-                year.setSelected(false);
-                year.setTextColor(Color.parseColor("#000000"));
-
-            }
-            if(view.getId()== year.getId()){
-                month.setSelected(false);
-                month.setTextColor(Color.parseColor("#000000"));
-
-            }
-        }
-        if(week.isSelected() && year.isSelected()){
-            if(view.getId()==week.getId()){
-                year.setSelected(false);
-                year.setTextColor(Color.parseColor("#000000"));
-
-            }
-            if(view.getId()== year.getId()){
-                week.setSelected(false);
-                week.setTextColor(Color.parseColor("#000000"));
-
-            }
-        }
-        if(week.isSelected()){
-            refreshByWeek();
-        }
-        else if(month.isSelected()){
-            refreshByMonth();
-        }
-        else if(year.isSelected()){
-            refreshByYear();
-        }
-    }
-
-    private void refreshByYear() {
-        // update bar chart
-        showBarChart(months,"months");
-
-        // update the rest of the charts
-        // retrieve data by month as default
-        Call<HashMap<String,Integer>> newKids = retrofitAPI.createGetActiveKids(3);
-        Call<HashMap<String,Integer>> newParents = retrofitAPI.createGetActiveParentsPerYear();
-        Call<HashMap<String,Integer>> activityTime = retrofitAPI.createGetActivityPerYear();
-        Call<HashMap<String,Integer>> kidsByCategory = retrofitAPI.createGetActiveKidsPerCategoryPerYear();
-
-        newKids.enqueue(new Callback<HashMap<String, Integer>>() {
-            @Override
-            public void onResponse(Call<HashMap<String, Integer>> call, Response<HashMap<String, Integer>> response) {
-                if(response.isSuccessful() && response.body() !=null){
-                    Log.d("Mohammad","success");
-                    initialzieChildrenChart(response.body());
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
-                Log.d("Mohammad","failed");
-                Toast.makeText(AdminMainActivity.this, "----Failure, Please Do something.---", Toast.LENGTH_SHORT).show();
-            }
-        });
-        newParents.enqueue(new Callback<HashMap<String, Integer>>() {
-            @Override
-            public void onResponse(Call<HashMap<String, Integer>> call, Response<HashMap<String, Integer>> response) {
-                if(response.isSuccessful() && response.body() !=null){
-                    Log.d("Mohammad", ""+response.body().get("totalParents"));
-                    initialzieParentsChart(response.body());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
-                Log.d("Mohammad","failed");
-                Toast.makeText(AdminMainActivity.this, "----Failure, Please Do something.---", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        activityTime.enqueue(new Callback<HashMap<String, Integer>>() {
-            @Override
-            public void onResponse(Call<HashMap<String, Integer>> call, Response<HashMap<String, Integer>> response) {
-                if(response.isSuccessful() && response.body() !=null){
-                    initialzieActivitiesChart(response.body());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
-                Log.d("Mohammad","6th");
-                Toast.makeText(AdminMainActivity.this, "----Failure, Please Do something.---", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        kidsByCategory.enqueue(new Callback<HashMap<String, Integer>>() {
-            @Override
-            public void onResponse(Call<HashMap<String, Integer>> call, Response<HashMap<String, Integer>> response) {
-                if(response.isSuccessful() && response.body() !=null){
-                    initialzieTotalCatChart(response.body());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
-                Log.d("Mohammad","6th");
-                Toast.makeText(AdminMainActivity.this, "----Failure, Please Do something.---", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-
-
+        ////////////////////////////////
 
     }
 
-    private void refreshByMonth() {
-        //update bar chart
-        showBarChart(weeks,"weeks");
-
-        // update the rest of the charts
-        // retrieve data by month as default
-        Call<HashMap<String,Integer>> newKids = retrofitAPI.createGetActiveKids(2);;
-        Call<HashMap<String,Integer>> newParents = retrofitAPI.createGetActiveParentsPerMonth();
-        Call<HashMap<String,Integer>> activityTime = retrofitAPI.createGetActivityPerMonth();
-        Call<HashMap<String,Integer>> kidsByCategory = retrofitAPI.createGetActiveKidsPerCategoryPerMonth();
-
-        newKids.enqueue(new Callback<HashMap<String, Integer>>() {
-            @Override
-            public void onResponse(Call<HashMap<String, Integer>> call, Response<HashMap<String, Integer>> response) {
-                if(response.isSuccessful() && response.body() !=null){
-                    Log.d("Mohammad","success");
-                    initialzieChildrenChart(response.body());
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
-                Log.d("Mohammad","failed");
-                Toast.makeText(AdminMainActivity.this, "----Failure, Please Do something.---", Toast.LENGTH_SHORT).show();
-            }
-        });
-        newParents.enqueue(new Callback<HashMap<String, Integer>>() {
-            @Override
-            public void onResponse(Call<HashMap<String, Integer>> call, Response<HashMap<String, Integer>> response) {
-                if(response.isSuccessful() && response.body() !=null){
-                    Log.d("Mohammad", ""+response.body().get("totalParents"));
-                    initialzieParentsChart(response.body());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
-                Log.d("Mohammad","failed");
-                Toast.makeText(AdminMainActivity.this, "----Failure, Please Do something.---", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        activityTime.enqueue(new Callback<HashMap<String, Integer>>() {
-            @Override
-            public void onResponse(Call<HashMap<String, Integer>> call, Response<HashMap<String, Integer>> response) {
-                if(response.isSuccessful() && response.body() !=null){
-                    initialzieActivitiesChart(response.body());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
-                Log.d("Mohammad","6th");
-                Toast.makeText(AdminMainActivity.this, "----Failure, Please Do something.---", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        kidsByCategory.enqueue(new Callback<HashMap<String, Integer>>() {
-            @Override
-            public void onResponse(Call<HashMap<String, Integer>> call, Response<HashMap<String, Integer>> response) {
-                if(response.isSuccessful() && response.body() !=null){
-                    initialzieTotalCatChart(response.body());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
-                Log.d("Mohammad","6th");
-                Toast.makeText(AdminMainActivity.this, "----Failure, Please Do something.---", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-    }
-
-    private void refreshByWeek() {
-        //update bar chart
-        showBarChart(days,"days");
-
-        // update the rest of the charts
-        // retrieve data by month as default
-        Call<HashMap<String,Integer>> newKids = retrofitAPI.createGetActiveKids(1);
-        Call<HashMap<String,Integer>> newParents = retrofitAPI.createGetActiveParentsPerWeek();
-        Call<HashMap<String,Integer>> activityTime = retrofitAPI.createGetActivityPerWeek();
-        Call<HashMap<String,Integer>> kidsByCategory = retrofitAPI.createGetActiveKidsPerCategoryPerWeek();
-
-        newKids.enqueue(new Callback<HashMap<String, Integer>>() {
-            @Override
-            public void onResponse(Call<HashMap<String, Integer>> call, Response<HashMap<String, Integer>> response) {
-                if(response.isSuccessful() && response.body() !=null){
-                    Log.d("Mohammad","success");
-                    initialzieChildrenChart(response.body());
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
-                Log.d("Mohammad","failed");
-                Toast.makeText(AdminMainActivity.this, "----Failure, Please Do something.---", Toast.LENGTH_SHORT).show();
-            }
-        });
-        newParents.enqueue(new Callback<HashMap<String, Integer>>() {
-            @Override
-            public void onResponse(Call<HashMap<String, Integer>> call, Response<HashMap<String, Integer>> response) {
-                if(response.isSuccessful() && response.body() !=null){
-                    Log.d("Mohammad", ""+response.body().get("totalParents"));
-                    initialzieParentsChart(response.body());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
-                Log.d("Mohammad","failed");
-                Toast.makeText(AdminMainActivity.this, "----Failure, Please Do something.---", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        activityTime.enqueue(new Callback<HashMap<String, Integer>>() {
-            @Override
-            public void onResponse(Call<HashMap<String, Integer>> call, Response<HashMap<String, Integer>> response) {
-                if(response.isSuccessful() && response.body() !=null){
-                    initialzieActivitiesChart(response.body());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
-                Log.d("Mohammad","6th");
-                Toast.makeText(AdminMainActivity.this, "----Failure, Please Do something.---", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        kidsByCategory.enqueue(new Callback<HashMap<String, Integer>>() {
-            @Override
-            public void onResponse(Call<HashMap<String, Integer>> call, Response<HashMap<String, Integer>> response) {
-                if(response.isSuccessful() && response.body() !=null){
-                    initialzieTotalCatChart(response.body());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<HashMap<String, Integer>> call, Throwable t) {
-                Log.d("Mohammad","6th");
-                Toast.makeText(AdminMainActivity.this, "----Failure, Please Do something.---", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-
-    }
-
+ */
 }

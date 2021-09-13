@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.Spinner;
@@ -47,6 +49,8 @@ public class Activity extends AppCompatActivity {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyKIDIPref", 0); // 0 - for private mode
         SharedPreferences.Editor editor = pref.edit();        navigationView = findViewById(R.id.navibarActivity);
         String parentId;
+        String userType;
+        userType = pref.getString("userType", "parent");
 
         parentId = pref.getString("parentID", null);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -70,6 +74,14 @@ public class Activity extends AppCompatActivity {
                         PopupMenu popup = new PopupMenu(Activity.this, findViewById(R.id.bottomNavigationMoreMenuId));
                         MenuInflater inflater = popup.getMenuInflater();
                         inflater.inflate(R.menu.mymenu, popup.getMenu());
+                        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                            public boolean onMenuItemClick(MenuItem item) {
+                                if(item.getItemId()==R.id.logoutmenu)
+                                    startActivity(new Intent(Activity.this, FirstScreen.class));
+
+                                return true;
+                            }
+                        });
                         popup.show();
                         return true;
                 }
@@ -206,8 +218,18 @@ public class Activity extends AppCompatActivity {
                     }
                 });
 
-
+        ImageView activityBtn = findViewById(R.id.imageButton6);
+        ImageView addBtn = findViewById(R.id.imageButton7);
         //////////////////////////
+        if (userType.equals("leader")) {
+            activityBtn.setVisibility(View.INVISIBLE);
+            addBtn.setVisibility(View.INVISIBLE);
+            Menu nav_Menu = navigationView.getMenu();
+            MenuItem target = nav_Menu.findItem(R.id.bottomNavigationUserMenuId);
+            target.setVisible(false);
+        }
+
+        //////////
     }
     public void reloadavtivities() {
         LayoutInflater inflater = (LayoutInflater) this.getSystemService

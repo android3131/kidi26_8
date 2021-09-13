@@ -11,11 +11,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -83,10 +85,11 @@ public class AdminSetCourse extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.home_page:
                         startActivity(new Intent(AdminSetCourse.this, AdminMainActivity.class));
+                        // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, homeFragment).commit();
                         return true;
 
                     case R.id.users_page:
-                        startActivity(new Intent(AdminSetCourse.this, AdminAddCourse.class));
+                        startActivity(new Intent(AdminSetCourse.this, AdminSetUser.class));
                         // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, leadersFragment).commit();
                         return true;
 
@@ -101,8 +104,19 @@ public class AdminSetCourse extends AppCompatActivity {
                         return true;
 
                     case R.id.more_page:
-                        startActivity(new Intent(AdminSetCourse.this, LeaderFirstLoginActivity.class));
-                        // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, moreFragment).commit();
+
+                        PopupMenu popup = new PopupMenu(AdminSetCourse.this, findViewById(R.id.more_page));
+                        MenuInflater inflater = popup.getMenuInflater();
+                        inflater.inflate(R.menu.mymenu, popup.getMenu());
+                        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                            public boolean onMenuItemClick(MenuItem item) {
+                                if(item.getItemId()==R.id.logoutmenu)
+                                    startActivity(new Intent(AdminSetCourse.this, FirstScreen.class));
+
+                                return true;
+                            }
+                        });
+                        popup.show();
                         return true;
                 }
                 return false;
@@ -239,6 +253,7 @@ public class AdminSetCourse extends AppCompatActivity {
         categoryIds = new ArrayList<>();
         coursesIds = new ArrayList<>();
         categoryList.add("Choose Category");
+        categoryIds.add("");
         ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(AdminSetCourse.this, android.R.layout.simple_spinner_item, categoryList);
         categorySpinner.setAdapter(categoryAdapter);
         Call<List<Category>> call;
@@ -311,12 +326,10 @@ public class AdminSetCourse extends AppCompatActivity {
         coursesIds.add("");
 
         //this should be deleted !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        lis.add(new Course2("Course", 50, "14/5/2020", "14/8/2020",
-                new Category("Animal", "img"),
-                "zoom.com"
-                , "Day", "14:00", "17:00", 0, "urlLink.com"));
+
 
         myAdapter.notifyDataSetChanged();
+
 
         Call<List<Course>> call;
         if (k == 0)
@@ -331,11 +344,14 @@ public class AdminSetCourse extends AppCompatActivity {
                 int len = 0;
                 if (responseFromAPI != null)
                     len = responseFromAPI.size();
+                String catego=categoryList.get(k);
+                if(k==0)
+                    catego="";
                 for (int i = 0; i < len; i++) {
                     lis.add(new Course2(responseFromAPI.get(i).getName()
                             , responseFromAPI.get(i).getPrice(), responseFromAPI.get(i).getStartDateTime().getDay() + "/" + responseFromAPI.get(i).getStartDateTime().getMonth() + "/" + responseFromAPI.get(i).getStartDateTime().getYear()
                             , responseFromAPI.get(i).getFinishDateTime().getDay() + "/" + responseFromAPI.get(i).getFinishDateTime().getMonth() + "/" + responseFromAPI.get(i).getFinishDateTime().getYear()
-                            , new Category(responseFromAPI.get(i).getCategoryName(), ""), responseFromAPI.get(i).getZoomMeetingLink(),
+                            , new Category( responseFromAPI.get(i).getCategoryName(), ""), responseFromAPI.get(i).getZoomMeetingLink(),
                             responseFromAPI.get(i).getDay(), responseFromAPI.get(i).getStartHour(), responseFromAPI.get(i).getEndHour(), 0, responseFromAPI.get(i).getUrlLink()));
 
                     coursesIds.add(responseFromAPI.get(i).getID());

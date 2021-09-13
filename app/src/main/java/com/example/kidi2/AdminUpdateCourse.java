@@ -72,21 +72,24 @@ public class AdminUpdateCourse extends AppCompatActivity {
     EditText ZoomLink;
     EditText urlLink;
 
-    Retrofit retrofit;
+    Retrofit retrofit,retrofit2;
     RetroFitAPI3 retrofitAPI3;
+    RetroFitAPI2 retrofitAPI2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_update_course);
-         retrofit = new Retrofit.Builder()
+        retrofit = new Retrofit.Builder()
                 .baseUrl(getString(R.string.BASE_URL))
                 // when sending data in json format we have to add Gson converter factory
                 .addConverterFactory(GsonConverterFactory.create())
                 // and build our retrofit builder.
                 .build();
 
-         retrofitAPI3 = retrofit.create(RetroFitAPI3.class);
+
+        retrofitAPI3 = retrofit.create(RetroFitAPI3.class);
+        retrofitAPI2 = retrofit.create(RetroFitAPI2.class);
         //findViewById
         hours = findViewById(R.id.hours);
         daySpinner=findViewById(R.id.day_spinner1);
@@ -215,7 +218,7 @@ public class AdminUpdateCourse extends AppCompatActivity {
                 break;
             }
         }
-        //categorySpinner.setSelection(posCat);
+        categorySpinner.setSelection(posCat);
 
         //put the day from sharedRefrences(setAdminCourse) in the spinner on the update activity
         int posDay = 0;
@@ -401,70 +404,46 @@ public class AdminUpdateCourse extends AppCompatActivity {
 
     //implementation of the function that add the categories to the spinner
     private void addSpinner() {
-//        categoryList.add("Choose Category");
-//        categoryList.add("Animal");
-//        categoryList.add("Arts");
-//        categoryList.add("Space");
-//        categoryList.add("Science");
-//
-//
-//
-//
-//        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categoryList);
-//        categorySpinner.setAdapter(categoryAdapter);
-//
-//        categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                Log.d("ofra", "on Button click: " + categorySpinner.getSelectedItem());
-//                pos=i;
-//                categorySelection =  categoryList.get(i);
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//            }
-//
-//        });
-        categorySpinner = findViewById(R.id.categorySpinner);
+
+        categorySpinner = findViewById(R.id.spinner_category1);
         categoryList = new ArrayList<>();
         categoryIds = new ArrayList<>();
         categoryList.add("Choose Category");
+        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(AdminUpdateCourse.this, android.R.layout.simple_spinner_item, categoryList);
+        categorySpinner.setAdapter(categoryAdapter);
         Call<List<Category>> call;
-//        call=retrofitAPI3.getallCat1();
-//        call.enqueue(new Callback<List<Category>>() {
-//            @Override
-//            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
-//
-//                int len=0;
-//                List<Category> responseFromAPI = response.body();
-//                if(responseFromAPI!=null)
-//                    len=responseFromAPI.size();
-//                for (int i=0;i<len;i++) {
-//                    categoryList.add(responseFromAPI.get(i).getName());
-//                    categoryIds.add(responseFromAPI.get(i).getId());
-//                }
-//
-//                ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(AdminUpdateCourse.this, android.R.layout.simple_spinner_item, categoryList);
-//                categorySpinner.setAdapter(categoryAdapter);
+        call = retrofitAPI2.getallCat();
+        call.enqueue(new Callback<List<Category>>() {
+            @Override
+            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
+
+                List<Category> responseFromAPI = response.body();
+                int len = responseFromAPI.size();
+                for (int i = 0; i < len; i++) {
+                    categoryList.add(responseFromAPI.get(i).getName());
+                    categoryIds.add(responseFromAPI.get(i).getId());
+                }
+
+                // ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(AdminSetCourse.this, android.R.layout.simple_spinner_item, categoryList);
+
 //                categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 //                    @Override
 //                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 //                        //Log.d("ofra", "on Button click: " + categorySpinner.getSelectedItem());
-//                        pos=i;
-//                        categorySelection = categorySpinner.getSelectedItem();
-//
+//                       // myAdapter.notifyDataSetChanged();
+//                        Toast.makeText(AdminUpdateCourse.this, "item selected" + categoryList.get(i), Toast.LENGTH_SHORT).show();
 //                    }
+//
 //                    @Override
 //                    public void onNothingSelected(AdapterView<?> adapterView) {
 //                    }
 //                });
-//            }
-//            @Override
-//            public void onFailure(Call<List<Category>> call, Throwable t) {
-//            }
-//        });
+            }
+
+            @Override
+            public void onFailure(Call<List<Category>> call, Throwable t) {
+            }
+        });
 
     }
 

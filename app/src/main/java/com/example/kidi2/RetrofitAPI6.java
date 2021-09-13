@@ -22,7 +22,7 @@ public interface RetrofitAPI6 {
     Call<List<Kid>> getParentsChildren(@Path("parentId") String parentId);
 
     @POST("/addCourseToChild/{parentId}/{kidId}/{courseId}")
-    Call<Kid> updateKidsCourses(@Path("parentId") String parentId, @Path("kidId") String kidId, @Path("courseId") String courseId);
+    Call<Boolean> updateKidsCourses(@Path("parentId") String parentId, @Path("kidId") String kidId, @Path("courseId") String courseId);
 
 
 

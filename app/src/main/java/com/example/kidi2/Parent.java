@@ -28,6 +28,10 @@ public class Parent {
     private String paymentMethod; // ??
 
     private String paymentDetails;
+    private Status activeStatus;
+    private Date dateOfBirth;
+
+
 
     private Status status;
 
@@ -189,6 +193,20 @@ public class Parent {
     public String toString() {
         return "Parent [fullName=" + fullName + ", phoneNumnber=" + phoneNumber + ", email=" + email +"Date"+activeDate +"]";
     }
+    public Status getActiveStatus() {
+        return activeStatus;
+    }
 
+    public void setActiveStatus(Status activeStatus) {
+        this.activeStatus = activeStatus;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
 
 }

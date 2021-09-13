@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:2:1-98:12
-INJECTED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:2:1-98:12
-INJECTED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:2:1-98:12
-INJECTED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:2:1-98:12
+ADDED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:2:1-102:12
+INJECTED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:2:1-102:12
+INJECTED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:2:1-102:12
+INJECTED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:2:1-102:12
 MERGED from [com.google.android.material:material:1.4.0] C:\Users\win10\.gradle\caches\transforms-3\25012fcc08d4c5cf5a2844c1a21a6fbe\transformed\material-1.4.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\win10\.gradle\caches\transforms-3\5bc3f959ce93f12bdaaef6045615861e\transformed\constraintlayout-2.0.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.3.1] C:\Users\win10\.gradle\caches\transforms-3\4ecd700c773cf5624732e3577602f1ea\transformed\appcompat-1.3.1\AndroidManifest.xml:17:1-24:12
@@ -40,20 +40,20 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\win10\.gradle\ca
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\win10\.gradle\caches\transforms-3\8ca7186ef83368b8549809152ed428ce\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\win10\.gradle\caches\transforms-3\485578c608519582fc751ff2f7c88476\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\win10\.gradle\caches\transforms-3\18e5cb54f886f7aa7e26ad4e22b3ac23\transformed\annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:2:1-98:12
-INJECTED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:2:1-98:12
-INJECTED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:2:1-98:12
+INJECTED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:2:1-102:12
+INJECTED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:2:1-102:12
+INJECTED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:2:1-102:12
 	package
 		ADDED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:3:5-32
 		INJECTED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:2:1-98:12
+		ADDED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:2:1-102:12
 		INJECTED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:2:1-98:12
+		ADDED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:2:1-102:12
 		INJECTED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:2:11-69
@@ -62,7 +62,7 @@ ADDED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\Andr
 	android:name
 		ADDED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:5:22-64
 application
-ADDED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:7:5-96:19
+ADDED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:7:5-100:19
 MERGED from [com.google.android.material:material:1.4.0] C:\Users\win10\.gradle\caches\transforms-3\25012fcc08d4c5cf5a2844c1a21a6fbe\transformed\material-1.4.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.4.0] C:\Users\win10\.gradle\caches\transforms-3\25012fcc08d4c5cf5a2844c1a21a6fbe\transformed\material-1.4.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\win10\.gradle\caches\transforms-3\5bc3f959ce93f12bdaaef6045615861e\transformed\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
@@ -241,6 +241,12 @@ ADDED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\Andr
 		ADDED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:94:13-36
 	android:name
 		ADDED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:93:13-43
+activity#com.example.kidi2.AdminSetUser
+ADDED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:96:9-98:39
+	android:exported
+		ADDED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:98:13-36
+	android:name
+		ADDED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml:97:13-41
 uses-sdk
 INJECTED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\win10\AndroidStudioProjects\KIDI4\kidi26_8\app\src\main\AndroidManifest.xml

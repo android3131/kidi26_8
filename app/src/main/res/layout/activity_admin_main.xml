@@ -1,278 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main"
     android:background="#4E7FE7"
     tools:context=".AdminMainActivity">
 
-
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Admin Main"
+        android:layout_marginTop="22dp"
         android:textColor="@color/white"
-        android:textSize="16sp"
-
+        android:textSize="22dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/vlayout"
+        app:layout_constraintBottom_toTopOf="@+id/mainLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
     <LinearLayout
-        android:id="@+id/vlayout"
+        android:id="@+id/mainLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="80dp"
-        android:background="@drawable/myrect10"
-        android:clipToPadding="false"
-        android:hapticFeedbackEnabled="false"
-        android:orientation="vertical"
-        android:paddingTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:ignore="ExtraText">
+        android:background="@drawable/background_custome"
+        android:orientation="vertical">
         <LinearLayout
-            android:layout_width="150dp"
-            android:layout_height="25dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/week_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:text="Week"
-                android:textAllCaps="false"
-                android:padding="0dp"
-                android:includeFontPadding="false"
-                android:textSize="10sp"
-                android:minHeight="0dp"
-                android:minWidth="0dp"
-                android:onClick="buttonPressed"
-                android:textAlignment="center"
-                app:backgroundTint="@null"
-                android:stateListAnimator="@null"
-                android:background="@drawable/week_background"/>
-
-
-
+                android:id="@+id/weekBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/corners"
+                android:text="Weekly"
+                android:textSize="10dp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/card_5" />
             <Button
-                android:id="@+id/month_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:text="Month"
-                android:padding="0dp"
-                android:includeFontPadding="false"
-                android:textSize="10sp"
-                android:minHeight="0dp"
-                android:minWidth="0dp"
-                android:onClick="buttonPressed"
-                android:baselineAligned="false"
-                app:backgroundTint="@null"
-                android:stateListAnimator="@null"
-                android:textAllCaps="false"
-                android:background="@drawable/month_background"/>
-
+                android:id="@+id/monthBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:textStyle="bold"
+                android:background="@drawable/corners"
+                android:textSize="10dp"
+                app:backgroundTint="@color/card_5"
+                android:layout_marginEnd="10dp"
+                android:text="Monthly" />
             <Button
-                android:id="@+id/year_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:text="Year"
-                android:padding="0dp"
-                android:includeFontPadding="false"
-                android:textSize="10sp"
-                android:minHeight="0dp"
-                android:onClick="buttonPressed"
-                android:minWidth="0dp"
-                app:backgroundTint="@null"
-                android:stateListAnimator="@null"
-                android:textAllCaps="false"
-                android:background="@drawable/year_background"/>
+                android:id="@+id/yearBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginEnd="10dp"
+                app:backgroundTint="@color/card_5"
+                android:background="@drawable/corners"
+                android:textStyle="bold"
+                android:textSize="10dp"
+                android:text="year" />
+
         </LinearLayout>
+
         <LinearLayout
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_weight="1"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_weight="0.6"
+            android:layout_marginTop="40dp"
             android:orientation="horizontal">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_weight="1"
-        android:layout_height="match_parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="200dp"
+                android:layout_height="match_parent">
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/idPieChartHours"
+                    android:layout_width="212dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </com.github.mikephil.charting.charts.PieChart>
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:background="@drawable/percentage"
+                    android:layout_marginBottom="80dp"
+                    android:layout_marginLeft="30dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="200dp"
+                android:layout_height="match_parent">
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/idPieChartParent"
+                    android:layout_width="212dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                </com.github.mikephil.charting.charts.PieChart>
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="35dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_height="35dp"
+                    android:gravity="center"
+                    android:background="@drawable/percentage_1"
+                    android:layout_marginBottom="80dp"
+                    android:layout_marginLeft="30dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
 
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/activities_chart"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
-        </com.github.mikephil.charting.charts.PieChart>
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.6"
+            android:orientation="horizontal">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="200dp"
+                android:layout_height="match_parent">
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/idPieChartKids"
+                    android:layout_width="212dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </com.github.mikephil.charting.charts.PieChart>
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="@drawable/percentage_2"
+                    android:layout_marginBottom="80dp"
+                    android:layout_marginLeft="30dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/idPieChartTotal"
+                android:layout_width="212dp"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </com.github.mikephil.charting.charts.PieChart>
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/activities_perc"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/text_background"
-            android:backgroundTint="@color/activities_colour"
-            android:gravity="center"
-            android:text="100%"
-            android:textColor="@color/white"
-            android:textSize="10sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.14"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.2" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent">
-            <com.github.mikephil.charting.charts.PieChart
-                android:id="@+id/parents_chart"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                />
-
-                <TextView
-                    android:id="@+id/parents_perc"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/text_background"
-                    android:backgroundTint="@color/parents_colour"
-                    android:gravity="center"
-                    android:text="100%"
-                    android:textColor="@color/white"
-                    android:textSize="10sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.14"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.2" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </LinearLayout>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Annual Trends By Category "
+            android:textSize="15dp"
+            android:gravity="bottom|center"
+            android:layout_weight="0.1"/>
 
         <LinearLayout
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal">
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent">
-            <com.github.mikephil.charting.charts.PieChart
-                android:id="@+id/children_chart"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barchart"
+                android:layout_marginBottom="55sp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-             />
-
-                <TextView
-                    android:id="@+id/children_perc"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/text_background"
-                    android:backgroundTint="@color/children_colour"
-                    android:gravity="center"
-                    android:text="100%"
-                    android:textColor="@color/white"
-                    android:textSize="10sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.14"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.2" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
                 android:layout_height="match_parent">
-            <com.github.mikephil.charting.charts.PieChart
-                android:id="@+id/totelPerCat_chart"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-               />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.github.mikephil.charting.charts.BarChart>
         </LinearLayout>
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/bar_chart"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-        </com.github.mikephil.charting.charts.BarChart>
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@color/white"
-            app:elevation="10dp"
-            app:itemIconTint="@color/tab_item"
-            app:labelVisibilityMode="labeled"
-            app:menu="@menu/bottom_navigation_menu">
-
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/admin_main_fragments"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginBottom="60dp"
-        app:layout_constraintBottom_toBottomOf="@id/bar_chart"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="NotSibling">
-    </FrameLayout>
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@drawable/navibarselected"
+        app:itemTextColor="@drawable/navibarselected"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bottom_navigation"
+        app:menu="@menu/bottom_navigation_menu"/>
+
+</RelativeLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>

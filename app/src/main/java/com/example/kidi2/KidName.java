@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -62,27 +63,35 @@ public class KidName extends AppCompatActivity {
         SharedPreferences.Editor editor = pref.edit();
         navigationView = findViewById(R.id.navibarKidName);
 
-        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-
+        navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.bottomNavigationHomeMenuId:
                         startActivity(new Intent(KidName.this, HomeLogin.class));
                         return true;
                     case R.id.bottomNavigationUserMenuId:
-                        startActivity(new Intent(KidName.this, Activity.class));
+                        startActivity(new Intent(KidName.this, ParentProfileActivity.class));
                         return true;
                     case R.id.bottomNavigationActivityMenuId:
-                        startActivity(new Intent(KidName.this, FirstScreen.class));
+                        startActivity(new Intent(KidName.this, ChatLeader.class));
                         return true;
                     case R.id.bottomNavigationNotificatonsMenuId:
-                        startActivity(new Intent(KidName.this, KidName.class));
+                        startActivity(new Intent(KidName.this, Notifications.class));
                         return true;
                     case R.id.bottomNavigationMoreMenuId:
+
                         PopupMenu popup = new PopupMenu(KidName.this, findViewById(R.id.bottomNavigationMoreMenuId));
                         MenuInflater inflater = popup.getMenuInflater();
                         inflater.inflate(R.menu.mymenu, popup.getMenu());
+                        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                            public boolean onMenuItemClick(MenuItem item) {
+                                if(item.getItemId()==R.id.logoutmenu)
+                                    startActivity(new Intent(KidName.this, FirstScreen.class));
+
+                                return true;
+                            }
+                        });
                         popup.show();
                         return true;
                 }
@@ -301,134 +310,138 @@ public class KidName extends AppCompatActivity {
 
         //get number of active courses
 
-        Call<Integer> callnumberofactive = retrofitAPI.getNumberActiveCourses(kidid);
-
-        callnumberofactive.enqueue(new Callback<Integer>() {
-
-
-            @Override
-
-            public void onResponse(Call<Integer> call, Response<Integer> response) {
-                // Response<Integer> response = callnumberofactive.execute();
-                int numofactive = response.body();
-
-                numberofactive.setText(String.valueOf(numofactive));
-
-
-            }
-
-            public void onFailure(Call<Integer> call, Throwable t) {
-                int numofactive = 5;
-                numberofactive.setText(String.valueOf(numofactive));
-            }
-        });
-        /////get number of completed courses
-        Call<Integer> callnumberofcompleted = retrofitAPI.getNumberCompletedCourses(kidid);
-        callnumberofcompleted.enqueue(new Callback<Integer>() {
-            public void onResponse(Call<Integer> call, Response<Integer> response) {
-                //Response<Integer> response = callnumberofcompleted.execute();
-                int numofcompleted = response.body();
-
-                numberofcompleted.setText(String.valueOf(numofcompleted));
-
-
-            }
-
-            public void onFailure(Call<Integer> call, Throwable t) {
-                int numofcompleted = 3;
-                numberofcompleted.setText(String.valueOf(numofcompleted));
-            }
-        });
-        LogInInfo logInInfo4 = new LogInInfo(pref.getString("username", null),
-                pref.getString("password", null));
-
-////////////////get list of active courses
-        Call<List<Meeting>> callActiveCourses = retrofitAPI.getAllKidsActiveCoursesSortedKidProfile(kidid);
-
-        callActiveCourses.enqueue(new Callback<List<Meeting>>() {
-            public void onResponse(Call<List<Meeting>> call, Response<List<Meeting>> response) {
-                //Response<List<Meeting>> response = callActiveCourses.execute();
-                List<Meeting> meetings = response.body();
-                for(int j=4;j>=meetings.size();j--){
-                    viewPagerItemArrayList.remove(j);
-                }
-                for (int i = 0; i < images.length && i < meetings.size(); i++) {
-
-                    DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-                    dates[i] = meetings.get(i).getMeetingDateTime();
-                    String strDate = dateFormat.format(dates[i]);
-                    describtion[i] = meetings.get(i).getId();
-
-                    Resources r = getResources();
-
-                    viewPagerItemArrayList.get(i).setDescription(describtion[i]);
-
-                    viewPagerItemArrayList.get(i).setDate(strDate);
-
-
-                }
-                viewPager.getAdapter().notifyDataSetChanged();
-
-            }
-
-            public void onFailure(Call<List<Meeting>> call, Throwable t) {
-                for (int i = 0; i < images.length; i++) {
-
-                    viewPagerItemArrayList.get(i).setDescription("describtion test");
-
-                    viewPagerItemArrayList.get(i).setDate("date test");
-                }
-                viewPager.getAdapter().notifyDataSetChanged();
-
-
-            }
-        });
-
-        ///////////////////////////////////////////
-        Call<List<Meeting>> callCompletedCourses = retrofitAPI.getAllKidsCompletedCoursesSortedKidProfile(kidid);
-
-        callCompletedCourses.enqueue(new Callback<List<Meeting>>() {
-            public void onResponse(Call<List<Meeting>> call, Response<List<Meeting>> response) {
-                //Response<List<Meeting>> response = callActiveCourses.execute();
-                List<Meeting> meetings = response.body();
-                if(meetings!=null) {
-                    for(int j=4;j>=meetings.size();j--){
-                        viewPagerItemArrayListCompleted.remove(j);
-                    }
-                    for (int i = 0; i < images.length && i < meetings.size(); i++) {
-
-                        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-                        datesCompleted[i] = meetings.get(i).getMeetingDateTime();
-                        String strDate = dateFormat.format(dates[i]);
-                        describtionCompleted[i] = meetings.get(i).getId();
-
-                        Resources r = getResources();
-
-                        viewPagerItemArrayListCompleted.get(i).setDescription(describtionCompleted[i]);
-
-                        viewPagerItemArrayListCompleted.get(i).setDate(strDate);
-
-
-                    }
-                    viewPager2.getAdapter().notifyDataSetChanged();
-                }
-                else {
-                    viewPagerItemArrayListCompleted.clear();
-                    viewPager2.getAdapter().notifyDataSetChanged();
-                }            }
-
-            public void onFailure(Call<List<Meeting>> call, Throwable t) {
-                for (int i = 0; i < images.length; i++) {
-
-                    viewPagerItemArrayListCompleted.get(i).setDescription("describtion test2");
-
-                    viewPagerItemArrayListCompleted.get(i).setDate("date test2");
-                }
-                viewPager2.getAdapter().notifyDataSetChanged();
-
-
-            }
-        });
+//        Call<Integer> callnumberofactive = retrofitAPI.getNumberActiveCourses(kidid);
+//
+//        callnumberofactive.enqueue(new Callback<Integer>() {
+//
+//
+//            @Override
+//
+//            public void onResponse(Call<Integer> call, Response<Integer> response) {
+//                // Response<Integer> response = callnumberofactive.execute();
+//                int numofactive = response.body();
+//
+//                numberofactive.setText(String.valueOf(numofactive));
+//
+//
+//            }
+//
+//            public void onFailure(Call<Integer> call, Throwable t) {
+//                int numofactive = 5;
+//                numberofactive.setText(String.valueOf(numofactive));
+//            }
+//        });
+//        /////get number of completed courses
+//        Call<Integer> callnumberofcompleted = retrofitAPI.getNumberCompletedCourses(kidid);
+//        callnumberofcompleted.enqueue(new Callback<Integer>() {
+//            public void onResponse(Call<Integer> call, Response<Integer> response) {
+//                //Response<Integer> response = callnumberofcompleted.execute();
+//                int numofcompleted = response.body();
+//
+//                numberofcompleted.setText(String.valueOf(numofcompleted));
+//
+//
+//            }
+//
+//            public void onFailure(Call<Integer> call, Throwable t) {
+//                int numofcompleted = 3;
+//                numberofcompleted.setText(String.valueOf(numofcompleted));
+//            }
+//        });
+//        LogInInfo logInInfo4 = new LogInInfo(pref.getString("username", null),
+//                pref.getString("password", null));
+//
+//////////////////get list of active courses
+//        Call<List<Meeting>> callActiveCourses = retrofitAPI.getAllKidsActiveCoursesSortedKidProfile(kidid);
+//
+//        callActiveCourses.enqueue(new Callback<List<Meeting>>() {
+//            public void onResponse(Call<List<Meeting>> call, Response<List<Meeting>> response) {
+//                //Response<List<Meeting>> response = callActiveCourses.execute();
+//                List<Meeting> meetings = response.body();
+//                if(response.body()!=null) {
+//                    for (int j = 4; j >= meetings.size(); j--) {
+//                        viewPagerItemArrayList.remove(j);
+//                    }
+//                    for (int i = 0; i < images.length && i < meetings.size(); i++) {
+//
+//                        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+//                        dates[i] = meetings.get(i).getMeetingDateTime();
+//                        String strDate = dateFormat.format(dates[i]);
+//                        describtion[i] = meetings.get(i).getId();
+//
+//                        Resources r = getResources();
+//
+//                        viewPagerItemArrayList.get(i).setDescription(describtion[i]);
+//
+//                        viewPagerItemArrayList.get(i).setDate(strDate);
+//
+//
+//                    }
+//                    viewPager.getAdapter().notifyDataSetChanged();
+//                }
+//
+//            }
+//
+//            public void onFailure(Call<List<Meeting>> call, Throwable t) {
+//                for (int i = 0; i < images.length; i++) {
+//
+//                    viewPagerItemArrayList.get(i).setDescription("describtion test");
+//
+//                    viewPagerItemArrayList.get(i).setDate("date test");
+//                }
+//                viewPager.getAdapter().notifyDataSetChanged();
+//
+//
+//            }
+//        });
+//
+//        ///////////////////////////////////////////
+//        Call<List<Meeting>> callCompletedCourses = retrofitAPI.getAllKidsCompletedCoursesSortedKidProfile(kidid);
+//
+//        callCompletedCourses.enqueue(new Callback<List<Meeting>>() {
+//            public void onResponse(Call<List<Meeting>> call, Response<List<Meeting>> response) {
+//                //Response<List<Meeting>> response = callActiveCourses.execute();
+//                List<Meeting> meetings = response.body();
+//                if (response.body() != null) {
+//                    if (meetings != null) {
+//                        for (int j = 4; j >= meetings.size(); j--) {
+//                            viewPagerItemArrayListCompleted.remove(j);
+//                        }
+//                        for (int i = 0; i < images.length && i < meetings.size(); i++) {
+//
+//                            DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+//                            datesCompleted[i] = meetings.get(i).getMeetingDateTime();
+//                            String strDate = dateFormat.format(dates[i]);
+//                            describtionCompleted[i] = meetings.get(i).getId();
+//
+//                            Resources r = getResources();
+//
+//                            viewPagerItemArrayListCompleted.get(i).setDescription(describtionCompleted[i]);
+//
+//                            viewPagerItemArrayListCompleted.get(i).setDate(strDate);
+//
+//
+//                        }
+//                        viewPager2.getAdapter().notifyDataSetChanged();
+//                    } else {
+//                        viewPagerItemArrayListCompleted.clear();
+//                        viewPager2.getAdapter().notifyDataSetChanged();
+//                    }
+//                }
+//            }
+//
+//            public void onFailure(Call<List<Meeting>> call, Throwable t) {
+//                for (int i = 0; i < images.length; i++) {
+//
+//                    viewPagerItemArrayListCompleted.get(i).setDescription("describtion test2");
+//
+//                    viewPagerItemArrayListCompleted.get(i).setDate("date test2");
+//                }
+//                viewPager2.getAdapter().notifyDataSetChanged();
+//
+//
+//            }
+//        });
 
     }
 

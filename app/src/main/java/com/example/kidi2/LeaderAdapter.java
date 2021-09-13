@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,6 +22,7 @@ public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.ViewHolder
     Context context;
     private List<Leader> leader_list;
     private List<Leader> FullList;
+
 
     public LeaderAdapter(List<Leader> leader_list) {
         //this.context=context;
@@ -43,7 +45,7 @@ public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.ViewHolder
             Leader currentItem = leader_list.get(position);
             holder.username_tv.setText(currentItem.getFullName());
             int age=getAge(currentItem.getDateOfBirth());
-             holder.age_tv.setText(String.valueOf(age));
+            holder.age_tv.setText(String.valueOf(age));
 
             //  Date diffDate = new Date(diff);
 
@@ -51,6 +53,7 @@ public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.ViewHolder
             holder.active_tv.setText(currentItem.getActiveStatus().toString());
             holder.type_tv.setText("leader");
             holder.active_date_tv.setText(currentItem.getActiveDate().toString());
+            holder.v.setBackgroundColor(currentItem.getClr());
         }
     }
 
@@ -67,6 +70,7 @@ public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView username_tv, type_tv, age_tv, active_tv, active_date_tv;
+        TableRow v;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -75,6 +79,7 @@ public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.ViewHolder
             age_tv = itemView.findViewById(R.id.age_tv);
             active_tv = itemView.findViewById(R.id.active_tv);
             active_date_tv = itemView.findViewById(R.id.active_date_tv);
+            v=itemView.findViewById(R.id.table);
         }
     }
 

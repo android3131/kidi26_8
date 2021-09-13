@@ -93,6 +93,10 @@
             android:name=".AddKidActivity"
             android:exported="true" />
 
+        <activity
+            android:name=".AdminSetUser"
+            android:exported="true" />
+
     </application>
 
 </manifest>

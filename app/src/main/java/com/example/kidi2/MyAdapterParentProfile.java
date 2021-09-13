@@ -1,0 +1,96 @@
+package com.example.kidi2;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckedTextView;
+import android.widget.ImageView;
+
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+
+
+import java.util.ArrayList;
+
+public class MyAdapterParentProfile extends RecyclerView.Adapter<MyAdapterParentProfile.MyViewHolder> {
+    private ArrayList<KidCheckBox> mExamplelist;
+    //private int row_index;
+    //private int item_selected;
+    private int mCheckedPostion = -1;// no selection by default
+    Context ctx;
+
+    @NonNull
+    @Override
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.parent_profile_kid,parent,false);
+        MyViewHolder evh = new MyViewHolder(v);
+        return evh;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull MyAdapterParentProfile.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        KidCheckBox curr=mExamplelist.get(position);
+
+        System.out.println(curr);
+        holder.imageView.setImageResource(R.drawable.girlavatargrp6);
+        //holder.imageView.setImageResource(Integer.parseInt( curr.getKid().getImage()));
+        holder.checkedTextView.setText(curr.getKid().getFullName());
+
+        //check checkbox and uncheck previous selected button
+        holder.checkedTextView.setChecked(position == mCheckedPostion);
+        holder.checkedTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //              boolean currentCheckedStatus = curr.isIschecked();
+                mExamplelist.get(position).setIschecked(true);
+                if (position == mCheckedPostion) {
+                    //curr.setIschecked(!currentCheckedStatus);
+
+                    holder.checkedTextView.setChecked(false);
+                    mCheckedPostion = -1;
+                } else {
+                    mCheckedPostion = position;
+                    //System.out.println(position);
+                    // curr.setIschecked(false);
+                    notifyDataSetChanged();
+                }
+                ((Addactivity) ctx).getPosition(position);
+                ((Addactivity) ctx).helloFromAddActivity();
+            }
+
+        });
+
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return mExamplelist.size();
+    }
+
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
+        public ImageView imageView;
+        public CheckedTextView checkedTextView;
+        public MyViewHolder(@NonNull  View itemView) {
+            super(itemView);
+            imageView=itemView.findViewById(R.id.imageView3);
+            checkedTextView=itemView.findViewById(R.id.checkBox);
+        }
+
+    }
+    public MyAdapterParentProfile(Context ctx,ArrayList<KidCheckBox> exampleList){
+        this.mExamplelist=exampleList;
+        this.ctx=ctx;
+
+    }
+
+
+
+    //public int getItem_selected() {
+    //return item_selected;
+    //}
+}

@@ -112,12 +112,12 @@ public class Addactivity extends AppCompatActivity {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Call<Kid> call = retrofitAPI.updateKidsCourses(parentId, curr_kid.getId(), chosenCourse.getID());
+                Call<Boolean> call = retrofitAPI.updateKidsCourses(parentId, curr_kid.getId(), chosenCourse.getID());
                 //algorithmItems.add(new AlgorithmItem("choose course", "",R.color.white));
-                call.enqueue(new Callback<Kid>() {
+                call.enqueue(new Callback<Boolean>() {
                     @Override
-                    public void onResponse(Call<Kid> call, Response<Kid> response) {
-                        Kid responseKid = response.body();
+                    public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                        Boolean responseKid = response.body();
                         System.out.println("yyyyyy");
                         if (responseKid == null) {
                             Toast.makeText(com.example.kidi2.Addactivity.this,   "Add failed", Toast.LENGTH_SHORT).show();
@@ -128,7 +128,7 @@ public class Addactivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<Kid> call, Throwable t) {
+                    public void onFailure(Call<Boolean> call, Throwable t) {
                         System.out.println("nnnnn");
                         Toast.makeText(com.example.kidi2.Addactivity.this,   "Add failed", Toast.LENGTH_SHORT).show();
                     }

@@ -12,9 +12,11 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -87,9 +89,14 @@ public class HomeLogin extends AppCompatActivity {
         });
         if (userType.equals("leader")) {
             screenTitle.setText("Leader");
+            activityBtn.setVisibility(View.INVISIBLE);
+            addBtn.setVisibility(View.INVISIBLE);
             funwehad.setText("Completed Courses");
             funweplan.setText("Active Courses");
-        } else {
+            Menu nav_Menu = navigationView.getMenu();
+            MenuItem target = nav_Menu.findItem(R.id.bottomNavigationUserMenuId);
+            target.setVisible(false);
+        }else {
             screenTitle.setText("KIDI");
             funwehad.setText("Fun we had");
             funweplan.setText("Fun we plan");
@@ -97,6 +104,7 @@ public class HomeLogin extends AppCompatActivity {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(HomeLogin.this, Addactivity.class));
 
 
             }
@@ -105,9 +113,8 @@ public class HomeLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                editor.putString("meetingState", "all");
-                editor.commit();
-                startActivity(new Intent(HomeLogin.this, Activity.class));
+                startActivity(new Intent(HomeLogin.this, Addactivity.class));
+
 
             }
         });
@@ -137,7 +144,7 @@ public class HomeLogin extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.bottomNavigationHomeMenuId:
-
+                        startActivity(new Intent(HomeLogin.this, HomeLogin.class));
                         return true;
                     case R.id.bottomNavigationUserMenuId:
                         startActivity(new Intent(HomeLogin.this, ParentProfileActivity.class));
@@ -153,6 +160,14 @@ public class HomeLogin extends AppCompatActivity {
                         PopupMenu popup = new PopupMenu(HomeLogin.this, findViewById(R.id.bottomNavigationMoreMenuId));
                         MenuInflater inflater = popup.getMenuInflater();
                         inflater.inflate(R.menu.mymenu, popup.getMenu());
+                        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                            public boolean onMenuItemClick(MenuItem item) {
+                                if(item.getItemId()==R.id.logoutmenu)
+                                    startActivity(new Intent(HomeLogin.this, FirstScreen.class));
+
+                                return true;
+                            }
+                        });
                         popup.show();
                         return true;
                 }

@@ -101,6 +101,9 @@
         <activity
             android:name="com.example.kidi2.AddKidActivity"
             android:exported="true" />
+        <activity
+            android:name="com.example.kidi2.AdminSetUser"
+            android:exported="true" />
     </application>
 
 </manifest>

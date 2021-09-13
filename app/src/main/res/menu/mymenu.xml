@@ -19,8 +19,8 @@
 
         />
     <item
-        android:id="@+id/locationmenu"
+        android:id="@+id/logoutmenu"
 
-        android:title="Location"
+        android:title="Log out"
         />
 </menu>
