@@ -36,7 +36,12 @@ public class MyAdapterParentProfile extends RecyclerView.Adapter<MyAdapterParent
         KidCheckBox curr=mExamplelist.get(position);
 
         System.out.println(curr);
-        holder.imageView.setImageResource(R.drawable.girlavatargrp6);
+        if(mExamplelist.get(position).getKid().getGender()==Gender.Boy){
+            holder.imageView.setImageResource(R.drawable.boyavatargrp6);
+        }
+        else {
+            holder.imageView.setImageResource(R.drawable.girlavatargrp6);
+        }
         //holder.imageView.setImageResource(Integer.parseInt( curr.getKid().getImage()));
         holder.checkedTextView.setText(curr.getKid().getFullName());
 
@@ -59,7 +64,7 @@ public class MyAdapterParentProfile extends RecyclerView.Adapter<MyAdapterParent
                     notifyDataSetChanged();
                 }
                 ((Addactivity) ctx).getPosition(position);
-                ((Addactivity) ctx).helloFromAddActivity();
+                ((Addactivity) ctx).ClickedKid();
             }
 
         });

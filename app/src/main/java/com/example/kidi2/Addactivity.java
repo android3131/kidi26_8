@@ -7,20 +7,27 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.sql.SQLOutput;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -71,17 +78,15 @@ public class Addactivity extends AppCompatActivity {
     static int index = -1;
     static ArrayList<KidCheckBox> Kid_list = new ArrayList<KidCheckBox>();
     Kid curr_kid;
-    //http://10.0.2.2:7009/
     Retrofit retrofit ;
-    //String.valueOf(R.string.BASE_URL)
-    // create an instance for our retrofit api class.
+
     RetrofitAPI6 retrofitAPI ;
 
     String space_id="612a326989674a4e38a688a0";
-    String art_id="612a326989674a4e38a688a1";
-    String animal_id="612a326989674a4e38a688a2";
-    String siecnce_id="612a326989674a4e38a688a3";
-    String music_id="612a326989674a4e38a688a4";
+    String art_id="612a326a89674a4e38a688a1";
+    String animal_id="612a326a89674a4e38a688a2";
+    String siecnce_id="612a326a89674a4e38a688a3";
+    String music_id="61373a2bc1866b7771fe78da";
     String parentId;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -90,7 +95,7 @@ public class Addactivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maingroup6);
 
-         retrofit = new Retrofit.Builder()
+        retrofit = new Retrofit.Builder()
                 .baseUrl(getString(R.string.BASE_URL))
                 // when sending data in json format we have to add Gson converter factory
                 .addConverterFactory(GsonConverterFactory.create())
@@ -98,7 +103,7 @@ public class Addactivity extends AppCompatActivity {
                 .build();
         //String.valueOf(R.string.BASE_URL)
         // create an instance for our retrofit api class.
-         retrofitAPI = retrofit.create(RetrofitAPI6.class);
+        retrofitAPI = retrofit.create(RetrofitAPI6.class);
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyKIDIPref", 0); // 0 - for private mode
         SharedPreferences.Editor editor = pref.edit();
         parentId = pref.getString("parentID", null);
@@ -118,22 +123,23 @@ public class Addactivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                         Boolean responseKid = response.body();
-                        System.out.println("yyyyyy");
                         if (responseKid == null) {
                             Toast.makeText(com.example.kidi2.Addactivity.this,   "Add failed", Toast.LENGTH_SHORT).show();
                         }
                         else {
                             Toast.makeText(com.example.kidi2.Addactivity.this,   "Course was added successfully", Toast.LENGTH_SHORT).show();
+                            finish();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<Boolean> call, Throwable t) {
-                        System.out.println("nnnnn");
                         Toast.makeText(com.example.kidi2.Addactivity.this,   "Add failed", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 });
-                startActivity(new Intent(Addactivity.this, HomeLogin.class));
+
+
 
             }
         });
@@ -141,7 +147,7 @@ public class Addactivity extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Addactivity.this, HomeLogin.class));
+                finish();
             }
         });
         //ViewPager v = findViewById(R.id.vie);
@@ -174,7 +180,7 @@ public class Addactivity extends AppCompatActivity {
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.addOnItemTouchListener(new RecyclerItemClickListener(this, rv ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
-                        Toast.makeText(com.example.kidi2.Addactivity.this,   " selected", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(com.example.kidi2.Addactivity.this,   " selected", Toast.LENGTH_SHORT).show();
                         for (int i=0;i<algorithmItems.size();i++) {
                             if(position!=i) {
                                 algorithmItems.get(i).setCheck(false);
@@ -193,30 +199,18 @@ public class Addactivity extends AppCompatActivity {
         );
     }
 
-    void helloFromAddActivity()   {
+    void ClickedKid()   {
         curr_kid = Kid_list.get(index).getKid();
 
-        //sliderChange();
         adapter2.notifyDataSetChanged();
-        //imageContainer.invalidate();
-        //imageContainer.isSelected();
         imageContainer.setCurrentItem(1, true);
         imageContainer.setCurrentItem(0, true);
-//        try {
-//            Thread.sleep(5000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//        imageContainer.setCurrentItem(0, true);
-
-
     }
 
     void sliderChange(){
         imageContainer.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
-
                 selectedDots(position);
                 super.onPageSelected(position);
                 switch (position)
@@ -241,27 +235,29 @@ public class Addactivity extends AppCompatActivity {
     // It is used to set the algorithm names to our array list.
 
     public void initList(String catId) {
-        algorithmItems.clear();
         adpt.notifyDataSetChanged();
-//        if (index != -1) {
-//            curr_kid = Kid_list.get(index).getKid();
-//        }
+
+        algorithmItems.clear();
         if (curr_kid != null) {
+
             Call<List<Course>> call = retrofitAPI.getCourseByCatNewAct(parentId, curr_kid.getId(), catId);
             //algorithmItems.add(new AlgorithmItem("choose course", "",R.color.white));
             call.enqueue(new Callback<List<Course>>() {
                 @Override
                 public void onResponse(Call<List<Course>> call, Response<List<Course>> response) {
                     List<Course> responseFromAPI = response.body();
-                    //   System.out.println(responseFromAPI);
+
+                    algorithmItems.clear();
+
                     int len = responseFromAPI.size();
-                    System.out.println(len);
+
                     for (int i = 0; i < len; i++) {
                         String pattern = "HH:mm:ss";
                         DateFormat df = new SimpleDateFormat(pattern);
                         String todayAsString = df.format(responseFromAPI.get(i).getStartDateTime().getTime());
                         AlgorithmItem_grp6 item = new AlgorithmItem_grp6(responseFromAPI.get(i).getName(), responseFromAPI.get(i).getDay() + " " + todayAsString + " + " + responseFromAPI.get(i).getMeetingDuration(), false);
                         algorithmItems.add(item);
+
                         algoMap.put(item, responseFromAPI.get(i));
                         adpt.setItems(algorithmItems);
                         adpt.notifyDataSetChanged();
@@ -270,7 +266,6 @@ public class Addactivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<List<Course>> call, Throwable t) {
-                    System.out.println("FAIL");
                 }
             });
         }
@@ -298,15 +293,11 @@ public class Addactivity extends AppCompatActivity {
     }
 
     private void getKidsData() {
-        // create retrofit builder and pass our base url
-        //String parentId = "611e33e1127e135d805b4efa"; //temp!!!
-        //m_adapter.notifyDataSetChanged();
-
+        Kid_list.clear();
         Call<List<Kid>> getAllParentsChildren = retrofitAPI.getParentsChildren(parentId);
         getAllParentsChildren.enqueue(new Callback<List<Kid>>() {
             @Override
             public void onResponse(Call<List<Kid>> getAllParentsChildren, Response<List<Kid>> response) {
-                System.out.println("111111");
                 List<Kid>  kids = response.body();
                 for(int i=0;i<kids.size();i++){
                     if (kids.get(i) != null) {
@@ -321,9 +312,6 @@ public class Addactivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Kid>> getAllParentsChildren, Throwable t) {
-                System.out.println("bye");
-                Log.e("msg", "msg2", t);
-
             }
         });
 
@@ -331,7 +319,6 @@ public class Addactivity extends AppCompatActivity {
 
     static public void getPosition(int pos){
         index=pos;
-        System.out.println("stam"+pos);
     }
 }
 

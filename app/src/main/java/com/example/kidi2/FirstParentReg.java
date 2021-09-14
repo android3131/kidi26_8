@@ -54,10 +54,10 @@ public class FirstParentReg extends AppCompatActivity {
     LinearLayout layout;
     RecyclerView rv;
     String space_id = "612a326989674a4e38a688a0";
-    String art_id = "612a326989674a4e38a688a1";
-    String animal_id = "612a326989674a4e38a688a2";
-    String siecnce_id = "612a326989674a4e38a688a3";
-    String music_id = "612a326989674a4e38a688a4";
+    String art_id = "612a326a89674a4e38a688a1";
+    String animal_id = "612a326a89674a4e38a688a2";
+    String siecnce_id = "612a326a89674a4e38a688a3";
+    String music_id = "61373a2bc1866b7771fe78da";
 
 
     Spinner spinner;

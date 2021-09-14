@@ -10,11 +10,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.SearchView;
 
 
@@ -102,7 +104,7 @@ public class AdminSetUser extends AppCompatActivity   {
                 Fragment selectedFragment = null;
                 switch (item.getItemId()) {
                     case R.id.home_page:
-                        startActivity(new Intent(AdminSetUser.this, AdminMainActivity.class));
+                        //startActivity(new Intent(AdminMainActivity.this, AdminUpdateCourse.class));
                         // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, homeFragment).commit();
                         return true;
 
@@ -112,7 +114,7 @@ public class AdminSetUser extends AppCompatActivity   {
                         return true;
 
                     case R.id.leaders_page:
-                        startActivity(new Intent(AdminSetUser.this, AdminSetUser.class));
+                        startActivity(new Intent(AdminSetUser.this, AdminSetLeader.class));
                         // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, userFragment).commit();
                         return true;
 
@@ -122,8 +124,19 @@ public class AdminSetUser extends AppCompatActivity   {
                         return true;
 
                     case R.id.more_page:
-                        startActivity(new Intent(AdminSetUser.this, LeaderFirstLoginActivity.class));
-                        // getSupportFragmentManager().beginTransaction().replace(R.id.admin_main_fragments, moreFragment).commit();
+
+                        PopupMenu popup = new PopupMenu(AdminSetUser.this, findViewById(R.id.more_page));
+                        MenuInflater inflater = popup.getMenuInflater();
+                        inflater.inflate(R.menu.mymenu, popup.getMenu());
+                        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                            public boolean onMenuItemClick(MenuItem item) {
+                                if(item.getItemId()==R.id.logoutmenu)
+                                    startActivity(new Intent(AdminSetUser.this, FirstScreen.class));
+
+                                return true;
+                            }
+                        });
+                        popup.show();
                         return true;
                 }
                 return false;

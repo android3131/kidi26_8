@@ -105,9 +105,9 @@
         &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
         </font>
         <u><font>Upload image</font></u>&#160;</string>
-<!--    <string name="BASE_URL">http://kidiback.herokuapp.com/</string>-->
+   <string name="BASE_URL">http://kidiback.herokuapp.com/</string>
 
-    <string name="BASE_URL"> http://10.0.2.2:7010/</string>
+<!--     <string name="BASE_URL"> http://10.0.2.2:7010/</string>-->
     <string name="search_by_username">Search by username</string>
     <string name="leader_management">Leader Management</string>
     <string name="add_leader">Add leader</string>

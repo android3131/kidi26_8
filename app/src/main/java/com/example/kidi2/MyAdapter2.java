@@ -26,43 +26,47 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-       View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.kid_checkbox_grp6,parent,false);
-       MyViewHolder evh = new MyViewHolder(v);
-       return evh;
+        View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.kid_checkbox_grp6,parent,false);
+        MyViewHolder evh = new MyViewHolder(v);
+        return evh;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyAdapter2.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         KidCheckBox curr=mExamplelist.get(position);
 
-            System.out.println(curr);
+        if(mExamplelist.get(position).getKid().getGender()==Gender.Boy){
+            holder.imageView.setImageResource(R.drawable.boyavatargrp6);
+        }
+        else {
             holder.imageView.setImageResource(R.drawable.girlavatargrp6);
-            //holder.imageView.setImageResource(Integer.parseInt( curr.getKid().getImage()));
-            holder.checkedTextView.setText(curr.getKid().getFullName());
+        }
+        //holder.imageView.setImageResource(Integer.parseInt( curr.getKid().getImage()));
+        holder.checkedTextView.setText(curr.getKid().getFullName());
 
-            //check checkbox and uncheck previous selected button
-            holder.checkedTextView.setChecked(position == mCheckedPostion);
-            holder.checkedTextView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //              boolean currentCheckedStatus = curr.isIschecked();
-                    mExamplelist.get(position).setIschecked(true);
-                    if (position == mCheckedPostion) {
-                        //curr.setIschecked(!currentCheckedStatus);
+        //check checkbox and uncheck previous selected button
+        holder.checkedTextView.setChecked(position == mCheckedPostion);
+        holder.checkedTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //              boolean currentCheckedStatus = curr.isIschecked();
+                mExamplelist.get(position).setIschecked(true);
+                if (position == mCheckedPostion) {
+                    //curr.setIschecked(!currentCheckedStatus);
 
-                        holder.checkedTextView.setChecked(false);
-                        mCheckedPostion = -1;
-                    } else {
-                        mCheckedPostion = position;
-                        //System.out.println(position);
-                        // curr.setIschecked(false);
-                        notifyDataSetChanged();
-                    }
-                    ((Addactivity) ctx).getPosition(position);
-                    ((Addactivity) ctx).helloFromAddActivity();
+                    holder.checkedTextView.setChecked(false);
+                    mCheckedPostion = -1;
+                } else {
+                    mCheckedPostion = position;
+                    //System.out.println(position);
+                    // curr.setIschecked(false);
+                    notifyDataSetChanged();
                 }
+                ((Addactivity) ctx).getPosition(position);
+                ((Addactivity) ctx).ClickedKid();
+            }
 
-            });
+        });
 
 
     }
@@ -91,7 +95,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
 
 
     //public int getItem_selected() {
-        //return item_selected;
+    //return item_selected;
     //}
 }
 

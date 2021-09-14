@@ -53,6 +53,7 @@ public class ParentProfileActivity extends AppCompatActivity {
                 // and build our retrofit builder.
                 .build();
         retrofitAPI = retrofit.create(RetrofitAPIParentProfile.class);
+
         getKidsData();
 
         Call<Parent> call = retrofitAPI.getParent(parentId);
@@ -81,12 +82,14 @@ public class ParentProfileActivity extends AppCompatActivity {
     }
 
     private void getKidsData() {
+       Kid_list.clear();
         System.out.println(parentId);
         Call<List<Kid>> getAllParentsChildren = retrofitAPI.getParentsChildren(parentId);
         getAllParentsChildren.enqueue(new Callback<List<Kid>>() {
             @Override
             public void onResponse(Call<List<Kid>> getAllParentsChildren, Response<List<Kid>> response) {
                 System.out.println("111111");
+
                 List<Kid>  kids = response.body();
                 for(int i=0;i<kids.size();i++){
                     if (kids.get(i) != null) {
@@ -101,8 +104,7 @@ public class ParentProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Kid>> getAllParentsChildren, Throwable t) {
-                System.out.println("bye");
-                Log.e("msg", "msg2", t);
+
 
             }
         });
